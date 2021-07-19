@@ -1,4 +1,4 @@
-import React, { Children, useState, useEffect } from "react";
+import React, { Children, useState, useEffect, useRef, useMemo } from "react";
 import styled from "styled-components";
 import Heading from "./atoms/Heading";
 import Footer from "./Layout/Footer";
@@ -19,28 +19,38 @@ const StyledList = styled.ol`
 `;
 
 const Products = () => {
-  const [buyList, setBuyList] = useState([]);
-  const [count, setCount] = useState(1);
+const [buyList, setBuyList] = useState([]);
 
-  const handleClick = (id, name) => {
+
+  
+const increment =index=>{
+const  currentItems = [...buyList]
+currentItems[index].count++
+setBuyList(currentItems)
+}
+  const handleClick = (id, name, count, index) => {
+
     // setBuyList([...buyList, { id: id, name: name, count: "1" }]);
     const itemId = buyList.find((item) => item.id === id);
-
+    
+  
     if (!itemId) {
       setBuyList([...buyList, { id: id, name: name, count: count }]);
     } else {
-      console.log("cont");
+      increment(index);
+ 
     }
 
-    //   setBuyList([...buyList, { id: id, name: name, count: count }]);
   };
+
+
 
   return (
     <>
       <Wrapper>
         <Main>
           <Heading>Lista produktów</Heading>
-          <ProductList click={handleClick} />
+          <ProductList click={handleClick}/>
         </Main>
         <Sidebar>
           <Heading>Twoja lista produktów</Heading>
@@ -49,7 +59,7 @@ const Products = () => {
               {buyList.map((item) => (
                 <li key={item.id} id={item.id}>
                   {item.name}
-                  <span> {item.count}</span>
+               <span> {item.count}</span>
                 </li>
               ))}
             </StyledList>

@@ -13,12 +13,9 @@ const StyledThead = styled.thead`
 const StyledTr = styled.tr`
   line-height: 32px;
 `;
-const StyledInput = styled.input`
-pointer-events: none,
-border: none;
-`;
 
-const ProductList = ({ click, childRef }) => {
+
+const ProductList = ({ click}) => {
   const [list, setList] = useState([
     { id: 1, name: "Wiertarka", count: "1" },
     { id: 2, name: "Wkrętarka", count: "1" },
@@ -41,7 +38,7 @@ const ProductList = ({ click, childRef }) => {
               <StyledTr key={index}>
                 <td>{l.name}</td>
                 <td>
-                  <Button onClick={() => click(l.id, l.name)}>Kup</Button>
+                  <Button onClick={() => click(l.id, l.name, l.count, index)}>Kup</Button>
                 </td>
               </StyledTr>
             ))}
