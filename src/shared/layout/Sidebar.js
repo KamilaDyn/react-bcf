@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Heading from "../atoms/Heading";
 
 const Wrapper = styled.div`
   width: 30%;

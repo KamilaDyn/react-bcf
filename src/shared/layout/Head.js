@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Heading from "../atoms/Heading";
 
 const StyledHead = styled.div`
   width: 100vw;

@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Collapse from "@material-ui/core/Collapse";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  Collapse,
+} from "@material-ui/core";
 import clsx from "clsx";
 
-import IconButton from "@material-ui/core/IconButton";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import Typography from "@material-ui/core/Typography";
-import CardActions from "@material-ui/core/CardActions";
-import { Tooltip } from "@material-ui/core";
+import {
+  CardActions,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductList = ({ click, products }) => {
+const ProductList = ({ click, products, deleteProduct }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
