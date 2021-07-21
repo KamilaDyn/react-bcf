@@ -9,15 +9,13 @@ import {
   CardMedia,
   CardContent,
   Collapse,
-} from "@material-ui/core";
-import clsx from "clsx";
-
-import {
   CardActions,
   IconButton,
   Tooltip,
   Typography,
 } from "@material-ui/core";
+
+import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
@@ -56,12 +54,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductList = ({ click, products, deleteProduct }) => {
+const ProductsList = ({ addHandler, products, shoppingList }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleClick = (id) => {
+    let product = products.filter((item) => {
+      return item.id === id;
+    });
+    const itemId = shoppingList.find((item) => item.id === product[0].id);
+    console.log(itemId);
+    if (!itemId) {
+      const productItem = {
+        id: id,
+        name: product[0].title,
+        count: "1",
+        price: product[0].price,
+      };
+      console.log(productItem);
+      addHandler({ type: "ADD", productItem });
+    } else {
+      //  let objIndex = products.findIndex((obj) => obj.id === id);
+      // increment(objIndex, price);
+      // console.log(price);
+    }
   };
 
   return (
@@ -81,7 +97,7 @@ const ProductList = ({ click, products, deleteProduct }) => {
             </Typography>
             <IconButton
               aria-label="share"
-              onClick={() => click(p.id)}
+              onClick={() => handleClick(p.id)}
               className={classes.button}
             >
               <Tooltip title="Buy" placement="top">
@@ -92,7 +108,7 @@ const ProductList = ({ click, products, deleteProduct }) => {
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}
-              onClick={handleExpandClick}
+              onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
               aria-label="show more"
             >
@@ -113,4 +129,4 @@ const ProductList = ({ click, products, deleteProduct }) => {
   );
 };
 
-export default ProductList;
+export default ProductsList;
