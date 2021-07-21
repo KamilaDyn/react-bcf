@@ -2,7 +2,7 @@ import React, { useEffect, useState, useReducer } from "react";
 import styled from "styled-components";
 import { Head, Main, Footer } from "../../../shared";
 import { Heading, ProductsList, ShoppingCard } from "../components";
-import ProductReducer from "../../../reducers";
+import ShoppingListReducer from "../../../reducers";
 import axios from "axios";
 
 const Wrapper = styled.div`
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [shoppingList, dispatch] = useReducer(ProductReducer, []);
+  const [shoppingList, dispatch] = useReducer(ShoppingListReducer, []);
 
   useEffect(() => {
     getProducts();

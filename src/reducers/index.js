@@ -1,4 +1,4 @@
-const ProductReducer = (shoppingList, action) => {
+const ShoppingListReducer = (shoppingList, action) => {
   switch (action.type) {
     case "ADD":
       return [...shoppingList, action.productItem];
@@ -13,4 +13,4 @@ const ProductReducer = (shoppingList, action) => {
   }
 };
 
-export default ProductReducer;
+export default ShoppingListReducer;
