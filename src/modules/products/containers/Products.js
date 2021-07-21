@@ -45,7 +45,6 @@ const Products = () => {
       <Wrapper>
         <Main>
           <Heading>Lista produktów</Heading>
-
           <ProductsList
             products={products}
             addHandler={dispatch}

@@ -100,7 +100,7 @@ const ProductsList = ({ addHandler, products, shoppingList }) => {
               onClick={() => handleClick(p.id)}
               className={classes.button}
             >
-              <Tooltip title="Buy" placement="top">
+              <Tooltip title="Dodaj do koszyka" placement="top">
                 <ShoppingCartIcon color="primary" style={{ fontSize: 40 }} />
               </Tooltip>
             </IconButton>
