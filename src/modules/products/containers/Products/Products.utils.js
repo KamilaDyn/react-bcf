@@ -5,7 +5,7 @@ const ShoppingListReducer = (shoppingList, action) => {
     case "REMOVE":
       return shoppingList.filter((product) => product.id !== action.id);
     case "INCREMENT":
-      return;
+      return [...shoppingList];
     case "DECREMENT":
       return;
     default:

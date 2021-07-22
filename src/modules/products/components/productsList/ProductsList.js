@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import styled from "styled-components";
-
-import { makeStyles } from "@material-ui/core/styles";
+import { AddProductForm } from "../index";
 import {
   Card,
   CardHeader,
@@ -11,74 +9,15 @@ import {
   Collapse,
   CardActions,
   IconButton,
-  Tooltip,
   Typography,
 } from "@material-ui/core";
-
 import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Wrapper, useStyles } from "./ProductList.style";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: 280,
-    maxWidth: 345,
-    margin: "15px 20px",
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-    backgroundPosition: "center",
-    backgroundSize: "contain",
-  },
-  actions: {
-    display: "flex",
-    justifyContent: "space-around",
-  },
-  price: {
-    fontSize: "42px",
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-}));
-
-const ProductsList = ({ addHandler, products, shoppingList }) => {
+const ProductsList = ({ products }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleClick = (id) => {
-    let product = products.filter((item) => {
-      return item.id === id;
-    });
-    const itemId = shoppingList.find((item) => item.id === product[0].id);
-    console.log(itemId);
-    if (!itemId) {
-      const productItem = {
-        id: id,
-        name: product[0].title,
-        count: "1",
-        price: product[0].price,
-      };
-      console.log(productItem);
-      addHandler({ type: "ADD", productItem });
-    } else {
-      //  let objIndex = products.findIndex((obj) => obj.id === id);
-      // increment(objIndex, price);
-      // console.log(price);
-    }
-  };
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <Wrapper>
@@ -96,15 +35,6 @@ const ProductsList = ({ addHandler, products, shoppingList }) => {
               {p.price}$
             </Typography>
             <IconButton
-              aria-label="share"
-              onClick={() => handleClick(p.id)}
-              className={classes.button}
-            >
-              <Tooltip title="Dodaj do koszyka" placement="top">
-                <ShoppingCartIcon color="primary" style={{ fontSize: 40 }} />
-              </Tooltip>
-            </IconButton>
-            <IconButton
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}
@@ -115,6 +45,8 @@ const ProductsList = ({ addHandler, products, shoppingList }) => {
               <ExpandMoreIcon />
             </IconButton>
           </CardActions>
+
+          <AddProductForm index={index} id={p.id} />
 
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>

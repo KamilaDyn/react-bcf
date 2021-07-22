@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Products from "./modules/products/containers/Products";
+import { Products } from "./modules";
 class App extends Component {
   render() {
     return <Products />;

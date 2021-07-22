@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useContext } from "react";
 import { Sidebar } from "../../../../shared";
 import { Heading } from "../../components";
 
@@ -14,6 +14,8 @@ import {
 } from "@material-ui/core";
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { ProductContext } from "../index";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -27,17 +29,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ShoppingCard = ({ shoppingList, deleteProduct }) => {
+const ShoppingCard = () => {
   const classes = useStyles();
+  const productContext = useContext(ProductContext);
+
   const handleDelete = (id) => {
-    deleteProduct({ id, type: "REMOVE" });
+    productContext.dispatch({ id, type: "REMOVE" });
   };
+
   return (
     <Sidebar>
       <Heading>Twoje produkty</Heading>
-      {shoppingList.length > 0 ? (
+      {productContext.shoppingList.length > 0 ? (
         <List className={classes.root}>
-          {shoppingList.map((item) => (
+          {productContext.shoppingList.map((item) => (
             <ListItem key={item.id} id={item.id}>
               <ListItemText
                 primary={item.name}
