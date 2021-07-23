@@ -1,21 +1,25 @@
 import React from "react";
-import styled from "styled-components";
-import Typography from "@material-ui/core/Typography";
+import { Container, Typography } from "@material-ui/core";
 
-const StyledFooter = styled.div`
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  background-color: #2e2e2e;
-`;
+export const useStyles = {
+  root: {
+    display: "flex",
+  },
+  container: {
+    width: "100%",
+    height: 50,
+    textAlign: "center",
+    backgroundColor: "#2e2e2e",
+  },
+};
 
 const Footer = () => {
   return (
-    <StyledFooter>
+    <Container>
       <Typography variant="body2" color="textSecondary" paragraph>
         Sklep dla każdego
       </Typography>
-    </StyledFooter>
+    </Container>
   );
 };
 

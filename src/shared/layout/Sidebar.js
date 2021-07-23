@@ -1,16 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  width: 30%;
-  padding: 15px 20px;
-  position: fixed;
-  top: 100px;
-  right: 0;
-`;
+import { Container } from "@material-ui/core";
 
 const Sidebar = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  return <Container>{children}</Container>;
 };
 
 export default Sidebar;

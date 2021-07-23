@@ -1,37 +1,46 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React from "react";
+import clsx from "clsx";
 import { Head, Main, Footer } from "../../../../shared";
+import { withHook } from "../../../../withHook/withHook";
 import { Heading, ProductsList, ShoppingCard } from "../../components";
-
-import ShoppingListReducer from "./Products.utils";
-import { Wrapper } from "./Product.style";
 import ProductContext from "./ProductContext";
-import axios from "axios";
-
-const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [shoppingList, dispatch] = useReducer(ShoppingListReducer, []);
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  const getProducts = () => {
-    axios
-      .get("http://localhost:8000/products")
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+import { ProductComponentState } from "./ProductComponentState";
+import { Badge, IconButton, Container } from "@material-ui/core/";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
+import { useStyles } from "./Product.style";
+const Products = (props) => {
+  const {
+    products,
+    open,
+    setOpen,
+    countItemsInBasket,
+    dispatch,
+    shoppingList,
+  } = props;
+  const classes = useStyles();
 
   return (
     <>
-      <Head>Sklep dla każdego</Head>
-      <Wrapper>
+      <Head>
+        Sklep dla każdego
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="end"
+          onClick={() => setOpen(!open)}
+          className={clsx(open && classes.hide)}
+        >
+          <Badge
+            badgeContent={shoppingList.length > 0 ? countItemsInBasket() : "0"}
+            color="secondary"
+          >
+            <LocalMallIcon color="primary" />
+          </Badge>
+        </IconButton>
+      </Head>
+      <Container className={classes.container}>
         <Main>
-          <Heading>Lista produktów</Heading>
+          <Heading>Lista produktów </Heading>
           <ProductContext.Provider
             value={{
               shoppingList: shoppingList,
@@ -46,14 +55,16 @@ const Products = () => {
           value={{
             shoppingList: shoppingList,
             dispatch: dispatch,
+            open: open,
+            handleDrawer: setOpen,
           }}
         >
           <ShoppingCard />
         </ProductContext.Provider>
-      </Wrapper>
+      </Container>
       <Footer />
     </>
   );
 };
 
-export default Products;
+export default withHook(ProductComponentState, Products);

@@ -1,12 +1,7 @@
 import React from "react";
-import styled from "styled-components";
-
-const StyledMain = styled.main`
-  width: 70%;
-  padding: 15px 20px;
-`;
+import { Container } from "@material-ui/core";
 
 const Main = ({ children }) => {
-  return <StyledMain>{children}</StyledMain>;
+  return <Container>{children}</Container>;
 };
 export default Main;

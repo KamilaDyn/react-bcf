@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { AddProductForm } from "../index";
 import {
   Card,
@@ -8,19 +7,20 @@ import {
   CardContent,
   Collapse,
   CardActions,
+  Container,
   IconButton,
   Typography,
 } from "@material-ui/core";
 import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Wrapper, useStyles } from "./ProductList.style";
+import { useStyles } from "./ProductList.style";
 
 const ProductsList = ({ products }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Wrapper>
+    <Container className={classes.container}>
       {products.map((p, index) => (
         <Card key={index} className={classes.root}>
           <CardHeader title={p.title} subheader={p.category} />
@@ -57,7 +57,7 @@ const ProductsList = ({ products }) => {
           </Collapse>
         </Card>
       ))}
-    </Wrapper>
+    </Container>
   );
 };
 

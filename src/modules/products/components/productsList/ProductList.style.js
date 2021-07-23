@@ -5,11 +5,17 @@ export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
 export const useStyles = makeStyles((theme) => ({
   root: {
     width: 280,
     maxWidth: 345,
     margin: "15px 20px",
+  },
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   media: {
     height: 0,
