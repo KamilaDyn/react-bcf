@@ -1,10 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
 
 export const useStyles = makeStyles((theme) => ({
   root: {

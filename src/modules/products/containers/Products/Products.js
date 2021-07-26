@@ -1,24 +1,16 @@
 import React from "react";
 import clsx from "clsx";
 import { Head, Main, Footer } from "../../../../shared";
-import { withHook } from "../../../../withHook/withHook";
 import { Heading, ProductsList, ShoppingCard } from "../../components";
 import ProductContext from "./ProductContext";
-import { ProductComponentState } from "./ProductComponentState";
 import { Badge, IconButton, Container } from "@material-ui/core/";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
-import { useStyles } from "./Product.style";
-const Products = (props) => {
-  const {
-    products,
-    open,
-    setOpen,
-    countItemsInBasket,
-    dispatch,
-    shoppingList,
-  } = props;
+import { StyledIconButton, useStyles } from "./Product.style";
+import { useGetProducts, useCountItems } from "./Products.utils";
+const Products = () => {
+  const { products, open, setOpen } = useGetProducts();
+  const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
   const classes = useStyles();
-
   return (
     <>
       <Head>
@@ -28,7 +20,6 @@ const Products = (props) => {
           aria-label="open drawer"
           edge="end"
           onClick={() => setOpen(!open)}
-          className={clsx(open && classes.hide)}
         >
           <Badge
             badgeContent={shoppingList.length > 0 ? countItemsInBasket() : "0"}
@@ -67,4 +58,4 @@ const Products = (props) => {
   );
 };
 
-export default withHook(ProductComponentState, Products);
+export default Products;

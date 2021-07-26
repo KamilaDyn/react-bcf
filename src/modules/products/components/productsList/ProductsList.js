@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useStyles } from "./ProductList.style";
 import { AddProductForm } from "../index";
 import {
   Card,
@@ -13,12 +14,10 @@ import {
 } from "@material-ui/core";
 import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { useStyles } from "./ProductList.style";
 
 const ProductsList = ({ products }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-
   return (
     <Container className={classes.container}>
       {products.map((p, index) => (

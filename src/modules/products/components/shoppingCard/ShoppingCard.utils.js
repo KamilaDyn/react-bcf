@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ProductContext } from "../index";
 
-export const ShoppingCardUtils = () => {
+export const useShoppingCardData = () => {
   const productContext = useContext(ProductContext);
   const { shoppingList, open, handleDrawer } = productContext;
 

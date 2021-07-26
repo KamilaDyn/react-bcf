@@ -1,19 +1,13 @@
 import { useState, useContext } from "react";
 import { ProductContext } from "../index";
+import { useQuantity } from "../NumberInput/NumberInput.utils";
 
-export const AddProductFormUtils = (props) => {
-  const { index, id } = props;
+export const useAddProductFormData = () => {
+  const { quantity } = useQuantity();
 
-  const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
 
   const productContext = useContext(ProductContext);
-  const increment = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  };
-  const decrement = () => {
-    setQuantity((prevQuantity) => prevQuantity - 1);
-  };
   const handleSubmit = (e, id) => {
     let product = productContext.products.find((item) => {
       return item.id === id;
@@ -25,6 +19,7 @@ export const AddProductFormUtils = (props) => {
       count: quantity,
       price: product.price * quantity,
     };
+
     const itemId = productContext.shoppingList.find((item) => item.id === id);
 
     if (!itemId) {
@@ -40,12 +35,7 @@ export const AddProductFormUtils = (props) => {
   };
 
   return {
-    increment,
-    decrement,
     handleSubmit,
     quantity,
-    setQuantity,
-    index,
-    id,
   };
 };

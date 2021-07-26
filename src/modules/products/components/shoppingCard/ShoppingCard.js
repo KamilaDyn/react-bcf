@@ -1,9 +1,8 @@
 import React from "react";
-import { withHook } from "../../../../withHook/withHook";
+import { useShoppingCardData } from "./ShoppingCard.utils";
 import { Sidebar } from "../../../../shared";
 import { Heading } from "../../components";
 import { useStyles } from "./ShoppingCard.style";
-import { ShoppingCardUtils } from "./ShoppingCard.utils";
 import { Drawer, Divider } from "@material-ui/core";
 
 import {
@@ -19,8 +18,10 @@ import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutline
 import DeleteIcon from "@material-ui/icons/Delete";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
-const ShoppingCard = (props) => {
-  const { shoppingList, handleDelete, open, handleDrawer } = props;
+const ShoppingCard = () => {
+  const { handleDelete, shoppingList, open, handleDrawer } =
+    useShoppingCardData();
+
   const classes = useStyles();
 
   return (
@@ -48,7 +49,7 @@ const ShoppingCard = (props) => {
                 <ListItemText
                   primary={item.name}
                   secondary={item.price + "$"}
-                ></ListItemText>
+                />
                 <ListItemIcon>
                   <Badge badgeContent={item.count} color="secondary">
                     <ShoppingBasketOutlinedIcon color="primary" />
@@ -70,4 +71,4 @@ const ShoppingCard = (props) => {
   );
 };
 
-export default withHook(ShoppingCardUtils, ShoppingCard);
+export default ShoppingCard;

@@ -1,42 +1,20 @@
 import React from "react";
-import { Button, Input, IconButton, Tooltip } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useStyles } from "./AddProductForm.style";
-import { withHook } from "../../../../withHook/withHook";
-import { AddProductFormUtils } from "./AddProductFrom.utils";
+import { useAddProductFormData } from "./AddProductForm.utils";
+import NumberInput from "../NumberInput/NumberInput";
+import { useQuantity } from "../NumberInput/NumberInput.utils";
 
-const AddProductForm = (props) => {
-  const {
-    index,
-    id,
-    handleSubmit,
-    increment,
-    decrement,
-    quantity,
-    setQuantity,
-  } = props;
+const AddProductForm = ({ id, index }) => {
+  const { handleSubmit } = useAddProductFormData();
+  const { quantity } = useQuantity();
+  console.log(quantity);
   const classes = useStyles();
 
   return (
     <form className={classes.container} onSubmit={(e) => handleSubmit(e, id)}>
-      <Button variant="contained" onClick={() => decrement(index)}>
-        -
-      </Button>
-      <Input
-        id="use_id"
-        type="tel"
-        required
-        onChange={(e) => setQuantity(e.target.value)}
-        variant="filled"
-        value={quantity}
-        inputProps={{
-          className: classes.input,
-          max: 12,
-        }}
-      />
-      <Button variant="contained" onClick={() => increment(index)}>
-        +
-      </Button>
+      <NumberInput index={index} />
       <IconButton aria-label="share" type="submit" className={classes.button}>
         <Tooltip title="Dodaj do koszyka" placement="top">
           <ShoppingCartIcon color="primary" style={{ fontSize: 40 }} />
@@ -46,4 +24,4 @@ const AddProductForm = (props) => {
   );
 };
 
-export default withHook(AddProductFormUtils, AddProductForm);
+export default AddProductForm;
