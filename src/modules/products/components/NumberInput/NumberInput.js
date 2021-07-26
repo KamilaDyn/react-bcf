@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { useQuantity } from "./NumberInput.utils";
 import { Button, Input } from "@material-ui/core";
 import { useStyles } from "./NumberInput.style";

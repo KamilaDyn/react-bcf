@@ -4,12 +4,10 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useStyles } from "./AddProductForm.style";
 import { useAddProductFormData } from "./AddProductForm.utils";
 import NumberInput from "../NumberInput/NumberInput";
-import { useQuantity } from "../NumberInput/NumberInput.utils";
 
 const AddProductForm = ({ id, index }) => {
   const { handleSubmit } = useAddProductFormData();
-  const { quantity } = useQuantity();
-  console.log(quantity);
+
   const classes = useStyles();
 
   return (
