@@ -3,9 +3,9 @@ import { useQuantity } from "./NumberInput.utils";
 import { Button, Input } from "@material-ui/core";
 import { useStyles } from "./NumberInput.style";
 
-const NumberInput = forwardRef((props, ref) => {
+const NumberInput = ({index} )=> {
   const { quantity, decrement, increment, setQuantity } = useQuantity();
-  const { index } = props;
+ 
   const classes = useStyles();
   return (
     <>
@@ -23,7 +23,7 @@ const NumberInput = forwardRef((props, ref) => {
           className: classes.input,
           max: 12,
         }}
-        ref={ref}
+      
       />
       <Button variant="contained" onClick={() => increment(index)}>
         +
