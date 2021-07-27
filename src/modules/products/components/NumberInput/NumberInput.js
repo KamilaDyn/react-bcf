@@ -1,10 +1,11 @@
 import React from "react";
-import { useQuantity } from "./NumberInput.utils";
 import { Button, Input } from "@material-ui/core";
+import { useQuantity } from "./NumberInput.utils";
 import { useStyles } from "./NumberInput.style";
 
 const NumberInput = ({ index }) => {
   const { quantity, decrement, increment, setQuantity } = useQuantity();
+  console.log(quantity);
 
   const classes = useStyles();
   return (

@@ -1,9 +1,9 @@
 import React from "react";
-import { useShoppingCardData } from "./ShoppingCard.utils";
+import { Drawer, Divider } from "@material-ui/core";
 import { Sidebar } from "../../../../shared";
 import { Heading } from "../../components";
 import { useStyles } from "./ShoppingCard.style";
-import { Drawer, Divider } from "@material-ui/core";
+import { useShoppingCardData } from "./ShoppingCard.utils";
 
 import {
   Badge,

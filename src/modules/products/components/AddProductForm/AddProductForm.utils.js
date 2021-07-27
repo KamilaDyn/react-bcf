@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
+import { useQuantity } from "../numberInput/NumberInput.utils";
 import { ProductContext } from "../index";
-import { useQuantity } from "../NumberInput/NumberInput.utils";
 
-export const useAddProductFormData = () => {
+export const useAddProduct = () => {
   const { quantity } = useQuantity();
 
   const [price, setPrice] = useState(0);
@@ -20,6 +20,8 @@ export const useAddProductFormData = () => {
       price: product.price * quantity,
     };
 
+    console.log(productItem);
+
     const itemId = productContext.shoppingList.find((item) => item.id === id);
 
     if (!itemId) {
@@ -36,6 +38,5 @@ export const useAddProductFormData = () => {
 
   return {
     handleSubmit,
-    quantity,
   };
 };

@@ -1,12 +1,12 @@
 import React from "react";
-import clsx from "clsx";
-import { Head, Main, Footer } from "../../../../shared";
-import { Heading, ProductsList, ShoppingCard } from "../../components";
-import ProductContext from "./ProductContext";
 import { Badge, IconButton, Container } from "@material-ui/core/";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
-import { StyledIconButton, useStyles } from "./Product.style";
+import { Head, Main, Footer } from "../../../../shared";
+import { Heading, ProductsList, ShoppingCard } from "../../components";
+import { ProductContext } from "../../components/index";
+import { useStyles } from "./Product.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
+
 const Products = () => {
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();

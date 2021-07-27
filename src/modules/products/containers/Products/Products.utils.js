@@ -1,6 +1,21 @@
-import { useState, useEffect, useReducer } from "react";
-import ShoppingListReducer from "./Reducer";
+import { useEffect, useReducer, useState } from "react";
+
 import axios from "axios";
+
+const shoppingListReducer = (shoppingList, action) => {
+  switch (action.type) {
+    case "ADD":
+      return [...shoppingList, action.productItem];
+    case "REMOVE":
+      return shoppingList.filter((product) => product.id !== action.id);
+    case "INCREMENT":
+      return [...shoppingList];
+    case "DECREMENT":
+      return;
+    default:
+      throw new Error("Ooop, something went wrong...");
+  }
+};
 
 export const useGetProducts = () => {
   const [products, setProducts] = useState([]);
@@ -30,7 +45,7 @@ export const useGetProducts = () => {
 };
 
 export const useCountItems = () => {
-  const [shoppingList, dispatch] = useReducer(ShoppingListReducer, []);
+  const [shoppingList, dispatch] = useReducer(shoppingListReducer, []);
 
   const countItemsInBasket = () => {
     if (shoppingList.length > 0) {

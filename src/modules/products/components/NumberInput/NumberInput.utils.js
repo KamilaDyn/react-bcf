@@ -13,5 +13,6 @@ export const useQuantity = () => {
     increment,
     decrement,
     quantity,
+    setQuantity,
   };
 };
