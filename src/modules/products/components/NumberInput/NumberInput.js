@@ -1,13 +1,16 @@
 import React from "react";
 import { Button, Input } from "@material-ui/core";
-import { useQuantity } from "./NumberInput.utils";
-import { useStyles } from "./NumberInput.style";
+import { useQuantity, useStyles } from "./index";
 
-const NumberInput = ({ index }) => {
-  const { quantity, decrement, increment, setQuantity } = useQuantity();
-  console.log(quantity);
-
+const NumberInput = ({
+  index,
+  decrement,
+  increment,
+  quantity,
+  setQuantity,
+}) => {
   const classes = useStyles();
+
   return (
     <>
       <Button variant="contained" onClick={() => decrement(index)}>

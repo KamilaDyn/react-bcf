@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import { styled } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
 
-const Heading = styled.h2`
-  font-weight: bold;
-  color: #2f4f4f;
-  text-transform: uppercase;
-  line-height: 42px;
-  text-align: center;
-`;
+const Heading = styled(Typography)({
+  fontWeight: "bold",
+  color: "#2f4f4f",
+  textTransform: "uppercase",
+  lineHeight: "42px",
+  textAlign: "center",
+});
 
 export default Heading;

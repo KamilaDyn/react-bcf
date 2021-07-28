@@ -1,10 +1,5 @@
 import React from "react";
 import { Drawer, Divider } from "@material-ui/core";
-import { Sidebar } from "../../../../shared";
-import { Heading } from "../../components";
-import { useStyles } from "./ShoppingCard.style";
-import { useShoppingCardData } from "./ShoppingCard.utils";
-
 import {
   Badge,
   IconButton,
@@ -17,6 +12,8 @@ import {
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { Sidebar } from "../../../../shared";
+import { Heading, useStyles, useShoppingCardData } from "../index";
 
 const ShoppingCard = () => {
   const { handleDelete, shoppingList, open, handleDrawer } =
@@ -34,11 +31,10 @@ const ShoppingCard = () => {
         paper: classes.drawerPaper,
       }}
     >
-      <div className={classes.drawerHeader}>
-        <IconButton onClick={() => handleDrawer(false)}>
-          <ChevronRightIcon />
-        </IconButton>
-      </div>
+      <IconButton onClick={() => handleDrawer(false)}>
+        <ChevronRightIcon />
+      </IconButton>
+
       <Divider />
       <Sidebar>
         <Heading>Twoje produkty</Heading>

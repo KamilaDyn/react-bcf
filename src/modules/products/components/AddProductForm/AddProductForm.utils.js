@@ -1,14 +1,13 @@
 import { useState, useContext } from "react";
-import { useQuantity } from "../numberInput/NumberInput.utils";
 import { ProductContext } from "../index";
 
 export const useAddProduct = () => {
-  const { quantity } = useQuantity();
-
   const [price, setPrice] = useState(0);
 
   const productContext = useContext(ProductContext);
-  const handleSubmit = (e, id) => {
+  const handleSubmit = (e, id, quantity) => {
+    console.log(quantity);
+
     let product = productContext.products.find((item) => {
       return item.id === id;
     });
@@ -19,7 +18,6 @@ export const useAddProduct = () => {
       count: quantity,
       price: product.price * quantity,
     };
-
     console.log(productItem);
 
     const itemId = productContext.shoppingList.find((item) => item.id === id);

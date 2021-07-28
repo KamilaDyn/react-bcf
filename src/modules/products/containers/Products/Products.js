@@ -2,10 +2,19 @@ import React from "react";
 import { Badge, IconButton, Container } from "@material-ui/core/";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { Head, Main, Footer } from "../../../../shared";
-import { Heading, ProductsList, ShoppingCard } from "../../components";
-import { ProductContext } from "../../components/index";
-import { useStyles } from "./Product.style";
-import { useGetProducts, useCountItems } from "./Products.utils";
+import {
+  Heading,
+  ProductsList,
+  ShoppingCard,
+  ProductContext,
+} from "../../components";
+import {
+  useStyles,
+  useGetProducts,
+  useCountItems,
+  StyledContainer,
+} from "./index";
+import {} from "./Products.style";
 
 const Products = () => {
   const { products, open, setOpen } = useGetProducts();
@@ -29,7 +38,7 @@ const Products = () => {
           </Badge>
         </IconButton>
       </Head>
-      <Container className={classes.container}>
+      <StyledContainer>
         <Main>
           <Heading>Lista produktów </Heading>
           <ProductContext.Provider
@@ -52,7 +61,7 @@ const Products = () => {
         >
           <ShoppingCard />
         </ProductContext.Provider>
-      </Container>
+      </StyledContainer>
       <Footer />
     </>
   );

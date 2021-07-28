@@ -1,49 +1,41 @@
 import React, { useState } from "react";
 import {
-  Card,
   CardHeader,
-  CardMedia,
   CardContent,
   Collapse,
-  CardActions,
-  Container,
   Typography,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { AddProductForm } from "../index";
-import { StyledIconButton } from "./ProductList.style";
-import { useStyles } from "./ProductList.style";
+import {
+  AddProductForm,
+  StyledCardActions,
+  StyledIconButton,
+  useStyles,
+  StyledCard,
+  StyledContainer,
+  StyledMedia,
+  StyledTypography,
+} from "../index";
 
 const ProductsList = ({ products }) => {
-  const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
   return (
-    <Container className={classes.container}>
+    <StyledContainer>
       {products.map((p, index) => (
-        <Card key={index} className={classes.root}>
+        <StyledCard key={index}>
           <CardHeader title={p.title} subheader={p.category} />
-          <CardMedia
-            image={p.image}
-            title={p.title}
-            className={classes.media}
-            alt={p.title}
-          />
-          <CardActions className={classes.actions}>
-            <Typography color="secondary" className={classes.price}>
-              {p.price}$
-            </Typography>
+          <StyledMedia image={p.image} title={p.title} alt={p.title} />
+          <StyledCardActions>
+            <StyledTypography color="secondary">{p.price}$</StyledTypography>
             <StyledIconButton
-              // className={clsx(classes.expand, {
-              //   [classes.expandOpen]: expanded,
-              // })}
-              expanded
+              expandopen={expanded}
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
               aria-label="show more"
             >
               <ExpandMoreIcon />
             </StyledIconButton>
-          </CardActions>
+          </StyledCardActions>
 
           <AddProductForm index={index} id={p.id} />
 
@@ -54,9 +46,9 @@ const ProductsList = ({ products }) => {
               </Typography>
             </CardContent>
           </Collapse>
-        </Card>
+        </StyledCard>
       ))}
-    </Container>
+    </StyledContainer>
   );
 };
 

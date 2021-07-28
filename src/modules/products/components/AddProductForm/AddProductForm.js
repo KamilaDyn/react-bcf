@@ -1,21 +1,22 @@
 import React from "react";
 import { IconButton, Tooltip } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { NumberInput } from "../index";
-import { useQuantity } from "../numberInput/NumberInput.utils";
-import { useStyles } from "./AddProductForm.style";
-import { useAddProduct } from "./AddProductForm.utils";
+import { NumberInput, useAddProduct, useQuantity } from "../index";
 
 const AddProductForm = ({ id, index }) => {
   const { handleSubmit } = useAddProduct();
-  const { quantity } = useQuantity();
-
-  const classes = useStyles();
+  const { quantity, setQuantity, increment, decrement } = useQuantity();
 
   return (
-    <form className={classes.container} onSubmit={(e) => handleSubmit(e, id)}>
-      <NumberInput index={index} quantity={quantity} />
-      <IconButton aria-label="share" type="submit" className={classes.button}>
+    <form onSubmit={(e) => handleSubmit(e, id, quantity)}>
+      <NumberInput
+        index={index}
+        quantity={quantity}
+        setQuantity={setQuantity}
+        increment={increment}
+        decrement={decrement}
+      />
+      <IconButton aria-label="share" type="submit">
         <Tooltip title="Dodaj do koszyka" placement="top">
           <ShoppingCartIcon color="primary" style={{ fontSize: 40 }} />
         </Tooltip>

@@ -8,11 +8,10 @@ export const useQuantity = () => {
   const decrement = () => {
     setQuantity((prevQuantity) => prevQuantity - 1);
   };
-
   return {
     increment,
     decrement,
-    quantity,
     setQuantity,
+    quantity,
   };
 };
