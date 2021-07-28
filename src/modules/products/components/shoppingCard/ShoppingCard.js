@@ -1,9 +1,8 @@
 import React from "react";
-import { Drawer, Divider } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
 import {
   Badge,
   IconButton,
-  List,
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -13,33 +12,29 @@ import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutline
 import DeleteIcon from "@material-ui/icons/Delete";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Sidebar } from "../../../../shared";
-import { Heading, useStyles, useShoppingCardData } from "../index";
+import {
+  Heading,
+  useShoppingCardData,
+  StyledIconButton,
+  StyledList,
+  StyledDrawer,
+} from "../index";
 
 const ShoppingCard = () => {
   const { handleDelete, shoppingList, open, handleDrawer } =
     useShoppingCardData();
 
-  const classes = useStyles();
-
   return (
-    <Drawer
-      className={classes.drawer}
-      variant="persistent"
-      anchor="right"
-      open={open}
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-    >
-      <IconButton onClick={() => handleDrawer(false)}>
+    <StyledDrawer variant="persistent" anchor="right" open={open} custom="true">
+      <StyledIconButton onClick={() => handleDrawer(false)}>
         <ChevronRightIcon />
-      </IconButton>
+      </StyledIconButton>
 
       <Divider />
       <Sidebar>
-        <Heading>Twoje produkty</Heading>
+        <Heading secondary="true">Twoje produkty</Heading>
         {shoppingList.length > 0 ? (
-          <List className={classes.root}>
+          <StyledList custom="true">
             {shoppingList.map((item) => (
               <ListItem key={item.id} id={item.id}>
                 <ListItemText
@@ -56,14 +51,14 @@ const ShoppingCard = () => {
                 </IconButton>
               </ListItem>
             ))}
-          </List>
+          </StyledList>
         ) : (
-          <Typography paragraph className={classes.noitems}>
+          <Typography paragraph>
             Nie wybrałeś jeszcze żadnego produktu
           </Typography>
         )}
       </Sidebar>
-    </Drawer>
+    </StyledDrawer>
   );
 };
 

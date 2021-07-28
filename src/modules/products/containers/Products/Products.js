@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, IconButton, Container } from "@material-ui/core/";
+import { Badge, IconButton } from "@material-ui/core/";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { Head, Main, Footer } from "../../../../shared";
 import {
@@ -8,18 +8,11 @@ import {
   ShoppingCard,
   ProductContext,
 } from "../../components";
-import {
-  useStyles,
-  useGetProducts,
-  useCountItems,
-  StyledContainer,
-} from "./index";
-import {} from "./Products.style";
+import { useGetProducts, useCountItems, StyledContainer } from "./index";
 
 const Products = () => {
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
-  const classes = useStyles();
   return (
     <>
       <Head>
@@ -40,7 +33,7 @@ const Products = () => {
       </Head>
       <StyledContainer>
         <Main>
-          <Heading>Lista produktów </Heading>
+          <Heading secondary="true">Lista produktów </Heading>
           <ProductContext.Provider
             value={{
               shoppingList: shoppingList,

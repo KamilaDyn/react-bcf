@@ -1,7 +1,12 @@
-import { makeStyles } from "@material-ui/core/";
+import { styled, Input } from "@material-ui/core";
 
-export const useStyles = makeStyles((theme) => ({
-  input: {
+export const Wrapper = styled("div")({
+  display: "flex",
+  wrap: "no-wrap",
+});
+
+export const StyledInput = styled(Input)(({ custom }) => ({
+  ...(custom && {
     lineHeight: 1.65,
     display: "block",
     margin: 0,
@@ -12,5 +17,5 @@ export const useStyles = makeStyles((theme) => ({
     verticalAlign: "top",
     textAlign: "center",
     outline: "none",
-  },
+  }),
 }));

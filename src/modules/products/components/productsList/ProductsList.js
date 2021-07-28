@@ -10,7 +10,6 @@ import {
   AddProductForm,
   StyledCardActions,
   StyledIconButton,
-  useStyles,
   StyledCard,
   StyledContainer,
   StyledMedia,
@@ -28,10 +27,10 @@ const ProductsList = ({ products }) => {
           <StyledCardActions>
             <StyledTypography color="secondary">{p.price}$</StyledTypography>
             <StyledIconButton
-              expandopen={expanded}
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
               aria-label="show more"
+              expandopen={expanded}
             >
               <ExpandMoreIcon />
             </StyledIconButton>
