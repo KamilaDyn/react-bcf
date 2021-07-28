@@ -9,15 +9,16 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import {
   AddProductForm,
   StyledCardActions,
-  StyledIconButton,
   StyledCard,
   StyledContainer,
   StyledMedia,
   StyledTypography,
+  StyledIconButton,
 } from "../index";
 
 const ProductsList = ({ products }) => {
   const [expanded, setExpanded] = useState(false);
+
   return (
     <StyledContainer>
       {products.map((p, index) => (

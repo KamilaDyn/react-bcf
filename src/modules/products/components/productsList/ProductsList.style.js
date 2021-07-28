@@ -8,14 +8,16 @@ import {
   Typography,
 } from "@material-ui/core";
 
-export const StyledIconButton = styled(IconButton)(({ theme, expandopen }) => ({
-  transform: "rotate(0deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-  ...(expandopen && { transform: "rotate(180deg)" }),
-}));
+export const StyledIconExpanded = styled(IconButton)(
+  ({ theme, expandopen }) => ({
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+    ...(expandopen && { transform: "rotate(180deg)" }),
+  })
+);
 
 export const StyledContainer = styled(Container)({
   display: "flex",

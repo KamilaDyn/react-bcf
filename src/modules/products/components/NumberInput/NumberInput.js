@@ -21,7 +21,6 @@ const NumberInput = ({
         onChange={(e) => setQuantity(e.target.value)}
         variant="filled"
         value={quantity}
-        custom="true"
       />
       <Button variant="contained" onClick={() => increment(index)}>
         +

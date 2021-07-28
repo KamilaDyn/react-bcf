@@ -2,7 +2,6 @@ import React from "react";
 import { Divider } from "@material-ui/core";
 import {
   Badge,
-  IconButton,
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -25,8 +24,8 @@ const ShoppingCard = () => {
     useShoppingCardData();
 
   return (
-    <StyledDrawer variant="persistent" anchor="right" open={open} custom="true">
-      <StyledIconButton onClick={() => handleDrawer(false)}>
+    <StyledDrawer variant="persistent" anchor="right" open={open}>
+      <StyledIconButton onClick={() => handleDrawer(false)} card="true">
         <ChevronRightIcon />
       </StyledIconButton>
 
@@ -46,9 +45,9 @@ const ShoppingCard = () => {
                     <ShoppingBasketOutlinedIcon color="primary" />
                   </Badge>
                 </ListItemIcon>
-                <IconButton onClick={() => handleDelete(item.id)}>
+                <StyledIconButton onClick={() => handleDelete(item.id)}>
                   <DeleteIcon color="primary" />
-                </IconButton>
+                </StyledIconButton>
               </ListItem>
             ))}
           </StyledList>
