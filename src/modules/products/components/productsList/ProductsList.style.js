@@ -4,20 +4,8 @@ import {
   CardActions,
   CardMedia,
   Container,
-  IconButton,
   Typography,
 } from "@material-ui/core";
-
-export const StyledIconExpanded = styled(IconButton)(
-  ({ theme, expandOpen }) => ({
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-    ...(expandOpen && { transform: "rotate(180deg)" }),
-  })
-);
 
 export const StyledContainer = styled(Container)({
   display: "flex",

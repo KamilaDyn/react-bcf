@@ -31,7 +31,7 @@ const ProductsList = ({ products }) => {
             <StyledIconButton
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
-              expandOpen={expanded}
+              open={expanded}
             >
               <ExpandMoreIcon />
             </StyledIconButton>

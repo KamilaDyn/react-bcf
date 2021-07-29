@@ -21,7 +21,7 @@ const ShoppingCard = () => {
 
   return (
     <StyledDrawer variant="persistent" anchor="right" open={open}>
-      <StyledIconButton onClick={() => handleDrawer(false)} isCard="true">
+      <StyledIconButton onClick={() => handleDrawer(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
 

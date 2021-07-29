@@ -1,7 +1,4 @@
-export { default as ProductContext } from "../../context/ProductContext";
-
-export * from "./atoms";
-export * from "./AddProductForm";
-export * from "./NumberInput";
-export * from "./ProductsList";
-export * from "./ShoppingCard";
+export { AddProductForm } from "./AddProductForm";
+export { NumberInput } from "./NumberInput";
+export { ProductsList } from "./ProductsList";
+export { ShoppingCard } from "./ShoppingCard";
