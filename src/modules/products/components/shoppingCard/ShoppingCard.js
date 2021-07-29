@@ -11,13 +11,9 @@ import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutline
 import DeleteIcon from "@material-ui/icons/Delete";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Sidebar } from "../../../../shared";
-import {
-  Heading,
-  useShoppingCardData,
-  StyledIconButton,
-  StyledList,
-  StyledDrawer,
-} from "../index";
+import { Heading, StyledIconButton } from "../atoms";
+import { useShoppingCardData } from "./ShoppingCard.utils";
+import { StyledList, StyledDrawer } from "./ShoppingCard.style";
 
 const ShoppingCard = () => {
   const { handleDelete, shoppingList, open, handleDrawer } =
@@ -25,7 +21,7 @@ const ShoppingCard = () => {
 
   return (
     <StyledDrawer variant="persistent" anchor="right" open={open}>
-      <StyledIconButton onClick={() => handleDrawer(false)} card="true">
+      <StyledIconButton onClick={() => handleDrawer(false)} isCard="true">
         <ChevronRightIcon />
       </StyledIconButton>
 

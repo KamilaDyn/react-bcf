@@ -9,13 +9,13 @@ import {
 } from "@material-ui/core";
 
 export const StyledIconExpanded = styled(IconButton)(
-  ({ theme, expandopen }) => ({
+  ({ theme, expandOpen }) => ({
     transform: "rotate(0deg)",
     marginLeft: "auto",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
     }),
-    ...(expandopen && { transform: "rotate(180deg)" }),
+    ...(expandOpen && { transform: "rotate(180deg)" }),
   })
 );
 
@@ -34,7 +34,7 @@ export const StyledCard = styled(Card)({
 
 export const StyledMedia = styled(CardMedia)({
   height: 0,
-  paddingTop: "56.25%", // 16:9
+  paddingTop: "56.25%",
   backgroundPosition: "center",
   backgroundSize: "contain",
 });

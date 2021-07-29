@@ -2,13 +2,11 @@ import React from "react";
 import { Badge, IconButton } from "@material-ui/core/";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { Head, Main, Footer } from "../../../../shared";
-import {
-  Heading,
-  ProductsList,
-  ShoppingCard,
-  ProductContext,
-} from "../../components";
-import { useGetProducts, useCountItems, StyledContainer } from "./index";
+import { ProductContext } from "../../components";
+import { ShoppingCard, ProductsList } from "../../components";
+import { Heading } from "../../components/atoms";
+import { StyledContainer } from "./Products.style";
+import { useGetProducts, useCountItems } from "./Products.utils";
 
 const Products = () => {
   const { products, open, setOpen } = useGetProducts();

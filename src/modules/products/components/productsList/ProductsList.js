@@ -6,15 +6,16 @@ import {
   Typography,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { StyledIconButton } from "../atoms";
+import { AddProductForm } from "../AddProductForm";
+
 import {
-  AddProductForm,
-  StyledCardActions,
   StyledCard,
+  StyledCardActions,
   StyledContainer,
   StyledMedia,
   StyledTypography,
-  StyledIconButton,
-} from "../index";
+} from "./ProductsList.style";
 
 const ProductsList = ({ products }) => {
   const [expanded, setExpanded] = useState(false);
@@ -30,8 +31,7 @@ const ProductsList = ({ products }) => {
             <StyledIconButton
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
-              aria-label="show more"
-              expandopen={expanded}
+              expandOpen={expanded}
             >
               <ExpandMoreIcon />
             </StyledIconButton>

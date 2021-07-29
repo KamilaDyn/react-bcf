@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Input } from "@material-ui/core";
-import { StyledInput, Wrapper } from "./index";
+import { Button } from "@material-ui/core";
+import { StyledInput, Wrapper } from "./NumberInput.style";
 
 const NumberInput = ({
   index,
