@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 
 import axios from "axios";
 
-const shoppingListReducer = (shoppingList, action) => {
+export const shoppingListReducer = (shoppingList, action) => {
   switch (action.type) {
     case "ADD":
       return [...shoppingList, action.productItem];

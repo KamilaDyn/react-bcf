@@ -5,12 +5,15 @@ import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";
 import { useAddProduct } from "./AddProductForm.utils";
 
-const AddProductForm = ({ id, index }) => {
+const AddProductForm = ({ id, index, products, dispatch, shoppingList }) => {
   const { handleSubmit } = useAddProduct();
   const { quantity, setQuantity, increment, decrement } = useQuantity();
-
   return (
-    <form onSubmit={(e) => handleSubmit(e, id, quantity)}>
+    <form
+      onSubmit={(e) =>
+        handleSubmit(e, id, quantity, products, shoppingList, dispatch)
+      }
+    >
       <NumberInput
         index={index}
         quantity={quantity}

@@ -17,7 +17,7 @@ import {
   StyledTypography,
 } from "./ProductsList.style";
 
-const ProductsList = ({ products }) => {
+const ProductsList = ({ products, dispatch, shoppingList }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -37,7 +37,13 @@ const ProductsList = ({ products }) => {
             </StyledIconButton>
           </StyledCardActions>
 
-          <AddProductForm index={index} id={p.id} />
+          <AddProductForm
+            index={index}
+            id={p.id}
+            products={products}
+            shoppingList={shoppingList}
+            dispatch={dispatch}
+          />
 
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>

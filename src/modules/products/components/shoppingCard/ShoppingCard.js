@@ -15,10 +15,8 @@ import { Heading, StyledIconButton } from "../atoms";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import { StyledList, StyledDrawer } from "./ShoppingCard.style";
 
-const ShoppingCard = () => {
-  const { handleDelete, shoppingList, open, handleDrawer } =
-    useShoppingCardData();
-
+const ShoppingCard = ({ shoppingList, dispatch, open, handleDrawer }) => {
+  const { handleDelete } = useShoppingCardData();
   return (
     <StyledDrawer variant="persistent" anchor="right" open={open}>
       <StyledIconButton onClick={() => handleDrawer(false)} isCard>
@@ -41,7 +39,9 @@ const ShoppingCard = () => {
                     <ShoppingBasketOutlinedIcon color="primary" />
                   </Badge>
                 </ListItemIcon>
-                <StyledIconButton onClick={() => handleDelete(item.id)}>
+                <StyledIconButton
+                  onClick={() => handleDelete(item.id, dispatch)}
+                >
                   <DeleteIcon color="primary" />
                 </StyledIconButton>
               </ListItem>

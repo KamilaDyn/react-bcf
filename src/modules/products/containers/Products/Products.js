@@ -2,7 +2,6 @@ import React from "react";
 import { Badge, IconButton } from "@material-ui/core/";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { Head, Main, Footer } from "../../../../shared";
-import { ProductContext } from "../../../context";
 import { ShoppingCard, ProductsList } from "../../components";
 import { Heading } from "../../components/atoms";
 import { StyledContainer } from "./Products.style";
@@ -32,26 +31,18 @@ const Products = () => {
       <StyledContainer>
         <Main>
           <Heading secondary="true">Lista produktów </Heading>
-          <ProductContext.Provider
-            value={{
-              shoppingList: shoppingList,
-              products: products,
-              dispatch: dispatch,
-            }}
-          >
-            <ProductsList products={products} shoppingList={shoppingList} />
-          </ProductContext.Provider>
+          <ProductsList
+            products={products}
+            shoppingList={shoppingList}
+            dispatch={dispatch}
+          />
         </Main>
-        <ProductContext.Provider
-          value={{
-            shoppingList: shoppingList,
-            dispatch: dispatch,
-            open: open,
-            handleDrawer: setOpen,
-          }}
-        >
-          <ShoppingCard />
-        </ProductContext.Provider>
+        <ShoppingCard
+          shoppingList={shoppingList}
+          dispatch={dispatch}
+          open={open}
+          handleDrawer={setOpen}
+        />
       </StyledContainer>
       <Footer />
     </>

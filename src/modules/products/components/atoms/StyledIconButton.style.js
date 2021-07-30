@@ -12,7 +12,6 @@ const StyledIconButton = styled(IconButton)(
       marginLeft: 0,
       justifyContent: "start",
       width: "45px",
-      backgroundColor: "red",
     }),
   })
 );
