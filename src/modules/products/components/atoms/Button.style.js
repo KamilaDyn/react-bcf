@@ -1,5 +1,6 @@
 import { styled } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
+import { theme } from "../../../../theme";
 
 const StyledButton = styled(Button)({
   padding: "3px",
@@ -10,7 +11,7 @@ const StyledButton = styled(Button)({
   borderRadius: "50px",
   fontFamily: "Montserrat",
   fontWeight: 600,
-  fontSize: "16px",
+  fontSize: theme.fontSize.s,
   cursor: "pointer",
   color: "white",
 });

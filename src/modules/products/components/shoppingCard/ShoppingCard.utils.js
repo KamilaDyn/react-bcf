@@ -3,7 +3,7 @@ import { ProductContext } from "../../../context";
 
 export const useShoppingCardData = () => {
   const productContext = useContext(ProductContext);
-  const { shoppingList, open, handleDrawer } = productContext;
+  const { shoppingList, open, handleDrawer, quantity } = productContext;
 
   const handleDelete = (id) => {
     productContext.dispatch({ id, type: "REMOVE" });
@@ -14,5 +14,6 @@ export const useShoppingCardData = () => {
     shoppingList,
     open,
     handleDrawer,
+    quantity,
   };
 };

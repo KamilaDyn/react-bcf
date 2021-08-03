@@ -1,13 +1,12 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import { StyledContainer, StyledTypography } from "./Footer.style";
 
 const Footer = () => {
   return (
-    <Container>
-      <Typography variant="body2" color="textSecondary" paragraph>
-        Sklep dla każdego
-      </Typography>
-    </Container>
+    <StyledContainer>
+      <StyledTypography paragraph>Sklep dla każdego</StyledTypography>
+    </StyledContainer>
   );
 };
 

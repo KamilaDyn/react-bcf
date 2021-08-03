@@ -1,51 +1,57 @@
 import React, { useState } from "react";
 import {
+  AccordionSummary,
+  AccordionDetails,
   CardHeader,
-  CardContent,
-  Collapse,
   Typography,
 } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import { StyledIconButton } from "../atoms";
 import { AddProductForm } from "../AddProductForm";
+import { useProductList } from "./ProductsList.utils";
 
 import {
+  StyledAccordion,
   StyledCard,
-  StyledCardActions,
   StyledContainer,
   StyledMedia,
   StyledTypography,
 } from "./ProductsList.style";
 
 const ProductsList = ({ products }) => {
-  const [expanded, setExpanded] = useState(false);
-
+  const { expanded, setExpanded, handleChange } = useProductList();
   return (
     <StyledContainer>
       {products.map((p, index) => (
         <StyledCard key={index}>
           <CardHeader title={p.title} subheader={p.category} />
           <StyledMedia image={p.image} title={p.title} alt={p.title} />
-          <StyledCardActions>
-            <StyledTypography color="secondary">{p.price}$</StyledTypography>
-            <StyledIconButton
-              onClick={() => setExpanded(!expanded)}
-              aria-expanded={expanded}
-              expandedOpen={expanded}
-            >
-              <ExpandMoreIcon />
-            </StyledIconButton>
-          </StyledCardActions>
 
+          <StyledTypography>{p.price}$</StyledTypography>
           <AddProductForm index={index} id={p.id} />
 
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography variant="body2" color="textSecondary" paragraph>
-                {p.description}
-              </Typography>
-            </CardContent>
-          </Collapse>
+          <StyledIconButton
+            onClick={() => setExpanded(!expanded)}
+            aria-expanded={expanded}
+            expandedOpen={expanded}
+          ></StyledIconButton>
+
+          <StyledAccordion
+            square
+            expanded={expanded === p.id}
+            onChange={handleChange(p.id)}
+          >
+            <AccordionSummary
+              aria-controls="panel1d-content"
+              id="panel1d-header"
+              expandIcon={<ExpandLessIcon />}
+            >
+              <Typography>Szczegóły</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography paragraph>{p.description}</Typography>
+            </AccordionDetails>
+          </StyledAccordion>
         </StyledCard>
       ))}
     </StyledContainer>
