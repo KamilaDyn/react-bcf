@@ -1,5 +1,4 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
 import { StyledContainer, StyledTypography } from "./Footer.style";
 
 const Footer = () => {

@@ -2,7 +2,7 @@ import { Container, styled, Typography } from "@material-ui/core";
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
-  width: "100wv",
+  width: "100vw",
   height: 50,
   lineHeight: 50,
   marginTop: 50,

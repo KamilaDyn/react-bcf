@@ -6,7 +6,7 @@ import { ProductContext } from "../../../context";
 import { ShoppingCard, ProductsList } from "../../components";
 import { BasketButton, StyledContainer, Wrapper } from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
-import { theme } from "../../../../theme";
+import { theme } from "../../../../theme/";
 import { StyledIconButton } from "../../components/atoms";
 
 const Products = () => {

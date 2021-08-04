@@ -29,32 +29,34 @@ const ShoppingCard = () => {
         <Card>
           <CardContent>
             {shoppingList.length > 0 ? (
-              <StyledList custom="true">
-                {shoppingList.map((item) => (
-                  <StyledListItem key={item.id} id={item.id}>
-                    <StyledTypography title="true">
-                      {item.name}
-                    </StyledTypography>
-                    <StyledTypography price="true">
-                      Ilość: {item.count}
-                    </StyledTypography>
-                    <StyledTypography price="true">
-                      Cena: {item.price + "$"}
-                    </StyledTypography>
-                    <StyledIconButton
-                      float
-                      onClick={() => handleDelete(item.id, dispatch)}
-                    >
-                      <Tooltip title="Usuń produkt" placement="top">
-                        <DeleteIcon />
-                      </Tooltip>
-                    </StyledIconButton>
-                  </StyledListItem>
-                ))}
+              <>
+                <StyledList custom="true">
+                  {shoppingList.map((item) => (
+                    <StyledListItem key={item.id} id={item.id}>
+                      <StyledTypography title="true">
+                        {item.name}
+                      </StyledTypography>
+                      <StyledTypography price="true">
+                        Ilość: {item.count}
+                      </StyledTypography>
+                      <StyledTypography price="true">
+                        Cena: {item.price + "$"}
+                      </StyledTypography>
+                      <StyledIconButton
+                        float
+                        onClick={() => handleDelete(item.id, dispatch)}
+                      >
+                        <Tooltip title="Usuń produkt" placement="top">
+                          <DeleteIcon />
+                        </Tooltip>
+                      </StyledIconButton>
+                    </StyledListItem>
+                  ))}
+                </StyledList>
                 <StyledTypography summary="true">
                   podsumownanie
                 </StyledTypography>
-              </StyledList>
+              </>
             ) : (
               <Typography paragraph>
                 Nie wybrałeś jeszcze żadnego produktu

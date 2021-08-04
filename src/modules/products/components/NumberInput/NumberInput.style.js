@@ -1,5 +1,4 @@
 import { styled } from "@material-ui/core";
-import { theme } from "../../../../theme";
 
 export const Wrapper = styled("div")({
   display: "flex",

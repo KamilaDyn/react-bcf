@@ -11,11 +11,11 @@ import {
 export const StyledContainer = styled(Container)({
   display: "flex",
   flexWrap: "wrap",
-  justifyContent: "space-between",
+  justifyContent: "center",
 });
 
 export const StyledCard = styled(Card)({
-  width: 280,
+  width: 260,
   maxWidth: 345,
   margin: "15px 20px",
   flexDirection: "column",
@@ -37,7 +37,7 @@ export const StyledCardActions = styled(CardActions)({
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize.m,
   color: theme.palette.primary.main,
-  margin: theme.spacing(2, 0),
+  margin: theme.spacing(2),
   textAlign: "center",
 }));
 

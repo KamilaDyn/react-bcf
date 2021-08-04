@@ -47,14 +47,18 @@ const ProductsList = ({ products }) => {
               <AccordionSummary
                 aria-controls="panel1d-content"
                 id="panel1d-header"
-                expandIcon={<ExpandLessIcon />}
+                expandIcon={
+                  <StyledIconButton isAccordion="true">
+                    <ExpandLessIcon />
+                  </StyledIconButton>
+                }
               >
-                <Typography paragraph variant="subtitle2">
-                  Szczegóły
-                </Typography>
+                <Typography variant="subtitle2">Szczegóły</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography paragraph>{p.description}</Typography>
+                <Typography paragraph variant="subtitle2">
+                  {p.description}
+                </Typography>
               </AccordionDetails>
             </StyledAccordion>
           </StyledCard>

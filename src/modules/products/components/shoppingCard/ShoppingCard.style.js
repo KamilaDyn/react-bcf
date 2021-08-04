@@ -24,7 +24,6 @@ export const StyledTypography = styled(Typography)(
       fontSize: theme.typography.fontSize.xxs,
     }),
     ...(summary && {
-      marginTop: 30,
       textTransform: "uppercase",
     }),
   })

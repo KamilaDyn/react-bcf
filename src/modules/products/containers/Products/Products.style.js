@@ -1,5 +1,5 @@
 import { styled } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core/";
+import { Badge, Container } from "@material-ui/core/";
 
 export const StyledContainer = styled(Container)({
   display: "flex",
@@ -15,4 +15,8 @@ export const Wrapper = styled("div")(({ isCardOpen }) => ({
   ...(isCardOpen && {
     width: "calc(100% - 360px)",
   }),
+}));
+
+export const StyledBadge = styled(Badge)(({ theme }) => ({
+  fontSize: theme.typography.fontSize.xxs,
 }));

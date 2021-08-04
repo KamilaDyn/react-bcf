@@ -1,5 +1,5 @@
 import React from "react";
-import { IconButton, Tooltip } from "@material-ui/core";
+import { Tooltip } from "@material-ui/core";
 import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";
 import { useAddProduct } from "./AddProductForm.utils";
