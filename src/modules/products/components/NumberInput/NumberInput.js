@@ -1,5 +1,7 @@
 import React from "react";
-import { StyledButton, StyledInput, Wrapper } from "./NumberInput.style";
+import { Button } from "@material-ui/core";
+import { StyledButton } from "../atoms";
+import { StyledInput, Wrapper } from "./NumberInput.style";
 
 const NumberInput = ({
   index,
@@ -7,17 +9,18 @@ const NumberInput = ({
   increment,
   quantity,
   setQuantity,
+  id,
 }) => {
   return (
     <Wrapper>
       <StyledButton onClick={() => decrement(index)}>-</StyledButton>
       <StyledInput
+        id={id}
         type="tel"
         required
         onChange={(e) => setQuantity(e.target.value)}
         variant="filled"
         value={quantity}
-        custom="true"
       />
       <StyledButton onClick={() => increment(index)}>+</StyledButton>
     </Wrapper>

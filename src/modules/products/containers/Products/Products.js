@@ -10,7 +10,6 @@ import { useGetProducts, useCountItems } from "./Products.utils";
 
 const Products = () => {
   const { products, open, setOpen } = useGetProducts();
-  console.log(open);
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
   return (
     <>
@@ -49,7 +48,7 @@ const Products = () => {
             dispatch: dispatch,
             open: open,
             handleDrawer: setOpen,
-            quantity: countItemsInBasket,
+            // quantity: countItemsInBasket,
           }}
         >
           <ShoppingCard />

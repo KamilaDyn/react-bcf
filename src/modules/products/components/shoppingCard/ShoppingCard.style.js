@@ -14,13 +14,18 @@ export const StyledList = styled(List)({
 });
 export const StyledListItem = styled(ListItem)({
   display: "block",
+  marginBottom: 20,
 });
 
-export const StyledTypography = styled(Typography)(({ price }) => ({
+export const StyledTypography = styled(Typography)(({ price, summary }) => ({
   fontSize: theme.fontSize.xs,
 
   ...(price && {
     fontSize: theme.fontSize.xxs,
+  }),
+  ...(summary && {
+    marginTop: 30,
+    textTransform: "uppercase",
   }),
 }));
 export const ActionsContainer = styled("div")({

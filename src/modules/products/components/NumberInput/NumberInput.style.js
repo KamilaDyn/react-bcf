@@ -18,18 +18,3 @@ export const StyledInput = styled("input")({
   outline: "none",
   textAlign: "center",
 });
-
-export const StyledButton = styled("button")({
-  backgroundColor: theme.colors.col4,
-  color: theme.colors.col1,
-  width: 50,
-  height: 50,
-  borderRadius: "4px",
-  border: "none",
-  cursor: "pointer",
-  fontSize: theme.fontSize.s,
-  "&:hover": {
-    backgroundColor: theme.colors.col1,
-    color: theme.colors.colf,
-  },
-});

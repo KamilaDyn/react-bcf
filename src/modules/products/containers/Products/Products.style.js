@@ -12,8 +12,9 @@ export const StyledContainer = styled(Container)({
 
 export const BasketButton = styled(IconButton)({
   position: "absolute",
-  top: "15px",
+  top: "10px",
   right: "5%",
+  zIndex: 999999,
 });
 
 export const Wrapper = styled("div")(({ isCardOpen }) => ({

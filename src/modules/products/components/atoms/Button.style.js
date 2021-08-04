@@ -1,19 +1,19 @@
-import { styled } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
+import { Button, styled } from "@material-ui/core";
 import { theme } from "../../../../theme";
 
 const StyledButton = styled(Button)({
-  padding: "3px",
-  backgroundColor: "blue",
-  width: "40px",
-  height: "24px",
+  backgroundColor: theme.colors.col4,
+  color: theme.colors.col1,
+  width: 50,
+  height: 50,
+  borderRadius: "4px",
   border: "none",
-  borderRadius: "50px",
-  fontFamily: "Montserrat",
-  fontWeight: 600,
-  fontSize: theme.fontSize.s,
   cursor: "pointer",
-  color: "white",
+  fontSize: theme.fontSize.s,
+  "&:hover": {
+    backgroundColor: theme.colors.col1,
+    color: theme.colors.colf,
+  },
 });
 
 export default StyledButton;

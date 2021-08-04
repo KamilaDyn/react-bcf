@@ -1,24 +1,12 @@
 import React from "react";
 import { Divider } from "@material-ui/core";
-import {
-  Badge,
-  Card,
-  CardContent,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
-import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
+import { Card, CardContent, Tooltip, Typography } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Sidebar } from "../../../../shared";
 import { Heading, StyledIconButton } from "../atoms";
-import { useQuantity } from "../NumberInput/NumberInput.utils";
-import { NumberInput } from "../NumberInput";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {
-  ActionsContainer,
   StyledList,
   StyledListItem,
   StyledDrawer,
@@ -26,9 +14,8 @@ import {
 } from "./ShoppingCard.style";
 
 const ShoppingCard = () => {
-  const { handleDelete, shoppingList, open, handleDrawer, dispatch, quantity } =
+  const { handleDelete, shoppingList, open, handleDrawer, dispatch } =
     useShoppingCardData();
-  const { setQuantity, increment, decrement } = useQuantity();
 
   return (
     <StyledDrawer variant="persistent" anchor="right" open={open}>
@@ -48,32 +35,25 @@ const ShoppingCard = () => {
                     <StyledTypography title="true">
                       {item.name}
                     </StyledTypography>
-                    {/* <ListItemIcon>
-                      <Badge badgeContent={item.count} color="secondary">
-                        <ShoppingBasketOutlinedIcon color="primary" />
-                      </Badge>
-                    </ListItemIcon> */}
-                    <StyledTypography price="true">
-                      Cena: {item.price + "$"}
-                    </StyledTypography>
                     <StyledTypography price="true">
                       Ilość: {item.count}
                     </StyledTypography>
-                    <ActionsContainer>
-                      <NumberInput
-                        quantity={quantity()}
-                        setQuantity={setQuantity}
-                        increment={increment}
-                        decrement={decrement}
-                      />
-                      <StyledIconButton
-                        onClick={() => handleDelete(item.id, dispatch)}
-                      >
-                        <DeleteIcon color="primary" />
-                      </StyledIconButton>
-                    </ActionsContainer>
+                    <StyledTypography price="true">
+                      Cena: {item.price + "$"}
+                    </StyledTypography>
+                    <StyledIconButton
+                      float
+                      onClick={() => handleDelete(item.id, dispatch)}
+                    >
+                      <Tooltip title="Usuń produkt" placement="top">
+                        <DeleteIcon />
+                      </Tooltip>
+                    </StyledIconButton>
                   </StyledListItem>
                 ))}
+                <StyledTypography summary="true">
+                  podsumownanie
+                </StyledTypography>
               </StyledList>
             ) : (
               <Typography paragraph>

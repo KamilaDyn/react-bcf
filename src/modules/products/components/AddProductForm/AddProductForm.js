@@ -12,6 +12,7 @@ const AddProductForm = ({ id, index }) => {
   return (
     <Form onSubmit={(e) => handleSubmit(e, id, quantity)}>
       <NumberInput
+        id="form_id"
         index={index}
         quantity={quantity}
         setQuantity={setQuantity}
