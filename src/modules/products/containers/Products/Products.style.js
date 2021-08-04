@@ -1,5 +1,5 @@
 import { styled } from "@material-ui/core/styles";
-import { Container, IconButton } from "@material-ui/core/";
+import { Container } from "@material-ui/core/";
 
 export const StyledContainer = styled(Container)({
   display: "flex",
@@ -8,13 +8,6 @@ export const StyledContainer = styled(Container)({
   width: "95%",
   margin: "50px auto 0",
   position: "relative",
-});
-
-export const BasketButton = styled(IconButton)({
-  position: "absolute",
-  top: "10px",
-  right: "5%",
-  zIndex: 999999,
 });
 
 export const Wrapper = styled("div")(({ isCardOpen }) => ({

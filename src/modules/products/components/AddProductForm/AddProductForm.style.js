@@ -1,6 +1,5 @@
 import { styled } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { theme } from "../../../../theme";
 export const Form = styled("form")({
   display: "flex",
   flexWrap: "nowrap",
@@ -8,8 +7,8 @@ export const Form = styled("form")({
   marginBottom: 40,
 });
 
-export const StyledShoppingCardIcon = styled(ShoppingCartIcon)({
-  fontSize: theme.fontSize.l,
-  color: theme.colors.col1,
+export const StyledShoppingCardIcon = styled(ShoppingCartIcon)(({ theme }) => ({
+  fontSize: theme.typography.fontSize.toLocaleString,
+  color: theme.palette.primary.main,
   textAlign: "center",
-});
+}));

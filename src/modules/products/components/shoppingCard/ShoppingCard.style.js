@@ -1,11 +1,10 @@
 import { Drawer, List, ListItem, styled, Typography } from "@material-ui/core";
-import { theme } from "../../../../theme";
 
-export const StyledDrawer = styled(Drawer)({
+export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   maxWidth: 360,
   display: "inline-block",
-  backgroundColor: theme.colors.col5,
-});
+  backgroundColor: theme.palette.secondary.contrastText,
+}));
 
 export const StyledList = styled(List)({
   width: "100%",
@@ -17,17 +16,19 @@ export const StyledListItem = styled(ListItem)({
   marginBottom: 20,
 });
 
-export const StyledTypography = styled(Typography)(({ price, summary }) => ({
-  fontSize: theme.fontSize.xs,
+export const StyledTypography = styled(Typography)(
+  ({ theme, price, summary }) => ({
+    fontSize: theme.typography.fontSize.xs,
 
-  ...(price && {
-    fontSize: theme.fontSize.xxs,
-  }),
-  ...(summary && {
-    marginTop: 30,
-    textTransform: "uppercase",
-  }),
-}));
+    ...(price && {
+      fontSize: theme.typography.fontSize.xxs,
+    }),
+    ...(summary && {
+      marginTop: 30,
+      textTransform: "uppercase",
+    }),
+  })
+);
 export const ActionsContainer = styled("div")({
   display: "flex",
   flexWrap: "nowrap",

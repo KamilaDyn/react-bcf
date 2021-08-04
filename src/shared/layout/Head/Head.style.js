@@ -1,20 +1,19 @@
 import { styled, Typography } from "@material-ui/core";
-import { theme } from "../../../theme";
 
-export const StyledHead = styled("div")({
+export const StyledHead = styled("div")(({ theme }) => ({
   width: "100vw",
   height: "80px",
-  backgroundColor: theme.colors.col4,
+  backgroundColor: theme.palette.primary.light,
   lineHeight: "60px",
   padding: "20px 0",
   position: "relative",
-});
+}));
 
-export const StyledHeading = styled(Typography)({
+export const StyledHeading = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
-  color: theme.colors.col1,
+  color: theme.palette.primary.main,
   textTransform: "uppercase",
   lineHeight: "42px",
-  fontSize: theme.fontSize.m,
+  fontSize: theme.typography.fontSize.m,
   textAlign: "center",
-});
+}));

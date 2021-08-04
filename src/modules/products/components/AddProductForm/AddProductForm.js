@@ -4,6 +4,7 @@ import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";
 import { useAddProduct } from "./AddProductForm.utils";
 import { Form, StyledShoppingCardIcon } from "./AddProductForm.style";
+import { StyledIconButton } from "../atoms";
 
 const AddProductForm = ({ id, index }) => {
   const { handleSubmit } = useAddProduct();
@@ -19,11 +20,11 @@ const AddProductForm = ({ id, index }) => {
         increment={increment}
         decrement={decrement}
       />
-      <IconButton type="submit">
+      <StyledIconButton type="submit">
         <Tooltip title="Dodaj do koszyka" placement="top">
           <StyledShoppingCardIcon />
         </Tooltip>
-      </IconButton>
+      </StyledIconButton>
     </Form>
   );
 };

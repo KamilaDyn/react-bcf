@@ -1,13 +1,8 @@
 import { IconButton, styled } from "@material-ui/core";
-import { theme } from "../../../../theme";
 
 const StyledIconButton = styled(IconButton)(
-  ({ expandedOpen, isCard, float }) => ({
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
+  ({ theme, expandedOpen, isCard, float, basket }) => ({
+    fontSize: theme.typography.fontSize.m,
     ...(expandedOpen && { transform: "rotate(180deg)" }),
     ...(isCard && {
       marginLeft: 0,
@@ -16,7 +11,14 @@ const StyledIconButton = styled(IconButton)(
     }),
     ...(float && {
       float: "right",
-      color: theme.colors.col1,
+      color: theme.palette.primary.main,
+    }),
+    ...(basket && {
+      position: "absolute",
+      top: "10px",
+      right: "5%",
+      zIndex: 999999,
+      fontSize: theme.typography.fontSize.s,
     }),
   })
 );

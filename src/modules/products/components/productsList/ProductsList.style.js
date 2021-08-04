@@ -7,7 +7,6 @@ import {
   Container,
   Typography,
 } from "@material-ui/core";
-import { theme } from "../../../../theme";
 
 export const StyledContainer = styled(Container)({
   display: "flex",
@@ -35,11 +34,12 @@ export const StyledCardActions = styled(CardActions)({
   justifyContent: "space-around",
 });
 
-export const StyledTypography = styled(Typography)({
-  fontSize: theme.fontSize.m,
-  color: theme.colors.col1,
+export const StyledTypography = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize.m,
+  color: theme.palette.primary.main,
+  margin: theme.spacing(2, 0),
   textAlign: "center",
-});
+}));
 
 export const StyledAccordion = styled(Accordion)({
   position: "absolute",

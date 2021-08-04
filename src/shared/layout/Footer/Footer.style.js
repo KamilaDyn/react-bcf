@@ -1,16 +1,15 @@
 import { Container, styled, Typography } from "@material-ui/core";
-import { theme } from "../../../theme";
 
-export const StyledContainer = styled(Container)({
-  backgroundColor: theme.colors.col2,
+export const StyledContainer = styled(Container)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.main,
   width: "100wv",
   height: 50,
   lineHeight: 50,
   marginTop: 50,
-});
+}));
 
-export const StyledTypography = styled(Typography)({
-  color: theme.colors.colf,
+export const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.secondary.contrastText,
   textAlign: "center",
   lineHeight: "50px",
-});
+}));

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { StyledHead, StyledHeading } from "./Head.style";
 
 const Head = ({ children }) => {
