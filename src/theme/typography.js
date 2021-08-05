@@ -1,6 +1,5 @@
 import palette from "./palette";
 import breakpoints from "./breakpoints";
-import spacing from "./spacing";
 
 const typography = {
   fontFamily: '"Lato","Roboto", Arial, Open Sans, "TitilliumWeb"',

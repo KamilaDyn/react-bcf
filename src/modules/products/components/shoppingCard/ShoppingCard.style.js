@@ -1,5 +1,4 @@
 import { Drawer, List, ListItem, styled, Typography } from "@material-ui/core";
-import palette from "../../../../theme/palette";
 
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: "100%",

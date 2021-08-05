@@ -4,7 +4,7 @@ import { Card, CardContent, Tooltip, Typography } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Sidebar } from "../../../../shared";
-import { Heading, StyledIconButton } from "../atoms";
+import { StyledIconButton } from "../atoms";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {
   SumContainer,
