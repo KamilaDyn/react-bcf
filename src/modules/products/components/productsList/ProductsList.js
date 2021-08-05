@@ -4,10 +4,8 @@ import {
   AccordionDetails,
   CardHeader,
   Typography,
-  ThemeProvider,
 } from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import { theme } from "../../../../theme";
 import { StyledIconButton } from "../atoms";
 import { AddProductForm } from "../AddProductForm";
 import { useProductList } from "./ProductsList.utils";
@@ -23,48 +21,46 @@ import {
 const ProductsList = ({ products }) => {
   const { expanded, setExpanded, handleChange } = useProductList();
   return (
-    <ThemeProvider theme={theme}>
-      <StyledContainer>
-        {products.map((p, index) => (
-          <StyledCard key={index}>
-            <CardHeader title={p.title} subheader={p.category} />
-            <StyledMedia image={p.image} title={p.title} alt={p.title} />
+    <StyledContainer>
+      {products.map((p, index) => (
+        <StyledCard key={index}>
+          <CardHeader title={p.title} subheader={p.category} />
+          <StyledMedia image={p.image} title={p.title} alt={p.title} />
 
-            <StyledTypography>{p.price}$</StyledTypography>
-            <AddProductForm index={index} id={p.id} />
+          <StyledTypography>{p.price}$</StyledTypography>
+          <AddProductForm index={index} id={p.id} />
 
-            <StyledIconButton
-              onClick={() => setExpanded(!expanded)}
-              aria-expanded={expanded}
-              expandedOpen={expanded}
-            ></StyledIconButton>
+          <StyledIconButton
+            onClick={() => setExpanded(!expanded)}
+            aria-expanded={expanded}
+            expandedOpen={expanded}
+          ></StyledIconButton>
 
-            <StyledAccordion
-              square
-              expanded={expanded === p.id}
-              onChange={handleChange(p.id)}
+          <StyledAccordion
+            square
+            expanded={expanded === p.id}
+            onChange={handleChange(p.id)}
+          >
+            <AccordionSummary
+              aria-controls="panel1d-content"
+              id="panel1d-header"
+              expandIcon={
+                <StyledIconButton isAccordion="true">
+                  <ExpandLessIcon />
+                </StyledIconButton>
+              }
             >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
-                expandIcon={
-                  <StyledIconButton isAccordion="true">
-                    <ExpandLessIcon />
-                  </StyledIconButton>
-                }
-              >
-                <Typography variant="subtitle2">Szczegóły</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography paragraph variant="subtitle2">
-                  {p.description}
-                </Typography>
-              </AccordionDetails>
-            </StyledAccordion>
-          </StyledCard>
-        ))}
-      </StyledContainer>
-    </ThemeProvider>
+              <Typography variant="subtitle2">Szczegóły</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography paragraph variant="subtitle2">
+                {p.description}
+              </Typography>
+            </AccordionDetails>
+          </StyledAccordion>
+        </StyledCard>
+      ))}
+    </StyledContainer>
   );
 };
 

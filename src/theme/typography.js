@@ -1,7 +1,6 @@
-import { createTheme } from "@material-ui/core";
 import palette from "./palette";
 
-const typography = createTheme({
+const typography = {
   fontFamily: '"Lato","Roboto", Arial, Open Sans, "TitilliumWeb"',
   fontSize: {
     xxs: "1rem",
@@ -33,6 +32,6 @@ const typography = createTheme({
     fontWeight: 400,
     padding: "0 10px",
   },
-});
+};
 
 export default typography;

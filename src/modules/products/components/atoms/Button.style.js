@@ -1,5 +1,4 @@
 import { Button, styled } from "@material-ui/core";
-// import { theme } from "../../../../theme";
 
 const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -9,7 +8,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   borderRadius: "4px",
   border: "none",
   cursor: "pointer",
-  // fontSize: theme.fontSize.s,
+  fontSize: theme.typography.fontSize.s,
   transition: ".3s",
   "&:hover": {
     backgroundColor: theme.palette.primary.main,

@@ -37,7 +37,7 @@ export const StyledCardActions = styled(CardActions)({
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize.m,
   color: theme.palette.primary.main,
-  margin: theme.spacing(2),
+  margin: theme.spacing(2, 1),
   textAlign: "center",
 }));
 

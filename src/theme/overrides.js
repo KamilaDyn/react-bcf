@@ -1,8 +1,7 @@
-import { createTheme } from "@material-ui/core";
 import palette from "./palette";
 import typography from "./typography";
 
-const overrides = createTheme({
+const overrides = {
   MuiButton: {
     text: {
       backgroundColor: palette.primary.light,
@@ -20,6 +19,6 @@ const overrides = createTheme({
       },
     },
   },
-});
+};
 
 export default overrides;
