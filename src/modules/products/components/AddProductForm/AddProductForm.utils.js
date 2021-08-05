@@ -14,6 +14,7 @@ export const useAddProduct = () => {
       id: id,
       name: product.title,
       count: quantity,
+      itemPrice: product.price,
       price: product.price * quantity,
     };
 

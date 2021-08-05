@@ -7,6 +7,7 @@ import { Sidebar } from "../../../../shared";
 import { Heading, StyledIconButton } from "../atoms";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {
+  SumContainer,
   StyledList,
   StyledListItem,
   StyledDrawer,
@@ -14,7 +15,7 @@ import {
 } from "./ShoppingCard.style";
 
 const ShoppingCard = () => {
-  const { handleDelete, shoppingList, open, handleDrawer, dispatch } =
+  const { handleDelete, shoppingList, open, handleDrawer, dispatch, sumPrice } =
     useShoppingCardData();
 
   return (
@@ -36,12 +37,15 @@ const ShoppingCard = () => {
                       <StyledTypography title="true">
                         {item.name}
                       </StyledTypography>
-                      <StyledTypography price="true">
+                      <Typography variant="subtitle2">
                         Ilość: {item.count}
-                      </StyledTypography>
-                      <StyledTypography price="true">
+                      </Typography>
+                      <Typography variant="subtitle2">
                         Cena: {item.price + "$"}
-                      </StyledTypography>
+                      </Typography>
+                      <Typography variant="subtitle">
+                        Cena za sztukę {item.itemPrice}$
+                      </Typography>
                       <StyledIconButton
                         float
                         onClick={() => handleDelete(item.id, dispatch)}
@@ -53,9 +57,11 @@ const ShoppingCard = () => {
                     </StyledListItem>
                   ))}
                 </StyledList>
-                <StyledTypography summary="true">
-                  podsumownanie
-                </StyledTypography>
+                <SumContainer>
+                  <Typography variant="h3">
+                    Razem do zapłaty: {sumPrice()}$
+                  </Typography>
+                </SumContainer>
               </>
             ) : (
               <Typography paragraph>

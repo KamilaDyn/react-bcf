@@ -1,4 +1,5 @@
 import { Drawer, List, ListItem, styled, Typography } from "@material-ui/core";
+import palette from "../../../../theme/palette";
 
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   width: "100%",
@@ -35,3 +36,8 @@ export const ActionsContainer = styled("div")({
   flexWrap: "nowrap",
   justifyContent: "left",
 });
+
+export const SumContainer = styled("div")(({ theme }) => ({
+  borderTop: `1px solid ${theme.palette.secondary.light}`,
+  marginTop: theme.spacing(3),
+}));

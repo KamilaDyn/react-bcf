@@ -9,11 +9,21 @@ export const useShoppingCardData = () => {
     productContext.dispatch({ id, type: "REMOVE" });
   };
 
+  const sumPrice = () => {
+    if (shoppingList.length > 0) {
+      const item = shoppingList.filter((item) => item.price > 0);
+      return item
+        .map((i) => i.price)
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2);
+    }
+  };
   return {
     handleDelete,
     shoppingList,
     open,
     handleDrawer,
     quantity,
+    sumPrice,
   };
 };

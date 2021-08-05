@@ -30,13 +30,21 @@ const typography = {
       fontSize: "1.6rem",
     },
   },
+  h3: {
+    fontSize: "1.2rem",
+    color: palette.primary.main,
+    textAlign: "center",
+    padding: "16px 0",
+    [breakpoints.up("md")]: {
+      fontSize: "1.4rem",
+    },
+  },
   subtitle: {
     fontSize: "1.2rem",
   },
   subtitle2: {
     fontSize: "1rem",
     fontWeight: 400,
-    padding: "0 10px",
   },
 };
 
