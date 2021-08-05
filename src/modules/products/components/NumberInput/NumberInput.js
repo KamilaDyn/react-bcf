@@ -15,10 +15,9 @@ const NumberInput = ({
       <Button onClick={() => decrement(index)}>-</Button>
       <StyledInput
         id={id}
-        type="tel"
+        type="number"
         required
-        onChange={(e) => setQuantity(e.target.value)}
-        variant="filled"
+        onChange={(e) => setQuantity(Number(e.target.value))}
         value={quantity}
       />
       <Button onClick={() => increment(index)}>+</Button>

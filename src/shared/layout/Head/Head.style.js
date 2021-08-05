@@ -14,6 +14,9 @@ export const StyledHeading = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
   textTransform: "uppercase",
   lineHeight: "42px",
-  fontSize: theme.typography.fontSize.m,
+  fontSize: theme.typography.fontSize.xs,
   textAlign: "center",
+  [theme.breakpoints.up("md")]: {
+    fontSize: theme.typography.fontSize.s,
+  },
 }));

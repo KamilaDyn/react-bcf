@@ -25,7 +25,7 @@ const ShoppingCard = () => {
 
       <Divider />
       <Sidebar>
-        <Heading secondary="true">Kosz zakupów</Heading>
+        <Typography variant="h2">Kosz zakupów</Typography>
         <Card>
           <CardContent>
             {shoppingList.length > 0 ? (

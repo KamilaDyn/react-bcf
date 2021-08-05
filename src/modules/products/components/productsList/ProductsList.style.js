@@ -8,19 +8,25 @@ import {
   Typography,
 } from "@material-ui/core";
 
-export const StyledContainer = styled(Container)({
+export const StyledContainer = styled(Container)(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "center",
-});
+  [theme.breakpoints.up("lg")]: {
+    maxWidth: theme.breakpoints.values.xl,
+  },
+}));
 
-export const StyledCard = styled(Card)({
+export const StyledCard = styled(Card)(({ theme }) => ({
   width: 260,
   maxWidth: 345,
-  margin: "15px 20px",
+  margin: theme.spacing(4, 0),
   flexDirection: "column",
   position: "relative",
-});
+  [theme.breakpoints.up("sm")]: {
+    margin: theme.spacing(4, 5),
+  },
+}));
 
 export const StyledMedia = styled(CardMedia)({
   height: 0,

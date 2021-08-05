@@ -1,10 +1,14 @@
 import React from "react";
-import { Badge, Typography } from "@material-ui/core/";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
+import { Typography } from "@material-ui/core/";
 import { Head, Main, Footer } from "../../../../shared";
 import { ProductContext } from "../../../context";
 import { ShoppingCard, ProductsList } from "../../components";
-import { StyledContainer, Wrapper } from "./Products.style";
+import {
+  StyledBadge,
+  StyledLocalMallIcon,
+  StyledContainer,
+  Wrapper,
+} from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
 import { StyledIconButton } from "../../components/atoms";
 
@@ -21,12 +25,12 @@ const Products = () => {
         edge="end"
         onClick={() => setOpen(!open)}
       >
-        <Badge
+        <StyledBadge
           color="primary"
           badgeContent={shoppingList.length > 0 ? countItemsInBasket() : "0"}
         >
-          <LocalMallIcon color="secondary" />
-        </Badge>
+          <StyledLocalMallIcon />
+        </StyledBadge>
       </StyledIconButton>
       <StyledContainer>
         <Main>

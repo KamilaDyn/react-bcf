@@ -1,9 +1,11 @@
 import { Drawer, List, ListItem, styled, Typography } from "@material-ui/core";
 
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
-  maxWidth: 360,
-  display: "inline-block",
+  width: "100%",
   backgroundColor: theme.palette.secondary.contrastText,
+  [theme.breakpoints.up("sm")]: {
+    width: 360,
+  },
 }));
 
 export const StyledList = styled(List)({
