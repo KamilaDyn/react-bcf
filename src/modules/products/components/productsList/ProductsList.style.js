@@ -1,6 +1,5 @@
 import { styled } from "@material-ui/core/styles";
 import {
-  Accordion,
   Card,
   CardActions,
   CardMedia,
@@ -12,19 +11,28 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "center",
+  padding: 0,
+  [theme.breakpoints.up("xs")]: {
+    justifyContent: "space-between",
+  },
   [theme.breakpoints.up("lg")]: {
     maxWidth: theme.breakpoints.values.xl,
   },
 }));
 
 export const StyledCard = styled(Card)(({ theme }) => ({
-  width: 260,
-  maxWidth: 345,
-  margin: theme.spacing(4, 0),
+  width: "85%",
   flexDirection: "column",
   position: "relative",
+  marginBottom: theme.spacing(6),
+  [theme.breakpoints.up("xs")]: {
+    width: "45%",
+  },
   [theme.breakpoints.up("sm")]: {
-    margin: theme.spacing(4, 5),
+    width: "32%",
+  },
+  [theme.breakpoints.up("md")]: {
+    width: "23%",
   },
 }));
 
@@ -43,11 +51,6 @@ export const StyledCardActions = styled(CardActions)({
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize.m,
   color: theme.palette.primary.main,
-  margin: theme.spacing(2, 1),
   textAlign: "center",
+  margin: theme.spacing(4),
 }));
-
-export const StyledAccordion = styled(Accordion)({
-  position: "absolute",
-  bottom: 0,
-});

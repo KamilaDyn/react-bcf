@@ -1,21 +1,22 @@
-import { styled } from "@material-ui/core";
+import { Button, styled } from "@material-ui/core";
 
-export const Wrapper = styled("div")({
-  display: "flex",
-  wrap: "no-wrap",
-  justifyContent: "center",
-  padding: 12,
-});
+export const StyledButton = styled(Button)(({ theme, inCard }) => ({
+  ...(inCard && {
+    padding: theme.spacing(4, 2),
+    borderRadius: "50%",
+  }),
+}));
 
 export const StyledInput = styled("input")(({ theme }) => ({
   lineHeight: 1.65,
   display: "block",
   margin: 0,
-  height: 40,
-  width: 60,
   padding: "0 12px",
   outline: "none",
+  border: "none",
   textAlign: "center",
+  fontWeight: "bold",
+  fontSize: theme.typography.fontSize.xs,
   [theme.breakpoints.up("md")]: {
     width: 50,
     height: 50,

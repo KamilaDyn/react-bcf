@@ -20,11 +20,13 @@ const typography = {
     textAlign: "center",
   },
   h2: {
-    fontSize: "1.4rem",
+    fontSize: "1.2rem",
     color: palette.secondary.main,
-    textAlign: "center",
     fontWeight: "bold",
-    padding: "16px 0",
+    padding: "16px 8px",
+    [breakpoints.up("xs")]: {
+      fontSize: "1.4rem",
+    },
     [breakpoints.up("md")]: {
       fontSize: "1.6rem",
     },
@@ -38,12 +40,23 @@ const typography = {
       fontSize: "1.4rem",
     },
   },
+  h4: {
+    fontSize: "1rem",
+    [breakpoints.up("md")]: {
+      fontSize: "1.2rem",
+    },
+  },
+  h5: {
+    color: palette.secondary.main,
+    fontWeight: "bold",
+  },
   subtitle: {
     fontSize: "1.2rem",
   },
   subtitle2: {
     fontSize: "1rem",
     fontWeight: 400,
+    color: palette.secondary.main,
   },
 };
 

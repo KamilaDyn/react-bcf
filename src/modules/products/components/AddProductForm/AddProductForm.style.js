@@ -1,14 +1,17 @@
 import { styled } from "@material-ui/core";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 export const Form = styled("form")({
   display: "flex",
   flexWrap: "nowrap",
   justifyContent: "center",
-  marginBottom: 40,
+  alignItems: "center",
+  marginBottom: 30,
 });
 
-export const StyledShoppingCardIcon = styled(ShoppingCartIcon)(({ theme }) => ({
-  fontSize: theme.typography.fontSize.toLocaleString,
-  color: theme.palette.primary.main,
-  textAlign: "center",
-}));
+export const StyledShoppingCardIcon = styled(ShoppingCartOutlinedIcon)(
+  ({ theme }) => ({
+    fontSize: theme.typography.fontSize.toLocaleString,
+    color: theme.palette.secondary.main,
+    textAlign: "center",
+  })
+);

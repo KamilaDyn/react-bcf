@@ -16,6 +16,7 @@ export const useAddProduct = () => {
       count: quantity,
       itemPrice: product.price,
       price: product.price * quantity,
+      img: product.image,
     };
 
     const itemId = productContext.shoppingList.find((item) => item.id === id);

@@ -9,7 +9,7 @@ export const useShoppingCardData = () => {
     productContext.dispatch({ id, type: "REMOVE" });
   };
 
-  const sumPrice = () => {
+  const calculatePrice = () => {
     if (shoppingList.length > 0) {
       const item = shoppingList.filter((item) => item.price > 0);
       return item
@@ -24,6 +24,6 @@ export const useShoppingCardData = () => {
     open,
     handleDrawer,
     quantity,
-    sumPrice,
+    calculatePrice,
   };
 };

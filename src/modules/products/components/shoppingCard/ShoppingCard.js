@@ -1,76 +1,92 @@
 import React from "react";
-import { Divider } from "@material-ui/core";
-import { Card, CardContent, Tooltip, Typography } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { Sidebar } from "../../../../shared";
+import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+
 import { StyledIconButton } from "../atoms";
+import { NumberInput } from "../NumberInput";
+import { useQuantity } from "../NumberInput/NumberInput.utils";
 import { useShoppingCardData } from "./ShoppingCard.utils";
+
 import {
-  SumContainer,
-  StyledList,
-  StyledListItem,
+  ControlBox,
   StyledDrawer,
-  StyledTypography,
+  StyledBox,
+  ItemContainer,
+  PayButton,
 } from "./ShoppingCard.style";
 
 const ShoppingCard = () => {
-  const { handleDelete, shoppingList, open, handleDrawer, dispatch, sumPrice } =
-    useShoppingCardData();
-
+  const {
+    handleDelete,
+    shoppingList,
+    open,
+    handleDrawer,
+    dispatch,
+    calculatePrice,
+  } = useShoppingCardData();
+  const { setQuantity, increment, decrement } = useQuantity();
   return (
     <StyledDrawer variant="persistent" anchor="right" open={open}>
       <StyledIconButton onClick={() => handleDrawer(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
-
       <Divider />
-      <Sidebar>
-        <Typography variant="h2">Kosz zakupów</Typography>
-        <Card>
-          <CardContent>
-            {shoppingList.length > 0 ? (
-              <>
-                <StyledList custom="true">
-                  {shoppingList.map((item) => (
-                    <StyledListItem key={item.id} id={item.id}>
-                      <StyledTypography title="true">
-                        {item.name}
-                      </StyledTypography>
-                      <Typography variant="subtitle2">
-                        Ilość: {item.count}
-                      </Typography>
-                      <Typography variant="subtitle2">
-                        Cena: {item.price + "$"}
-                      </Typography>
-                      <Typography variant="subtitle">
-                        Cena za sztukę {item.itemPrice}$
-                      </Typography>
-                      <StyledIconButton
-                        float
-                        onClick={() => handleDelete(item.id, dispatch)}
-                      >
-                        <Tooltip title="Usuń produkt" placement="top">
-                          <DeleteIcon />
-                        </Tooltip>
-                      </StyledIconButton>
-                    </StyledListItem>
-                  ))}
-                </StyledList>
-                <SumContainer>
-                  <Typography variant="h3">
-                    Razem do zapłaty: {sumPrice()}$
+      <StyledBox>
+        <LocalMallOutlinedIcon />
+        <Typography variant="h2">Twój koszyk</Typography>
+      </StyledBox>
+      <Divider light />
+      {shoppingList.length > 0 ? (
+        <>
+          {shoppingList.map((item, index) => (
+            <ItemContainer>
+              <Grid item spacing={2} container alignItems="center">
+                <Grid item xs={2}>
+                  <ControlBox>
+                    <NumberInput
+                      column="true"
+                      id="form_id2"
+                      index={index}
+                      quantity={item.count}
+                      setQuantity={setQuantity}
+                      increment={increment}
+                      decrement={decrement}
+                    />
+                  </ControlBox>
+                </Grid>
+                <Grid item xs={3}>
+                  <Avatar alt={item.title} src={item.img} variant="square" />
+                </Grid>
+                <Grid item xs={5}>
+                  <Typography variant="h5">{item.name}</Typography>
+                  <small>
+                    {item.itemPrice}$ x {item.count}
+                  </small>
+                  <Typography variant="subtitle2">
+                    Cena: {item.price + "$"}
                   </Typography>
-                </SumContainer>
-              </>
-            ) : (
-              <Typography paragraph>
-                Nie wybrałeś jeszcze żadnego produktu
-              </Typography>
-            )}
-          </CardContent>
-        </Card>
-      </Sidebar>
+                </Grid>
+                <Grid item xs={2}>
+                  <StyledIconButton
+                    deleteBtn
+                    onClick={() => handleDelete(item.id, dispatch)}
+                  >
+                    <Tooltip title="Usuń produkt" placement="top">
+                      <DeleteOutlineIcon />
+                    </Tooltip>
+                  </StyledIconButton>
+                </Grid>
+              </Grid>
+            </ItemContainer>
+          ))}
+
+          <PayButton>Zapłać teraz: {calculatePrice()}$</PayButton>
+        </>
+      ) : (
+        <Typography paragraph>Nie wybrałeś jeszcze żadnego produktu</Typography>
+      )}
     </StyledDrawer>
   );
 };

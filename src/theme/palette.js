@@ -2,14 +2,17 @@ import createPalette from "@material-ui/core/styles/createPalette";
 
 const palette = createPalette({
   primary: {
-    light: "#e2dbd6",
-    main: "#5b0000",
-    contrastText: "#eceeed",
+    light: "#e3364e",
+    main: "#D23F57",
+    contrastText: "#fff",
   },
   secondary: {
     light: "#203345",
     main: "#203345",
-    contrastText: "#fff",
+    contrastText: "#F6F9FC",
+  },
+  textSecondary: {
+    main: "#7D879C",
   },
 });
 export default palette;

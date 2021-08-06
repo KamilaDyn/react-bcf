@@ -1,41 +1,34 @@
 import React from "react";
-import { Typography } from "@material-ui/core/";
+import { Link, Typography } from "@material-ui/core/";
+import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
 import { Head, Main, Footer } from "../../../../shared";
 import { ProductContext } from "../../../context";
 import { ShoppingCard, ProductsList } from "../../components";
-import {
-  StyledBadge,
-  StyledLocalMallIcon,
-  StyledContainer,
-  Wrapper,
-} from "./Products.style";
+import { HeadSection } from "../../components/atoms";
+import { NewProductBox, StyledContainer, Wrapper } from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
-import { StyledIconButton } from "../../components/atoms";
 
 const Products = () => {
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
   return (
     <>
-      <Head>Sklep dla każdego</Head>
-      <StyledIconButton
-        basket="true"
-        color="inherit"
-        aria-label="open drawer"
-        edge="end"
-        onClick={() => setOpen(!open)}
-      >
-        <StyledBadge
-          color="primary"
-          badgeContent={shoppingList.length > 0 ? countItemsInBasket() : "0"}
-        >
-          <StyledLocalMallIcon />
-        </StyledBadge>
-      </StyledIconButton>
+      <Head
+        countItems={countItemsInBasket}
+        open={open}
+        setOpen={setOpen}
+        shoppingList={shoppingList}
+      />
       <StyledContainer>
-        <Main>
-          <Wrapper isCardOpen={open}>
-            <Typography variant="h2">Lista Produktów</Typography>
+        <Main isCardOpen={open}>
+          <Wrapper>
+            <HeadSection>
+              <NewProductBox>
+                <NewReleasesOutlinedIcon color="primary" />
+                <Typography variant="h2">Lista Produktów</Typography>
+              </NewProductBox>
+              <Link href="#">Wszystko &#187;</Link>
+            </HeadSection>
             <ProductContext.Provider
               value={{
                 shoppingList: shoppingList,

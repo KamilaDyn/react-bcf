@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import { StyledInput, Wrapper } from "./NumberInput.style";
+import { StyledInput } from "./NumberInput.style";
 
 const NumberInput = ({
   index,
@@ -11,7 +11,7 @@ const NumberInput = ({
   id,
 }) => {
   return (
-    <Wrapper>
+    <>
       <Button onClick={() => decrement(index)}>-</Button>
       <StyledInput
         id={id}
@@ -21,7 +21,7 @@ const NumberInput = ({
         value={quantity}
       />
       <Button onClick={() => increment(index)}>+</Button>
-    </Wrapper>
+    </>
   );
 };
 
