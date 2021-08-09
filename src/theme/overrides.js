@@ -4,6 +4,9 @@ import typography from "./typography";
 import spacing from "./spacing";
 
 const overrides = {
+  MuiTypography: {
+    body1: { fontSize: "1rem", color: palette.text.secondary },
+  },
   MuiCssBaseline: {
     "@global": {
       "@font-face": typography.fontFamily,

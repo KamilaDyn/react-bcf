@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <StyledContainer>
       <Grid container spacing={3}>
-        <Grid xs={6} sm={4}>
+        <Grid conatiner item xs={12} sm={7} md={4}>
           <Typography variant="h3">Bazarek</Typography>
 
           <Typography paragraph color="textSecondary">
@@ -21,7 +21,7 @@ const Footer = () => {
             lectus vel ut sollicitudin elit at amet.
           </Typography>
         </Grid>
-        <Grid xs={6} sm={2}>
+        <Grid item xs={12} sm={5} md={2}>
           <Typography variant="h3">O nas</Typography>
 
           <List component="nav">
@@ -39,7 +39,7 @@ const Footer = () => {
             </ListItem>
           </List>
         </Grid>
-        <Grid xs={6} sm={2}>
+        <Grid item xs={12} sm={5} md={2}>
           <Typography variant="h3">Dla Klienta</Typography>
 
           <List component="nav">
@@ -54,16 +54,18 @@ const Footer = () => {
             </ListItem>
           </List>
         </Grid>
-        <Grid xs={6} sm={4}>
+        <Grid item xs={12} sm={7} md={4}>
           <Typography variant="h3">Kontakt</Typography>
           <List component="nav">
             <ListItem>
-              <ListItemText color="primary">
-                ul. Poziomkowa 48 11-222 Warszawa
-              </ListItemText>
+              <ListItemText>ul. Poziomkowa 48 11-222 Warszawa</ListItemText>
             </ListItem>
-            <ListItem>Email: Bazarek@mail.com</ListItem>
-            <ListItem>Telefon:123-456-789</ListItem>
+            <ListItem>
+              <ListItemText>Email: Bazarek@mail.com </ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText>Telefon:123-456-789</ListItemText>
+            </ListItem>
           </List>
         </Grid>
       </Grid>
