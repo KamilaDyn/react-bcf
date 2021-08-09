@@ -7,22 +7,11 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   maxWidth: "100%",
   backgroundColor: theme.palette.secondary.contrastText,
 }));
-export const HeadBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-
-  marginBottom: theme.spacing(3),
-}));
-export const NewProductBox = styled(Box)(({ theme }) => ({
+export const NewProductBox = styled(Box)({
   display: "flex",
   alignItems: "center",
-}));
+});
 
-export const Wrapper = styled(Container)(({ isCardOpen }) => ({
+export const Wrapper = styled(Container)({
   width: "100%",
-  ...(isCardOpen &&
-    {
-      // width: "calc(100% - 360px)",
-    }),
-}));
+});

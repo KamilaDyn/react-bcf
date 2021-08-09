@@ -1,11 +1,12 @@
 import React from "react";
+import { Typography } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+import logo from "../../../assets/logo.png";
 
 import {
-  IconContainer,
   StyledHead,
-  StyledHeading,
+  StyledBox,
   StyledBadge,
   StyledIconButton,
 } from "./Head.style";
@@ -13,8 +14,11 @@ import {
 const Head = ({ setOpen, open, countItems, shoppingList }) => {
   return (
     <StyledHead>
-      <StyledHeading>Sklep dla Ciebie</StyledHeading>
-      <IconContainer>
+      <StyledBox>
+        <img src={logo} alt="logo" />
+        <Typography variant="h1">Bazarek</Typography>
+      </StyledBox>
+      <StyledBox>
         <StyledIconButton edge="end">
           <PersonOutlineIcon />
         </StyledIconButton>
@@ -29,7 +33,7 @@ const Head = ({ setOpen, open, countItems, shoppingList }) => {
             <LocalMallOutlinedIcon />
           </StyledBadge>
         </StyledIconButton>
-      </IconContainer>
+      </StyledBox>
     </StyledHead>
   );
 };

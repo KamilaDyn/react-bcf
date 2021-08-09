@@ -3,6 +3,11 @@ import palette from "./palette";
 import typography from "./typography";
 
 const overrides = {
+  MuiCssBaseline: {
+    "@global": {
+      "@font-face": typography.fontFamily,
+    },
+  },
   MuiButton: {
     text: {
       color: palette.primary.main,
@@ -25,6 +30,11 @@ const overrides = {
         backgroundColor: palette.primary.main,
         color: palette.primary.contrastText,
       },
+      "&:disabled": {
+        cursor: "not-allowed",
+        pointerEvents: "none",
+        opacity: 0.62,
+      },
     },
   },
   MuiContainer: {
@@ -37,7 +47,7 @@ const overrides = {
   },
   MuiCardHeader: {
     root: {
-      minHeight: "120px",
+      height: "120px",
     },
   },
   MuiSvgIcon: {
@@ -58,6 +68,11 @@ const overrides = {
     },
     img: {
       objectFit: "contain",
+    },
+  },
+  MuiDrawer: {
+    paper: {
+      maxWidth: 380,
     },
   },
 };

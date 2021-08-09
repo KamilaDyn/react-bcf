@@ -1,14 +1,8 @@
-import { Button, styled } from "@material-ui/core";
-
-export const StyledButton = styled(Button)(({ theme, inCard }) => ({
-  ...(inCard && {
-    padding: theme.spacing(4, 2),
-    borderRadius: "50%",
-  }),
-}));
+import { styled } from "@material-ui/core";
 
 export const StyledInput = styled("input")(({ theme }) => ({
   lineHeight: 1.65,
+  maxWidth: 50,
   display: "block",
   margin: 0,
   padding: "0 12px",

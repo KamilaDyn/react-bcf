@@ -8,19 +8,32 @@ const NumberInput = ({
   increment,
   quantity,
   setQuantity,
-  id,
 }) => {
   return (
     <>
-      <Button onClick={() => decrement(index)}>-</Button>
+      <Button
+        disabled={quantity === 1 ? true : false}
+        onClick={() => {
+          decrement(index);
+        }}
+      >
+        -
+      </Button>
       <StyledInput
-        id={id}
+        max="99"
         type="number"
         required
         onChange={(e) => setQuantity(Number(e.target.value))}
         value={quantity}
       />
-      <Button onClick={() => increment(index)}>+</Button>
+      <Button
+        onClick={() => {
+          increment(index);
+        }}
+        disabled={quantity === 99 ? true : false}
+      >
+        +
+      </Button>
     </>
   );
 };

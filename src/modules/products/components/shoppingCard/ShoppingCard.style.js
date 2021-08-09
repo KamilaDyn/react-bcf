@@ -1,8 +1,12 @@
-import { Box, Drawer, styled, Typography } from "@material-ui/core";
+import { Box, Drawer, styled } from "@material-ui/core";
 
-export const StyledDrawer = styled(Drawer)(({ theme }) => ({
+export const StyledDrawer = styled(Drawer)({
   width: "100%",
   maxWidth: 380,
+});
+export const EmptyCard = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(8),
+  textAlign: "center",
 }));
 
 export const StyledBox = styled(Box)(({ theme }) => ({
@@ -21,24 +25,6 @@ export const ControlBox = styled(Box)({
   alignItems: "center",
 });
 
-export const StyledTypography = styled(Typography)(
-  ({ theme, price, summary }) => ({
-    fontSize: theme.typography.fontSize.xs,
-
-    ...(price && {
-      fontSize: theme.typography.fontSize.xxs,
-    }),
-    ...(summary && {
-      textTransform: "uppercase",
-    }),
-  })
-);
-export const ActionsContainer = styled("div")({
-  display: "flex",
-  flexWrap: "nowrap",
-  justifyContent: "left",
-});
-
 export const PayButton = styled("button")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   padding: theme.spacing(2, 4),
@@ -54,3 +40,8 @@ export const PayButton = styled("button")(({ theme }) => ({
     backgroundColor: theme.palette.primary.light,
   },
 }));
+
+export const Image = styled("img")({
+  width: 120,
+  height: 120,
+});

@@ -4,6 +4,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 
+import shoppingBag from "../../../../assets/shoppingBag.svg";
 import { StyledIconButton } from "../atoms";
 import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";
@@ -11,9 +12,11 @@ import { useShoppingCardData } from "./ShoppingCard.utils";
 
 import {
   ControlBox,
+  EmptyCard,
   StyledDrawer,
   StyledBox,
   ItemContainer,
+  Image,
   PayButton,
 } from "./ShoppingCard.style";
 
@@ -46,8 +49,7 @@ const ShoppingCard = () => {
                 <Grid item xs={2}>
                   <ControlBox>
                     <NumberInput
-                      column="true"
-                      id="form_id2"
+                      column
                       index={index}
                       quantity={item.count}
                       setQuantity={setQuantity}
@@ -85,7 +87,16 @@ const ShoppingCard = () => {
           <PayButton>Zapłać teraz: {calculatePrice()}$</PayButton>
         </>
       ) : (
-        <Typography paragraph>Nie wybrałeś jeszcze żadnego produktu</Typography>
+        <EmptyCard>
+          <Image
+            src={shoppingBag}
+            alt="empty shopping card"
+            title="empty shopping card"
+          />
+          <Typography variant="h4">
+            Twój kosz jest pusty. Nie wybrałeś jeszcze żadnego produktu.
+          </Typography>
+        </EmptyCard>
       )}
     </StyledDrawer>
   );

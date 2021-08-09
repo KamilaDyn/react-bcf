@@ -2,7 +2,7 @@ import palette from "./palette";
 import breakpoints from "./breakpoints";
 
 const typography = {
-  fontFamily: '"Lato","Roboto", Arial, Open Sans, "TitilliumWeb"',
+  fontFamily: '"Lato","Roboto", Arial, Open Sans, "TitilliumWeb" ,"Righteous"',
   fontSize: {
     xxs: "1rem",
     xs: "1.2rem",
@@ -12,12 +12,13 @@ const typography = {
     xl: "4rem",
   },
   h1: {
-    fontSize: "2.1rem",
+    fontSize: "2.4rem",
     color: palette.primary.main,
     fontWeight: 600,
     lineHeight: "50px",
     textTransform: "uppercase",
     textAlign: "center",
+    fontFamily: "Righteous cursive",
   },
   h2: {
     fontSize: "1.2rem",

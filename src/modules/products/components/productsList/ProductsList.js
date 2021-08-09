@@ -1,28 +1,25 @@
 import React from "react";
-import { CardHeader, Link } from "@material-ui/core";
+import { Card, CardHeader, Grid, Link } from "@material-ui/core";
 import { AddProductForm } from "../AddProductForm";
 
-import {
-  StyledCard,
-  StyledContainer,
-  StyledMedia,
-  StyledTypography,
-} from "./ProductsList.style";
+import { StyledMedia, StyledTypography } from "./ProductsList.style";
 
 const ProductsList = ({ products }) => {
   return (
-    <StyledContainer>
+    <Grid container spacing={4}>
       {products.map((p, index) => (
-        <StyledCard key={index}>
-          <CardHeader title={p.title} subheader={p.category} />
-          <Link href="#">
-            <StyledMedia image={p.image} title={p.title} alt={p.title} />
-          </Link>
-          <StyledTypography>{p.price}$</StyledTypography>
-          <AddProductForm index={index} id={p.id} />
-        </StyledCard>
+        <Grid item xxs={12} xs={6} md="4" lg="3">
+          <Card>
+            <CardHeader title={p.title} subheader={p.category} />
+            <Link href="#">
+              <StyledMedia image={p.image} title={p.title} alt={p.title} />
+            </Link>
+            <StyledTypography>{p.price}$</StyledTypography>
+            <AddProductForm index={index} id={p.id} />
+          </Card>
+        </Grid>
       ))}
-    </StyledContainer>
+    </Grid>
   );
 };
 
