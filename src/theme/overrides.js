@@ -1,6 +1,7 @@
 import breakpoints from "./breakpoints";
 import palette from "./palette";
 import typography from "./typography";
+import spacing from "./spacing";
 
 const overrides = {
   MuiCssBaseline: {
@@ -17,7 +18,7 @@ const overrides = {
       minWidth: 0,
       minHeight: 0,
       lineHeight: 0,
-      padding: "4px 12px",
+      padding: spacing(1, 3),
       borderRadius: "4px",
       cursor: "pointer",
       fontSize: typography.fontSize.xxs,
@@ -40,8 +41,8 @@ const overrides = {
   MuiContainer: {
     root: {
       [breakpoints.up("sm")]: {
-        paddingLeft: "1rem",
-        paddingRight: "1rem",
+        paddingLeft: spacing(4),
+        paddingRight: spacing(4),
       },
     },
   },
@@ -64,7 +65,7 @@ const overrides = {
       objectFit: "cover",
       color: "transparent",
       textIndent: "10000px",
-      padding: 12,
+      padding: spacing(3),
     },
     img: {
       objectFit: "contain",
@@ -73,6 +74,14 @@ const overrides = {
   MuiDrawer: {
     paper: {
       maxWidth: 380,
+    },
+  },
+  MuiListItem: {
+    gutters: {
+      textAlign: "center",
+    },
+    root: {
+      justifyContent: "center",
     },
   },
 };

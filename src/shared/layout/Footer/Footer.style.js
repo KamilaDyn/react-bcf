@@ -1,15 +1,17 @@
-import { Container, styled, Typography } from "@material-ui/core";
+import { Container, Link, styled, Typography } from "@material-ui/core";
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
-  width: "100vw",
-  height: 50,
-  lineHeight: 50,
-  marginTop: 50,
+  maxWidth: "100vw",
+  padding: theme.spacing(15, 20),
 }));
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.secondary.contrastText,
+  marginTop: theme.spacing(5),
+}));
+
+export const StyledLink = styled(Link)(({ theme }) => ({
   textAlign: "center",
-  lineHeight: "50px",
+  color: theme.palette.text.secondary,
 }));

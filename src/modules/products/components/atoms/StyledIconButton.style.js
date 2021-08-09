@@ -5,7 +5,7 @@ const StyledIconButton = styled(IconButton)(
     fontSize: theme.typography.fontSize.m,
     ...(expandedOpen && { transform: "rotate(180deg)" }),
     ...(isCard && {
-      marginLeft: 0,
+      marginLeft: theme.spacing(0),
       width: "45px",
     }),
     ...(deleteBtn && {

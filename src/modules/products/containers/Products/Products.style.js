@@ -6,6 +6,7 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   position: "relative",
   maxWidth: "100%",
   backgroundColor: theme.palette.secondary.contrastText,
+  paddingBottom: theme.spacing(20),
 }));
 export const NewProductBox = styled(Box)({
   display: "flex",

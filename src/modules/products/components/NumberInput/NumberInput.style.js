@@ -4,8 +4,8 @@ export const StyledInput = styled("input")(({ theme }) => ({
   lineHeight: 1.65,
   maxWidth: 50,
   display: "block",
-  margin: 0,
-  padding: "0 12px",
+  margin: theme.spacing(0),
+  padding: theme.spacing(0, 3),
   outline: "none",
   border: "none",
   textAlign: "center",
@@ -20,10 +20,8 @@ export const StyledInput = styled("input")(({ theme }) => ({
   },
   "&::-webkit-outer-spin-button": {
     "-webkit-appearance": "none",
-    margin: 0,
   },
   "&::-webkit-inner-spin-button": {
     "-webkit-appearance": "none",
-    margin: 0,
   },
 }));

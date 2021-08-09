@@ -1,16 +1,14 @@
-import { Badge, Box, IconButton, styled } from "@material-ui/core";
+import { Badge, Box, Grid, IconButton, styled } from "@material-ui/core";
 
-export const StyledHead = styled("div")(({ theme }) => ({
-  width: "70%",
-  display: "flex",
+export const StyledGrid = styled(Grid)(({ theme }) => ({
+  justifyContent: "center",
   flexDirection: "column",
-  justifyContent: "space-between",
-  backgroundColor: theme.palette.primary.contrastText,
   lineHeight: "60px",
   padding: theme.spacing(5, 0),
   margin: theme.spacing(5, "auto"),
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("xs")]: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 }));
 export const StyledBox = styled(Box)(({ theme }) => ({

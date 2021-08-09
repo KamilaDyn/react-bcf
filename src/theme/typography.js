@@ -1,5 +1,6 @@
 import palette from "./palette";
 import breakpoints from "./breakpoints";
+import spacing from "./spacing";
 
 const typography = {
   fontFamily: '"Lato","Roboto", Arial, Open Sans, "TitilliumWeb" ,"Righteous"',
@@ -24,7 +25,7 @@ const typography = {
     fontSize: "1.2rem",
     color: palette.secondary.main,
     fontWeight: "bold",
-    padding: "16px 8px",
+    padding: spacing(4, 2),
     [breakpoints.up("xs")]: {
       fontSize: "1.4rem",
     },
@@ -34,9 +35,10 @@ const typography = {
   },
   h3: {
     fontSize: "1.2rem",
-    color: palette.primary.main,
+    color: palette.secondary.contrastText,
+    fontFamily: "Righteous, Lato, Roboto",
     textAlign: "center",
-    padding: "16px 0",
+    padding: spacing(4, 0),
     [breakpoints.up("md")]: {
       fontSize: "1.4rem",
     },
