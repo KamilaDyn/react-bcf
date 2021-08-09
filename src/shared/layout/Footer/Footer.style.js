@@ -14,4 +14,7 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
 export const StyledLink = styled(Link)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
+  "&:hover": {
+    color: theme.palette.primary.contrastText,
+  },
 }));
