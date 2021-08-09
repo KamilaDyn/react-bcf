@@ -44,7 +44,7 @@ const ShoppingCard = () => {
       {shoppingList.length > 0 ? (
         <>
           {shoppingList.map((item, index) => (
-            <ItemContainer>
+            <ItemContainer key={item.id}>
               <Grid item spacing={2} container alignItems="center">
                 <Grid item xs={2}>
                   <ControlBox>
