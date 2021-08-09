@@ -20,7 +20,7 @@ const Products = () => {
         shoppingList={shoppingList}
       />
       <StyledContainer>
-        <Main isCardOpen={open}>
+        <Main open={open}>
           <Wrapper>
             <HeadSection>
               <NewProductBox>
@@ -36,7 +36,11 @@ const Products = () => {
                 dispatch: dispatch,
               }}
             >
-              <ProductsList products={products} shoppingList={shoppingList} />
+              <ProductsList
+                products={products}
+                shoppingList={shoppingList}
+                open={open}
+              />
             </ProductContext.Provider>
           </Wrapper>
         </Main>

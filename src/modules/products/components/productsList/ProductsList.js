@@ -4,11 +4,18 @@ import { AddProductForm } from "../AddProductForm";
 
 import { StyledMedia, StyledTypography } from "./ProductsList.style";
 
-const ProductsList = ({ products }) => {
+const ProductsList = ({ products, open }) => {
   return (
     <Grid container spacing={4}>
       {products.map((p, index) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={p.id}>
+        <Grid
+          item
+          xs={12}
+          sm={open ? 12 : 6}
+          md={open ? 6 : 4}
+          lg={open ? 4 : 3}
+          key={p.id}
+        >
           <Card>
             <CardHeader title={p.title} subheader={p.category} />
             <Link href="#">
