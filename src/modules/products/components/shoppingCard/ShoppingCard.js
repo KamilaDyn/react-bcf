@@ -5,7 +5,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 
 import { shoppingBag } from "../../../../assets";
-import { StyledIconButton } from "../atoms";
+import { StyledButton, StyledIconButton } from "../atoms";
 import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";
 import { useShoppingCardData } from "./ShoppingCard.utils";
@@ -17,7 +17,6 @@ import {
   StyledBox,
   ItemContainer,
   Image,
-  PayButton,
 } from "./ShoppingCard.style";
 
 const ShoppingCard = () => {
@@ -84,7 +83,7 @@ const ShoppingCard = () => {
             </ItemContainer>
           ))}
 
-          <PayButton>Zapłać teraz: {calculatePrice()}$</PayButton>
+          <StyledButton>Zapłać teraz: {calculatePrice()}$</StyledButton>
         </>
       ) : (
         <EmptyCard>

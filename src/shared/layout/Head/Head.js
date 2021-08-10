@@ -6,7 +6,13 @@ import { logo } from "../../../assets";
 
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
 
-const Head = ({ setOpen, open, countItems, shoppingList }) => {
+const Head = ({
+  setOpen,
+  open,
+  countItems,
+  shoppingList,
+  handleOpenDialog,
+}) => {
   return (
     <StyledGrid
       container
@@ -33,7 +39,7 @@ const Head = ({ setOpen, open, countItems, shoppingList }) => {
         alignItems="center"
         justifyContent="center"
       >
-        <StyledIconButton edge="end">
+        <StyledIconButton edge="end" onClick={handleOpenDialog}>
           <PersonOutlineIcon />
         </StyledIconButton>
         <StyledIconButton

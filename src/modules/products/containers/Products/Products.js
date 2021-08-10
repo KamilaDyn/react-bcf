@@ -7,10 +7,20 @@ import { ShoppingCard, ProductsList } from "../../components";
 import { HeadSection } from "../../components/atoms";
 import { NewProductBox, StyledContainer, Wrapper } from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
+import MuiDialog from "../../components/Dialog/Dialog";
 
 const Products = () => {
+  const [openDialog, setOpenModal] = React.useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenModal(true);
+  };
+  const handleCloseDialog = () => {
+    setOpenModal(false);
+  };
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
+
   return (
     <>
       <Head
@@ -18,6 +28,7 @@ const Products = () => {
         open={open}
         setOpen={setOpen}
         shoppingList={shoppingList}
+        handleOpenDialog={handleOpenDialog}
       />
       <StyledContainer>
         <Main open={open}>
@@ -55,6 +66,10 @@ const Products = () => {
           <ShoppingCard />
         </ProductContext.Provider>
       </StyledContainer>
+      <MuiDialog
+        openDialog={openDialog}
+        handleCloseDialog={handleCloseDialog}
+      />
       <Footer />
     </>
   );

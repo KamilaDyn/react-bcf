@@ -95,13 +95,42 @@ const overrides = {
   },
   MuiLink: {
     root: {
+      textAlign: "center",
       "&:hover": {
-        textAlign: "center",
-        color: palette.text.secondary,
-        "&:hover": {
-          color: palette.primary.contrastText,
-        },
+        color: palette.primary.contrastText,
       },
+    },
+  },
+  MuiModal: {
+    root: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  },
+  MuiFormControl: {
+    root: {
+      width: "100%",
+    },
+  },
+  MuiDialog: {
+    paper: {
+      overflow: "hidden",
+    },
+    paperWidthSm: {
+      maxWidth: 500,
+      height: "80%",
+    },
+  },
+  MuiDialogContent: {
+    dividers: {
+      padding: 0,
+    },
+    root: {
+      overflow: "hidden",
+      overflowY: "hidden",
+
+      padding: 0,
     },
   },
 };

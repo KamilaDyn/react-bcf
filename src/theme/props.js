@@ -6,6 +6,9 @@ const props = {
     color: "textSecondary",
     underline: "none",
   },
+  MuiTextField: {
+    variant: "outlined",
+  },
 };
 
 export default props;

@@ -1,19 +1,36 @@
-import { Button, styled } from "@material-ui/core";
+import { styled } from "@material-ui/core";
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.light,
-  color: theme.palette.primary.main,
-  width: 50,
-  height: 50,
-  borderRadius: "4px",
-  border: "none",
-  cursor: "pointer",
-  fontSize: theme.typography.h2.fontSize,
-  transition: ".3s",
-  "&:hover": {
+export const StyledButton = styled("button")(
+  ({ theme, submitForm, google }) => ({
     backgroundColor: theme.palette.primary.main,
+    padding: theme.spacing(2, 4),
+    fontSize: theme.typography.h4.fontSize,
     color: theme.palette.primary.contrastText,
-  },
-}));
+    cursor: "pointer",
+    border: "none",
+    width: 250,
+    margin: theme.spacing(4, "auto"),
+    transition: "0.3",
+    borderRadius: 4,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.light,
+    },
+    ...(submitForm && {
+      width: "100%",
+      margin: 0,
+    }),
+    ...(google && {
+      width: "100%",
+      margin: 0,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: theme.palette.secondary.main,
+      "&:hover": {
+        backgroundColor: theme.palette.secondary.light,
+      },
+    }),
+  })
+);
 
 export default StyledButton;
