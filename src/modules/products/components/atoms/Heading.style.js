@@ -1,16 +1,14 @@
 import { styled } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 
-const Heading = styled(Typography)(({ secondary }) => ({
+const Heading = styled(Typography)(({ theme, secondary }) => ({
   fontWeight: "bold",
-  color: "#2f4f4f",
+  color: theme.palette.secondary.main,
   textTransform: "uppercase",
-  lineHeight: "42px",
   textAlign: "center",
   ...(secondary && {
-    padding: "20px 0",
-    fontSize: "24px",
-    lineHeight: "34px",
+    padding: theme.spacing(5, 0),
+    fontSize: theme.typography.h2.fontSize,
   }),
 }));
 

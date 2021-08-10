@@ -1,29 +1,31 @@
 import React from "react";
-import { IconButton, Tooltip } from "@material-ui/core";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Tooltip } from "@material-ui/core";
 import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";
 import { useAddProduct } from "./AddProductForm.utils";
+import { Form, StyledShoppingCardIcon } from "./AddProductForm.style";
+import { StyledIconButton } from "../atoms";
 
 const AddProductForm = ({ id, index }) => {
   const { handleSubmit } = useAddProduct();
   const { quantity, setQuantity, increment, decrement } = useQuantity();
 
   return (
-    <form onSubmit={(e) => handleSubmit(e, id, quantity)}>
+    <Form onSubmit={(e) => handleSubmit(e, id, quantity)}>
       <NumberInput
+        id="form_id"
         index={index}
         quantity={quantity}
         setQuantity={setQuantity}
         increment={increment}
         decrement={decrement}
       />
-      <IconButton type="submit">
+      <StyledIconButton type="submit">
         <Tooltip title="Dodaj do koszyka" placement="top">
-          <ShoppingCartIcon color="primary" style={{ fontSize: 40 }} />
+          <StyledShoppingCardIcon />
         </Tooltip>
-      </IconButton>
-    </form>
+      </StyledIconButton>
+    </Form>
   );
 };
 

@@ -1,11 +1,19 @@
 import { styled } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core/";
+import { Box, Container } from "@material-ui/core/";
 
-export const StyledContainer = styled(Container)({
-  display: "flex",
-  flexDirection: "row",
-  minHeight: "calc(100vh - 100px)",
-  width: "95%",
-  margin: "50px auto 0",
+export const StyledContainer = styled(Container)(({ theme }) => ({
+  minHeight: "calc(100vh - 6.25rem)",
   position: "relative",
+  maxWidth: "100%",
+  backgroundColor: theme.palette.secondary.contrastText,
+  paddingTop: theme.spacing(10),
+  paddingBottom: theme.spacing(30),
+}));
+export const NewProductBox = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+});
+
+export const Wrapper = styled(Container)({
+  width: "100%",
 });

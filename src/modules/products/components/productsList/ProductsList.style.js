@@ -1,24 +1,5 @@
 import { styled } from "@material-ui/core/styles";
-import {
-  Card,
-  CardActions,
-  CardMedia,
-  Container,
-  Typography,
-} from "@material-ui/core";
-
-export const StyledContainer = styled(Container)({
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "space-between",
-});
-
-export const StyledCard = styled(Card)({
-  width: 280,
-  maxWidth: 345,
-  margin: "15px 20px",
-  flexDirection: "column",
-});
+import { CardMedia, Typography } from "@material-ui/core";
 
 export const StyledMedia = styled(CardMedia)({
   height: 0,
@@ -27,11 +8,9 @@ export const StyledMedia = styled(CardMedia)({
   backgroundSize: "contain",
 });
 
-export const StyledCardActions = styled(CardActions)({
-  display: "flex",
-  justifyContent: "space-around",
-});
-
-export const StyledTypography = styled(Typography)({
-  fontSize: "42px",
-});
+export const StyledTypography = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.h3.fontSize,
+  color: theme.palette.primary.main,
+  textAlign: "center",
+  margin: theme.spacing(4),
+}));

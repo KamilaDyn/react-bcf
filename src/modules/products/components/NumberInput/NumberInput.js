@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import { StyledInput, Wrapper } from "./NumberInput.style";
+import { StyledInput } from "./NumberInput.style";
 
 const NumberInput = ({
   index,
@@ -10,22 +10,31 @@ const NumberInput = ({
   setQuantity,
 }) => {
   return (
-    <Wrapper>
-      <Button variant="contained" onClick={() => decrement(index)}>
+    <>
+      <Button
+        disabled={quantity === 1 ? true : false}
+        onClick={() => {
+          decrement(index);
+        }}
+      >
         -
       </Button>
       <StyledInput
-        id="use_id"
-        type="tel"
+        max="99"
+        type="number"
         required
-        onChange={(e) => setQuantity(e.target.value)}
-        variant="filled"
+        onChange={(e) => setQuantity(Number(e.target.value))}
         value={quantity}
       />
-      <Button variant="contained" onClick={() => increment(index)}>
+      <Button
+        onClick={() => {
+          increment(index);
+        }}
+        disabled={quantity === 99 ? true : false}
+      >
         +
       </Button>
-    </Wrapper>
+    </>
   );
 };
 

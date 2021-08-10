@@ -1,0 +1,16 @@
+import { createTheme } from "@material-ui/core";
+import breakpoints from "./breakpoints";
+import palette from "./palette";
+import typography from "./typography";
+import spacing from "./spacing";
+import overrides from "./overrides";
+import props from "./props";
+
+export const theme = createTheme({
+  breakpoints,
+  palette,
+  typography,
+  spacing,
+  overrides,
+  props,
+});

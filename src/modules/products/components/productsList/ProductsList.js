@@ -1,54 +1,32 @@
-import React, { useState } from "react";
-import {
-  CardHeader,
-  CardContent,
-  Collapse,
-  Typography,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { StyledIconButton } from "../atoms";
+import React from "react";
+import { Card, CardHeader, Grid, Link } from "@material-ui/core";
 import { AddProductForm } from "../AddProductForm";
 
-import {
-  StyledCard,
-  StyledCardActions,
-  StyledContainer,
-  StyledMedia,
-  StyledTypography,
-} from "./ProductsList.style";
+import { StyledMedia, StyledTypography } from "./ProductsList.style";
 
-const ProductsList = ({ products }) => {
-  const [expanded, setExpanded] = useState(false);
-
+const ProductsList = ({ products, open }) => {
   return (
-    <StyledContainer>
+    <Grid container spacing={4}>
       {products.map((p, index) => (
-        <StyledCard key={index}>
-          <CardHeader title={p.title} subheader={p.category} />
-          <StyledMedia image={p.image} title={p.title} alt={p.title} />
-          <StyledCardActions>
-            <StyledTypography color="secondary">{p.price}$</StyledTypography>
-            <StyledIconButton
-              onClick={() => setExpanded(!expanded)}
-              aria-expanded={expanded}
-              expandedOpen={expanded}
-            >
-              <ExpandMoreIcon />
-            </StyledIconButton>
-          </StyledCardActions>
-
-          <AddProductForm index={index} id={p.id} />
-
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography variant="body2" color="textSecondary" paragraph>
-                {p.description}
-              </Typography>
-            </CardContent>
-          </Collapse>
-        </StyledCard>
+        <Grid
+          item
+          xs={12}
+          sm={open ? 12 : 6}
+          md={open ? 6 : 4}
+          lg={open ? 4 : 3}
+          key={p.id}
+        >
+          <Card>
+            <CardHeader title={p.title} subheader={p.category} />
+            <Link href="#">
+              <StyledMedia image={p.image} title={p.title} alt={p.title} />
+            </Link>
+            <StyledTypography>{p.price}$</StyledTypography>
+            <AddProductForm index={index} id={p.id} />
+          </Card>
+        </Grid>
       ))}
-    </StyledContainer>
+    </Grid>
   );
 };
 

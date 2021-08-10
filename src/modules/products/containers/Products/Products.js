@@ -1,11 +1,11 @@
 import React from "react";
-import { Badge, IconButton } from "@material-ui/core/";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
+import { Link, Typography } from "@material-ui/core/";
+import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
 import { Head, Main, Footer } from "../../../../shared";
 import { ProductContext } from "../../../context";
 import { ShoppingCard, ProductsList } from "../../components";
-import { Heading } from "../../components/atoms";
-import { StyledContainer } from "./Products.style";
+import { HeadSection } from "../../components/atoms";
+import { NewProductBox, StyledContainer, Wrapper } from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
 
 const Products = () => {
@@ -13,34 +13,36 @@ const Products = () => {
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
   return (
     <>
-      <Head>
-        Sklep dla każdego
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="end"
-          onClick={() => setOpen(!open)}
-        >
-          <Badge
-            badgeContent={shoppingList.length > 0 ? countItemsInBasket() : "0"}
-            color="secondary"
-          >
-            <LocalMallIcon color="primary" />
-          </Badge>
-        </IconButton>
-      </Head>
+      <Head
+        countItems={countItemsInBasket}
+        open={open}
+        setOpen={setOpen}
+        shoppingList={shoppingList}
+      />
       <StyledContainer>
-        <Main>
-          <Heading secondary="true">Lista produktów </Heading>
-          <ProductContext.Provider
-            value={{
-              shoppingList: shoppingList,
-              products: products,
-              dispatch: dispatch,
-            }}
-          >
-            <ProductsList products={products} shoppingList={shoppingList} />
-          </ProductContext.Provider>
+        <Main open={open}>
+          <Wrapper>
+            <HeadSection>
+              <NewProductBox>
+                <NewReleasesOutlinedIcon color="primary" />
+                <Typography variant="h2">Lista Produktów</Typography>
+              </NewProductBox>
+              <Link href="#">Wszystko &#187;</Link>
+            </HeadSection>
+            <ProductContext.Provider
+              value={{
+                shoppingList: shoppingList,
+                products: products,
+                dispatch: dispatch,
+              }}
+            >
+              <ProductsList
+                products={products}
+                shoppingList={shoppingList}
+                open={open}
+              />
+            </ProductContext.Provider>
+          </Wrapper>
         </Main>
         <ProductContext.Provider
           value={{
