@@ -28,7 +28,7 @@ export const ControlBox = styled(Box)({
 export const PayButton = styled("button")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   padding: theme.spacing(2, 4),
-  fontSize: theme.typography.fontSize.xs,
+  fontSize: theme.typography.h4.fontSize,
   color: theme.palette.primary.contrastText,
   cursor: "pointer",
   border: "none",

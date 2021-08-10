@@ -9,7 +9,7 @@ export const StyledMedia = styled(CardMedia)({
 });
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.fontSize.m,
+  fontSize: theme.typography.h3.fontSize,
   color: theme.palette.primary.main,
   textAlign: "center",
   margin: theme.spacing(4),

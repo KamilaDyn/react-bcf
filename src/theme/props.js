@@ -4,6 +4,7 @@ const props = {
   },
   MuiLink: {
     color: "textSecondary",
+    underline: "none",
   },
 };
 

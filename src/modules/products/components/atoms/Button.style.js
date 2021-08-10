@@ -8,7 +8,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   borderRadius: "4px",
   border: "none",
   cursor: "pointer",
-  fontSize: theme.typography.fontSize.s,
+  fontSize: theme.typography.h2.fontSize,
   transition: ".3s",
   "&:hover": {
     backgroundColor: theme.palette.primary.main,

@@ -1,12 +1,13 @@
 import React from "react";
 import {
   Grid,
+  Link,
   List,
   ListItem,
   ListItemText,
   Typography,
 } from "@material-ui/core";
-import { StyledContainer, StyledLink } from "./Footer.style";
+import { StyledContainer } from "./Footer.style";
 
 const Footer = () => {
   return (
@@ -26,16 +27,16 @@ const Footer = () => {
 
           <List component="nav">
             <ListItem>
-              <StyledLink href="#">Nasz zespół</StyledLink>
+              <Link href="#">Nasz zespół</Link>
             </ListItem>
             <ListItem>
-              <StyledLink href="#">Nasz sklep</StyledLink>
+              <Link href="#">Nasz sklep</Link>
             </ListItem>
             <ListItem href="#">
-              <StyledLink href="#">Kariera</StyledLink>
+              <Link href="#">Kariera</Link>
             </ListItem>
             <ListItem href="#">
-              <StyledLink href="#">Regulamin</StyledLink>
+              <Link href="#">Regulamin</Link>
             </ListItem>
           </List>
         </Grid>
@@ -44,13 +45,13 @@ const Footer = () => {
 
           <List component="nav">
             <ListItem>
-              <StyledLink href="#">Pomoc</StyledLink>
+              <Link href="#">Pomoc</Link>
             </ListItem>
             <ListItem>
-              <StyledLink href="#">Jak kupować</StyledLink>
+              <Link href="#">Jak kupować</Link>
             </ListItem>
             <ListItem>
-              <StyledLink href="#">Zwroty</StyledLink>
+              <Link href="#">Zwroty</Link>
             </ListItem>
           </List>
         </Grid>

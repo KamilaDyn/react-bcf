@@ -4,7 +4,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 
-import shoppingBag from "../../../../assets/shoppingBag.svg";
+import { shoppingBag } from "../../../../assets";
 import { StyledIconButton } from "../atoms";
 import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";

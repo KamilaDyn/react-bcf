@@ -10,7 +10,7 @@ export const StyledInput = styled("input")(({ theme }) => ({
   border: "none",
   textAlign: "center",
   fontWeight: "bold",
-  fontSize: theme.typography.fontSize.xs,
+  fontSize: theme.typography.h4.fontSize,
   [theme.breakpoints.up("md")]: {
     width: 50,
     height: 50,

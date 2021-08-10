@@ -3,38 +3,37 @@ import breakpoints from "./breakpoints";
 import spacing from "./spacing";
 
 const typography = {
-  fontFamily: '"Lato","Roboto", Arial, Open Sans, "TitilliumWeb" ,"Righteous"',
-  fontSize: {
-    xxs: "1rem",
-    xs: "1.2rem",
-    s: "1.6rem",
-    m: "2.1rem",
-    l: "2.4rem",
-    xl: "4rem",
-  },
+  fontFamily: [
+    "Lato",
+    "Roboto",
+    "Arial",
+    "Open Sans",
+    "TitilliumWeb",
+    "Righteous",
+  ],
   h1: {
-    fontSize: "2.4rem",
+    fontSize: "2.6rem",
     color: palette.primary.main,
     fontWeight: 600,
-    lineHeight: "50px",
+    lineHeight: "3.1rem",
     textTransform: "uppercase",
     textAlign: "center",
     fontFamily: "Righteous cursive",
   },
   h2: {
-    fontSize: "1.2rem",
+    fontSize: "2.1rem",
     color: palette.secondary.main,
     fontWeight: "bold",
     padding: spacing(4, 2),
     [breakpoints.up("xs")]: {
-      fontSize: "1.4rem",
+      fontSize: "1.8rem",
     },
     [breakpoints.up("md")]: {
       fontSize: "1.6rem",
     },
   },
   h3: {
-    fontSize: "1.2rem",
+    fontSize: "1.6rem",
     color: palette.secondary.contrastText,
     fontFamily: "Righteous, Lato, Roboto",
     textAlign: "center",
@@ -44,14 +43,18 @@ const typography = {
     },
   },
   h4: {
-    fontSize: "1rem",
+    fontSize: "1.2rem",
     [breakpoints.up("md")]: {
-      fontSize: "1.2rem",
+      fontSize: "1rem",
     },
   },
   h5: {
     color: palette.secondary.main,
     fontWeight: "bold",
+    fontSize: "1rem",
+  },
+  body1: {
+    fontSize: "1rem",
   },
   subtitle: {
     fontSize: "1.2rem",

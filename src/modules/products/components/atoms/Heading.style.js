@@ -8,7 +8,7 @@ const Heading = styled(Typography)(({ theme, secondary }) => ({
   textAlign: "center",
   ...(secondary && {
     padding: theme.spacing(5, 0),
-    fontSize: theme.typography.fontSize.s,
+    fontSize: theme.typography.h2.fontSize,
   }),
 }));
 

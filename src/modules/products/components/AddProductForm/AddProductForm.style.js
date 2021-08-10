@@ -10,7 +10,7 @@ export const Form = styled("form")(({ theme }) => ({
 
 export const StyledShoppingCardIcon = styled(ShoppingCartOutlinedIcon)(
   ({ theme }) => ({
-    fontSize: theme.typography.fontSize.s,
+    fontSize: theme.typography.h2.fontSize,
     color: theme.palette.secondary.main,
     textAlign: "center",
   })

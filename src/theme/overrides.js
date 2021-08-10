@@ -5,7 +5,7 @@ import spacing from "./spacing";
 
 const overrides = {
   MuiTypography: {
-    body1: { fontSize: "1rem", color: palette.text.secondary },
+    body1: { color: palette.text.secondary },
   },
   MuiCssBaseline: {
     "@global": {
@@ -15,8 +15,8 @@ const overrides = {
   MuiButton: {
     text: {
       color: palette.primary.main,
-      width: 30,
-      height: 30,
+      width: "1.8rem",
+      height: "1.8rem",
       border: `1px solid ${palette.primary.main}`,
       minWidth: 0,
       minHeight: 0,
@@ -24,11 +24,11 @@ const overrides = {
       padding: spacing(1, 3),
       borderRadius: "4px",
       cursor: "pointer",
-      fontSize: typography.fontSize.xxs,
+      fontSize: typography.body1.fontSize,
       fontWeight: "bold",
       transition: ".3s",
       [breakpoints.up("md")]: {
-        fontSize: typography.fontSize.s,
+        fontSize: typography.h3.fontSize,
       },
       "&:hover": {
         backgroundColor: palette.primary.main,
@@ -41,6 +41,11 @@ const overrides = {
       },
     },
   },
+  MuiIconButton: {
+    root: {
+      fontSize: typography.h2.fontSize,
+    },
+  },
   MuiContainer: {
     root: {
       [breakpoints.up("sm")]: {
@@ -51,24 +56,25 @@ const overrides = {
   },
   MuiCardHeader: {
     root: {
-      height: "120px",
+      height: "7.5rem",
     },
   },
   MuiSvgIcon: {
     root: {
       color: palette.secondary.main,
-      fontSize: typography.fontSize.s,
+      fontSize: typography.h2.fontSize,
     },
   },
   MuiAvatar: {
     root: {
-      width: 80,
-      height: 100,
+      width: "5rem",
+      height: "6.5rem",
       textAlign: "center",
       objectFit: "cover",
       color: "transparent",
       textIndent: "10000px",
       padding: spacing(3),
+      fontSize: typography.h4.fontSize,
     },
     img: {
       objectFit: "contain",
@@ -76,7 +82,7 @@ const overrides = {
   },
   MuiDrawer: {
     paper: {
-      maxWidth: 380,
+      maxWidth: "23.75rem",
     },
   },
   MuiListItem: {
@@ -85,6 +91,17 @@ const overrides = {
     },
     root: {
       justifyContent: "center",
+    },
+  },
+  MuiLink: {
+    root: {
+      "&:hover": {
+        textAlign: "center",
+        color: palette.text.secondary,
+        "&:hover": {
+          color: palette.primary.contrastText,
+        },
+      },
     },
   },
 };

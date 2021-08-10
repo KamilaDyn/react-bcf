@@ -1,4 +1,4 @@
-import { Container, Link, styled, Typography } from "@material-ui/core";
+import { Container, styled, Typography } from "@material-ui/core";
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
@@ -9,12 +9,4 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.secondary.contrastText,
   marginTop: theme.spacing(5),
-}));
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  "&:hover": {
-    color: theme.palette.primary.contrastText,
-  },
 }));

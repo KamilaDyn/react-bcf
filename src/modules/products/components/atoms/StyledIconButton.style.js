@@ -1,22 +1,15 @@
 import { IconButton, styled } from "@material-ui/core";
 
 const StyledIconButton = styled(IconButton)(
-  ({ theme, expandedOpen, isCard, deleteBtn, basket, isAccordion }) => ({
-    fontSize: theme.typography.fontSize.m,
+  ({ theme, expandedOpen, isCard, deleteBtn }) => ({
+    fontSize: theme.typography.h2.fontSize,
     ...(expandedOpen && { transform: "rotate(180deg)" }),
     ...(isCard && {
       marginLeft: theme.spacing(0),
-      width: "45px",
+      width: "2.8rem",
     }),
     ...(deleteBtn && {
       color: theme.palette.primary.main,
-    }),
-    ...(basket && {
-      position: "absolute",
-      top: "10px",
-      right: "5%",
-      zIndex: 999999,
-      fontSize: theme.typography.fontSize.s,
     }),
   })
 );
