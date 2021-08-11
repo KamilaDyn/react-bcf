@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Tooltip, Typography } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import { logo } from "../../../assets";
@@ -11,7 +11,8 @@ const Head = ({
   open,
   countItems,
   shoppingList,
-  handleOpenDialog,
+  setOpenDialog,
+  openDialog,
 }) => {
   return (
     <StyledGrid
@@ -39,8 +40,10 @@ const Head = ({
         alignItems="center"
         justifyContent="center"
       >
-        <StyledIconButton edge="end" onClick={handleOpenDialog}>
-          <PersonOutlineIcon />
+        <StyledIconButton edge="end" onClick={() => setOpenDialog(!openDialog)}>
+          <Tooltip title="Title" placement="top">
+            <PersonOutlineIcon />
+          </Tooltip>
         </StyledIconButton>
         <StyledIconButton
           aria-label="open drawer"

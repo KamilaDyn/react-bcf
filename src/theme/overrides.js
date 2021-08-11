@@ -62,7 +62,7 @@ const overrides = {
   MuiSvgIcon: {
     root: {
       color: palette.secondary.main,
-      fontSize: typography.h2.fontSize,
+      fontSize: typography.h3.fontSize,
     },
   },
   MuiAvatar: {

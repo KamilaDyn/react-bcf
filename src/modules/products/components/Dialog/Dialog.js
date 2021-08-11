@@ -4,14 +4,17 @@ import { MuiDialogTitle } from "../molecules/DialogTitle";
 import { LoginForm } from "../../../loginForm";
 import { ResetContainer } from "./Dialog.style";
 
-const MuiDialog = ({ openDialog, handleCloseDialog }) => {
+const MuiDialog = ({ openDialog, setOpenDialog }) => {
   return (
     <Dialog
-      onClose={handleCloseDialog}
+      onClose={() => setOpenDialog(false)}
       aria-labelledby="customized-dialog-title"
       open={openDialog}
     >
-      <MuiDialogTitle id="customized-dialog-title" onClose={handleCloseDialog}>
+      <MuiDialogTitle
+        id="customized-dialog-title"
+        onClose={() => setOpenDialog(false)}
+      >
         Witaj w sklepie Bazarek!
         <Typography variant="subtitle1">Wpisz Swój email i hasło</Typography>
       </MuiDialogTitle>

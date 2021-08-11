@@ -21,22 +21,24 @@ const LoginForm = () => {
       <Grid container spacing={8} justifyContent="center">
         <Grid item xs={12}>
           <TextField
-            //   error
+            error
             id="email"
             name="email"
             label="example@email.com"
             onChange={formik.handleChange}
+            helperText="Email musi zawierać @"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            //   error
+            error
             id="password"
             name="password"
             type="password"
             label="hasło"
             onChange={formik.handleChange}
             value={formik.values.password}
+            helperText="Hasło musi zawierać 6 znaków"
           />
         </Grid>
         <Grid item container spacing={3} xs={12} justifyContent="center">

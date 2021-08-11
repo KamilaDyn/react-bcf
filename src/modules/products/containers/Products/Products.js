@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Typography } from "@material-ui/core/";
 import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
 import { Head, Main, Footer } from "../../../../shared";
@@ -10,14 +10,7 @@ import { useGetProducts, useCountItems } from "./Products.utils";
 import MuiDialog from "../../components/Dialog/Dialog";
 
 const Products = () => {
-  const [openDialog, setOpenModal] = React.useState(false);
-
-  const handleOpenDialog = () => {
-    setOpenModal(true);
-  };
-  const handleCloseDialog = () => {
-    setOpenModal(false);
-  };
+  const [openDialog, setOpenDialog] = useState(false);
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
 
@@ -28,7 +21,8 @@ const Products = () => {
         open={open}
         setOpen={setOpen}
         shoppingList={shoppingList}
-        handleOpenDialog={handleOpenDialog}
+        setOpenDialog={setOpenDialog}
+        openDialog={openDialog}
       />
       <StyledContainer>
         <Main open={open}>
@@ -66,10 +60,7 @@ const Products = () => {
           <ShoppingCard />
         </ProductContext.Provider>
       </StyledContainer>
-      <MuiDialog
-        openDialog={openDialog}
-        handleCloseDialog={handleCloseDialog}
-      />
+      <MuiDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
       <Footer />
     </>
   );
