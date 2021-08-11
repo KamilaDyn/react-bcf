@@ -1,7 +1,7 @@
 import { Box, styled } from "@material-ui/core";
 
 export const Form = styled("form")(({ theme }) => ({
-  padding: theme.spacing(6, 12, 10, 12),
+  padding: theme.spacing(6, 15, 4),
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

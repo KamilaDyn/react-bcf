@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  Grid,
-  Link,
-  Typography,
-} from "@material-ui/core";
+import { Dialog, Grid, Link, Typography } from "@material-ui/core";
 import { MuiDialogTitle } from "../molecules/DialogTitle";
 import { LoginForm } from "../../../loginForm";
 import { ResetContainer } from "./Dialog.style";
@@ -21,26 +15,25 @@ const MuiDialog = ({ openDialog, handleCloseDialog }) => {
         Witaj w sklepie Bazarek!
         <Typography variant="subtitle1">Wpisz Swój email i hasło</Typography>
       </MuiDialogTitle>
-      <DialogContent dividers>
-        <LoginForm />
-        <Grid container spacing={3}>
-          <Grid item container xs={12} justifyContent="center">
-            <Typography color="secondary">Nie masz konta? </Typography>&nbsp;
-            <Link href="#">Zarejestruj</Link>
-          </Grid>
-          <ResetContainer
-            item
-            container
-            xs={12}
-            justifyContent="center"
-            background="secondary"
-          >
-            <Typography color="secondary">Zapomniałeś hasła? </Typography>
-            &nbsp;
-            <Link href="#">Zresetuj</Link>
-          </ResetContainer>
+      <LoginForm />
+      <Grid container alignItems="center" spacing={3}>
+        <Grid item container xs={12} justifyContent="center">
+          <Typography color="secondary">Nie masz konta? </Typography>&nbsp;
+          <Link href="#">Zarejestruj</Link>
         </Grid>
-      </DialogContent>
+        <ResetContainer
+          item
+          container
+          xs={12}
+          alignItems="center"
+          justifyContent="center"
+          background="secondary"
+        >
+          <Typography color="secondary">Zapomniałeś hasła? </Typography>
+          &nbsp;
+          <Link href="#">Zresetuj</Link>
+        </ResetContainer>
+      </Grid>
     </Dialog>
   );
 };

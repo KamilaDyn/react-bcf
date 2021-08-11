@@ -18,7 +18,7 @@ const LoginForm = () => {
   });
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <Grid container spacing={7} justifyContent="center">
+      <Grid container spacing={8} justifyContent="center">
         <Grid item xs={12}>
           <TextField
             //   error
@@ -34,12 +34,12 @@ const LoginForm = () => {
             id="password"
             name="password"
             type="password"
-            label="password"
+            label="hasło"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
         </Grid>
-        <Grid item container spacing={2} xs={12} justifyContent="center">
+        <Grid item container spacing={3} xs={12} justifyContent="center">
           <Grid item xs={12} justifyContent="center">
             <StyledButton type="submit" submitForm>
               Submit

@@ -43,7 +43,7 @@ const overrides = {
   },
   MuiIconButton: {
     root: {
-      fontSize: typography.h2.fontSize,
+      fontSize: typography.h3.fontSize,
     },
   },
   MuiContainer: {
@@ -97,7 +97,7 @@ const overrides = {
     root: {
       textAlign: "center",
       "&:hover": {
-        color: palette.primary.contrastText,
+        color: palette.primary.main,
       },
     },
   },
@@ -115,11 +115,16 @@ const overrides = {
   },
   MuiDialog: {
     paper: {
-      overflow: "hidden",
+      overflowY: "hidden",
+      overflowX: "hidden",
     },
     paperWidthSm: {
       maxWidth: 500,
-      height: "80%",
+    },
+  },
+  MuiDialogTitle: {
+    root: {
+      paddingTop: spacing(10),
     },
   },
   MuiDialogContent: {
@@ -129,8 +134,12 @@ const overrides = {
     root: {
       overflow: "hidden",
       overflowY: "hidden",
-
       padding: 0,
+    },
+  },
+  MuiPaper: {
+    rounded: {
+      borderRadius: 8,
     },
   },
 };
