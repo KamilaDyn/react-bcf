@@ -3,14 +3,20 @@ import { Link, Typography } from "@material-ui/core/";
 import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
 import { Head, Main, Footer } from "../../../../shared";
 import { ProductContext } from "../../../context";
-import { ShoppingCard, ProductsList } from "../../components";
+import { useAuth } from "../../../../AuthProvider";
+import {
+  LoginFormContainer,
+  ShoppingCard,
+  ProductsList,
+} from "../../components";
 import { HeadSection } from "../../components/atoms";
+import { AddNewProductContainer } from "../../components/AddNewProductContainer";
 import { NewProductBox, StyledContainer, Wrapper } from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
-import MuiDialog from "../../components/Dialog/Dialog";
 
 const Products = () => {
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openProductForm, setOpenProductForm] = useState(false);
+  const { openDialog, setOpenDialog, isLoggedIn } = useAuth();
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
 
@@ -23,6 +29,8 @@ const Products = () => {
         shoppingList={shoppingList}
         setOpenDialog={setOpenDialog}
         openDialog={openDialog}
+        openProductForm={openProductForm}
+        setOpenProductForm={setOpenProductForm}
       />
       <StyledContainer>
         <Main open={open}>
@@ -60,7 +68,16 @@ const Products = () => {
           <ShoppingCard />
         </ProductContext.Provider>
       </StyledContainer>
-      <MuiDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+      <LoginFormContainer
+        openDialog={openDialog}
+        setOpenDialog={setOpenDialog}
+      />
+      {isLoggedIn && (
+        <AddNewProductContainer
+          openProductForm={openProductForm}
+          setOpenProductForm={setOpenProductForm}
+        />
+      )}
       <Footer />
     </>
   );

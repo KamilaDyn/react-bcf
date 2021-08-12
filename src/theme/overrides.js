@@ -120,6 +120,7 @@ const overrides = {
     },
     paperWidthSm: {
       maxWidth: 500,
+      minWidth: "50%",
     },
   },
   MuiDialogTitle: {
