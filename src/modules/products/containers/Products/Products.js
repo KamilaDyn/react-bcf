@@ -3,14 +3,14 @@ import { Link, Typography } from "@material-ui/core/";
 import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
 import { Head, Main, Footer } from "../../../../shared";
 import { ProductContext } from "../../../context";
-import { useAuth } from "../../../../AuthProvider";
+import { useAuth } from "../../../../provider";
 import {
+  AddNewProductContainer,
   LoginFormContainer,
   ShoppingCard,
   ProductsList,
 } from "../../components";
 import { HeadSection } from "../../components/atoms";
-import { AddNewProductContainer } from "../../components/AddNewProductContainer";
 import { NewProductBox, StyledContainer, Wrapper } from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
 

@@ -3,7 +3,7 @@ import { Grid, Tooltip, Typography } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import { useAuth } from "../../../AuthProvider";
+import { useAuth } from "../../../provider";
 import { logo } from "../../../assets";
 
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
@@ -18,7 +18,7 @@ const Head = ({
   openProductForm,
   setOpenProductForm,
 }) => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   return (
     <StyledGrid
       container
@@ -46,7 +46,10 @@ const Head = ({
         justifyContent="center"
       >
         <StyledIconButton edge="end" onClick={() => setOpenDialog(!openDialog)}>
-          <Tooltip title="Title" placement="top">
+          <Tooltip
+            title={isLoggedIn ? user.split("@")[0] : "Profil"}
+            placement="top"
+          >
             <PersonOutlineIcon />
           </Tooltip>
         </StyledIconButton>

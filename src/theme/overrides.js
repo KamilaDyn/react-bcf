@@ -15,8 +15,8 @@ const overrides = {
   MuiButton: {
     text: {
       color: palette.primary.main,
-      width: "1.8rem",
-      height: "1.8rem",
+      width: 30,
+      height: 30,
       border: `1px solid ${palette.primary.main}`,
       minWidth: 0,
       minHeight: 0,
@@ -67,8 +67,8 @@ const overrides = {
   },
   MuiAvatar: {
     root: {
-      width: "5rem",
-      height: "6.5rem",
+      width: 80,
+      height: 100,
       textAlign: "center",
       objectFit: "cover",
       color: "transparent",

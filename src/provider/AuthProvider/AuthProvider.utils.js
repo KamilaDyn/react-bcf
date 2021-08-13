@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
+import { useEffect, useState } from "react";
 
 const timeoutFn = (miliseconds) => {
   return new Promise((resolve) => setTimeout(resolve, miliseconds));
 };
-const AuthProvider = (props) => {
+
+export const useAuthProvider = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
@@ -36,14 +36,14 @@ const AuthProvider = (props) => {
     });
   };
 
-  const authContextValue = {
+  return {
+    login,
+    logout,
+    isLoggedIn,
+    setLoggedIn,
+    user,
+    setUser,
     openDialog,
     setOpenDialog,
-    user,
-    login,
-    isLoggedIn,
-    logout,
   };
-  return <UserContext.Provider value={authContextValue} {...props} />;
 };
-export default AuthProvider;

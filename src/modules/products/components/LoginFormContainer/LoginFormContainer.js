@@ -3,7 +3,7 @@ import { Dialog, Grid, Link, Typography } from "@material-ui/core";
 import { MuiDialogTitle } from "../molecules/DialogTitle";
 import { LoginForm } from "../LoginForm";
 import { ResetContainer } from "./LoginFormContainer.style";
-import { useAuth } from "../../../../AuthProvider";
+import { useAuth } from "../../../../provider";
 import { StyledButton } from "../atoms";
 const LoginFormContainer = ({ openDialog, setOpenDialog }) => {
   const { isLoggedIn, logout, user } = useAuth();
