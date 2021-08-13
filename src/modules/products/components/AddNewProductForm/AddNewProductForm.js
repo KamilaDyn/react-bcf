@@ -3,33 +3,15 @@ import { TextField } from "formik-material-ui";
 import { Button, LinearProgress } from "@material-ui/core";
 import { Field, Formik } from "formik";
 import { Form } from "../atoms";
+import { useAddNewProduct } from "./AddNewProductForm.utils";
 
 const AddNewProductForm = () => {
+  const { initialValues, onSubmit, submitForm } = useAddNewProduct();
   return (
     <Formik
-      initialValues={{
-        productName: "",
-        category: "",
-        price: "",
-      }}
-      validate={(values) => {
-        const errors = {};
-        if (!values.productName) {
-          errors.productName = "Wpisz nazwę Produktu";
-        } else if (values.category < 5) {
-          errors.category =
-            "Nazwa kategorii nie może być krótsza niż 10 znaków";
-        } else if (values.price <= 0) {
-          errors.price = "Nie prawidłowa cena";
-        }
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          setSubmitting(false);
-          alert(JSON.stringify(values, null, 2));
-        }, 500);
-      }}
+      initialValues={initialValues}
+      validate={submitForm}
+      onSubmit={onSubmit}
     >
       {({ submitForm, isSubmitting }) => (
         <Form>
