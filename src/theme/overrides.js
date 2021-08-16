@@ -15,8 +15,8 @@ const overrides = {
   MuiButton: {
     text: {
       color: palette.primary.main,
-      width: "1.8rem",
-      height: "1.8rem",
+      width: 30,
+      height: 30,
       border: `1px solid ${palette.primary.main}`,
       minWidth: 0,
       minHeight: 0,
@@ -43,7 +43,7 @@ const overrides = {
   },
   MuiIconButton: {
     root: {
-      fontSize: typography.h2.fontSize,
+      fontSize: typography.h3.fontSize,
     },
   },
   MuiContainer: {
@@ -62,13 +62,13 @@ const overrides = {
   MuiSvgIcon: {
     root: {
       color: palette.secondary.main,
-      fontSize: typography.h2.fontSize,
+      fontSize: typography.h3.fontSize,
     },
   },
   MuiAvatar: {
     root: {
-      width: "5rem",
-      height: "6.5rem",
+      width: 80,
+      height: 100,
       textAlign: "center",
       objectFit: "cover",
       color: "transparent",
@@ -95,13 +95,52 @@ const overrides = {
   },
   MuiLink: {
     root: {
+      textAlign: "center",
       "&:hover": {
-        textAlign: "center",
-        color: palette.text.secondary,
-        "&:hover": {
-          color: palette.primary.contrastText,
-        },
+        color: palette.primary.main,
       },
+    },
+  },
+  MuiModal: {
+    root: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  },
+  MuiFormControl: {
+    root: {
+      width: "100%",
+    },
+  },
+  MuiDialog: {
+    paper: {
+      overflowY: "hidden",
+      overflowX: "hidden",
+    },
+    paperWidthSm: {
+      maxWidth: 500,
+      minWidth: "50%",
+    },
+  },
+  MuiDialogTitle: {
+    root: {
+      paddingTop: spacing(10),
+    },
+  },
+  MuiDialogContent: {
+    dividers: {
+      padding: 0,
+    },
+    root: {
+      overflow: "hidden",
+      overflowY: "hidden",
+      padding: 0,
+    },
+  },
+  MuiPaper: {
+    rounded: {
+      borderRadius: 8,
     },
   },
 };

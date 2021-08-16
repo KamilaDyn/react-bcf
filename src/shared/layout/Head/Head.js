@@ -1,12 +1,24 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Tooltip, Typography } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import { useAuth } from "../../../provider";
 import { logo } from "../../../assets";
 
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
 
-const Head = ({ setOpen, open, countItems, shoppingList }) => {
+const Head = ({
+  setOpen,
+  open,
+  countItems,
+  shoppingList,
+  setOpenDialog,
+  openDialog,
+  openProductForm,
+  setOpenProductForm,
+}) => {
+  const { isLoggedIn, user } = useAuth();
   return (
     <StyledGrid
       container
@@ -33,8 +45,13 @@ const Head = ({ setOpen, open, countItems, shoppingList }) => {
         alignItems="center"
         justifyContent="center"
       >
-        <StyledIconButton edge="end">
-          <PersonOutlineIcon />
+        <StyledIconButton edge="end" onClick={() => setOpenDialog(!openDialog)}>
+          <Tooltip
+            title={isLoggedIn ? user.split("@")[0] : "Profil"}
+            placement="top"
+          >
+            <PersonOutlineIcon />
+          </Tooltip>
         </StyledIconButton>
         <StyledIconButton
           aria-label="open drawer"
@@ -47,6 +64,16 @@ const Head = ({ setOpen, open, countItems, shoppingList }) => {
             <LocalMallOutlinedIcon />
           </StyledBadge>
         </StyledIconButton>
+        {isLoggedIn && (
+          <StyledIconButton
+            edge="end"
+            onClick={() => setOpenProductForm(!openProductForm)}
+          >
+            <Tooltip title="Dodaj produkty" placement="top">
+              <AddCircleOutlineOutlinedIcon />
+            </Tooltip>
+          </StyledIconButton>
+        )}
       </Grid>
     </StyledGrid>
   );

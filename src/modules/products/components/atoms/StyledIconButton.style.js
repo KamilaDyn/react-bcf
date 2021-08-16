@@ -2,7 +2,7 @@ import { IconButton, styled } from "@material-ui/core";
 
 const StyledIconButton = styled(IconButton)(
   ({ theme, expandedOpen, isCard, deleteBtn }) => ({
-    fontSize: theme.typography.h2.fontSize,
+    fontSize: theme.typography.h3.fontSize,
     ...(expandedOpen && { transform: "rotate(180deg)" }),
     ...(isCard && {
       marginLeft: theme.spacing(0),
