@@ -13,7 +13,7 @@ export const useAddNewProduct = () => {
     }, 500);
   };
 
-  const SubmitForm = Yup.object().shape({
+  const SubmitSchema = Yup.object().shape({
     productName: Yup.string()
       .min(6, "Nazwa produktu nie może być krótsza niż 6 znaków")
       .required("Wpisz nazwę produktu"),
@@ -23,5 +23,5 @@ export const useAddNewProduct = () => {
     price: Yup.number().min(0.01).required("Dodaj cenę"),
   });
 
-  return { initialValues, onSubmit, SubmitForm };
+  return { initialValues, onSubmit, SubmitSchema };
 };

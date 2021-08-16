@@ -1,6 +1,7 @@
 import React from "react";
-import { useAuthProvider } from "./AuthProvider.utils";
 import { UserContext } from "../context/UserContext";
+import { useAuthProvider } from "./AuthProvider.utils";
+
 const AuthProvider = (props) => {
   const { login, logout, isLoggedIn, user, openDialog, setOpenDialog } =
     useAuthProvider();

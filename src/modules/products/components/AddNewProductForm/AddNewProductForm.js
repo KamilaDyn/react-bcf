@@ -6,11 +6,11 @@ import { Form } from "../atoms";
 import { useAddNewProduct } from "./AddNewProductForm.utils";
 
 const AddNewProductForm = () => {
-  const { initialValues, onSubmit, submitForm } = useAddNewProduct();
+  const { initialValues, onSubmit, SubmitSchema } = useAddNewProduct();
   return (
     <Formik
       initialValues={initialValues}
-      validate={submitForm}
+      validationSchema={SubmitSchema}
       onSubmit={onSubmit}
     >
       {({ submitForm, isSubmitting }) => (
