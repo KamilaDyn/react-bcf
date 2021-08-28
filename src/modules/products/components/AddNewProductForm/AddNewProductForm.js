@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "formik-material-ui";
 import { Button, LinearProgress } from "@material-ui/core";
 import { Field, Formik } from "formik";
-import { Form } from "../atoms";
+import { StyledForm } from "../atoms";
 import { useAddNewProduct } from "./AddNewProductForm.utils";
 
 const AddNewProductForm = () => {
@@ -14,7 +14,7 @@ const AddNewProductForm = () => {
       onSubmit={onSubmit}
     >
       {({ submitForm, isSubmitting }) => (
-        <Form>
+        <StyledForm>
           <Field
             component={TextField}
             name="productName"
@@ -46,7 +46,7 @@ const AddNewProductForm = () => {
           >
             Dodaj Produkt
           </Button>
-        </Form>
+        </StyledForm>
       )}
     </Formik>
   );

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import { theme } from "./theme";
 import { Products } from "./modules";
-import { AuthProvider } from "./provider";
+import { AuthProvider } from "./loginProvider";
 class App extends Component {
   render() {
     return (

@@ -3,20 +3,21 @@ import { Container, Grid, LinearProgress, Typography } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
 import { Field, Formik } from "formik";
 import { googleIcon } from "../../../../assets";
-import { Form, StyledButton } from "../atoms";
+import { StyledForm, StyledButton } from "../atoms";
 import { Image } from "./LoginForm.style";
 import { useLoginForm } from "./LoginForm.utils";
 
 const LoginForm = () => {
-  const { initialValues, onSubmit, SubmitSchema } = useLoginForm();
+  const { initialValues, onSubmit, SignupSchema } = useLoginForm();
+
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={SubmitSchema}
+      validationSchema={SignupSchema}
       onSubmit={onSubmit}
     >
       {({ submitForm, isSubmitting }) => (
-        <Form>
+        <StyledForm>
           <Grid
             container
             spacing={3}
@@ -71,7 +72,7 @@ const LoginForm = () => {
               </StyledButton>
             </Grid>
           </Grid>
-        </Form>
+        </StyledForm>
       )}
     </Formik>
   );

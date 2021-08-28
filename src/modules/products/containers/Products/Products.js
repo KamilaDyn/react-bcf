@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link, Typography } from "@material-ui/core/";
 import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
 import { Head, Main, Footer } from "../../../../shared";
+import { useAuthState } from "../../../../loginProvider";
 import { ProductContext } from "../../../context";
-import { useAuth } from "../../../../provider";
 import {
   AddNewProductContainer,
   LoginFormContainer,
@@ -14,12 +14,14 @@ import { HeadSection } from "../../components/atoms";
 import { NewProductBox, StyledContainer, Wrapper } from "./Products.style";
 import { useGetProducts, useCountItems } from "./Products.utils";
 
+
 const Products = () => {
   const [openProductForm, setOpenProductForm] = useState(false);
-  const { openDialog, setOpenDialog, isLoggedIn } = useAuth();
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
+  const { stateContext } = useAuthState();
 
+  console.log(stateContext.user)
   return (
     <>
       <Head
@@ -27,10 +29,12 @@ const Products = () => {
         open={open}
         setOpen={setOpen}
         shoppingList={shoppingList}
-        setOpenDialog={setOpenDialog}
-        openDialog={openDialog}
+        setOpenDialog={stateContext.setOpenDialog}
+        openDialog={stateContext.openDialog}
         openProductForm={openProductForm}
         setOpenProductForm={setOpenProductForm}
+        isLoggedIn={stateContext.isLoggedIn}
+        userEmail={stateContext.user}
       />
       <StyledContainer>
         <Main open={open}>
@@ -68,16 +72,17 @@ const Products = () => {
           <ShoppingCard />
         </ProductContext.Provider>
       </StyledContainer>
+
       <LoginFormContainer
-        openDialog={openDialog}
-        setOpenDialog={setOpenDialog}
+        openDialog={stateContext.openDialog}
+        setOpenDialog={stateContext.setOpenDialog}
       />
-      {isLoggedIn && (
-        <AddNewProductContainer
-          openProductForm={openProductForm}
-          setOpenProductForm={setOpenProductForm}
-        />
-      )}
+
+      <AddNewProductContainer
+        openProductForm={openProductForm}
+        setOpenProductForm={setOpenProductForm}
+      />
+
       <Footer />
     </>
   );

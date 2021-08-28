@@ -160,5 +160,22 @@
       "category": "women's clothing",
       "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
     }
+  ],
+  "users": [
+    {
+      "email": "kamila.dynysiuk@bcf-software.pl",
+      "password": "$2a$10$dueynUUwhByL1vNQYk5K/eYqtVd14Fx.q.dfAKWeymNpdVRB2h/iK",
+      "id": 2
+    },
+    {
+      "email": "anna.nowak@mail.com",
+      "password": "$2a$10$5vXJ8l7ixcf.8gbnLHsUc.zZcPsxWBZprut7jk5ZS2xGAG/vIWkF.",
+      "id": 3
+    },
+    {
+      "email": "kamila0990@gmail.com",
+      "password": "$2a$10$d.e3SHbut6TzOROILYoWuee7AedUuD73YVUkg5ceOBNKx.5dGx2eq",
+      "id": 4
+    }
   ]
 }
