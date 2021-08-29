@@ -3,7 +3,6 @@ import { Grid, Tooltip, Typography } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import { useAuth } from "../../../provider";
 import { logo } from "../../../assets";
 
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
@@ -17,8 +16,9 @@ const Head = ({
   openDialog,
   openProductForm,
   setOpenProductForm,
+  isLoggedIn,
+  user,
 }) => {
-  const { isLoggedIn, user } = useAuth();
   return (
     <StyledGrid
       container

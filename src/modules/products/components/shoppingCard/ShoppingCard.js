@@ -3,13 +3,11 @@ import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
-
 import { shoppingBag } from "../../../../assets";
 import { StyledButton, StyledIconButton } from "../atoms";
 import { NumberInput } from "../NumberInput";
 import { useQuantity } from "../NumberInput/NumberInput.utils";
 import { useShoppingCardData } from "./ShoppingCard.utils";
-
 import {
   ControlBox,
   EmptyCard,
@@ -22,10 +20,9 @@ import {
 const ShoppingCard = () => {
   const {
     handleDelete,
-    shoppingList,
-    open,
     handleDrawer,
     dispatch,
+    open, shoppingList,
     calculatePrice,
   } = useShoppingCardData();
   const { setQuantity, increment, decrement } = useQuantity();

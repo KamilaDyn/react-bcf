@@ -3,8 +3,9 @@ import { Container, Grid, LinearProgress, Typography } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
 import { Field, Formik } from "formik";
 import { googleIcon } from "../../../../assets";
-import { Form, StyledButton } from "../atoms";
+import { Form } from "../atoms";
 import { Image } from "./LoginForm.style";
+import { StyledButton } from "../atoms";
 import { useLoginForm } from "./LoginForm.utils";
 
 const LoginForm = () => {

@@ -1,14 +1,16 @@
-import { useContext } from "react";
-import { ProductContext } from "../../../context";
+import { useProductContext } from "../../../productProvider";
 
 export const useShoppingCardData = () => {
-  const productContext = useContext(ProductContext);
-  const { shoppingList, open, handleDrawer, quantity } = productContext;
+  const { productContext } = useProductContext();
+  const { shoppingList, open, quantity, setOpen } =
+    productContext;
 
   const handleDelete = (id) => {
     productContext.dispatch({ id, type: "REMOVE" });
   };
-
+  const handleDrawer = () => {
+    setOpen(false)
+  }
   const calculatePrice = () => {
     if (shoppingList.length > 0) {
       const item = shoppingList.filter((item) => item.price > 0);
@@ -22,6 +24,7 @@ export const useShoppingCardData = () => {
     handleDelete,
     shoppingList,
     open,
+    setOpen,
     handleDrawer,
     quantity,
     calculatePrice,
