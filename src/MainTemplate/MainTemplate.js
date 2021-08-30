@@ -4,10 +4,10 @@ import { ThemeProvider } from "@material-ui/styles";
 import { theme } from "../theme";
 import { Footer, Head, Main } from "../shared";
 import { useAuth } from "../provider";
-import { ShoppingCard } from ".././modules/products/components";
 import {
   LoginFormContainer,
   AddNewProductContainer,
+  ShoppingCard
 } from "../modules/products/components";
 import { useProductContext } from "../modules/productProvider";
 import { StyledContainer } from "./MainTemplate.style";

@@ -1,8 +1,10 @@
-import React from "react";
-import { Grid, Tooltip, Typography } from "@material-ui/core";
+import React  from "react";
+import { useHistory } from "react-router-dom";
+import { Grid, Tooltip, Typography, Link } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import { routes } from "../../../config/routes";
 import { logo } from "../../../assets";
 
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
@@ -19,6 +21,8 @@ const Head = ({
   isLoggedIn,
   user,
 }) => {
+  let history = useHistory();
+  console.log(history.location.pathname ==='/profile')
   return (
     <StyledGrid
       container
@@ -34,7 +38,9 @@ const Head = ({
         alignItems="center"
         justifyContent="center"
       >
+        <Link href={routes.home}>
         <img src={logo} alt="logo" />
+        </Link>
         <Typography variant="h1">Bazarek</Typography>
       </Grid>
       <Grid
@@ -45,7 +51,8 @@ const Head = ({
         alignItems="center"
         justifyContent="center"
       >
-        <StyledIconButton edge="end" onClick={() => setOpenDialog(!openDialog)}>
+        
+        <StyledIconButton edge="end" onClick={() => isLoggedIn && history.location.pathname ==='/profile' ? setOpenDialog(!openDialog)  : history.push(routes.profile)}>
           <Tooltip
             title={isLoggedIn ? user.split("@")[0] : "Profil"}
             placement="top"

@@ -6,11 +6,11 @@ import { ProfileInfo } from "../../components/ProfileInfo";
 const Profile = () => {
   return (
     <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={3}>
+      <Grid container spacing={3} >
+        <Grid item xs={12} sm={6} lg={3}>
           <Dashboard />
         </Grid>
-        <Grid item xs={12} sm={6} md={9}><ProfileInfo /></Grid>
+        <Grid item xs={12} sm={6} lg={9}><ProfileInfo /></Grid>
       </Grid>
     </Container>
   )
