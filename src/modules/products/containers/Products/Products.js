@@ -21,7 +21,6 @@ const Products = () => {
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
   const { stateContext } = useAuthState();
 
-  console.log(stateContext.user)
   return (
     <>
       <Head

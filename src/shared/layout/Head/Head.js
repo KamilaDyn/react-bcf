@@ -17,7 +17,6 @@ const Head = ({
   openProductForm,
   setOpenProductForm,
   isLoggedIn,
-  userEmail,
 }) => {
   return (
     <StyledGrid
@@ -47,7 +46,7 @@ const Head = ({
       >
         <StyledIconButton edge="end" onClick={() => setOpenDialog(!openDialog)}>
           <Tooltip
-            //   title={isLoggedIn ? userEmail.split("@")[0] : "Profil"}
+            title='Profil'
             placement="top"
           >
             <PersonOutlineIcon />

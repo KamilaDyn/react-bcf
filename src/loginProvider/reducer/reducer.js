@@ -5,8 +5,6 @@ let user = localStorage.getItem("currentUser")
 let token = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).auth_token
   : "";
-
-
 export const initialState = {
   userDetails: "" || user,
   token: "" || token,
@@ -15,8 +13,6 @@ export const initialState = {
 
 export const AuthReducer = (initialState, action) => {
   switch (action.type) {
-
-
     case "REQUEST_LOGIN":
       return {
         ...initialState,
