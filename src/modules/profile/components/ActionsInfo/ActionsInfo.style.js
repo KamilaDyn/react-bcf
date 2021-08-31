@@ -12,12 +12,3 @@ export const StyledAvatar = styled(Avatar)(({ theme }) => ({
   height: 64,
 }));
 
-export const FlexBox = styled(Box)(({ theme, balance }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  ...(balance && {
-    flex: "1 1 0px",
-    marginLeft: theme.spacing(2),
-  }),
-}));

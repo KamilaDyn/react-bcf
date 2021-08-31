@@ -1,7 +1,7 @@
 import React from 'react';
-import {Grid, Typography} from '@material-ui/core';
+import {Box,Grid, Typography} from '@material-ui/core';
 import { StyledCard } from '../atoms';
-import {StyledAvatar, FlexBox, ShoppingInfo } from './ActionsInfo.style';
+import {StyledAvatar,  ShoppingInfo } from './ActionsInfo.style';
 
 
 const ActionsInfo =()=>{
@@ -13,15 +13,15 @@ const ActionsInfo =()=>{
               <StyledAvatar alt='Remy Sharp' src=''>
                 P
               </StyledAvatar>
-              <FlexBox balance>
+              <Box display='flex' flexDirection='column' justifyContent="space-between" m={2}>
                 <div>
                   <Typography variant='h5'>Imię użytkownika </Typography>
-                  <FlexBox>
+                  <Box display='flex'  justifyContent="space-between">
                     <Typography>Balance:</Typography>
                     <Typography color='primary'>500$</Typography>
-                  </FlexBox>
+                  </Box>
                 </div>
-              </FlexBox>
+              </Box>
               <Typography>SILVER USER</Typography>
             </StyledCard>
           </Grid>
