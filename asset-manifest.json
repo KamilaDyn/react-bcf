@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/KamilaDyn/react-bcf/static/css/main.26a48dd2.chunk.css",
-    "main.js": "/KamilaDyn/react-bcf/static/js/main.30394863.chunk.js",
-    "main.js.map": "/KamilaDyn/react-bcf/static/js/main.30394863.chunk.js.map",
-    "runtime-main.js": "/KamilaDyn/react-bcf/static/js/runtime-main.1581c979.js",
-    "runtime-main.js.map": "/KamilaDyn/react-bcf/static/js/runtime-main.1581c979.js.map",
-    "static/js/2.a61a3cd4.chunk.js": "/KamilaDyn/react-bcf/static/js/2.a61a3cd4.chunk.js",
-    "static/js/2.a61a3cd4.chunk.js.map": "/KamilaDyn/react-bcf/static/js/2.a61a3cd4.chunk.js.map",
-    "index.html": "/KamilaDyn/react-bcf/index.html",
-    "static/css/main.26a48dd2.chunk.css.map": "/KamilaDyn/react-bcf/static/css/main.26a48dd2.chunk.css.map",
-    "static/js/2.a61a3cd4.chunk.js.LICENSE.txt": "/KamilaDyn/react-bcf/static/js/2.a61a3cd4.chunk.js.LICENSE.txt",
-    "static/media/google.faf01ea1.svg": "/KamilaDyn/react-bcf/static/media/google.faf01ea1.svg",
-    "static/media/shoppingBag.b3bfd4eb.svg": "/KamilaDyn/react-bcf/static/media/shoppingBag.b3bfd4eb.svg"
+    "main.css": "/react-bcf/static/css/main.26a48dd2.chunk.css",
+    "main.js": "/react-bcf/static/js/main.30394863.chunk.js",
+    "main.js.map": "/react-bcf/static/js/main.30394863.chunk.js.map",
+    "runtime-main.js": "/react-bcf/static/js/runtime-main.f7cbaf8c.js",
+    "runtime-main.js.map": "/react-bcf/static/js/runtime-main.f7cbaf8c.js.map",
+    "static/js/2.a61a3cd4.chunk.js": "/react-bcf/static/js/2.a61a3cd4.chunk.js",
+    "static/js/2.a61a3cd4.chunk.js.map": "/react-bcf/static/js/2.a61a3cd4.chunk.js.map",
+    "index.html": "/react-bcf/index.html",
+    "static/css/main.26a48dd2.chunk.css.map": "/react-bcf/static/css/main.26a48dd2.chunk.css.map",
+    "static/js/2.a61a3cd4.chunk.js.LICENSE.txt": "/react-bcf/static/js/2.a61a3cd4.chunk.js.LICENSE.txt",
+    "static/media/google.faf01ea1.svg": "/react-bcf/static/media/google.faf01ea1.svg",
+    "static/media/shoppingBag.b3bfd4eb.svg": "/react-bcf/static/media/shoppingBag.b3bfd4eb.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1581c979.js",
+    "static/js/runtime-main.f7cbaf8c.js",
     "static/js/2.a61a3cd4.chunk.js",
     "static/css/main.26a48dd2.chunk.css",
     "static/js/main.30394863.chunk.js"
