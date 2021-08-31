@@ -2,7 +2,7 @@
 
 npx json-server --watch data/db.json --port 8000
 
-## <a href='https://kamiladyn.github.io/react-bcf/LIVE'>Live</a>
+## <a href='https://kamiladyn.github.io/react-bcf'>Live</a>
 
 
 # Getting Started with Create React App
