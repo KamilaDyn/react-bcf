@@ -1,7 +1,6 @@
 import React from "react";
-
-import { useAuthProvider } from "./AuthProvider.utils";
 import { AuthStateContext, AuthDispatchContext } from "../context";
+import { useAuthProvider } from "./AuthProvider.utils";
 
 const AuthProvider = ({ children }) => {
   const {

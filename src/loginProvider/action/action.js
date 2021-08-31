@@ -1,5 +1,6 @@
 const ROOT_URL = "http://localhost:8000/users";
-export async function loginUser(dispatch, loginPayload) {
+
+export const  loginUser= async (dispatch, loginPayload)=> {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -22,7 +23,7 @@ export async function loginUser(dispatch, loginPayload) {
   }
 }
 
-export async function logout(dispatch) {
+export const logout=(dispatch)=> {
   dispatch({ type: "LOGOUT" });
   localStorage.removeItem("currentUser");
   localStorage.removeItem("token");

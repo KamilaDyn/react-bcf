@@ -6,7 +6,7 @@ import {
 
 export function useAuthState() {
     const stateContext = useContext(AuthStateContext);
-    if (stateContext === undefined) {
+    if (!stateContext) {
         throw new Error("useAuthState must be used within a AuthProvider");
     }
     return { stateContext };
@@ -15,7 +15,7 @@ export function useAuthState() {
 export function useAuthDispatch() {
     const dispatchContext = useContext(AuthDispatchContext);
 
-    if (dispatchContext === undefined) {
+    if (!dispatchContext) {
         throw new Error("useAuthDispatch must be used within a AuthProvider");
     }
 

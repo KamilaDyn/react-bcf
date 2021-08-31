@@ -1,7 +1,7 @@
 import React from "react";
-import { Container, Grid, LinearProgress, Typography } from "@material-ui/core";
+import { Box,Container, Grid, LinearProgress, Typography } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
-import { Field, Formik } from "formik";
+import { Field, Formik, Form } from "formik";
 import { googleIcon } from "../../../../assets";
 import { StyledForm, StyledButton } from "../atoms";
 import { Image } from "./LoginForm.style";
@@ -17,7 +17,8 @@ const LoginForm = () => {
       onSubmit={onSubmit}
     >
       {({ submitForm, isSubmitting }) => (
-        <StyledForm>
+        <Form>
+          <Box spacing={3}>
           <Grid
             container
             spacing={3}
@@ -72,7 +73,8 @@ const LoginForm = () => {
               </StyledButton>
             </Grid>
           </Grid>
-        </StyledForm>
+          </Box>
+        </Form>
       )}
     </Formik>
   );

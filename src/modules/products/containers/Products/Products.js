@@ -20,6 +20,7 @@ const Products = () => {
   const { products, open, setOpen } = useGetProducts();
   const { shoppingList, dispatch, countItemsInBasket } = useCountItems();
   const { stateContext } = useAuthState();
+  const {setOpenDialog, openDialog, isLoggedIn, user} = stateContext;
 
   return (
     <>
@@ -28,12 +29,12 @@ const Products = () => {
         open={open}
         setOpen={setOpen}
         shoppingList={shoppingList}
-        setOpenDialog={stateContext.setOpenDialog}
-        openDialog={stateContext.openDialog}
+        setOpenDialog={setOpenDialog}
+        openDialog={openDialog}
         openProductForm={openProductForm}
         setOpenProductForm={setOpenProductForm}
-        isLoggedIn={stateContext.isLoggedIn}
-        userEmail={stateContext.user}
+        isLoggedIn={isLoggedIn}
+        userEmail={user}
       />
       <StyledContainer>
         <Main open={open}>
@@ -73,8 +74,8 @@ const Products = () => {
       </StyledContainer>
 
       <LoginFormContainer
-        openDialog={stateContext.openDialog}
-        setOpenDialog={stateContext.setOpenDialog}
+        openDialog={openDialog}
+        setOpenDialog={setOpenDialog}
       />
 
       <AddNewProductContainer

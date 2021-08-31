@@ -1,14 +1,14 @@
 import { useEffect, useReducer, useState } from "react";
-import { AuthReducer, initialState } from "../reducer/reducer";
+import { AuthReducer, initialState } from "../reducer";
 
 export const useAuthProvider = () => {
   const [user, dispatch] = useReducer(AuthReducer, initialState);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
-  let userEmail = user.userDetails.email;
+  const  userEmail = user.userDetails.email;
   useEffect(() => {
-    let loggedUser = localStorage.getItem("currentUser");
+    const loggedUser = localStorage.getItem("currentUser");
     if (loggedUser !== null) {
       setLoggedIn(true);
     }
