@@ -166,6 +166,11 @@
       "email": "anna.nowak@mail.com",
       "password": "123456",
       "id": 1
+    },
+    {
+      "email": "anna.nowak@mail.com",
+      "password": "123456",
+      "id": 2
     }
   ]
 }

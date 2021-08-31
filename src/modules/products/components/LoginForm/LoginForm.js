@@ -3,7 +3,7 @@ import { Box,Container, Grid, LinearProgress, Typography } from "@material-ui/co
 import { TextField } from "formik-material-ui";
 import { Field, Formik, Form } from "formik";
 import { googleIcon } from "../../../../assets";
-import { StyledForm, StyledButton } from "../atoms";
+import {StyledButton } from "../atoms";
 import { Image } from "./LoginForm.style";
 import { useLoginForm } from "./LoginForm.utils";
 
@@ -18,7 +18,7 @@ const LoginForm = () => {
     >
       {({ submitForm, isSubmitting }) => (
         <Form>
-          <Box spacing={3}>
+          <Box pt='3rem' px='3.75rem' pb='1rem'>
           <Grid
             container
             spacing={3}
