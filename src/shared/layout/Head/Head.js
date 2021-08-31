@@ -22,7 +22,6 @@ const Head = ({
   user,
 }) => {
   let history = useHistory();
-  console.log(history.location.pathname ==='/profile')
   return (
     <StyledGrid
       container

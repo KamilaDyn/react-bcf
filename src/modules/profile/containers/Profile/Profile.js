@@ -7,10 +7,10 @@ const Profile = () => {
   return (
     <Container>
       <Grid container spacing={3} >
-        <Grid item xs={12} sm={6} lg={3}>
+        <Grid item xs={12} sm={4} md ={3} >
           <Dashboard />
         </Grid>
-        <Grid item xs={12} sm={6} lg={9}><ProfileInfo /></Grid>
+        <Grid item xs={12} sm={8} md={9} ><ProfileInfo /></Grid>
       </Grid>
     </Container>
   )
