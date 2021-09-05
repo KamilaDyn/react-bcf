@@ -51,7 +51,7 @@ const Head = ({
         justifyContent="center"
       >
         
-        <StyledIconButton edge="end" onClick={() => isLoggedIn && history.location.pathname ==='/profile' ? setOpenDialog(!openDialog)  : history.push(routes.profile)}>
+        <StyledIconButton edge="end" onClick={() => isLoggedIn && history.location.pathname ==='/profile' ?    setOpenDialog(true):history.push(routes.profile) }>
           <Tooltip
             title={isLoggedIn ? user.split("@")[0] : "Profil"}
             placement="top"

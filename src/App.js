@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
-  // Redirect,
   Route,
   Switch,
 } from "react-router-dom";
 import { Products, Profile } from "./modules";
 import { routes } from "./config/routes";
-import MainTemplate from "./MainTemplate/MainTemplate";
+import MainTemplate from "./views/MainTemplate/MainTemplate";
 import { AuthProvider } from "./provider";
 import { ProductProvider } from "./modules/productProvider";
 class App extends Component {

@@ -5,6 +5,26 @@ import {StyledAvatar,  ShoppingInfo } from './ActionsInfo.style';
 
 
 const ActionsInfo =()=>{
+
+  const actionData = [{
+    id:1,
+    key: 'Zamówienia',
+    value: 16,
+  },
+  {
+    id:2,
+    key: 'Płatności',
+    value: 1,
+  },
+  {
+    id:3,
+    key: 'Wysyłka',
+    value: 0,
+  },
+  {id:4,
+    key: 'Odbiór',
+    value: 3,
+  }]
     return(
         <ShoppingInfo>
         <Grid container spacing={3} justifyContent='space-between' >
@@ -25,39 +45,18 @@ const ActionsInfo =()=>{
               <Typography>SILVER USER</Typography>
             </StyledCard>
           </Grid>
-          <Grid container item xs={16} md={6} spacing={5}>
-            <Grid item xs={3}>
+          <Grid container item xs={12} md={6} spacing={5}>
+            {actionData.map((data)=>(
+              <Grid item xs={3} key={data.id}>
               <StyledCard>
                 <Typography variant='h3' color='primary'>
-                  16
+                 {data.value}
                 </Typography>
-                <small>Zamówienia</small>
+                <small>{data.key}</small>
               </StyledCard>
             </Grid>
-            <Grid item xs={3}>
-              <StyledCard>
-                <Typography variant='h3' color='primary'>
-                  01
-                </Typography>
-                <small> Płatności</small>
-              </StyledCard>
-            </Grid>
-            <Grid item xs={3}>
-              <StyledCard>
-                <Typography variant='h3' color='primary'>
-                  00
-                </Typography>
-                <small>Wysyłka</small>
-              </StyledCard>
-            </Grid>
-            <Grid item xs={3}>
-              <StyledCard>
-                <Typography variant='h3' color='primary'>
-                  03
-                </Typography>
-                <small>Odbiór</small>
-              </StyledCard>
-            </Grid>
+            ))}
+        
           </Grid>
         </Grid>
       </ShoppingInfo>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useProductContext } from "../../../productProvider/context";
+import { useProductContext } from "../../../../context";
 import { useGetProducts } from "../../containers/Products/Products.utils";
 
 export const useAddProduct = () => {

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router";
 import { ThemeProvider } from "@material-ui/styles";
-import { theme } from "../theme";
-import { Footer, Head, Main } from "../shared";
-import { useAuth } from "../provider";
+import { theme } from "../../theme";
+import { Footer, Head, Main } from "../../shared";
+import { useAuth } from "../../provider";
+import { useProductContext } from "../../context";
+
 import {
   LoginFormContainer,
   AddNewProductContainer,
   ShoppingCard
-} from "../modules/products/components";
-import { useProductContext } from "../modules/productProvider";
+} from "../../modules/products/components";
 import { StyledContainer } from "./MainTemplate.style";
 
 

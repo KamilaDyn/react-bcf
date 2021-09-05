@@ -1,4 +1,4 @@
-import { useProductContext } from "../../../productProvider";
+import { useProductContext } from "../../../../context";
 
 export const useShoppingCardData = () => {
   const { productContext } = useProductContext();

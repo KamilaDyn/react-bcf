@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ProductContext } from '../context';
+import { ProductContext } from '../../../context';
 import { useProductProvider } from './ProductProvider.utils';
 
 const ProductProvider = ({ children }) => {
