@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { Grid, Tooltip, Typography, Link } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
@@ -26,45 +26,51 @@ const Head = ({
     <StyledGrid
       container
       spacing={5}
-      justifyContent="center"
-      direction="column"
+      justifyContent='center'
+      direction='column'
     >
       <Grid
         xs={12}
         sm={6}
         container
         item
-        alignItems="center"
-        justifyContent="center"
+        alignItems='center'
+        justifyContent='center'
       >
         <Link href={routes.home}>
-        <img src={logo} alt="logo" />
+          <img src={logo} alt='logo' />
         </Link>
-        <Typography variant="h1">Bazarek</Typography>
+        <Typography variant='h1'>Bazarek</Typography>
       </Grid>
       <Grid
         xs={12}
         sm={6}
         container
         item
-        alignItems="center"
-        justifyContent="center"
+        alignItems='center'
+        justifyContent='center'
       >
-        
-        <StyledIconButton edge="end" onClick={() => isLoggedIn && history.location.pathname ==='/profile' ?    setOpenDialog(true):history.push(routes.profile) }>
+        <StyledIconButton
+          edge='end'
+          onClick={() =>
+            isLoggedIn && history.location.pathname === "/profile"
+              ? setOpenDialog(true)
+              : history.push(routes.profile)
+          }
+        >
           <Tooltip
             title={isLoggedIn ? user.split("@")[0] : "Profil"}
-            placement="top"
+            placement='top'
           >
             <PersonOutlineIcon />
           </Tooltip>
         </StyledIconButton>
         <StyledIconButton
-          aria-label="open drawer"
+          aria-label='open drawer'
           onClick={() => setOpen(!open)}
         >
           <StyledBadge
-            color="primary"
+            color='primary'
             badgeContent={shoppingList.length > 0 ? countItems() : "0"}
           >
             <LocalMallOutlinedIcon />
@@ -72,10 +78,10 @@ const Head = ({
         </StyledIconButton>
         {isLoggedIn && (
           <StyledIconButton
-            edge="end"
+            edge='end'
             onClick={() => setOpenProductForm(!openProductForm)}
           >
-            <Tooltip title="Dodaj produkty" placement="top">
+            <Tooltip title='Dodaj produkty' placement='top'>
               <AddCircleOutlineOutlinedIcon />
             </Tooltip>
           </StyledIconButton>

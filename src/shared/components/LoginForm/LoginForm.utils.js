@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
-import { useAuth } from "../../../../provider";
+import { useAuth } from "../../../provider";
 
 export const useLoginForm = () => {
   let history = useHistory();
@@ -15,8 +15,7 @@ export const useLoginForm = () => {
     setTimeout(() => {
       setSubmitting(false);
       login(values.email);
-      history.push('/profile')
-
+      history.push("/profile");
     }, 500);
   };
   const SubmitSchema = Yup.object().shape({

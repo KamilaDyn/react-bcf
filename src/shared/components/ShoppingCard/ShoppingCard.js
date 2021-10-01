@@ -3,10 +3,10 @@ import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
-import { shoppingBag } from "../../../../assets";
-import { StyledButton, StyledIconButton } from "../atoms";
-import { NumberInput } from "../NumberInput";
-import { useQuantity } from "../NumberInput/NumberInput.utils";
+import { shoppingBag } from "../../../assets";
+import { StyledButton, StyledIconButton } from "../../atoms";
+import { NumberInput } from "../../../modules/products/components/NumberInput";
+import { useQuantity } from "../../../modules/products/components/NumberInput/NumberInput.utils";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {
   ControlBox,
@@ -22,26 +22,27 @@ const ShoppingCard = () => {
     handleDelete,
     handleDrawer,
     dispatch,
-    open, shoppingList,
+    open,
+    shoppingList,
     calculatePrice,
   } = useShoppingCardData();
   const { setQuantity, increment, decrement } = useQuantity();
   return (
-    <StyledDrawer variant="persistent" anchor="right" open={open}>
+    <StyledDrawer variant='persistent' anchor='right' open={open}>
       <StyledIconButton onClick={() => handleDrawer(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
       <Divider />
       <StyledBox>
         <LocalMallOutlinedIcon />
-        <Typography variant="h2">Twój koszyk</Typography>
+        <Typography variant='h2'>Twój koszyk</Typography>
       </StyledBox>
       <Divider light />
       {shoppingList.length > 0 ? (
         <>
           {shoppingList.map((item, index) => (
             <ItemContainer key={item.id}>
-              <Grid item spacing={2} container alignItems="center">
+              <Grid item spacing={2} container alignItems='center'>
                 <Grid item xs={2}>
                   <ControlBox>
                     <NumberInput
@@ -55,14 +56,14 @@ const ShoppingCard = () => {
                   </ControlBox>
                 </Grid>
                 <Grid item xs={3}>
-                  <Avatar alt={item.title} src={item.img} variant="square" />
+                  <Avatar alt={item.title} src={item.img} variant='square' />
                 </Grid>
                 <Grid item xs={5}>
-                  <Typography variant="h5">{item.name}</Typography>
+                  <Typography variant='h5'>{item.name}</Typography>
                   <small>
                     {item.itemPrice}$ x {item.count}
                   </small>
-                  <Typography variant="subtitle2">
+                  <Typography variant='subtitle2'>
                     Cena: {item.price + "$"}
                   </Typography>
                 </Grid>
@@ -71,7 +72,7 @@ const ShoppingCard = () => {
                     deleteBtn
                     onClick={() => handleDelete(item.id, dispatch)}
                   >
-                    <Tooltip title="Usuń produkt" placement="top">
+                    <Tooltip title='Usuń produkt' placement='top'>
                       <DeleteOutlineIcon />
                     </Tooltip>
                   </StyledIconButton>
@@ -86,10 +87,10 @@ const ShoppingCard = () => {
         <EmptyCard>
           <Image
             src={shoppingBag}
-            alt="empty shopping card"
-            title="empty shopping card"
+            alt='empty shopping card'
+            title='empty shopping card'
           />
-          <Typography variant="h4">
+          <Typography variant='h4'>
             Twój kosz jest pusty. Nie wybrałeś jeszcze żadnego produktu.
           </Typography>
         </EmptyCard>

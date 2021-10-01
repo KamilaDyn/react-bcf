@@ -4,9 +4,9 @@ import { useGetProducts } from "../../containers/Products/Products.utils";
 
 export const useAddProduct = () => {
   const [price, setPrice] = useState(0);
-  const { productContext } = useProductContext()
+  const { productContext } = useProductContext();
 
-  const { products } = useGetProducts()
+  const { products } = useGetProducts();
   const handleSubmit = (e, id, quantity) => {
     let product = products.find((item) => {
       return item.id === id;
@@ -36,6 +36,6 @@ export const useAddProduct = () => {
 
   return {
     handleSubmit,
-    productContext
+    productContext,
   };
 };

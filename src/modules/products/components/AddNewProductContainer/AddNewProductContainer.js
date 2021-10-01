@@ -1,6 +1,6 @@
 import React from "react";
 import { Dialog } from "@material-ui/core";
-import { MuiDialogTitle } from "../molecules/DialogTitle";
+import { MuiDialogTitle } from "../../../../shared/molecules/DialogTitle";
 import { AddNewProductForm } from "../AddNewProductForm";
 
 const AddNewProductContainer = ({ openProductForm, setOpenProductForm }) => {
@@ -9,11 +9,11 @@ const AddNewProductContainer = ({ openProductForm, setOpenProductForm }) => {
       onClose={() => {
         setOpenProductForm(false);
       }}
-      aria-labelledby="customized-dialog-title2"
+      aria-labelledby='customized-dialog-title2'
       open={openProductForm}
     >
       <MuiDialogTitle
-        id="customized-dialog-title2"
+        id='customized-dialog-title2'
         onClose={() => setOpenProductForm(false)}
       >
         Dodaj nowy produkt

@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "formik-material-ui";
 import { Button, LinearProgress } from "@material-ui/core";
 import { Field, Formik } from "formik";
-import { Form } from "../atoms";
+import { Form } from "../../../../shared";
 import { useAddNewProduct } from "./AddNewProductForm.utils";
 
 const AddNewProductForm = () => {
@@ -17,30 +17,30 @@ const AddNewProductForm = () => {
         <Form>
           <Field
             component={TextField}
-            name="productName"
-            type="text"
-            label="Nazwa Produktu"
+            name='productName'
+            type='text'
+            label='Nazwa Produktu'
           />
           <br />
           <Field
             component={TextField}
-            type="text"
-            label="Kategoria"
-            name="category"
+            type='text'
+            label='Kategoria'
+            name='category'
           />
           <br />
           <Field
-            min="00.01"
+            min='00.01'
             component={TextField}
-            type="number"
-            label="Cena"
-            name="price"
+            type='number'
+            label='Cena'
+            name='price'
           />
           {isSubmitting && <LinearProgress />}
           <br />
           <Button
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             disabled={isSubmitting}
             onClick={submitForm}
           >

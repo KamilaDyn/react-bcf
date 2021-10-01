@@ -3,28 +3,27 @@ import {Box,Grid, Typography} from '@material-ui/core';
 import { StyledCard } from '../atoms';
 import {StyledAvatar,  ShoppingInfo } from './ActionsInfo.style';
 
+const actionData = [{
+  id:1,
+  key: 'Zamówienia',
+  value: 16,
+},
+{
+  id:2,
+  key: 'Płatności',
+  value: 1,
+},
+{
+  id:3,
+  key: 'Wysyłka',
+  value: 0,
+},
+{id:4,
+  key: 'Odbiór',
+  value: 3,
+}]
 
 const ActionsInfo =()=>{
-
-  const actionData = [{
-    id:1,
-    key: 'Zamówienia',
-    value: 16,
-  },
-  {
-    id:2,
-    key: 'Płatności',
-    value: 1,
-  },
-  {
-    id:3,
-    key: 'Wysyłka',
-    value: 0,
-  },
-  {id:4,
-    key: 'Odbiór',
-    value: 3,
-  }]
     return(
         <ShoppingInfo>
         <Grid container spacing={3} justifyContent='space-between' >
