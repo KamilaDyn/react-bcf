@@ -31,7 +31,7 @@ export const useGetProducts = () => {
       .then((response) => {
         setProducts(response.data);
       })
-      .catch(function (error) {
+      .catch( (error)=> {
         console.log(error);
       });
   };

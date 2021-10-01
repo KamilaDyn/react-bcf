@@ -1,19 +1,23 @@
 import React from "react";
 import { Dialog, Grid, Link, Typography } from "@material-ui/core";
+import { useAuthState } from "../../../../loginProvider";
 import { MuiDialogTitle } from "../molecules/DialogTitle";
 import { LoginForm } from "../LoginForm";
-import { ResetContainer } from "./LoginFormContainer.style";
-import { useAuth } from "../../../../provider";
 import { StyledButton } from "../atoms";
+import { useHandleLoginOut } from "./LoginFormContainer.utils";
+import { ResetContainer } from "./LoginFormContainer.style";
+
+
 const LoginFormContainer = ({ openDialog, setOpenDialog }) => {
-  const { isLoggedIn, logout, user } = useAuth();
+  const { stateContext } = useAuthState();
+  const { handleLoginOut } = useHandleLoginOut();
   return (
     <Dialog
       onClose={() => setOpenDialog(false)}
       aria-labelledby="customized-dialog-title"
       open={openDialog}
     >
-      {!isLoggedIn ? (
+      {!stateContext.isLoggedIn ? (
         <>
           <MuiDialogTitle
             id="customized-dialog-title"
@@ -50,9 +54,9 @@ const LoginFormContainer = ({ openDialog, setOpenDialog }) => {
             id="customized-dialog-title"
             onClose={() => setOpenDialog(false)}
           >
-            Witaj {user.split("@")[0]} w sklepie Bazarek!
+            {/* Witaj {userEmail.split("@")[0]} w sklepie Bazarek! */}
           </MuiDialogTitle>
-          <StyledButton onClick={logout}>Wyloguj się </StyledButton>
+          <StyledButton onClick={handleLoginOut}>Wyloguj się </StyledButton>
         </>
       )}
     </Dialog>
