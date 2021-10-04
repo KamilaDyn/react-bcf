@@ -1,12 +1,14 @@
-import { useState, useContext } from "react";
-import { ProductContext } from "../../../context";
+import { useState } from "react";
+import { useProductContext } from "../../../../context";
+import { useGetProducts } from "../../containers/Products/Products.utils";
 
 export const useAddProduct = () => {
   const [price, setPrice] = useState(0);
+  const { productContext } = useProductContext();
 
-  const productContext = useContext(ProductContext);
+  const { products } = useGetProducts();
   const handleSubmit = (e, id, quantity) => {
-    let product = productContext.products.find((item) => {
+    let product = products.find((item) => {
       return item.id === id;
     });
     setPrice(product.price);
@@ -18,7 +20,6 @@ export const useAddProduct = () => {
       price: product.price * quantity,
       img: product.image,
     };
-
     const itemId = productContext.shoppingList.find((item) => item.id === id);
 
     if (!itemId) {
@@ -35,5 +36,6 @@ export const useAddProduct = () => {
 
   return {
     handleSubmit,
+    productContext,
   };
 };

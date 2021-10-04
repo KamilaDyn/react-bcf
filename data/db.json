@@ -161,16 +161,5 @@
       "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
     }
   ],
-  "users": [
-    {
-      "email": "anna.nowak@mail.com",
-      "password": "123456",
-      "id": 1
-    },
-    {
-      "email": "anna.nowak@mail.com",
-      "password": "123456",
-      "id": 2
-    }
-  ]
+  "users": []
 }

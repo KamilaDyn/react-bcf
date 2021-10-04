@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <StyledContainer>
       <Grid container spacing={3}>
-        <Grid conatiner item xs={12} sm={7} md={4}>
+        <Grid container item xs={12} sm={7} md={4}>
           <Typography variant="h3">Bazarek</Typography>
 
           <Typography paragraph color="textSecondary">
