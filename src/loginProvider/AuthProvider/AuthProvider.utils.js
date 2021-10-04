@@ -6,14 +6,13 @@ export const useAuthProvider = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
-  const  userEmail = user.userDetails.email;
+  const userEmail = user.userDetails.email;
   useEffect(() => {
     const loggedUser = localStorage.getItem("currentUser");
     if (loggedUser !== null) {
       setLoggedIn(true);
     }
-
-  }, []);
+  }, [user]);
 
   return {
     userEmail,

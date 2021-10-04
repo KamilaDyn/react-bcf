@@ -11,7 +11,6 @@ const AuthProvider = ({ children }) => {
     setOpenDialog,
     openDialog,
   } = useAuthProvider();
-
   const authContextValue = {
     isLoggedIn: isLoggedIn,
     setLoggedIn: setLoggedIn,

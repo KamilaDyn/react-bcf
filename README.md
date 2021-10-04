@@ -1,6 +1,7 @@
 # Start Json.Server
 
 npx json-server --watch data/db.json --port 8000
+npx json-server data/db.json -m ./node_modules/json-server-auth --port 8000
 
 ## <a href='https://kamiladyn.github.io/react-bcf'>Live</a>
 
