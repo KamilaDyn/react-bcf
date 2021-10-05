@@ -53,7 +53,8 @@ const LoginFormContainer = ({ openDialog, setOpenDialog, user }) => {
             id='customized-dialog-title'
             onClose={() => setOpenDialog(false)}
           >
-            Witaj {user.split("@")[0]} w sklepie Bazarek!
+            {stateContext.isLoggedIn &&
+              ` Witaj ${stateContext.user.split("@")[0]} w sklepie Bazarek!`}
           </MuiDialogTitle>
           <StyledButton onClick={handleLoginOut}>Wyloguj się </StyledButton>
         </>
