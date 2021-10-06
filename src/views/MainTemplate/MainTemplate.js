@@ -9,14 +9,12 @@ import {
   LoginFormContainer,
   ShoppingCard,
 } from "../../shared";
-import { useAuthProvider, useAuthState } from "../../loginProvider";
+import { useAuthState } from "../../loginProvider";
 import { useProductContext } from "../../context";
 import { StyledContainer } from "./MainTemplate.style";
 
 const MainTemplate = ({ children }) => {
   const [openProductForm, setOpenProductForm] = useState(false);
-  // const { openDialog, setOpenDialog, isLoggedIn, userEmail } =
-  //   useAuthProvider();
   const { productContext } = useProductContext();
   const { stateContext } = useAuthState();
 
@@ -26,7 +24,8 @@ const MainTemplate = ({ children }) => {
     openShoppingCard,
     setOpenShoppingCard,
   } = productContext;
-  const { openDialog, isLoggedIn, userEmail, setOpenDialog } = stateContext;
+  const { openLoggingForm, isLoggedIn, user, setOpenLoggingForm } =
+    stateContext;
   return (
     <ThemeProvider theme={theme}>
       <Head
@@ -34,12 +33,12 @@ const MainTemplate = ({ children }) => {
         openShoppingCard={openShoppingCard}
         setOpenShoppingCard={setOpenShoppingCard}
         shoppingList={shoppingList}
-        setOpenDialog={stateContext.setOpenDialog}
-        openDialog={stateContext.openDialog}
+        setOpenLoggingForm={stateContext.setOpenLoggingForm}
+        openLoggingForm={stateContext.openLoggingForm}
         openProductForm={openProductForm}
         setOpenProductForm={setOpenProductForm}
         isLoggedIn={isLoggedIn}
-        user={userEmail}
+        user={user}
       />
       <StyledContainer>
         <Main openShoppingCard={openShoppingCard}>{children}</Main>
@@ -49,9 +48,9 @@ const MainTemplate = ({ children }) => {
         />
       </StyledContainer>
       <LoginFormContainer
-        openDialog={openDialog}
-        setOpenDialog={setOpenDialog}
-        user={userEmail}
+        openLoggingForm={openLoggingForm}
+        setOpenLoggingForm={setOpenLoggingForm}
+        user={user}
       />
       <Footer />
     </ThemeProvider>

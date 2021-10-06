@@ -14,7 +14,7 @@ const Head = ({
   openShoppingCard,
   countItems,
   shoppingList,
-  setOpenDialog,
+  setOpenLoggingForm,
   isLoggedIn,
   user,
 }) => {
@@ -50,7 +50,7 @@ const Head = ({
         <StyledIconButton
           edge='end'
           onClick={() =>
-            isLoggedIn ? history.push(routes.profile) : setOpenDialog(true)
+            isLoggedIn ? history.push(routes.profile) : setOpenLoggingForm(true)
           }
         >
           <Tooltip

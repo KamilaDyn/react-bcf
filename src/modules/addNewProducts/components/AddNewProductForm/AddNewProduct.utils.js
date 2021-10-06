@@ -79,5 +79,6 @@ export const useAddNewProduct = () => {
     SignupSchema,
     initialProductValues,
     setFieldValue,
+    newProduct,
   };
 };

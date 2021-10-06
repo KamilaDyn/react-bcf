@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Card, Link } from "@material-ui/core";
+import { Box, Link } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import { StyledCard } from "./Dashboard.style";
