@@ -6,41 +6,49 @@ import {
   Typography,
   Box,
   LinearProgress,
+  Snackbar,
+  IconButton,
 } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 import { StyledBox, StyledButton, Divider } from "./AddNewProductForm.style";
-import { useAddNewProduct } from "./AddNewProduct.utils";
-
-const categories = [
-  {
-    value: "Odzież męska",
-  },
-  {
-    value: "Odzież damska",
-  },
-  {
-    value: "Biżuteria",
-  },
-  {
-    value: "Elektronika",
-  },
-];
+import {
+  useAddNewProduct,
+  categories,
+  fieldsData,
+} from "./AddNewProductForm.utils";
 
 const AddNewProductForm = () => {
   const {
-    category,
+    productCategory,
     handleChange,
     SignupSchema,
     initialProductValues,
     onSubmit,
     setFieldValue,
+    openSnackbar,
+    handleCloseSnackbar,
   } = useAddNewProduct();
   const inputEl = React.useRef(null);
 
   const triggerClick = () => {
     inputEl.current.click();
   };
+
+  const action = (
+    <>
+      <IconButton
+        size='small'
+        aria-label='close'
+        color='inherit'
+        onClick={handleCloseSnackbar}
+      >
+        <CancelIcon fontSize='small' color='primary' />
+      </IconButton>
+    </>
+  );
+
   return (
     <StyledBox>
       <Formik
@@ -51,67 +59,71 @@ const AddNewProductForm = () => {
         {({ submitForm, isSubmitting }) => (
           <Form>
             <Grid container spacing={6}>
-              <Grid container item justifyContent='space-between' spacing={3}>
-                <Grid container justifyContent='space-between' spacing={3}>
-                  <Grid item xs={6}>
-                    <Field
-                      component={TextField}
-                      name='name'
-                      type='text'
-                      label='Product name'
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Field
-                      component={TextField}
-                      name='category'
-                      select
-                      value={category}
-                      onChange={handleChange}
-                      type='dropdownlist'
-                    >
-                      {categories.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.value}
-                        </MenuItem>
-                      ))}
-                    </Field>
-                  </Grid>
-                </Grid>
-                <Grid item xs={12}>
-                  <StyledBox addImg typeIndex='0'>
-                    <input
-                      name='file'
-                      ref={inputEl}
-                      type='file'
-                      multiple
-                      typeIndex='-1'
-                      accept='.jpeg,.jpg,.png,.gif'
-                      hidden
-                      onChange={(event) => {
-                        setFieldValue(event.currentTarget.files);
-                      }}
-                    />
-                    <Typography variant='h5' align='center'>
-                      Przeciągnij i upuść obrazek tutaj
-                    </Typography>
-                    <Box display='flex' alignItems='center' margin={2}>
-                      <Divider />
-                      <Typography>lub</Typography>
-                      <Divider />
-                    </Box>
-                    <StyledButton
-                      sixe='medium'
-                      variant='contained'
-                      onClick={triggerClick}
-                    >
-                      Wybierz obraz
-                    </StyledButton>
-                    <Typography align='center'>
-                      Rozmiar obrazka 200x200
-                    </Typography>
-                  </StyledBox>
-                </Grid>
+              <Grid item xs={6}>
+                <Field
+                  component={TextField}
+                  name='name'
+                  type='text'
+                  label='Product name'
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <Field
+                  component={TextField}
+                  name='category'
+                  select
+                  value={productCategory}
+                  onChange={handleChange}
+                >
+                  {categories.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.value}
+                    </MenuItem>
+                  ))}
+                </Field>
+              </Grid>
+              <Grid item xs={6}>
+                <Field
+                  component={TextField}
+                  name='urlLink'
+                  type='text'
+                  label='Link do obrazka'
+                  placeholder='url link'
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <StyledBox addImg typeIndex='0'>
+                  <input
+                    name='file'
+                    ref={inputEl}
+                    type='file'
+                    multiple
+                    typeIndex='-1'
+                    accept='.jpeg,.jpg,.png,.gif'
+                    hidden
+                    onChange={(event) => {
+                      setFieldValue(event.currentTarget.files);
+                    }}
+                  />
+                  <Typography variant='h5' align='center'>
+                    Przeciągnij i upuść obrazek tutaj
+                  </Typography>
+                  <Box display='flex' alignItems='center' margin={2}>
+                    <Divider />
+                    <Typography>lub</Typography>
+                    <Divider />
+                  </Box>
+                  <StyledButton
+                    sixe='medium'
+                    variant='contained'
+                    onClick={triggerClick}
+                  >
+                    Wybierz obraz
+                  </StyledButton>
+                  <Typography align='center'>
+                    Rozmiar obrazka 200x200
+                  </Typography>
+                </StyledBox>
               </Grid>
               <Grid item xs={12}>
                 <Field
@@ -124,54 +136,16 @@ const AddNewProductForm = () => {
                   minRows={5}
                 />
               </Grid>
-              <Grid
-                item
-                container
-                justifyContent='space-between'
-                spacing={3}
-                rowSpacing={5}
-              >
+              {fieldsData.map((data) => (
                 <Grid item xs={6}>
                   <Field
                     component={TextField}
-                    name='tags'
-                    type='text'
-                    label='Tags'
+                    name={data.name}
+                    type={data.type}
+                    label={data.label}
                   />
                 </Grid>
-                <Grid item xs={6}>
-                  <Field
-                    component={TextField}
-                    name='stock'
-                    type='number'
-                    label='Ilość'
-                  ></Field>
-                </Grid>
-              </Grid>
-              <Grid
-                item
-                container
-                justifyContent='space-between'
-                spacing={3}
-                rowSpacing={5}
-              >
-                <Grid item xs={6}>
-                  <Field
-                    component={TextField}
-                    name='regularPrice'
-                    type='number'
-                    label='Cena'
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <Field
-                    component={TextField}
-                    name='salePrice'
-                    type='number'
-                    label='Cena promocyjna'
-                  ></Field>
-                </Grid>
-              </Grid>
+              ))}
               <Grid item container justifyContent='center'>
                 <StyledButton
                   variant='contained'
@@ -187,6 +161,15 @@ const AddNewProductForm = () => {
           </Form>
         )}
       </Formik>
+      <Snackbar
+        open={openSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        action={action}
+        message='Dodałeś nowy produkt'
+        severity='success'
+      />
     </StyledBox>
   );
 };
