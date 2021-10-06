@@ -5,7 +5,7 @@ import axios from "axios";
 export const useAddNewProduct = () => {
   const [category, setCategory] = useState("Elektronika");
   const [fieldValue, setFieldValue] = useState(null);
-  console.log("file", fieldValue[0].name);
+  const [newProduct, setNewProduct] = useState({});
 
   const initialProductValues = {
     name: "",
@@ -57,7 +57,6 @@ export const useAddNewProduct = () => {
       salePrice,
       stock,
     };
-    console.log(data);
     addProduct(data);
     setSubmitting(false);
   };
@@ -65,7 +64,7 @@ export const useAddNewProduct = () => {
     axios
       .post("http://localhost:8000/products", data)
       .then((response) => {
-        console.log("data", response.data);
+        setNewProduct(response.data);
       })
       .catch((error) => {
         console.log(error);
