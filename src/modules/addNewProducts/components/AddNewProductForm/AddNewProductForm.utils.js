@@ -54,8 +54,8 @@ export const useAddNewProduct = () => {
     description: "",
     stock: 1,
     tags: "",
-    regularPrice: 0.01,
-    salePrice: 0.01,
+    regularPrice: "",
+    salePrice: "",
     category: productCategory,
     file: "",
     urlLink: "",
@@ -85,14 +85,11 @@ export const useAddNewProduct = () => {
     regularPrice: Yup.number()
       .min(0.01, "Minimum 1")
       .required("Wprowadź cenę produktu"),
-    salePrice: Yup.number()
-      .min(0.01, "Minimum 1")
-      .required("Wprowadź promocyjną cenę"),
     urlLink: Yup.string()
       .matches(URL, "wprowadź porpwany link url")
       .required("Wpisz link do obrazka"),
   });
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { resetForm }) => {
     let title = values.name;
     let description = values.description;
     let category = productCategory;
@@ -114,7 +111,7 @@ export const useAddNewProduct = () => {
       uploadedImage,
     };
     addProduct(data);
-    setSubmitting(false);
+    resetForm();
     setOpenSnackbar(true);
   };
   const addProduct = (data) => {
