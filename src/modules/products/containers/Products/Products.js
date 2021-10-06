@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Typography } from "@material-ui/core/";
 import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
-import { ProductsList } from "../../components";
+import { ProductsList } from "../../components/ProductsList";
 import { HeadSection } from "../../components/atoms";
 import { NewProductBox, Wrapper } from "./Products.style";
 import { useGetProducts } from "./Products.utils";
