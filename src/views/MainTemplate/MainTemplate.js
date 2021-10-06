@@ -9,38 +9,48 @@ import {
   LoginFormContainer,
   ShoppingCard,
 } from "../../shared";
-import { useAuthProvider } from "../../loginProvider";
+import { useAuthState } from "../../loginProvider";
 import { useProductContext } from "../../context";
 import { StyledContainer } from "./MainTemplate.style";
 
 const MainTemplate = ({ children }) => {
   const [openProductForm, setOpenProductForm] = useState(false);
-  const { openDialog, setOpenDialog, isLoggedIn, userEmail } =
-    useAuthProvider();
   const { productContext } = useProductContext();
-  const { shoppingList, countItemsInBasket, open, setOpen } = productContext;
+  const { stateContext } = useAuthState();
+
+  const {
+    shoppingList,
+    countItemsInBasket,
+    openShoppingCard,
+    setOpenShoppingCard,
+  } = productContext;
+  const { openLoggingForm, isLoggedIn, user, setOpenLoggingForm } =
+    stateContext;
   return (
     <ThemeProvider theme={theme}>
       <Head
         countItems={countItemsInBasket}
-        open={open}
-        setOpen={setOpen}
+        openShoppingCard={openShoppingCard}
+        setOpenShoppingCard={setOpenShoppingCard}
         shoppingList={shoppingList}
-        setOpenDialog={setOpenDialog}
-        openDialog={openDialog}
+        setOpenLoggingForm={stateContext.setOpenLoggingForm}
+        openLoggingForm={stateContext.openLoggingForm}
         openProductForm={openProductForm}
         setOpenProductForm={setOpenProductForm}
         isLoggedIn={isLoggedIn}
-        user={userEmail}
+        user={user}
       />
       <StyledContainer>
-        <Main open={open}>{children}</Main>
-        <ShoppingCard open={open} shoppingList={shoppingList} />
+        <Main openShoppingCard={openShoppingCard}>{children}</Main>
+        <ShoppingCard
+          openShoppingCard={openShoppingCard}
+          shoppingList={shoppingList}
+        />
       </StyledContainer>
       <LoginFormContainer
-        openDialog={openDialog}
-        setOpenDialog={setOpenDialog}
-        user={userEmail}
+        openLoggingForm={openLoggingForm}
+        setOpenLoggingForm={setOpenLoggingForm}
+        user={user}
       />
       <Footer />
     </ThemeProvider>

@@ -13,7 +13,7 @@ export const useLoginForm = () => {
   const { dispatchContext } = useAuthDispatch();
   const { stateContext } = useAuthState();
   const onSubmit = (values, { setSubmitting }) => {
-    stateContext.setOpenDialog(false);
+    stateContext.setOpenLoggingForm(false);
 
     setTimeout(() => {
       setSubmitting(false);

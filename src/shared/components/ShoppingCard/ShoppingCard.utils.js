@@ -2,13 +2,14 @@ import { useProductContext } from "../../../context";
 
 export const useShoppingCardData = () => {
   const { productContext } = useProductContext();
-  const { shoppingList, open, quantity, setOpen } = productContext;
+  const { shoppingList, openShoppingCard, quantity, setOpenShoppingCard } =
+    productContext;
 
   const handleDelete = (id) => {
     productContext.dispatch({ id, type: "REMOVE" });
   };
   const handleDrawer = () => {
-    setOpen(false);
+    setOpenShoppingCard(false);
   };
   const calculatePrice = () => {
     if (shoppingList.length > 0) {
@@ -22,8 +23,8 @@ export const useShoppingCardData = () => {
   return {
     handleDelete,
     shoppingList,
-    open,
-    setOpen,
+    openShoppingCard,
+    setOpenShoppingCard,
     handleDrawer,
     quantity,
     calculatePrice,

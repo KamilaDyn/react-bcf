@@ -10,11 +10,11 @@ import { logo } from "../../../assets";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
 
 const Head = ({
-  setOpen,
-  open,
+  setOpenShoppingCard,
+  openShoppingCard,
   countItems,
   shoppingList,
-  setOpenDialog,
+  setOpenLoggingForm,
   isLoggedIn,
   user,
 }) => {
@@ -50,13 +50,11 @@ const Head = ({
         <StyledIconButton
           edge='end'
           onClick={() =>
-            isLoggedIn && history.location.pathname === "/profile"
-              ? setOpenDialog(true)
-              : history.push(routes.profile)
+            isLoggedIn ? history.push(routes.profile) : setOpenLoggingForm(true)
           }
         >
           <Tooltip
-            title={isLoggedIn ? user.split("@")[0] : "Profil"}
+            title={isLoggedIn && user ? user.split("@")[0] : "Profil"}
             placement='top'
           >
             <PersonOutlineIcon />
@@ -64,7 +62,7 @@ const Head = ({
         </StyledIconButton>
         <StyledIconButton
           aria-label='open drawer'
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpenShoppingCard(!openShoppingCard)}
         >
           <StyledBadge
             color='primary'

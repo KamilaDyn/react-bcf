@@ -4,7 +4,7 @@ import { AuthReducer, initialState } from "../reducer";
 export const useAuthProvider = () => {
   const [user, dispatch] = useReducer(AuthReducer, initialState);
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openLoggingForm, setOpenLoggingForm] = useState(false);
 
   const userEmail = user.userDetails.email;
   useEffect(() => {
@@ -19,7 +19,7 @@ export const useAuthProvider = () => {
     dispatch,
     isLoggedIn,
     setLoggedIn,
-    openDialog,
-    setOpenDialog,
+    openLoggingForm,
+    setOpenLoggingForm,
   };
 };
