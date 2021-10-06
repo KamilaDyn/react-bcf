@@ -50,9 +50,9 @@ const Head = ({
         <StyledIconButton
           edge='end'
           onClick={() =>
-            isLoggedIn && history.location.pathname === "/profile"
-              ? setOpenDialog(true)
-              : history.push(routes.profile)
+            isLoggedIn && history.location.pathname === "/"
+              ? history.push(routes.profile)
+              : setOpenDialog(true)
           }
         >
           <Tooltip
