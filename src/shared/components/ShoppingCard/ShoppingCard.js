@@ -21,13 +21,13 @@ const ShoppingCard = () => {
     handleDelete,
     handleDrawer,
     dispatch,
-    open,
+    openShoppingCard,
     shoppingList,
     calculatePrice,
   } = useShoppingCardData();
   const { setQuantity, increment, decrement } = useQuantity();
   return (
-    <StyledDrawer variant='persistent' anchor='right' open={open}>
+    <StyledDrawer variant='persistent' anchor='right' open={openShoppingCard}>
       <StyledIconButton onClick={() => handleDrawer(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>

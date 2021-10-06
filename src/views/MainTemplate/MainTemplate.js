@@ -9,33 +9,44 @@ import {
   LoginFormContainer,
   ShoppingCard,
 } from "../../shared";
-import { useAuthProvider } from "../../loginProvider";
+import { useAuthProvider, useAuthState } from "../../loginProvider";
 import { useProductContext } from "../../context";
 import { StyledContainer } from "./MainTemplate.style";
 
 const MainTemplate = ({ children }) => {
   const [openProductForm, setOpenProductForm] = useState(false);
-  const { openDialog, setOpenDialog, isLoggedIn, userEmail } =
-    useAuthProvider();
+  // const { openDialog, setOpenDialog, isLoggedIn, userEmail } =
+  //   useAuthProvider();
   const { productContext } = useProductContext();
-  const { shoppingList, countItemsInBasket, open, setOpen } = productContext;
+  const { stateContext } = useAuthState();
+
+  const {
+    shoppingList,
+    countItemsInBasket,
+    openShoppingCard,
+    setOpenShoppingCard,
+  } = productContext;
+  const { openDialog, isLoggedIn, userEmail, setOpenDialog } = stateContext;
   return (
     <ThemeProvider theme={theme}>
       <Head
         countItems={countItemsInBasket}
-        open={open}
-        setOpen={setOpen}
+        openShoppingCard={openShoppingCard}
+        setOpenShoppingCard={setOpenShoppingCard}
         shoppingList={shoppingList}
-        setOpenDialog={setOpenDialog}
-        openDialog={openDialog}
+        setOpenDialog={stateContext.setOpenDialog}
+        openDialog={stateContext.openDialog}
         openProductForm={openProductForm}
         setOpenProductForm={setOpenProductForm}
         isLoggedIn={isLoggedIn}
         user={userEmail}
       />
       <StyledContainer>
-        <Main open={open}>{children}</Main>
-        <ShoppingCard open={open} shoppingList={shoppingList} />
+        <Main openShoppingCard={openShoppingCard}>{children}</Main>
+        <ShoppingCard
+          openShoppingCard={openShoppingCard}
+          shoppingList={shoppingList}
+        />
       </StyledContainer>
       <LoginFormContainer
         openDialog={openDialog}
