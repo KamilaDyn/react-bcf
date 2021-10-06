@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./loginProvider";
-import { Products, Profile, AddNewProducts } from "./modules";
+import { Products, Profile, AddNewProducts } from "./pages";
 import { routes } from "./config/routes";
 import MainTemplate from "./views/MainTemplate/MainTemplate";
 import { ProductProvider } from "./productProvider";
