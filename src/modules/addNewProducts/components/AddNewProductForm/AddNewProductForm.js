@@ -73,7 +73,7 @@ const AddNewProductForm = () => {
                   value={productCategory}
                   onChange={handleChange}
                 >
-                  {categories.map(({ value }) => (
+                  {categories.map((value) => (
                     <MenuItem key={value} value={value}>
                       {value}
                     </MenuItem>

@@ -1,20 +1,14 @@
 import * as Yup from "yup";
 import { useState } from "react";
+import { URL } from "../../../../shared";
+
 import { addProduct } from "../../services";
 
 export const categories = [
-  {
-    value: "Odzież męska",
-  },
-  {
-    value: "Odzież damska",
-  },
-  {
-    value: "Biżuteria",
-  },
-  {
-    value: "Elektronika",
-  },
+  "Odzież męska",
+  "Odzież damska",
+  "Biżuteria",
+  "Elektronika",
 ];
 
 export const fieldsData = [
@@ -44,8 +38,6 @@ export const useAddNewProduct = () => {
   const [productCategory, setProductCategory] = useState("Elektronika");
   const [fieldValue, setFieldValue] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const URL =
-    /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg|.svg)(\?[^\s[",><]*)?/g;
 
   const initialProductValues = {
     name: "",
