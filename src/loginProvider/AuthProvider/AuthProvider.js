@@ -8,15 +8,15 @@ const AuthProvider = ({ children }) => {
     setLoggedIn,
     userEmail,
     dispatch,
-    setOpenDialog,
-    openDialog,
+    setOpenLoggingForm,
+    openLoggingForm,
   } = useAuthProvider();
   const authContextValue = {
     isLoggedIn: isLoggedIn,
     setLoggedIn: setLoggedIn,
     user: userEmail,
-    setOpenDialog: setOpenDialog,
-    openDialog: openDialog,
+    setOpenLoggingForm: setOpenLoggingForm,
+    openLoggingForm: openLoggingForm,
   };
 
   return (
