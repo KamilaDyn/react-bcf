@@ -37,16 +37,14 @@ const AddNewProductForm = () => {
   };
 
   const action = (
-    <>
-      <IconButton
-        size='small'
-        aria-label='close'
-        color='inherit'
-        onClick={handleCloseSnackbar}
-      >
-        <CancelIcon fontSize='small' color='primary' />
-      </IconButton>
-    </>
+    <IconButton
+      size='small'
+      aria-label='close'
+      color='inherit'
+      onClick={handleCloseSnackbar}
+    >
+      <CancelIcon fontSize='small' color='primary' />
+    </IconButton>
   );
 
   return (
@@ -75,9 +73,9 @@ const AddNewProductForm = () => {
                   value={productCategory}
                   onChange={handleChange}
                 >
-                  {categories.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.value}
+                  {categories.map(({ value }) => (
+                    <MenuItem key={value} value={value}>
+                      {value}
                     </MenuItem>
                   ))}
                 </Field>
@@ -136,13 +134,13 @@ const AddNewProductForm = () => {
                   minRows={5}
                 />
               </Grid>
-              {fieldsData.map((data) => (
+              {fieldsData.map(({ name, type, label }) => (
                 <Grid item xs={6}>
                   <Field
                     component={TextField}
-                    name={data.name}
-                    type={data.type}
-                    label={data.label}
+                    name={name}
+                    type={type}
+                    label={label}
                   />
                 </Grid>
               ))}
