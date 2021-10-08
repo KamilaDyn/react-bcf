@@ -1,21 +1,21 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { box } from "../../../../assets";
-import { useEditProduct } from "../components";
+import { useEditProduct } from "../utils";
 import { ProductForm, Sidebar, InfoSnackbar } from "../../shared";
 
 const EditProduct = (props) => {
   const {
-    singleProduct,
     initialProductValues,
     productCategory,
     onSubmit,
     message,
     setOpenSnackbar,
     handleCloseSnackbar,
+    handleChange,
+    openSnackbar,
+    setFieldValue,
   } = useEditProduct(props.match.params.id);
-  const { title, category, description, image, price, sale, stock } =
-    singleProduct;
   return (
     <Container>
       <Grid container spacing={3}>
@@ -30,18 +30,14 @@ const EditProduct = (props) => {
             <Typography variant='h2'>Edytuj Produkt</Typography>
           </Box>
           <ProductForm
-            name={title}
-            category={category}
-            description={description}
-            image={image}
-            price={price}
-            sale={sale}
-            stock={stock}
             initialProductValues={initialProductValues}
             productCategory={productCategory}
             onSubmit={onSubmit}
+            handleChange={handleChange}
+            setFieldValue={setFieldValue}
           />
           <InfoSnackbar
+            openSnackbar={openSnackbar}
             message={message}
             setOpenSnackbar={setOpenSnackbar}
             handleCloseSnackbar={handleCloseSnackbar}

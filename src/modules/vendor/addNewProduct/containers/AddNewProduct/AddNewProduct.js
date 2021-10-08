@@ -1,11 +1,21 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { box } from "../../../../../assets";
-import { ProductForm, Sidebar } from "../../../shared";
-import { useAddNewProduct } from "../../components";
+import { ProductForm, Sidebar, InfoSnackbar } from "../../../shared";
+import { useAddNewProduct } from "../../utils";
 
 const AddNewProduct = () => {
-  const { initialProductValues } = useAddNewProduct();
+  const {
+    initialProductValues,
+    productCategory,
+    onSubmit,
+    message,
+    setOpenSnackbar,
+    handleCloseSnackbar,
+    handleChange,
+    openSnackbar,
+    setFieldValue,
+  } = useAddNewProduct();
   return (
     <Container>
       <Grid container spacing={3}>
@@ -19,7 +29,19 @@ const AddNewProduct = () => {
             </div>
             <Typography variant='h2'>Dodaj nowy produkt</Typography>
           </Box>
-          <ProductForm initialProductValues={initialProductValues} />
+          <ProductForm
+            initialProductValues={initialProductValues}
+            productCategory={productCategory}
+            onSubmit={onSubmit}
+            handleChange={handleChange}
+            setFieldValue={setFieldValue}
+          />
+          <InfoSnackbar
+            openSnackbar={openSnackbar}
+            message={message}
+            setOpenSnackbar={setOpenSnackbar}
+            handleCloseSnackbar={handleCloseSnackbar}
+          />
         </Grid>
       </Grid>
     </Container>

@@ -6,73 +6,21 @@ import {
   Typography,
   Box,
   LinearProgress,
-  Snackbar,
-  IconButton,
 } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
-import CancelIcon from "@material-ui/icons/Cancel";
 import { StyledBox, StyledButton, Divider } from "./ProductForm.style";
-import { useAddNewProduct, categories } from "./ProductForm.util";
+import { categories, fieldsData, SignupSchema } from "./ProductForm.util";
 
 const ProductForm = ({
-  name,
-  description,
-  category,
-  image,
-  stock,
-  price,
-  sale,
   initialProductValues,
-  productCategory,
   onSubmit,
+  handleChange,
+  setFieldValue,
 }) => {
-  const fieldsData = [
-    {
-      name: "tags",
-      type: "text",
-      label: "Tags",
-    },
-    {
-      name: "stock",
-      type: "number",
-      label: "Ilość",
-      value: stock,
-    },
-    {
-      name: "regularPrice",
-      type: "number",
-      label: "Cena",
-      value: price,
-    },
-    {
-      name: "salePrice",
-      type: "number",
-      label: "Cena promocyjna",
-      value: sale,
-    },
-  ];
-  const {
-    handleChange,
-    SignupSchema,
-    setFieldValue,
-    openSnackbar,
-    handleCloseSnackbar,
-  } = useAddNewProduct();
   const inputEl = React.useRef(null);
   const triggerClick = () => {
     inputEl.current.click();
   };
-
-  const action = (
-    <IconButton
-      size='small'
-      aria-label='close'
-      color='inherit'
-      onClick={handleCloseSnackbar}
-    >
-      <CancelIcon fontSize='small' color='primary' />
-    </IconButton>
-  );
 
   return (
     <StyledBox>
@@ -82,7 +30,7 @@ const ProductForm = ({
         onSubmit={onSubmit}
         enableReinitialize
       >
-        {({ submitForm }) => (
+        {({ submitForm, isSubmitting }) => (
           <Form>
             <Grid container spacing={6}>
               <Grid item xs={6}>
@@ -98,7 +46,7 @@ const ProductForm = ({
                   component={TextField}
                   name='category'
                   select
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   value={initialProductValues.category}
                 >
                   {categories.map((value) => (
@@ -162,7 +110,7 @@ const ProductForm = ({
                   minRows={5}
                 />
               </Grid>
-              {fieldsData.map(({ name, type, label, value }) => (
+              {fieldsData.map(({ name, type, label }) => (
                 <Grid item xs={6}>
                   <Field
                     component={TextField}
@@ -176,26 +124,19 @@ const ProductForm = ({
                 <StyledButton
                   variant='contained'
                   color='primary'
-                  // disabled={isSubmitting}
+                  disabled={isSubmitting}
                   onClick={submitForm}
                 >
-                  Dodaj produkt
+                  {initialProductValues.name === ""
+                    ? "Dodaj produkt"
+                    : "Edytuj produkt"}
                 </StyledButton>
               </Grid>
-              {/* {isSubmitting && <LinearProgress />} */}
+              {isSubmitting && <LinearProgress />}
             </Grid>
           </Form>
         )}
       </Formik>
-      <Snackbar
-        open={openSnackbar}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        autoHideDuration={3000}
-        onClose={handleCloseSnackbar}
-        action={action}
-        message='Dodałeś nowy produkt'
-        severity='success'
-      />
     </StyledBox>
   );
 };

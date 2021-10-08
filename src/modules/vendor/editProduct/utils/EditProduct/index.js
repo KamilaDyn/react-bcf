@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-// import { editProduct } from "../../services";
+import { editProduct, getProduct } from "../../services";
+
 export const useEditProduct = (productId) => {
   const [productCategory, setProductCategory] = useState("");
   const [fieldValue, setFieldValue] = useState(null);
@@ -10,7 +10,7 @@ export const useEditProduct = (productId) => {
 
   const { title, description, stock, price, sale, category, image, id } =
     singleProduct;
-  console.log(sale);
+
   const initialProductValues = {
     name: title,
     description: description,
@@ -24,7 +24,7 @@ export const useEditProduct = (productId) => {
     id: id,
   };
   useEffect(() => {
-    getProduct();
+    getProduct(productId, setSingleProduct);
   }, []);
 
   const handleChange = (event) => {
@@ -34,27 +34,14 @@ export const useEditProduct = (productId) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpenSnackbar(false);
   };
-
-  const getProduct = () => {
-    axios
-      .get(`http://localhost:8000/products/${productId}`)
-      .then((response) => {
-        setSingleProduct(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const onSubmit = ({
     name,
     description,
     tags,
     stock,
-    salesPrice,
+    salePrice,
     regularPrice,
     urlLink,
     id,
@@ -66,25 +53,13 @@ export const useEditProduct = (productId) => {
       category: productCategory,
       image: urlLink,
       tags: tags,
-      sale: salesPrice,
+      sale: salePrice,
       stock: stock,
       uploadedImage: fieldValue ? fieldValue[0].name : "",
       id: id,
     };
-    editProduct(data);
+    editProduct(data, setMessage);
     setOpenSnackbar(true);
-  };
-  const editProduct = (data) => {
-    axios
-      .put(`http://localhost:8000/products/${data.id}`, data)
-      .then((response) => {
-        console.log(response.data);
-        setMessage("Edytowałeś produkt");
-        return response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   return {

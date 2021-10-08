@@ -21,7 +21,6 @@ const InfoSnackbar = ({ message, openSnackbar, handleCloseSnackbar }) => {
       onClose={handleCloseSnackbar}
       action={action}
       message={message}
-      severity='success'
     />
   );
 };

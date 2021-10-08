@@ -1,12 +1,16 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops_23",
       "price": 109.95,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+      "category": "",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "tags": "",
+      "sale": 90,
+      "stock": 40,
+      "uploadedImage": "",
+      "id": 1
     },
     {
       "id": 2,
@@ -17,12 +21,16 @@
       "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
     },
     {
-      "id": 3,
       "title": "Mens Cotton Jacket",
       "price": 55.99,
       "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+      "category": "",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "tags": "",
+      "sale": 41,
+      "stock": 28,
+      "uploadedImage": "",
+      "id": 3
     },
     {
       "id": 4,
@@ -159,6 +167,17 @@
       "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
       "category": "women's clothing",
       "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
+    },
+    {
+      "title": "nowy produkt",
+      "price": 10,
+      "description": "opis czapki na zimę ",
+      "category": "Biżuteria",
+      "image": "https://pamami.pl/pol_pl_Purga-5714_1.jpg",
+      "tags": "",
+      "stock": 1,
+      "uploadedImage": "",
+      "id": 21
     }
   ],
   "users": []
