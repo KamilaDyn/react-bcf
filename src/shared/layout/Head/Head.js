@@ -74,7 +74,7 @@ const Head = ({
         {isLoggedIn && (
           <StyledIconButton
             edge='end'
-            onClick={() => history.push(routes.addNewProducts)}
+            onClick={() => history.push(routes.addNewProduct)}
           >
             <Tooltip title='Dodaj produkty' placement='top'>
               <AddCircleOutlineOutlinedIcon />
