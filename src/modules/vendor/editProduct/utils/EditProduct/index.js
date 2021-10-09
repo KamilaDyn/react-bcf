@@ -7,8 +7,9 @@ export const useEditProduct = (productId) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [singleProduct, setSingleProduct] = useState({});
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const { title, description, stock, price, sale, category, image, id } =
+  const { title, description, stock, price, sale, image, id, category } =
     singleProduct;
 
   const initialProductValues = {
@@ -18,7 +19,7 @@ export const useEditProduct = (productId) => {
     tags: "",
     regularPrice: price,
     salePrice: sale,
-    category: category,
+    category: productCategory,
     file: "",
     urlLink: image,
     id: id,
@@ -26,6 +27,13 @@ export const useEditProduct = (productId) => {
   useEffect(() => {
     getProduct(productId, setSingleProduct);
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setProductCategory(category);
+      setLoading(true);
+    }, 1500);
+  });
 
   const handleChange = (event) => {
     setProductCategory(event.target.value);
@@ -74,5 +82,6 @@ export const useEditProduct = (productId) => {
     handleCloseSnackbar,
     singleProduct,
     message,
+    loading,
   };
 };

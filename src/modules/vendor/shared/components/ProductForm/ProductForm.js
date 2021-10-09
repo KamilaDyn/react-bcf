@@ -46,7 +46,7 @@ const ProductForm = ({
                   component={TextField}
                   name='category'
                   select
-                  // onChange={handleChange}
+                  onChange={handleChange}
                   value={initialProductValues.category}
                 >
                   {categories.map((value) => (
