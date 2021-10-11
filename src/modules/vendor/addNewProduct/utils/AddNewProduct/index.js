@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useProductContext } from "../../../../../context";
 import { addProduct } from "../../services";
 
 export const useAddNewProduct = () => {
@@ -6,6 +7,9 @@ export const useAddNewProduct = () => {
   const [fieldValue, setFieldValue] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [message, setMessage] = useState("");
+  const { productContext } = useProductContext();
+
+  console.log(productContext);
 
   const initialProductValues = {
     name: "",
@@ -47,6 +51,9 @@ export const useAddNewProduct = () => {
     addProduct(data, setMessage);
     resetForm();
     setOpenSnackbar(true);
+    setTimeout(() => {
+      productContext.getProducts();
+    }, 500);
   };
 
   return {

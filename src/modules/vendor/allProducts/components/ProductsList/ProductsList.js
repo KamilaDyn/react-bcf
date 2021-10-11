@@ -1,14 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, IconButton, Grid, Typography } from "@material-ui/core";
+import {
+  Box,
+  IconButton,
+  Grid,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  Button,
+} from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useGetProducts } from "../../../../../shared";
 import { StyledCard } from "./ProductsList.style";
 import { Header } from "../Header";
+import { useDeleteProduct } from "./ProductsList.utils";
+import { InfoSnackbar } from "../../../shared";
 
 const ProductsList = () => {
   const { products } = useGetProducts();
+
+  const {
+    handleDelete,
+    message,
+    openSnackbar,
+    setOpenSnackbar,
+    handleCloseSnackbar,
+    openPermission,
+    handleClosePermission,
+    setOpenPermission,
+    productId,
+    setProductId,
+  } = useDeleteProduct();
 
   return (
     <Box>
@@ -34,19 +58,50 @@ const ProductsList = () => {
               <IconButton
                 component={Link}
                 to={`/vendor/edit-product/${item.id}`}
-                // onClick={() => handleClick(item.id)}
               >
                 <EditIcon />
               </IconButton>
             </Grid>
             <Grid item xs={1}>
               <IconButton>
-                <DeleteIcon color='primary' />
+                <DeleteIcon
+                  color='primary'
+                  onClick={() => {
+                    setOpenPermission(true);
+                    setProductId(item.id);
+                  }}
+                />
               </IconButton>
             </Grid>
           </Grid>
         </StyledCard>
       ))}
+      <InfoSnackbar
+        openSnackbar={openSnackbar}
+        message={message}
+        setOpenSnackbar={setOpenSnackbar}
+        handleCloseSnackbar={handleCloseSnackbar}
+      />
+      <Dialog
+        open={openPermission}
+        onClose={handleClosePermission}
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
+      >
+        <DialogTitle id='alert-dialog-title'>Usunąć produkt?</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClosePermission}>Nie</Button>
+          <Button
+            onClick={() => {
+              handleDelete(productId);
+              handleClosePermission();
+            }}
+            autoFocus
+          >
+            Tak
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

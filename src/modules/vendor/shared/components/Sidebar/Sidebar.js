@@ -2,12 +2,14 @@ import React from "react";
 import { Box } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ListAltIcon from "@material-ui/icons/ListAlt";
-import { useGetProducts } from "../../../../../shared";
 import { routes } from "../../../../../config/routes";
+import { useProductContext } from "../../../../../context";
 import { StyledCard, activeStyle, StyledNavLink } from "./Sidebar.style";
 
 const Sidebar = () => {
-  const { products } = useGetProducts();
+  const { productContext } = useProductContext();
+  console.log(productContext.products.length);
+
   return (
     <StyledCard variant='outlined'>
       <StyledNavLink to={routes.addNewProduct} activeStyle={activeStyle}>
@@ -27,7 +29,7 @@ const Sidebar = () => {
             <ListAltIcon />
             <span> Produkty</span>
           </Box>
-          <span>{products.length}</span>
+          <span>{productContext.products.length}</span>
         </Box>
       </StyledNavLink>
     </StyledCard>

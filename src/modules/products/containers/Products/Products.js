@@ -1,13 +1,14 @@
 import React from "react";
 import { Link, Typography } from "@material-ui/core/";
 import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
+import { useProductContext } from "../../../../context";
 import { ProductsList } from "../../components/ProductsList";
 import { HeadSection } from "../../components/atoms";
 import { NewProductBox, Wrapper } from "./Products.style";
-import { useGetProducts } from "./Products.utils";
 
 const Products = () => {
-  const { products } = useGetProducts();
+  const { productContext } = useProductContext();
+
   return (
     <Wrapper>
       <HeadSection>
@@ -17,7 +18,7 @@ const Products = () => {
         </NewProductBox>
         <Link href='#'>Wszystko &#187;</Link>
       </HeadSection>
-      <ProductsList products={products} />
+      <ProductsList products={productContext.products} />
     </Wrapper>
   );
 };
