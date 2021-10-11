@@ -8,7 +8,6 @@ import { StyledCard, activeStyle, StyledNavLink } from "./Sidebar.style";
 
 const Sidebar = () => {
   const { productContext } = useProductContext();
-  console.log(productContext.products.length);
 
   return (
     <StyledCard variant='outlined'>

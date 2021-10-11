@@ -10,4 +10,3 @@ export {
 export { Form, StyledButton, StyledIconButton } from "./atoms";
 export { MuiDialogTitle } from "./molecules";
 export { URL } from "./utils";
-export { useGetProducts } from "./services";

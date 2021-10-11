@@ -9,8 +9,6 @@ export const useAddNewProduct = () => {
   const [message, setMessage] = useState("");
   const { productContext } = useProductContext();
 
-  console.log(productContext);
-
   const initialProductValues = {
     name: "",
     description: "",

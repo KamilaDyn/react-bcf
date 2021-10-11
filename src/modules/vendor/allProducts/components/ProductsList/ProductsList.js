@@ -12,15 +12,14 @@ import {
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { useGetProducts } from "../../../../../shared";
+import { useProductContext } from "../../../../../context";
 import { StyledCard } from "./ProductsList.style";
 import { Header } from "../Header";
 import { useDeleteProduct } from "./ProductsList.utils";
 import { InfoSnackbar } from "../../../shared";
 
 const ProductsList = () => {
-  const { products } = useGetProducts();
-
+  const { productContext } = useProductContext();
   const {
     handleDelete,
     message,
@@ -37,7 +36,7 @@ const ProductsList = () => {
   return (
     <Box>
       <Header />
-      {products.map((item) => (
+      {productContext.products.map((item) => (
         <StyledCard id={item.id}>
           <Grid container alignItems='center' spacing={2}>
             <Grid item xs={5}>
