@@ -36,7 +36,7 @@ const ProductForm = ({
               <Grid item xs={6}>
                 <Field
                   component={TextField}
-                  name='name'
+                  name='title'
                   type='text'
                   label='Nazwa produktu'
                 />
@@ -59,7 +59,7 @@ const ProductForm = ({
               <Grid item xs={6}>
                 <Field
                   component={TextField}
-                  name='urlLink'
+                  name='image'
                   type='text'
                   label='Link do obrazka'
                   placeholder='url link'
@@ -127,7 +127,7 @@ const ProductForm = ({
                   disabled={isSubmitting}
                   onClick={submitForm}
                 >
-                  {initialProductValues.name === ""
+                  {initialProductValues.title === ""
                     ? "Dodaj produkt"
                     : "Edytuj produkt"}
                 </StyledButton>

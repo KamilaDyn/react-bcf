@@ -10,15 +10,15 @@ export const useAddNewProduct = () => {
   const { productContext } = useProductContext();
 
   const initialProductValues = {
-    name: "",
+    title: "",
     description: "",
     stock: 1,
     tags: "",
-    regularPrice: "",
-    salePrice: "",
+    price: "",
+    sale: "",
     category: productCategory,
-    file: "",
-    urlLink: "",
+    file: fieldValue,
+    image: "",
   };
 
   const handleChange = (event) => {
@@ -31,22 +31,8 @@ export const useAddNewProduct = () => {
     setOpenSnackbar(false);
   };
 
-  const onSubmit = (
-    { name, description, tags, stock, salesPrice, regularPrice, urlLink },
-    { resetForm }
-  ) => {
-    const data = {
-      title: name,
-      price: regularPrice,
-      description: description,
-      category: productCategory,
-      image: urlLink,
-      tags: tags,
-      salePrice: salesPrice,
-      stock: stock,
-      uploadedImage: fieldValue ? fieldValue[0].name : "",
-    };
-    addProduct(data, setMessage);
+  const onSubmit = (initialProductValues, { resetForm }) => {
+    addProduct(initialProductValues, setMessage);
     resetForm();
     setOpenSnackbar(true);
     setTimeout(() => {

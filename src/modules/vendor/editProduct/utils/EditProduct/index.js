@@ -13,15 +13,15 @@ export const useEditProduct = (productId) => {
     singleProduct;
 
   const initialProductValues = {
-    name: title,
+    title: title,
     description: description,
     stock: stock,
     tags: "",
-    regularPrice: price,
-    salePrice: sale,
+    price: price,
+    sale: sale,
     category: productCategory,
-    file: "",
-    urlLink: image,
+    file: fieldValue,
+    image: image,
     id: id,
   };
   useEffect(() => {
@@ -44,29 +44,8 @@ export const useEditProduct = (productId) => {
     }
     setOpenSnackbar(false);
   };
-  const onSubmit = ({
-    name,
-    description,
-    tags,
-    stock,
-    salePrice,
-    regularPrice,
-    urlLink,
-    id,
-  }) => {
-    const data = {
-      title: name,
-      price: regularPrice,
-      description: description,
-      category: productCategory,
-      image: urlLink,
-      tags: tags,
-      sale: salePrice,
-      stock: stock,
-      uploadedImage: fieldValue ? fieldValue[0].name : "",
-      id: id,
-    };
-    editProduct(data, setMessage);
+  const onSubmit = (initialProductValues) => {
+    editProduct(initialProductValues, setMessage);
     setOpenSnackbar(true);
   };
 
