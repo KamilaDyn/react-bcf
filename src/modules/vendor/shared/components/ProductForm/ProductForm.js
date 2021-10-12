@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, Formik, Form } from "formik";
+import { Field, Formik, Form, useFormikContext } from "formik";
 import {
   Grid,
   MenuItem,
@@ -10,17 +10,14 @@ import {
 import { TextField } from "formik-material-ui";
 import { StyledBox, StyledButton, Divider } from "./ProductForm.style";
 import { categories, fieldsData, SignupSchema } from "./ProductForm.util";
+import { useAddNewProduct } from "../../../addNewProduct/utils";
 
-const ProductForm = ({
-  initialProductValues,
-  onSubmit,
-  handleChange,
-  setFieldValue,
-}) => {
-  const inputEl = React.useRef(null);
+const ProductForm = ({ onSubmit, handleChange, initialProductValues }) => {
+   const inputEl = React.useRef(null);
   const triggerClick = () => {
     inputEl.current.click();
   };
+ 
 
   return (
     <StyledBox>
@@ -75,9 +72,9 @@ const ProductForm = ({
                     typeIndex='-1'
                     accept='.jpeg,.jpg,.png,.gif'
                     hidden
-                    onChange={(event) => {
-                      setFieldValue(event.currentTarget.files);
-                    }}
+                    // onChange={(event) => {
+                    //   setFieldValue(event.currentTarget.files);
+                    // }}
                   />
                   <Typography variant='h5' align='center'>
                     Przeciągnij i upuść obrazek tutaj

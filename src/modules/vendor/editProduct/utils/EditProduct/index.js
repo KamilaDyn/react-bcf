@@ -5,32 +5,19 @@ export const useEditProduct = (productId) => {
   const [productCategory, setProductCategory] = useState("");
   const [fieldValue, setFieldValue] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [singleProduct, setSingleProduct] = useState({});
+  const [initialProductValues, setInitialProductValues] = useState({});
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { title, description, stock, price, sale, image, id, category } =
-    singleProduct;
 
-  const initialProductValues = {
-    title: title,
-    description: description,
-    stock: stock,
-    tags: "",
-    price: price,
-    sale: sale,
-    category: productCategory,
-    file: fieldValue,
-    image: image,
-    id: id,
-  };
   useEffect(() => {
-    getProduct(productId, setSingleProduct);
+    getProduct(productId, setInitialProductValues);
+ 
   }, []);
 
   useEffect(() => {
     setTimeout(() => {
-      setProductCategory(category);
+      setProductCategory(initialProductValues.category);
       setLoading(true);
     }, 1500);
   });
@@ -59,7 +46,6 @@ export const useEditProduct = (productId) => {
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
-    singleProduct,
     message,
     loading,
   };

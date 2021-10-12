@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export const getProduct = async (productId, setSingleProduct) => {
+export const getProduct = async (productId, setInitialProductValues) => {
   try {
     await axios
       .get(`http://localhost:8000/products/${productId}`)
       .then((response) => {
-        setSingleProduct(response.data);
+        setInitialProductValues(response.data);
       });
   } catch (error) {
     console.log(error);
