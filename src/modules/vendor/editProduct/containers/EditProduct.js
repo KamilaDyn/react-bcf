@@ -7,7 +7,6 @@ import { ProductForm, Sidebar, InfoSnackbar, Loader } from "../../shared";
 const EditProduct = (props) => {
   const {
     initialProductValues,
-    productCategory,
     onSubmit,
     message,
     setOpenSnackbar,
@@ -33,7 +32,6 @@ const EditProduct = (props) => {
             </Box>
             <ProductForm
               initialProductValues={initialProductValues}
-              productCategory={productCategory}
               onSubmit={onSubmit}
               handleChange={handleChange}
               setFieldValue={setFieldValue}

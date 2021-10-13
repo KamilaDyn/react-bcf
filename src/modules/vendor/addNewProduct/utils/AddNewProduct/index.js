@@ -3,7 +3,6 @@ import { useProductContext } from "../../../../../context";
 import { addProduct } from "../../services";
 
 export const useAddNewProduct = () => {
-  const [productCategory, setProductCategory] = useState("Elektronika");
   const [fieldValue, setFieldValue] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [message, setMessage] = useState("");
@@ -16,14 +15,11 @@ export const useAddNewProduct = () => {
     tags: "",
     price: "",
     sale: "",
-    category: productCategory,
+    category: "Elektronika",
     file: fieldValue,
     image: "",
   };
 
-  const handleChange = (event) => {
-    setProductCategory(event.target.value);
-  };
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -41,10 +37,7 @@ export const useAddNewProduct = () => {
   };
 
   return {
-    productCategory,
     onSubmit,
-    setProductCategory,
-    handleChange,
     initialProductValues,
     setFieldValue,
     openSnackbar,
