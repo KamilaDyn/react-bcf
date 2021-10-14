@@ -1,11 +1,28 @@
+// const jsonServer = require("json-server");
+// const server = jsonServer.create();
+// const router = jsonServer.router("./data/db.json");
+
+// const middlewares = jsonServer.defaults();
+// const port = process.env.PORT || 4000;
+
+// server.use(middlewares);
+// server.use(router);
+
+// server.listen(port);
+
 const jsonServer = require("json-server");
-const server = jsonServer.create();
-const router = jsonServer.router("./data/db.json");
-
+const app = jsonServer.create();
+const path = require("path");
+const express = require("express");
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 4000;
+const router = jsonServer.router("./data/db.json");
+const port = process.env.PORT || 3001;
 
-server.use(middlewares);
-server.use(router);
+app.use(middlewares, router);
+app.use(express.static(path.join(__dirname, "build")));
 
-server.listen(port);
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+app.listen(port);
