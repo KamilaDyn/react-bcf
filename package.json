@@ -25,7 +25,7 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "concurrently \"node server.js\" \"npm start\"",
+    "start": "concurrently \"node server.js\" \"react-scripts start\"",
     "client": "npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
