@@ -26,7 +26,7 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"node server.js\"",
+    "start": "concurrently \"react-scripts start\" \"npx json-server data/db.json -m ./node_modules/json-server-auth --port 8000\"",
     "client": "npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
