@@ -1,4 +1,4 @@
-const ROOT_URL = "http://localhost:8000/users";
+const ROOT_URL = "/users";
 
 export const loginUser = async (dispatch, loginPayload) => {
   const requestOptions = {
