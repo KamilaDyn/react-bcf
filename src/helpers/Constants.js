@@ -1,1 +1,1 @@
-export const JSON_API = "https://react-product-store.herokuapp.com/api";
+export const JSON_API = "https://react-product-store.herokuapp.com";
