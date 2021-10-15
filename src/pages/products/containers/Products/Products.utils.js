@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { JSON_API } from "../../../../helpers";
 
 import axios from "axios";
 
@@ -11,7 +12,7 @@ export const useGetProducts = () => {
 
   const getProducts = () => {
     axios
-      .get("/products")
+      .get(`${JSON_API}/products`)
       .then((response) => {
         setProducts(response.data);
       })
