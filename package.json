@@ -1,6 +1,5 @@
 {
   "name": "product-list",
-  "homepage": "https://KamilaDyn.github.io/react-bcf",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -32,7 +31,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "dev": "concurrently \"react-scripts start\" \"npx json-server data/db.json -m ./node_modules/json-server-auth --port 8000\""
   },
   "eslintConfig": {
