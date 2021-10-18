@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useProductContext } from "../../../../context";
-import { useGetProducts } from "../../containers/Products/Products.utils";
 
 export const useAddProduct = () => {
   const [price, setPrice] = useState(0);
   const { productContext } = useProductContext();
 
-  const { products } = useGetProducts();
   const handleSubmit = (e, id, quantity) => {
-    let product = products.find((item) => {
+    let product = productContext.products.find((item) => {
       return item.id === id;
     });
     setPrice(product.price);

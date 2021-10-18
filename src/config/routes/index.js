@@ -1,5 +1,7 @@
 export const routes = {
   home: "/",
   profile: "/profile",
-  addNewProducts: "/add-new-products",
+  addNewProduct: "/vendor/add-new-product",
+  editProduct: "/vendor/edit-product/:id",
+  products: "/vendor/products",
 };
