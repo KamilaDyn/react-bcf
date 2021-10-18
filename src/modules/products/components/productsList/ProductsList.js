@@ -18,7 +18,7 @@ const ProductsList = ({ products, open }) => {
         >
           <Card>
             <CardHeader title={p.title} subheader={p.category} />
-            <Link href="#">
+            <Link href='#'>
               <StyledMedia image={p.image} title={p.title} alt={p.title} />
             </Link>
             <StyledTypography>{p.price}$</StyledTypography>

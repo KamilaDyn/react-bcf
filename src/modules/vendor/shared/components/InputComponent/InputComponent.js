@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Form, Field, useFormikContext } from "formik";
-import { Grid, MenuItem, Typography, Box } from "@material-ui/core";
-import { TextField } from "formik-material-ui";
+import {
+  Grid,
+  MenuItem,
+  Typography,
+  Box,
+  FormControl,
+} from "@material-ui/core";
+import { TextField, Select } from "formik-material-ui";
 import { StyledBox, StyledButton, Divider } from "./InputComponent.style";
 import { fieldsData, categories } from "./InputComponent.utils";
 
 const InputComponent = () => {
-  const { values, handleSubmit } = useFormikContext(); // formikProps
+  const { values, handleSubmit } = useFormikContext();
   const [fieldValue, setFieldValue] = useState(null);
-
   const inputEl = React.useRef(null);
   const triggerClick = () => {
     inputEl.current.click();
@@ -23,16 +28,28 @@ const InputComponent = () => {
             name='title'
             type='text'
             label='Nazwa produktu'
+            InputLabelProps={{
+              shrink: values.title && true,
+            }}
+            value={values.title}
           />
         </Grid>
         <Grid item xs={6}>
-          <Field component={TextField} name='category' select>
-            {categories.map((value) => (
-              <MenuItem key={value} value={value}>
-                {value}
-              </MenuItem>
-            ))}
-          </Field>
+          <FormControl>
+            <Field
+              component={Select}
+              name='category'
+              defaultValue={values.category || categories[0]}
+              disableUnderline
+              variant='outlined'
+            >
+              {categories.map((value) => (
+                <MenuItem key={value} value={value}>
+                  {value}
+                </MenuItem>
+              ))}
+            </Field>
+          </FormControl>
         </Grid>
         <Grid item xs={6}>
           <Field
@@ -40,7 +57,9 @@ const InputComponent = () => {
             name='image'
             type='text'
             label='Link do obrazka'
-            placeholder='url link'
+            InputLabelProps={{
+              shrink: values.image && true,
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -84,6 +103,9 @@ const InputComponent = () => {
             placeholder='Opis produktu'
             multiline
             minRows={5}
+            InputLabelProps={{
+              shrink: values.description && true,
+            }}
           />
         </Grid>
         {fieldsData.map(({ name, type, label }) => (
