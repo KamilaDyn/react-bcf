@@ -8,10 +8,10 @@ import {
   FormControl,
 } from "@material-ui/core";
 import { TextField, Select } from "formik-material-ui";
-import { StyledBox, StyledButton, Divider } from "./InputComponent.style";
-import { fieldsData, categories } from "./InputComponent.utils";
+import { StyledBox, StyledButton, Divider } from "./InputsComponent.style";
+import { fieldsData, categories } from "./InputsComponent.utils";
 
-const InputComponent = () => {
+const InputsComponent = () => {
   const { values, handleSubmit } = useFormikContext();
   const [fieldValue, setFieldValue] = useState(null);
   const inputEl = React.useRef(null);
@@ -31,7 +31,6 @@ const InputComponent = () => {
             InputLabelProps={{
               shrink: values.title && true,
             }}
-            value={values.title}
           />
         </Grid>
         <Grid item xs={6}>
@@ -115,6 +114,9 @@ const InputComponent = () => {
               name={name}
               type={type}
               label={label}
+              InputLabelProps={{
+                shrink: values.stock && true,
+              }}
             />
           </Grid>
         ))}
@@ -132,4 +134,4 @@ const InputComponent = () => {
   );
 };
 
-export default InputComponent;
+export default InputsComponent;
