@@ -1,25 +1,51 @@
-export const fieldsData = [
-  {
-    name: "tags",
-    type: "text",
-    label: "Tags",
-  },
-  {
-    name: "stock",
-    type: "number",
-    label: "Ilość",
-  },
-  {
-    name: "price",
-    type: "number",
-    label: "Cena",
-  },
-  {
-    name: "sale",
-    type: "number",
-    label: "Cena promocyjna",
-  },
-];
+import { useState, useRef } from "react";
+import { useFormikContext } from "formik";
+
+export const useInputsData = () => {
+  const [fieldValue, setFieldValue] = useState(null);
+  const { values, handleSubmit } = useFormikContext();
+  const inputEl = useRef(null);
+  const triggerClick = () => {
+    inputEl.current.click();
+  };
+
+  const fieldsData = [
+    {
+      name: "tags",
+      type: "text",
+      label: "Tags",
+      shrinkValue: values.tags,
+    },
+    {
+      name: "stock",
+      type: "number",
+      label: "Ilość",
+      shrinkValue: values.stock,
+    },
+    {
+      name: "price",
+      type: "number",
+      label: "Cena",
+      shrinkValue: values.price,
+    },
+    {
+      name: "sale",
+      type: "number",
+      label: "Cena promocyjna",
+      shrinkValue: values.sale,
+    },
+  ];
+
+  return {
+    fieldsData,
+    triggerClick,
+    handleSubmit,
+    fieldValue,
+    setFieldValue,
+    inputEl,
+    values,
+  };
+};
 
 export const categories = [
   "Odzież męska",

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Form, Field, useFormikContext } from "formik";
+import React from "react";
+import { Form, Field } from "formik";
 import {
   Grid,
   MenuItem,
@@ -9,16 +9,17 @@ import {
 } from "@material-ui/core";
 import { TextField, Select } from "formik-material-ui";
 import { StyledBox, StyledButton, Divider } from "./InputsComponent.style";
-import { fieldsData, categories } from "./InputsComponent.utils";
+import { categories, useInputsData } from "./InputsComponent.utils";
 
 const InputsComponent = () => {
-  const { values, handleSubmit } = useFormikContext();
-  const [fieldValue, setFieldValue] = useState(null);
-  const inputEl = React.useRef(null);
-  const triggerClick = () => {
-    inputEl.current.click();
-  };
-
+  const {
+    values,
+    handleSubmit,
+    setFieldValue,
+    triggerClick,
+    fieldsData,
+    inputEl,
+  } = useInputsData();
   return (
     <Form onSubmit={handleSubmit}>
       <Grid container spacing={6}>
@@ -107,7 +108,7 @@ const InputsComponent = () => {
             }}
           />
         </Grid>
-        {fieldsData.map(({ name, type, label }) => (
+        {fieldsData.map(({ name, type, label, shrinkValue }) => (
           <Grid item xs={6}>
             <Field
               component={TextField}
@@ -115,7 +116,7 @@ const InputsComponent = () => {
               type={type}
               label={label}
               InputLabelProps={{
-                shrink: values.stock && true,
+                shrink: shrinkValue && true,
               }}
             />
           </Grid>
