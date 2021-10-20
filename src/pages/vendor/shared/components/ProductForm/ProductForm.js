@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import { StyledBox } from "./ProductForm.style";
-import { InputComponent } from "../InputComponent";
+import { InputsComponent } from "../InputsComponent";
 import { SignupSchema } from "./ProductForm.util";
 
 const ProductForm = ({ onSubmit, initialProductValues }) => {
@@ -13,7 +13,7 @@ const ProductForm = ({ onSubmit, initialProductValues }) => {
         onSubmit={onSubmit}
         enableReinitialize
       >
-        <InputComponent />
+        <InputsComponent />
       </Formik>
     </StyledBox>
   );

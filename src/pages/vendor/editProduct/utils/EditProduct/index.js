@@ -17,7 +17,7 @@ export const useEditProduct = (productId) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(true);
-    }, 1500);
+    }, 1000);
   });
 
   const handleCloseSnackbar = (event, reason) => {
