@@ -43,7 +43,7 @@ export const useGetProducts = () => {
 
   const getProducts = () => {
     axios
-      .get("http://localhost:8000/products")
+      .get("/products")
       .then((response) => {
         setProducts(response.data);
       })

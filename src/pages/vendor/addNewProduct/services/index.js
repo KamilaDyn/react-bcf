@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const addProduct = (data, setMessage) => {
   axios
-    .post("http://localhost:8000/products", data)
+    .post("/products", data)
     .then((response) => {
       setMessage("Nowy produkt został dodany");
       return response.data;
