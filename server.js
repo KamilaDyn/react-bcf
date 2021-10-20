@@ -1,4 +1,4 @@
-const jsonServer = require("json-server");
+const jsonServer = require("json-server", "json-server-auth");
 const server = jsonServer.create();
 const router = jsonServer.router("data/db.json");
 const middlewares = jsonServer.defaults({ static: "./build" });
