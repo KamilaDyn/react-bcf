@@ -4,7 +4,7 @@ import { StyledBox } from "./ProductForm.style";
 import { InputsComponent } from "../InputsComponent";
 import { SignupSchema } from "./ProductForm.util";
 
-const ProductForm = ({ onSubmit, initialProductValues }) => {
+const ProductForm = ({ onSubmit, initialProductValues, setFieldValue }) => {
   return (
     <StyledBox>
       <Formik
@@ -13,7 +13,7 @@ const ProductForm = ({ onSubmit, initialProductValues }) => {
         onSubmit={onSubmit}
         enableReinitialize
       >
-        <InputsComponent />
+        <InputsComponent setFieldValue={setFieldValue} />
       </Formik>
     </StyledBox>
   );

@@ -12,7 +12,7 @@ export const useGetProducts = () => {
 
   const getProducts = () => {
     axios
-      .get(`${JSON_API}/products`)
+      .get(`/products`)
       .then((response) => {
         setProducts(response.data);
       })

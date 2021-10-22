@@ -3,7 +3,7 @@ import { useProductContext } from "../../../../../context";
 import { addProduct } from "../../services";
 
 export const useAddNewProduct = () => {
-  const [fieldValue, setFieldValue] = useState(null);
+  const [fieldValue, setFieldValue] = useState();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [message, setMessage] = useState("");
   const { productContext } = useProductContext();
@@ -17,7 +17,6 @@ export const useAddNewProduct = () => {
     sale: "",
     category: "Elektronika",
     file: fieldValue,
-    image: "",
   };
 
   const handleCloseSnackbar = (event, reason) => {
@@ -28,6 +27,7 @@ export const useAddNewProduct = () => {
   };
 
   const onSubmit = (initialProductValues, { resetForm }) => {
+    console.log(initialProductValues);
     addProduct(initialProductValues, setMessage);
     resetForm();
     setOpenSnackbar(true);
@@ -45,5 +45,6 @@ export const useAddNewProduct = () => {
     handleCloseSnackbar,
     setMessage,
     message,
+    fieldValue,
   };
 };

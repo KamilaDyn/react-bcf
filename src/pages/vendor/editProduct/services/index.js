@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getProduct = async (productId, setInitialProductValues) => {
   try {
-    await axios.get(`/products/${productId}`).then((response) => {
+    await axios.get(`products/${productId}`).then((response) => {
       setInitialProductValues(response.data);
     });
   } catch (error) {

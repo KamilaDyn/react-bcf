@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Form, Field, useFormikContext } from "formik";
+import React from "react";
+import { Form, Field } from "formik";
 import {
   Grid,
   MenuItem,
@@ -9,18 +9,17 @@ import {
 } from "@material-ui/core";
 import { TextField, Select } from "formik-material-ui";
 import { StyledBox, StyledButton, Divider } from "./InputsComponent.style";
-import { fieldsData, categories } from "./InputsComponent.utils";
+import { categories, useInputsData } from "./InputsComponent.utils";
 
-const InputsComponent = () => {
-  const { values, handleSubmit } = useFormikContext();
-  const [fieldValue, setFieldValue] = useState(null);
-  const inputEl = React.useRef(null);
-  const triggerClick = () => {
-    inputEl.current.click();
-  };
-
+const InputsComponent = ({ setFieldValue }) => {
+  const { values, handleSubmit, triggerClick, fieldsData, inputEl } =
+    useInputsData();
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit}
+      enctype='multipart/form-data'
+      action='/products'
+    >
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <Field
@@ -70,9 +69,9 @@ const InputsComponent = () => {
               multiple
               typeIndex='-1'
               accept='.jpeg,.jpg,.png,.gif'
-              hidden
-              onChange={(event) => {
-                setFieldValue(event.currentTarget.files);
+              onChange={(e) => {
+                const file = URL.createObjectURL(e.target.files[0]);
+                setFieldValue(file);
               }}
             />
             <Typography variant='h5' align='center'>
@@ -107,7 +106,7 @@ const InputsComponent = () => {
             }}
           />
         </Grid>
-        {fieldsData.map(({ name, type, label }) => (
+        {fieldsData.map(({ name, type, label, shrinkValue }) => (
           <Grid item xs={6}>
             <Field
               component={TextField}
@@ -115,7 +114,7 @@ const InputsComponent = () => {
               type={type}
               label={label}
               InputLabelProps={{
-                shrink: values.stock && true,
+                shrink: shrinkValue && true,
               }}
             />
           </Grid>

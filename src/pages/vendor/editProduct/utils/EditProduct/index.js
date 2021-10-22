@@ -40,5 +40,6 @@ export const useEditProduct = (productId) => {
     handleCloseSnackbar,
     message,
     loading,
+    fieldValue,
   };
 };
