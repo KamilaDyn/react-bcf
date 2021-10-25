@@ -6,7 +6,7 @@ npm run start
 
 npx json-server data/db.json -m ./node_modules/json-server-auth --port 8000
 
-## <a href='https://kamiladyn.github.io/react-bcf'>Live</a>
+## <a href='https://react-product-store.herokuapp.com/'>Live</a>
 
 # Getting Started with Create React App
 
