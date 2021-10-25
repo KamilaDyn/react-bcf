@@ -1,9 +1,8 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useFormikContext } from "formik";
 
 export const useInputsData = () => {
-  const [fieldValue, setFieldValue] = useState(null);
-  const { values, handleSubmit } = useFormikContext();
+  const { values, handleSubmit, setFieldValue } = useFormikContext();
   const inputEl = useRef(null);
   const triggerClick = () => {
     inputEl.current.click();
@@ -40,7 +39,6 @@ export const useInputsData = () => {
     fieldsData,
     triggerClick,
     handleSubmit,
-    fieldValue,
     setFieldValue,
     inputEl,
     values,

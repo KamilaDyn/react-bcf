@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { editProduct, getProduct } from "../../services";
 
 export const useEditProduct = (productId) => {
-  const [fieldValue, setFieldValue] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [initialProductValues, setInitialProductValues] = useState({});
   const [message, setMessage] = useState("");
@@ -34,12 +33,10 @@ export const useEditProduct = (productId) => {
   return {
     onSubmit,
     initialProductValues,
-    setFieldValue,
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
     message,
     loading,
-    fieldValue,
   };
 };
