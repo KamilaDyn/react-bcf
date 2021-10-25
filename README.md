@@ -1,3 +1,7 @@
+# To run app and server
+
+npm run start
+
 # Start Json.Server
 
 npx json-server data/db.json -m ./node_modules/json-server-auth --port 8000
