@@ -1,40 +1,62 @@
+import { Types } from "../actions/actionsType";
+
 const user = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).user
   : "";
 const token = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).auth_token
+  ? JSON.parse(localStorage.getItem("currentUser")).accessToken
   : "";
 export const initialState = {
-  userDetails: "" || user,
-  token: "" || token,
-  loading: false,
+  profile: {
+    user: "" || user,
+    token: "" || token,
+  },
+  isLoggedIn: user ? true : false,
 };
-
-export const AuthReducer = (initialState, action) => {
-  switch (action.type) {
-    case "REQUEST_LOGIN":
+export const AuthReducer = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case Types.REQUEST_LOGIN:
       return {
-        ...initialState,
-        loading: true,
+        ...state,
+        isLoggedIn: true,
       };
-    case "LOGIN_SUCCESS":
+    case Types.SUCCESS_LOGIN:
       return {
-        ...initialState,
-        user: action.payload.user,
-        token: action.payload.token,
+        ...state,
+        user: payload.user,
+        isLoggedIn: true,
       };
-    case "LOGOUT":
+    case Types.ADD_USER:
       return {
-        ...initialState,
-        user: "",
-        token: "",
+        ...state,
+        profile: payload,
       };
-    case "LOGIN_ERROR":
+    case Types.LOGOUT_USER:
+      console.log(state);
       return {
-        ...initialState,
-        loading: false,
+        ...state,
+        isLoggedIn: false,
       };
     default:
-      throw new Error(`Wystąpił problem z akcją ${action.type}`);
+      return state;
+  }
+};
+export const loginState = {
+  isLoggedUser: initialState.isLoggedIn,
+};
+
+export const LoginReducer = (loginState = false, action) => {
+  switch (action.type) {
+    case Types.OPEN_LOGIN_FORM:
+      return {
+        loginState: true,
+      };
+    case Types.CLOSE_LOGIN_FORM:
+      return {
+        loginState: false,
+      };
+    default:
+      return loginState;
   }
 };

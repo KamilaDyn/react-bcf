@@ -15,7 +15,6 @@ import { useLoginForm } from "./LoginForm.utils";
 
 const LoginForm = () => {
   const { initialValues, onSubmit, SignupSchema } = useLoginForm();
-
   return (
     <Formik
       initialValues={initialValues}

@@ -1,20 +1,26 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Grid, Link, Typography } from "@material-ui/core";
 import { MuiDialogTitle } from "../../../shared";
 import { LoginForm } from "../LoginForm";
 import { ResetContainer } from "./LoginFormContainer.style";
+import { closeLoginForm } from "../../../loginProvider/actions";
 
-const LoginFormContainer = ({ openLoggingForm, setOpenLoggingForm, user }) => {
+const LoginFormContainer = () => {
+  const currentLoginState = useSelector(
+    (state) => state.loggingForm.loginState
+  );
+  const dispatch = useDispatch();
   return (
     <Dialog
-      onClose={() => setOpenLoggingForm(false)}
+      onClose={() => dispatch(closeLoginForm())}
       aria-labelledby='customized-dialog-title'
-      open={openLoggingForm}
+      open={currentLoginState}
     >
       <>
         <MuiDialogTitle
           id='customized-dialog-title'
-          onClose={() => setOpenLoggingForm(false)}
+          onClose={() => dispatch(closeLoginForm())}
         >
           Witaj w sklepie Bazarek!
           <Typography variant='subtitle1'>Wpisz Swój email i hasło</Typography>

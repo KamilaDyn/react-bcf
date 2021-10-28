@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AuthProvider } from "./loginProvider";
+import { Provider } from "react-redux";
 import {
   Products,
   Profile,
@@ -11,10 +11,12 @@ import {
 import { routes } from "./config/routes";
 import MainTemplate from "./views/MainTemplate/MainTemplate";
 import { ProductProvider } from "./productProvider";
+import { configureStore } from "./loginProvider/store";
+const store = configureStore();
 class App extends Component {
   render() {
     return (
-      <AuthProvider>
+      <Provider store={store}>
         <Router>
           <ProductProvider>
             <MainTemplate>
@@ -40,7 +42,7 @@ class App extends Component {
             </MainTemplate>
           </ProductProvider>
         </Router>
-      </AuthProvider>
+      </Provider>
     );
   }
 }

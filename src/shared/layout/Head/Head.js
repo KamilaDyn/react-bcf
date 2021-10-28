@@ -6,18 +6,19 @@ import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { routes } from "../../../config/routes";
 import { logo } from "../../../assets";
-
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
+import { useDispatch } from "react-redux";
+import { openLoginForm } from "../../../loginProvider/actions";
 
 const Head = ({
   setOpenShoppingCard,
   openShoppingCard,
   countItems,
   shoppingList,
-  setOpenLoggingForm,
   isLoggedIn,
   user,
 }) => {
+  const dispatch = useDispatch();
   let history = useHistory();
   return (
     <StyledGrid
@@ -50,11 +51,13 @@ const Head = ({
         <StyledIconButton
           edge='end'
           onClick={() =>
-            isLoggedIn ? history.push(routes.profile) : setOpenLoggingForm(true)
+            isLoggedIn
+              ? history.push(routes.profile)
+              : dispatch(openLoginForm())
           }
         >
           <Tooltip
-            title={isLoggedIn && user ? user.split("@")[0] : "Profil"}
+            title={isLoggedIn && user ? user.email.split("@")[0] : "Profil"}
             placement='top'
           >
             <PersonOutlineIcon />

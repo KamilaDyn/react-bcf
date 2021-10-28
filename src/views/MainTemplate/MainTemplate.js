@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router";
+import { connect } from "react-redux";
 import { ThemeProvider } from "@material-ui/styles";
 import { theme } from "../../theme";
 import {
@@ -9,23 +10,21 @@ import {
   LoginFormContainer,
   ShoppingCard,
 } from "../../shared";
-import { useAuthState } from "../../loginProvider";
 import { useProductContext } from "../../context";
 import { StyledContainer } from "./MainTemplate.style";
+import { loginUser } from "../../loginProvider/actions";
 
-const MainTemplate = ({ children }) => {
+const MainTemplate = ({ children, profile, isUserLogged }) => {
   const [openProductForm, setOpenProductForm] = useState(false);
   const { productContext } = useProductContext();
-  const { stateContext } = useAuthState();
-
+  const [openLoggingForm, setOpenLoggingForm] = React.useState(false);
   const {
     shoppingList,
     countItemsInBasket,
     openShoppingCard,
     setOpenShoppingCard,
   } = productContext;
-  const { openLoggingForm, isLoggedIn, user, setOpenLoggingForm } =
-    stateContext;
+
   return (
     <ThemeProvider theme={theme}>
       <Head
@@ -33,12 +32,12 @@ const MainTemplate = ({ children }) => {
         openShoppingCard={openShoppingCard}
         setOpenShoppingCard={setOpenShoppingCard}
         shoppingList={shoppingList}
-        setOpenLoggingForm={stateContext.setOpenLoggingForm}
-        openLoggingForm={stateContext.openLoggingForm}
+        setOpenLoggingForm={setOpenLoggingForm}
+        openLoggingForm={openLoggingForm}
         openProductForm={openProductForm}
         setOpenProductForm={setOpenProductForm}
-        isLoggedIn={isLoggedIn}
-        user={user}
+        isLoggedIn={isUserLogged}
+        user={profile.user}
       />
       <StyledContainer>
         <Main openShoppingCard={openShoppingCard}>{children}</Main>
@@ -50,11 +49,21 @@ const MainTemplate = ({ children }) => {
       <LoginFormContainer
         openLoggingForm={openLoggingForm}
         setOpenLoggingForm={setOpenLoggingForm}
-        user={user}
       />
       <Footer />
     </ThemeProvider>
   );
 };
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+  isUserLogged: state.profile.isLoggedIn,
+});
+const mapDispatchToProps = {
+  loginUser,
+};
 
-export default withRouter(MainTemplate);
+const MainTemplateConsumer = withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(MainTemplate)
+);
+
+export default MainTemplateConsumer;
