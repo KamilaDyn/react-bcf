@@ -1,23 +1,23 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { Grid, Tooltip, Typography, Link } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import { openLoginForm } from "../../../loginProvider/actions";
 import { routes } from "../../../config/routes";
 import { logo } from "../../../assets";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
-import { useDispatch } from "react-redux";
-import { openLoginForm } from "../../../loginProvider/actions";
 
 const Head = ({
   setOpenShoppingCard,
   openShoppingCard,
   countItems,
   shoppingList,
-  isLoggedIn,
-  user,
 }) => {
+  const user = useSelector((state) => state.profile.profile.user.email);
+  const isLoggedIn = useSelector((state) => state.profile.isLoggedIn);
   const dispatch = useDispatch();
   let history = useHistory();
   return (
@@ -57,7 +57,7 @@ const Head = ({
           }
         >
           <Tooltip
-            title={isLoggedIn && user ? user.email.split("@")[0] : "Profil"}
+            title={isLoggedIn && user ? user.split("@")[0] : "Profil"}
             placement='top'
           >
             <PersonOutlineIcon />

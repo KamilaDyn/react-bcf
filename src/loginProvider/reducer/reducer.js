@@ -12,6 +12,8 @@ export const initialState = {
     token: "" || token,
   },
   isLoggedIn: user ? true : false,
+  errorMessage: "",
+  successMessage: "",
 };
 export const AuthReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -24,18 +26,27 @@ export const AuthReducer = (state = initialState, action) => {
     case Types.SUCCESS_LOGIN:
       return {
         ...state,
-        user: payload.user,
-        isLoggedIn: true,
-      };
-    case Types.ADD_USER:
-      return {
-        ...state,
         profile: payload,
+        isLoggedIn: true,
+        errorMessage: "",
+        successMessage: "Zostałeś zalogowany",
       };
     case Types.LOGOUT_USER:
-      console.log(state);
       return {
         ...state,
+        profile: {
+          user: "",
+          token: "",
+        },
+        isLoggedIn: false,
+        errorMessage: "",
+        successMessage: "",
+      };
+    case Types.LOGIN_FAIL:
+      return {
+        ...state,
+        errorMessage: payload,
+        successMessage: "",
         isLoggedIn: false,
       };
     default:
