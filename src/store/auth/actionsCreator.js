@@ -1,11 +1,11 @@
 import { Types } from "./actionsType";
-import { closeLoginForm } from "../../login";
+import { closeLoginForm } from "../login";
 import {
   formatError,
   addUser,
   loginRequest,
   saveTokenInLocalStorage,
-} from "../services";
+} from "./services";
 const bcrypt = require("bcryptjs");
 
 export const singupUser = (user, history) => {

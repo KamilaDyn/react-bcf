@@ -1,4 +1,4 @@
-import { Types } from "../actions";
+import { Types } from "./actionsType";
 export const LoginReducer = (loginState = false, action) => {
   switch (action.type) {
     case Types.OPEN_LOGIN_FORM:

@@ -1,2 +1,2 @@
 export { LoginReducer } from "./reducer";
-export { closeLoginForm, openLoginForm } from "./actions";
+export { openLoginForm, closeLoginForm } from "./actionsCreator";
