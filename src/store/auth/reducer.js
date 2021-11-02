@@ -1,4 +1,4 @@
-import { Types } from "./actionsType";
+import { Types } from "./actions";
 
 const email = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).email
