@@ -7,11 +7,12 @@ import {
   AddNewProduct,
   EditProduct,
   AllProducts,
+  SignUp,
 } from "./modules";
 import { routes } from "./config/routes";
 import MainTemplate from "./views/MainTemplate/MainTemplate";
 import { ProductProvider } from "./productProvider";
-import { configureStore } from "./loginProvider/store";
+import { configureStore } from "./store";
 const store = configureStore();
 class App extends Component {
   render() {
@@ -21,8 +22,8 @@ class App extends Component {
           <ProductProvider>
             <MainTemplate>
               <Switch>
-                <Route exact path={routes.home} component={Products}></Route>
-                <Route exact path={routes.profile} component={Profile}></Route>
+                <Route exact path={routes.home} component={Products} />
+                <Route exact path={routes.profile} component={Profile} />
                 <Route
                   exact
                   path={routes.addNewProduct}
@@ -32,12 +33,9 @@ class App extends Component {
                   exact
                   path={routes.editProduct}
                   component={EditProduct}
-                ></Route>
-                <Route
-                  exact
-                  path={routes.products}
-                  component={AllProducts}
-                ></Route>
+                />
+                <Route exact path={routes.products} component={AllProducts} />
+                <Route exact path={routes.signup} component={SignUp} />
               </Switch>
             </MainTemplate>
           </ProductProvider>

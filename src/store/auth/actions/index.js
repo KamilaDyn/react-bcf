@@ -2,6 +2,6 @@ export {
   loginUser,
   logoutUser,
   loginSuccess,
-  openLoginForm,
-  closeLoginForm,
+  singupUser,
 } from "./ActionsCreators";
+export { Types } from "./actionsType";

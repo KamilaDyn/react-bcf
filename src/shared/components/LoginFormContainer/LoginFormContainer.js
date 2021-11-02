@@ -1,16 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Grid, Link, Typography } from "@material-ui/core";
+import { routes } from "../../../config/routes";
 import { MuiDialogTitle } from "../../../shared";
 import { LoginForm } from "../LoginForm";
 import { ResetContainer } from "./LoginFormContainer.style";
-import { closeLoginForm } from "../../../loginProvider/actions";
+import { closeLoginForm } from "../../../store";
 
 const LoginFormContainer = () => {
   const currentLoginState = useSelector(
     (state) => state.loggingForm.loginState
   );
   const dispatch = useDispatch();
+
   return (
     <Dialog
       onClose={() => dispatch(closeLoginForm())}
@@ -29,7 +31,7 @@ const LoginFormContainer = () => {
         <Grid container alignItems='center' spacing={3}>
           <Grid item container xs={12} justifyContent='center'>
             <Typography color='secondary'>Nie masz konta? </Typography>&nbsp;
-            <Link href='#'>Zarejestruj</Link>
+            <Link href={routes.signup}>Zarejestruj</Link>
           </Grid>
           <ResetContainer
             item

@@ -6,7 +6,7 @@ export const useAddProduct = () => {
   const { productContext } = useProductContext();
 
   const handleSubmit = (e, id, quantity) => {
-    let product = productContext.products.find((item) => {
+    const product = productContext.products.find((item) => {
       return item.id === id;
     });
     setPrice(product.price);

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../../../../loginProvider/actions";
+import { logoutUser } from "../../../../store";
 
 export const useHandleLoginOut = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { loginUser, closeLoginForm } from "../../../loginProvider/actions";
+import { useHistory } from "react-router-dom";
+import { loginUser } from "../../../store";
 
 export const useLoginForm = () => {
   const initialValues = {
@@ -8,15 +9,13 @@ export const useLoginForm = () => {
     password: "",
   };
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       setSubmitting(false);
-      let email = values.email;
-      let password = values.password;
-      let payload = { email, password };
-      dispatch(loginUser(payload));
-      dispatch(closeLoginForm());
+      const { email, password } = values;
+      dispatch(loginUser(email, password, history));
     }, 500);
   };
 

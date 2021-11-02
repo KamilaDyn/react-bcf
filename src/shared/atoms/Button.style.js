@@ -1,7 +1,7 @@
 import { styled } from "@material-ui/core";
 
 export const StyledButton = styled("button")(
-  ({ theme, submitForm, google }) => ({
+  ({ theme, submitForm, google, facebook }) => ({
     backgroundColor: theme.palette.primary.main,
     padding: theme.spacing(2, 4),
     fontSize: theme.typography.h4.fontSize,
@@ -28,6 +28,17 @@ export const StyledButton = styled("button")(
       backgroundColor: theme.palette.secondary.main,
       "&:hover": {
         backgroundColor: theme.palette.secondary.light,
+      },
+    }),
+    ...(facebook && {
+      width: "100%",
+      margin: 0,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: theme.palette.info.main,
+      "&:hover": {
+        backgroundColor: theme.palette.info.light,
       },
     }),
   })

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   Box,
   Container,
@@ -15,6 +16,8 @@ import { useLoginForm } from "./LoginForm.utils";
 
 const LoginForm = () => {
   const { initialValues, onSubmit, SignupSchema } = useLoginForm();
+  const errorMessage = useSelector((state) => state.auth.errorMessage);
+
   return (
     <Formik
       initialValues={initialValues}
@@ -49,7 +52,13 @@ const LoginForm = () => {
                 />
                 {isSubmitting && <LinearProgress />}
               </Grid>
-
+              {errorMessage && (
+                <Grid>
+                  <Typography variant='subtitle2' color='primary'>
+                    {errorMessage}
+                  </Typography>
+                </Grid>
+              )}
               <Grid item container justifyContent='center'>
                 <StyledButton
                   variant='contained'

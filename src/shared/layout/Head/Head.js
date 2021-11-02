@@ -1,11 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Grid, Tooltip, Typography, Link } from "@material-ui/core";
+import { Grid, Tooltip, Typography, Box } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import { openLoginForm } from "../../../loginProvider/actions";
+import { openLoginForm } from "../../../store";
 import { routes } from "../../../config/routes";
 import { logo } from "../../../assets";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
@@ -16,10 +16,10 @@ const Head = ({
   countItems,
   shoppingList,
 }) => {
-  const user = useSelector((state) => state.profile.profile.user.email);
-  const isLoggedIn = useSelector((state) => state.profile.isLoggedIn);
+  const user = useSelector((state) => state.auth.profile.email);
+  const logged = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
-  let history = useHistory();
+  const history = useHistory();
   return (
     <StyledGrid
       container
@@ -35,9 +35,13 @@ const Head = ({
         alignItems='center'
         justifyContent='center'
       >
-        <Link href={routes.home}>
+        <Box
+          onClick={() => {
+            history.push(routes.home);
+          }}
+        >
           <img src={logo} alt='logo' />
-        </Link>
+        </Box>
         <Typography variant='h1'>Bazarek</Typography>
       </Grid>
       <Grid
@@ -51,13 +55,11 @@ const Head = ({
         <StyledIconButton
           edge='end'
           onClick={() =>
-            isLoggedIn
-              ? history.push(routes.profile)
-              : dispatch(openLoginForm())
+            logged ? history.push(routes.profile) : dispatch(openLoginForm())
           }
         >
           <Tooltip
-            title={isLoggedIn && user ? user.split("@")[0] : "Profil"}
+            title={logged && user ? user.split("@")[0] : "Profil"}
             placement='top'
           >
             <PersonOutlineIcon />
@@ -74,7 +76,7 @@ const Head = ({
             <LocalMallOutlinedIcon />
           </StyledBadge>
         </StyledIconButton>
-        {isLoggedIn && (
+        {logged && (
           <StyledIconButton
             edge='end'
             onClick={() => history.push(routes.addNewProduct)}
