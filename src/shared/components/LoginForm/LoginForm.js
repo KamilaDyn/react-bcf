@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
 import { Field, Formik, Form } from "formik";
+import { selectors } from "../../../store";
 import { googleIcon } from "../../../assets";
 import { StyledButton } from "../../atoms";
 import { Image } from "./LoginForm.style";
@@ -16,7 +17,7 @@ import { useLoginForm } from "./LoginForm.utils";
 
 const LoginForm = () => {
   const { initialValues, onSubmit, SignupSchema } = useLoginForm();
-  const errorMessage = useSelector((state) => state.auth.errorMessage);
+  const errorMessage = useSelector(selectors.auth.getErrorMessage);
 
   return (
     <Formik

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Grid, Link, Typography } from "@material-ui/core";
+import { selectors } from "../../../store";
 import { routes } from "../../../config/routes";
 import { MuiDialogTitle } from "../../../shared";
 import { LoginForm } from "../LoginForm";
@@ -8,9 +9,7 @@ import { ResetContainer } from "./LoginFormContainer.style";
 import { closeLoginForm } from "../../../store";
 
 const LoginFormContainer = () => {
-  const currentLoginState = useSelector(
-    (state) => state.loggingForm.loginState
-  );
+  const currentLoginState = useSelector(selectors.login.getLoginState);
   const dispatch = useDispatch();
 
   return (
