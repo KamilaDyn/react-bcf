@@ -11,7 +11,7 @@ import { useHandleLoginOut } from "./ProfileInfor.utils";
 const ProfileInfo = () => {
   const { handleLoginOut } = useHandleLoginOut();
 
-  let history = useHistory();
+  const history = useHistory();
   return (
     <Container>
       <ProfileBox>

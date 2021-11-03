@@ -1,17 +1,11 @@
-import {
-  logout,
-  useAuthDispatch,
-  useAuthState,
-} from "../../../../loginProvider";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../../../store";
 
 export const useHandleLoginOut = () => {
-  const { dispatchContext } = useAuthDispatch();
-  const { stateContext } = useAuthState();
+  const dispatch = useDispatch();
   const handleLoginOut = () => {
-    stateContext.setOpenLoggingForm(false);
     setTimeout(() => {
-      stateContext.setLoggedIn(false);
-      logout(dispatchContext);
+      dispatch(logoutUser());
     }, 500);
   };
   return { handleLoginOut };

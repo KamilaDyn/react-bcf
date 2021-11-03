@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   Box,
   Container,
@@ -8,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
 import { Field, Formik, Form } from "formik";
+import { selectors } from "../../../store";
 import { googleIcon } from "../../../assets";
 import { StyledButton } from "../../atoms";
 import { Image } from "./LoginForm.style";
@@ -15,6 +17,7 @@ import { useLoginForm } from "./LoginForm.utils";
 
 const LoginForm = () => {
   const { initialValues, onSubmit, SignupSchema } = useLoginForm();
+  const errorMessage = useSelector(selectors.auth.getErrorMessage);
 
   return (
     <Formik
@@ -50,7 +53,13 @@ const LoginForm = () => {
                 />
                 {isSubmitting && <LinearProgress />}
               </Grid>
-
+              {errorMessage && (
+                <Grid>
+                  <Typography variant='subtitle2' color='primary'>
+                    {errorMessage}
+                  </Typography>
+                </Grid>
+              )}
               <Grid item container justifyContent='center'>
                 <StyledButton
                   variant='contained'

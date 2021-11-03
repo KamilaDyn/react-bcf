@@ -73,8 +73,10 @@ const InputsComponent = () => {
               accept='.jpeg,.jpg,.png,.gif'
               hidden
               onChange={(event) => {
-                // setFieldValue(event.currentTarget.files);
-                setFieldValue('file', URL.createObjectURL(event.target.files[0]))
+                setFieldValue(
+                  "file",
+                  URL.createObjectURL(event.target.files[0])
+                );
               }}
             />
             <Typography variant='h5' align='center'>

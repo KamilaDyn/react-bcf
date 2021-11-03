@@ -1,1 +1,0 @@
-export { AuthReducer, initialState } from './reducer'

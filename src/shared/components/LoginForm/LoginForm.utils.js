@@ -1,27 +1,21 @@
 import * as Yup from "yup";
-import {
-  loginUser,
-  useAuthState,
-  useAuthDispatch,
-} from "../../../loginProvider";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { loginUser } from "../../../store";
 
 export const useLoginForm = () => {
   const initialValues = {
     email: "",
     password: "",
   };
-  const { dispatchContext } = useAuthDispatch();
-  const { stateContext } = useAuthState();
-  const onSubmit = (values, { setSubmitting }) => {
-    stateContext.setOpenLoggingForm(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
+  const onSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       setSubmitting(false);
-      let email = values.email;
-      let password = values.password;
-      let payload = { email, password };
-      stateContext.setLoggedIn(true);
-      loginUser(dispatchContext, payload);
+      const { email, password } = values;
+      dispatch(loginUser(email, password, history));
     }, 500);
   };
 
