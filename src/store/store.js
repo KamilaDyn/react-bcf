@@ -21,3 +21,7 @@ export const selectors = {
   auth: auth.selectors,
   products: products.selectors,
 };
+
+export const actions = {
+  products: products.actions,
+};

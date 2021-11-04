@@ -14,6 +14,10 @@ export const deleteProduct = (productId) => {
 };
 
 export const editProduct = (item) => {
-  console.log(item);
   return axios.put(`${API_URL}/${item.id}`, item);
+};
+
+export const getProduct = (productId) => {
+  console.log(productId);
+  return axios.get(`${API_URL}/${productId}`);
 };

@@ -1,13 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useProductContext } from "../../../../../context";
-import { addProduct } from "../../services";
-import { addNewProduct } from "../../../../../store/product/actions/actionsCreator";
-import { useDispatch, useSelector } from "react-redux";
-import { selectors } from "../../../../../store";
+import { actions } from "../../../../../store";
+import { useDispatch } from "react-redux";
 
 export const useAddNewProduct = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [message, setMessage] = useState("");
   const { productContext } = useProductContext();
   const dispatch = useDispatch();
 
@@ -23,6 +20,10 @@ export const useAddNewProduct = () => {
     image: "",
   };
 
+  useEffect(() => {
+    dispatch(actions.setInitialProductValues(initialProductValues));
+  }, []);
+
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -31,8 +32,7 @@ export const useAddNewProduct = () => {
   };
 
   const onSubmit = (initialProductValues, { resetForm }) => {
-    // addProduct(initialProductValues, setMessage);
-    dispatch(addNewProduct(initialProductValues));
+    dispatch(actions.addNewProduct(initialProductValues));
     resetForm();
     setOpenSnackbar(true);
     setTimeout(() => {
@@ -46,7 +46,5 @@ export const useAddNewProduct = () => {
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
-    setMessage,
-    message,
   };
 };

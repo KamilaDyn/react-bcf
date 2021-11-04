@@ -4,9 +4,10 @@ import {
   addProduct,
   deleteProduct,
   editProduct,
+  getProduct,
 } from "../services";
 
-export const getAllProducts = () => {
+const getAllProducts = () => {
   return async (dispatch) => {
     await getProducts()
       .then((response) => {
@@ -21,13 +22,15 @@ export const getAllProducts = () => {
 const getProductsSuccess = (data) => {
   return { type: Types.GET_PRODUCTS, payload: data };
 };
+const setInitialProductValues = (data) => {
+  return { type: Types.INITIAL_PRODUCT_VALUES, payload: data };
+};
 
-export const addNewProduct = (product) => {
+const addNewProduct = (product) => {
   return async (dispatch) => {
     await addProduct(product)
       .then((response) => {
         dispatch(addNewProductSuccess(response.data));
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -38,12 +41,10 @@ export const addNewProduct = (product) => {
 const addNewProductSuccess = (data) => {
   return { type: Types.ADD_NEW_PRODUCT, payload: data };
 };
-
-export const deleteOneProduct = (productId) => {
+const deleteOneProduct = (productId) => {
   return async (dispatch) => {
     await deleteProduct(productId)
       .then((response) => {
-        console.log(response);
         dispatch(deleteProductSuccess(response.data));
       })
       .catch((error) => {
@@ -56,19 +57,43 @@ const deleteProductSuccess = (id) => {
   return { type: Types.DELETE_PRODUCT, payload: id };
 };
 
-export const editOneProduct = (item) => {
+const getSingleProduct = (id) => {
+  return async (dispatch) => {
+    await getProduct(id)
+      .then((response) => {
+        dispatch(getProductSuccess(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+const getProductSuccess = (item) => {
+  return { type: Types.GET_SINGLE_PRODUCT, payload: item };
+};
+
+const editOneProduct = (item) => {
   return async (dispatch) => {
     await editProduct(item)
       .then((response) => {
-        console.log(response.data);
         dispatch(editProductSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error.res);
+        console.log(error);
       });
   };
 };
 
 const editProductSuccess = (item) => {
   return { type: Types.EDIT_PRODUCT, payload: item };
+};
+
+export const productActions = {
+  getAllProducts,
+  setInitialProductValues,
+  addNewProduct,
+  deleteOneProduct,
+  getSingleProduct,
+  editOneProduct,
 };

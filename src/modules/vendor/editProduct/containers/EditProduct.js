@@ -8,7 +8,6 @@ import { selectors } from "../../../../store";
 
 const EditProduct = (props) => {
   const {
-    initialProductValues,
     onSubmit,
     setOpenSnackbar,
     handleCloseSnackbar,
@@ -33,7 +32,6 @@ const EditProduct = (props) => {
               <Typography variant='h2'>Edytuj Produkt</Typography>
             </Box>
             <ProductForm
-              initialProductValues={initialProductValues}
               onSubmit={onSubmit}
               handleChange={handleChange}
               setFieldValue={setFieldValue}

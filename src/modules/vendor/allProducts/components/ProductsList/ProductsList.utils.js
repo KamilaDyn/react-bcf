@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useProductContext } from "../../../../../context";
 import { deleteProduct } from "../../services";
 import { useDispatch } from "react-redux";
-import { deleteOneProduct } from "../../../../../store/product/actions/actionsCreator";
+import { actions } from "../../../../../store";
 
 export const useDeleteProduct = () => {
-  const [message, setMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [openPermission, setOpenPermission] = useState(false);
   const [productId, setProductId] = useState("");
@@ -14,8 +13,7 @@ export const useDeleteProduct = () => {
 
   const handleDelete = (id) => {
     setOpenPermission(true);
-    // deleteProduct(id, setMessage);
-    dispatch(deleteOneProduct(id));
+    dispatch(actions.deleteOneProduct(id));
     setOpenSnackbar(true);
     setTimeout(() => {
       productContext.getProducts();
@@ -34,8 +32,6 @@ export const useDeleteProduct = () => {
 
   return {
     handleDelete,
-    message,
-    setMessage,
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,

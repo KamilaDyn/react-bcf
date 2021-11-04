@@ -1,7 +1,7 @@
 import { Types } from "./actions";
 
 const initialState = {
-  allProducts: [],
+  products: [],
   errorMessage: "",
   successMessage: "",
 };
@@ -12,27 +12,39 @@ export const ProductReducer = (state = initialState, action) => {
     case Types.GET_PRODUCTS:
       return {
         ...state,
-        allProducts: payload,
+        products: payload,
         successMessage: "",
+      };
+    case Types.INITIAL_PRODUCT_VALUES:
+      return {
+        ...state,
+        products: payload,
+        successMessage: "",
+        errorMessage: "",
       };
     case Types.ADD_NEW_PRODUCT:
       return {
         ...state,
-        allProducts: payload,
+        products: payload,
         successMessage: "Nowy produkt został dodany",
       };
     case Types.DELETE_PRODUCT:
       return {
         ...state,
-        allProducts: state.allProducts.filter(
-          (allProducts) => allProducts.id !== payload.id
+        products: state.products.filter(
+          (products) => products.id !== payload.id
         ),
-        successMessage: "Product został usunięty",
+        successMessage: "Produkt został usunięty",
+      };
+    case Types.GET_SINGLE_PRODUCT:
+      return {
+        ...state,
+        products: payload,
       };
     case Types.EDIT_PRODUCT:
       return {
         ...state,
-        allProducts: (state.allProducts[payload.id] = payload),
+        products: (state.products[payload.id] = payload),
         successMessage: "Product został edytowany",
       };
 

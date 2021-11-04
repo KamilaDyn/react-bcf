@@ -3,12 +3,15 @@ import { Formik } from "formik";
 import { StyledBox } from "./ProductForm.style";
 import { InputsComponent } from "../InputsComponent";
 import { SignupSchema } from "./ProductForm.util";
+import { useSelector } from "react-redux";
+import { selectors } from "../../../../../store";
 
-const ProductForm = ({ onSubmit, initialProductValues }) => {
+const ProductForm = ({ onSubmit }) => {
+  const product = useSelector(selectors.products.getProducts);
   return (
     <StyledBox>
       <Formik
-        initialValues={initialProductValues}
+        initialValues={product}
         validationSchema={SignupSchema}
         onSubmit={onSubmit}
         enableReinitialize
