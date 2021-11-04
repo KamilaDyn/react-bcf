@@ -13,7 +13,7 @@ export const useEditProduct = (productId) => {
   useEffect(() => {
     setTimeout(() => {
       // getProduct(productId, setInitialProductValues);
-      dispatch(actions.getSingleProduct(productId));
+      dispatch(actions.products.getSingleProduct(productId));
     }, 500);
   }, []);
 
@@ -30,7 +30,7 @@ export const useEditProduct = (productId) => {
     setOpenSnackbar(false);
   };
   const onSubmit = (initialProductValues) => {
-    dispatch(actions.editOneProduct(initialProductValues));
+    dispatch(actions.products.editOneProduct(initialProductValues));
     setOpenSnackbar(true);
   };
 

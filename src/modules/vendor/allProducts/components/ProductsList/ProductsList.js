@@ -19,6 +19,7 @@ import { useDeleteProduct } from "./ProductsList.utils";
 import { InfoSnackbar } from "../../../shared";
 import { selectors } from "../../../../../store";
 import { useSelector } from "react-redux";
+import { Loader } from "../../../shared";
 
 const ProductsList = () => {
   const { productContext } = useProductContext();
@@ -32,50 +33,54 @@ const ProductsList = () => {
     setOpenPermission,
     productId,
     setProductId,
+    loading,
   } = useDeleteProduct();
   const message = useSelector(selectors.products.getSuccessMessage);
+  const products = useSelector(selectors.products.getProducts);
+
   return (
     <Box>
       <Header />
-      {productContext.products.map((item) => (
-        <StyledCard id={item.id}>
-          <Grid container alignItems='center' spacing={2}>
-            <Grid item xs={5}>
-              <Typography color='inherit'> {item.title}</Typography>
+      {products.length &&
+        products.map((item) => (
+          <StyledCard id={item.id}>
+            <Grid container alignItems='center' spacing={2}>
+              <Grid item xs={5}>
+                <Typography color='inherit'> {item.title}</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography color='inherit'>{item.stock}</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography color='inherit'>${item.price}</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography color='inherit'>
+                  {item.sale ? `$${item.sale}` : ""}
+                </Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <IconButton
+                  component={Link}
+                  to={`/vendor/edit-product/${item.id}`}
+                >
+                  <EditIcon />
+                </IconButton>
+              </Grid>
+              <Grid item xs={1}>
+                <IconButton>
+                  <DeleteIcon
+                    color='primary'
+                    onClick={() => {
+                      setOpenPermission(true);
+                      setProductId(item.id);
+                    }}
+                  />
+                </IconButton>
+              </Grid>
             </Grid>
-            <Grid item xs={1}>
-              <Typography color='inherit'>{item.stock}</Typography>
-            </Grid>
-            <Grid item xs={2}>
-              <Typography color='inherit'>${item.price}</Typography>
-            </Grid>
-            <Grid item xs={2}>
-              <Typography color='inherit'>
-                {item.sale ? `$${item.sale}` : ""}
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <IconButton
-                component={Link}
-                to={`/vendor/edit-product/${item.id}`}
-              >
-                <EditIcon />
-              </IconButton>
-            </Grid>
-            <Grid item xs={1}>
-              <IconButton>
-                <DeleteIcon
-                  color='primary'
-                  onClick={() => {
-                    setOpenPermission(true);
-                    setProductId(item.id);
-                  }}
-                />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </StyledCard>
-      ))}
+          </StyledCard>
+        ))}
       <InfoSnackbar
         openSnackbar={openSnackbar}
         message={message}
@@ -102,6 +107,7 @@ const ProductsList = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      <Loader loading={loading} />
     </Box>
   );
 };

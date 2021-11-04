@@ -31,10 +31,10 @@ export const ProductReducer = (state = initialState, action) => {
     case Types.DELETE_PRODUCT:
       return {
         ...state,
-        products: state.products.filter(
-          (products) => products.id !== payload.id
-        ),
         successMessage: "Produkt został usunięty",
+        // products: state.products.filter(
+        //   (products) => products.id !== payload.id
+        // ),
       };
     case Types.GET_SINGLE_PRODUCT:
       return {
@@ -44,8 +44,8 @@ export const ProductReducer = (state = initialState, action) => {
     case Types.EDIT_PRODUCT:
       return {
         ...state,
-        products: (state.products[payload.id] = payload),
         successMessage: "Product został edytowany",
+        products: (state.products[payload.id] = payload),
       };
 
     default:

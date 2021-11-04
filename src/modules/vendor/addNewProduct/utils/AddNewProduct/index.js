@@ -21,7 +21,7 @@ export const useAddNewProduct = () => {
   };
 
   useEffect(() => {
-    dispatch(actions.setInitialProductValues(initialProductValues));
+    dispatch(actions.products.setInitialProductValues(initialProductValues));
   }, []);
 
   const handleCloseSnackbar = (event, reason) => {
@@ -32,7 +32,7 @@ export const useAddNewProduct = () => {
   };
 
   const onSubmit = (initialProductValues, { resetForm }) => {
-    dispatch(actions.addNewProduct(initialProductValues));
+    dispatch(actions.products.addNewProduct(initialProductValues));
     resetForm();
     setOpenSnackbar(true);
     setTimeout(() => {

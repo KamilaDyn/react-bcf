@@ -7,7 +7,7 @@ export const useProductList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(actions.getAllProducts());
+    dispatch(actions.products.getAllProducts());
   }, []);
   return {
     allProducts,

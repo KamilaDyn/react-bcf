@@ -18,6 +18,5 @@ export const editProduct = (item) => {
 };
 
 export const getProduct = (productId) => {
-  console.log(productId);
   return axios.get(`${API_URL}/${productId}`);
 };
