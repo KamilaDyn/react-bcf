@@ -8,6 +8,7 @@ import { StyledButton } from "../../../../shared";
 import { RegisterBySocialMedia } from "../RegisterBySocialMedia";
 import { useSignUpForm, SignupSchema, signupFields } from "./SignupForm.utils";
 import { LoginButton } from "./SignupForm.style";
+import { getAllProducts } from "../../../../store/product/actions/actionsCreator";
 
 const SignupForm = () => {
   const { initialValues, onSubmit } = useSignUpForm();
@@ -64,7 +65,11 @@ const SignupForm = () => {
                 <Grid item container xs={12} justifyContent='center'>
                   <Typography color='secondary'>Masz już konto ? </Typography>
                   &nbsp;
-                  <LoginButton onClick={() => dispatch(openLoginForm())}>
+                  <LoginButton
+                    onClick={() => {
+                      dispatch(openLoginForm());
+                    }}
+                  >
                     Zaloguj
                   </LoginButton>
                 </Grid>

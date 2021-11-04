@@ -17,12 +17,13 @@ import { StyledCard } from "./ProductsList.style";
 import { Header } from "../Header";
 import { useDeleteProduct } from "./ProductsList.utils";
 import { InfoSnackbar } from "../../../shared";
+import { selectors } from "../../../../../store";
+import { useSelector } from "react-redux";
 
 const ProductsList = () => {
   const { productContext } = useProductContext();
   const {
     handleDelete,
-    message,
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
@@ -32,7 +33,7 @@ const ProductsList = () => {
     productId,
     setProductId,
   } = useDeleteProduct();
-
+  const message = useSelector(selectors.products.getSuccessMessage);
   return (
     <Box>
       <Header />

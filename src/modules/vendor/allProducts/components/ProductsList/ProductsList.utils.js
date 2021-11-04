@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useProductContext } from "../../../../../context";
 import { deleteProduct } from "../../services";
+import { useDispatch } from "react-redux";
+import { deleteOneProduct } from "../../../../../store/product/actions/actionsCreator";
 
 export const useDeleteProduct = () => {
   const [message, setMessage] = useState("");
@@ -8,10 +10,12 @@ export const useDeleteProduct = () => {
   const [openPermission, setOpenPermission] = useState(false);
   const [productId, setProductId] = useState("");
   const { productContext } = useProductContext();
+  const dispatch = useDispatch();
 
   const handleDelete = (id) => {
     setOpenPermission(true);
-    deleteProduct(id, setMessage);
+    // deleteProduct(id, setMessage);
+    dispatch(deleteOneProduct(id));
     setOpenSnackbar(true);
     setTimeout(() => {
       productContext.getProducts();

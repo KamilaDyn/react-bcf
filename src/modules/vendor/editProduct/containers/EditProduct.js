@@ -3,12 +3,13 @@ import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { box } from "../../../../assets";
 import { useEditProduct } from "../utils";
 import { ProductForm, Sidebar, InfoSnackbar, Loader } from "../../shared";
+import { useSelector } from "react-redux";
+import { selectors } from "../../../../store";
 
 const EditProduct = (props) => {
   const {
     initialProductValues,
     onSubmit,
-    message,
     setOpenSnackbar,
     handleCloseSnackbar,
     handleChange,
@@ -16,6 +17,7 @@ const EditProduct = (props) => {
     setFieldValue,
     loading,
   } = useEditProduct(props.match.params.id);
+  const message = useSelector(selectors.products.getSuccessMessage);
   return (
     <>
       <Container style={{ position: "relative" }}>

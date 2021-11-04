@@ -5,6 +5,8 @@ import { useProductContext } from "../../../../context";
 import { ProductsList } from "../../components/ProductsList";
 import { HeadSection } from "../../components/atoms";
 import { NewProductBox, Wrapper } from "./Products.style";
+import { getAllProducts } from "../../../../store/product/actions/actionsCreator";
+import { useDispatch, useSelector } from "react-redux";
 
 const Products = () => {
   const { productContext } = useProductContext();

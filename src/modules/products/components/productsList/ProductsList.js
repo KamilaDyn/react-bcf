@@ -1,13 +1,14 @@
 import React from "react";
 import { Card, CardHeader, Grid, Link } from "@material-ui/core";
 import { AddProductForm } from "../AddProductForm";
-
 import { StyledMedia, StyledTypography } from "./ProductsList.style";
+import { useProductList } from "./ProductsList.utils";
 
-const ProductsList = ({ products, open }) => {
+const ProductsList = ({ open }) => {
+  const { allProducts } = useProductList();
   return (
     <Grid container spacing={4}>
-      {products.map((p, index) => (
+      {allProducts.map((p, index) => (
         <Grid
           item
           xs={12}

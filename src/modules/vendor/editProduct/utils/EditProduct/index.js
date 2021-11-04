@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { editProduct, getProduct } from "../../services";
+import { useDispatch } from "react-redux";
+import { editOneProduct } from "../../../../../store/product/actions/actionsCreator";
 
 export const useEditProduct = (productId) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [initialProductValues, setInitialProductValues] = useState({});
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,7 +29,9 @@ export const useEditProduct = (productId) => {
     setOpenSnackbar(false);
   };
   const onSubmit = (initialProductValues) => {
-    editProduct(initialProductValues, setMessage);
+    // editProduct(initialProductValues, setMessage);
+    dispatch(editOneProduct(initialProductValues));
+    console.log("open");
     setOpenSnackbar(true);
   };
 

@@ -3,19 +3,21 @@ import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { box } from "../../../../../assets";
 import { ProductForm, Sidebar, InfoSnackbar } from "../../../shared";
 import { useAddNewProduct } from "../../utils";
+import { useSelector } from "react-redux";
+import { selectors } from "../../../../../store";
 
 const AddNewProduct = () => {
   const {
     initialProductValues,
     productCategory,
     onSubmit,
-    message,
     setOpenSnackbar,
     handleCloseSnackbar,
     handleChange,
     openSnackbar,
     setFieldValue,
   } = useAddNewProduct();
+  const message = useSelector(selectors.products.getSuccessMessage);
   return (
     <Container>
       <Grid container spacing={3}>

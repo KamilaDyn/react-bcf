@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useProductContext } from "../../../../../context";
 import { addProduct } from "../../services";
+import { addNewProduct } from "../../../../../store/product/actions/actionsCreator";
+import { useDispatch, useSelector } from "react-redux";
+import { selectors } from "../../../../../store";
 
 export const useAddNewProduct = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [message, setMessage] = useState("");
   const { productContext } = useProductContext();
+  const dispatch = useDispatch();
 
   const initialProductValues = {
     title: "",
@@ -27,7 +31,8 @@ export const useAddNewProduct = () => {
   };
 
   const onSubmit = (initialProductValues, { resetForm }) => {
-    addProduct(initialProductValues, setMessage);
+    // addProduct(initialProductValues, setMessage);
+    dispatch(addNewProduct(initialProductValues));
     resetForm();
     setOpenSnackbar(true);
     setTimeout(() => {
