@@ -1,10 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { box } from "../../../../assets";
-import { useEditProduct } from "../utils";
-import { ProductForm, Sidebar, InfoSnackbar, Loader } from "../../shared";
-import { useSelector } from "react-redux";
 import { selectors } from "../../../../store";
+import { ProductForm, Sidebar, InfoSnackbar, Loader } from "../../shared";
+import { useEditProduct } from "../utils";
 
 const EditProduct = (props) => {
   const {
@@ -16,7 +16,8 @@ const EditProduct = (props) => {
     setFieldValue,
     loading,
   } = useEditProduct(props.match.params.id);
-  const message = useSelector(selectors.products.getSuccessMessage);
+  const successMessage = useSelector(selectors.products.getSuccessMessage);
+  const errorMessage = useSelector(selectors.products.getErrorMessage);
   return (
     <>
       <Container style={{ position: "relative" }}>
@@ -38,7 +39,7 @@ const EditProduct = (props) => {
             />
             <InfoSnackbar
               openSnackbar={openSnackbar}
-              message={message}
+              message={successMessage || errorMessage}
               setOpenSnackbar={setOpenSnackbar}
               handleCloseSnackbar={handleCloseSnackbar}
             />

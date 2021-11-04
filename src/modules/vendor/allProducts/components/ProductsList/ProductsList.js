@@ -35,9 +35,9 @@ const ProductsList = () => {
     setProductId,
     loading,
   } = useDeleteProduct();
-  const message = useSelector(selectors.products.getSuccessMessage);
+  const successMessage = useSelector(selectors.products.getSuccessMessage);
+  const errorMessage = useSelector(selectors.products.getErrorMessage);
   const products = useSelector(selectors.products.getProducts);
-
   return (
     <Box>
       <Header />
@@ -83,7 +83,7 @@ const ProductsList = () => {
         ))}
       <InfoSnackbar
         openSnackbar={openSnackbar}
-        message={message}
+        message={successMessage || errorMessage}
         setOpenSnackbar={setOpenSnackbar}
         handleCloseSnackbar={handleCloseSnackbar}
       />

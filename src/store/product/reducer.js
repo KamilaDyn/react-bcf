@@ -27,25 +27,36 @@ export const ProductReducer = (state = initialState, action) => {
         ...state,
         products: payload,
         successMessage: "Nowy produkt został dodany",
+        errorMessage: "",
       };
     case Types.DELETE_PRODUCT:
       return {
         ...state,
+        products: state.products.filter(
+          (products) => products.id !== payload.id
+        ),
+        errorMessage: "",
         successMessage: "Produkt został usunięty",
-        // products: state.products.filter(
-        //   (products) => products.id !== payload.id
-        // ),
       };
     case Types.GET_SINGLE_PRODUCT:
       return {
         ...state,
         products: payload,
+        errorMessage: "",
+        successMessage: "",
       };
     case Types.EDIT_PRODUCT:
       return {
         ...state,
+        products: (state.products[payload.id] = payload.id),
         successMessage: "Product został edytowany",
-        products: (state.products[payload.id] = payload),
+        errorMessage: "",
+      };
+    case Types.ERROR_REQUEST:
+      return {
+        ...state,
+        successMessage: "",
+        errorMessage: payload,
       };
 
     default:

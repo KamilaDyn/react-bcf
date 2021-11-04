@@ -20,3 +20,11 @@ export const editProduct = (item) => {
 export const getProduct = (productId) => {
   return axios.get(`${API_URL}/${productId}`);
 };
+export const formatError = (errorRespond) => {
+  switch (errorRespond) {
+    case "Not Found":
+      return "Problem z połączeniem z bazą danych";
+    default:
+      return "";
+  }
+};

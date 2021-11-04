@@ -7,17 +7,10 @@ import { useSelector } from "react-redux";
 import { selectors } from "../../../../../store";
 
 const AddNewProduct = () => {
-  const {
-    initialProductValues,
-    productCategory,
-    onSubmit,
-    setOpenSnackbar,
-    handleCloseSnackbar,
-    handleChange,
-    openSnackbar,
-    setFieldValue,
-  } = useAddNewProduct();
-  const message = useSelector(selectors.products.getSuccessMessage);
+  const { onSubmit, setOpenSnackbar, handleCloseSnackbar, openSnackbar } =
+    useAddNewProduct();
+  const successMessage = useSelector(selectors.products.getSuccessMessage);
+  const errorMessage = useSelector(selectors.products.getErrorMessage);
   return (
     <Container>
       <Grid container spacing={3}>
@@ -31,16 +24,10 @@ const AddNewProduct = () => {
             </div>
             <Typography variant='h2'>Dodaj nowy produkt</Typography>
           </Box>
-          <ProductForm
-            initialProductValues={initialProductValues}
-            productCategory={productCategory}
-            onSubmit={onSubmit}
-            handleChange={handleChange}
-            setFieldValue={setFieldValue}
-          />
+          <ProductForm onSubmit={onSubmit} />
           <InfoSnackbar
             openSnackbar={openSnackbar}
-            message={message}
+            message={successMessage || errorMessage}
             setOpenSnackbar={setOpenSnackbar}
             handleCloseSnackbar={handleCloseSnackbar}
           />

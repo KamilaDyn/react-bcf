@@ -5,6 +5,7 @@ import {
   deleteProduct,
   editProduct,
   getProduct,
+  formatError,
 } from "../services";
 
 const getAllProducts = () => {
@@ -14,7 +15,7 @@ const getAllProducts = () => {
         dispatch(getProductsSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.warn(error);
       });
   };
 };
@@ -33,7 +34,9 @@ const addNewProduct = (product) => {
         dispatch(addNewProductSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.warn(error.response.statusText);
+        const errorMessage = formatError(error.response.statusText);
+        dispatch(errorRequest(errorMessage));
       });
   };
 };
@@ -48,7 +51,9 @@ const deleteOneProduct = (productId) => {
         dispatch(deleteProductSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.warn(error.response.statusText);
+        const errorMessage = formatError(error.response.statusText);
+        dispatch(errorRequest(errorMessage));
       });
   };
 };
@@ -64,7 +69,9 @@ const getSingleProduct = (id) => {
         dispatch(getProductSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.warn(error);
+        const errorMessage = formatError(error.response.statusText);
+        dispatch(errorRequest(errorMessage));
       });
   };
 };
@@ -80,13 +87,22 @@ const editOneProduct = (item) => {
         dispatch(editProductSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.warn(error.response.statusText);
+        const errorMessage = formatError(error.response.statusText);
+        dispatch(errorRequest(errorMessage));
       });
   };
 };
 
 const editProductSuccess = (item) => {
   return { type: Types.EDIT_PRODUCT, payload: item };
+};
+
+const errorRequest = (message) => {
+  return {
+    type: Types.ERROR_REQUEST,
+    payload: message,
+  };
 };
 
 export const productActions = {

@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { useProductContext } from "../../../../../context";
 import { actions } from "../../../../../store";
 import { useDispatch } from "react-redux";
 
 export const useAddNewProduct = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const { productContext } = useProductContext();
   const dispatch = useDispatch();
 
   const initialProductValues = {
@@ -36,13 +34,13 @@ export const useAddNewProduct = () => {
     resetForm();
     setOpenSnackbar(true);
     setTimeout(() => {
-      productContext.getProducts();
-    }, 500);
+      dispatch(actions.products.getAllProducts());
+      setOpenSnackbar(true);
+    }, 300);
   };
 
   return {
     onSubmit,
-    initialProductValues,
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
