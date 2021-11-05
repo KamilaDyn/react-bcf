@@ -5,7 +5,7 @@ import { Grid, Tooltip, Typography, Box } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import { openLoginForm, selectors } from "../../../store";
+import { actions, selectors } from "../../../store";
 import { routes } from "../../../config/routes";
 import { logo } from "../../../assets";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
@@ -55,7 +55,9 @@ const Head = ({
         <StyledIconButton
           edge='end'
           onClick={() =>
-            logged ? history.push(routes.profile) : dispatch(openLoginForm())
+            logged
+              ? history.push(routes.profile)
+              : dispatch(actions.login.openLoginForm())
           }
         >
           <Tooltip

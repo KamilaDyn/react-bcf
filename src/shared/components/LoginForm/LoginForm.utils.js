@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { loginUser } from "../../../store";
+import { actions } from "../../../store";
 
 export const useLoginForm = () => {
   const initialValues = {
@@ -15,7 +15,7 @@ export const useLoginForm = () => {
     setTimeout(() => {
       setSubmitting(false);
       const { email, password } = values;
-      dispatch(loginUser(email, password, history));
+      dispatch(actions.auth.loginUser(email, password, history));
     }, 500);
   };
 

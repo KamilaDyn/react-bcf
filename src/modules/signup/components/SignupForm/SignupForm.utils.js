@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { singupUser } from "../../../../store";
+import { actions } from "../../../../store";
 export const useSignUpForm = () => {
   const history = useHistory();
 
@@ -20,7 +20,7 @@ export const useSignUpForm = () => {
       setSubmitting(false);
       const { firstName, secondName, email, password, phone } = values;
       const payload = { firstName, secondName, email, password, phone };
-      dispatch(singupUser(payload, history));
+      dispatch(actions.auth.singupUser(payload, history));
     }, 500);
   };
 

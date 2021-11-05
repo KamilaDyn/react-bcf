@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Grid, Link, Typography } from "@material-ui/core";
-import { selectors } from "../../../store";
+import { selectors, actions } from "../../../store";
 import { routes } from "../../../config/routes";
 import { MuiDialogTitle } from "../../../shared";
 import { LoginForm } from "../LoginForm";
 import { ResetContainer } from "./LoginFormContainer.style";
-import { closeLoginForm } from "../../../store";
 
 const LoginFormContainer = () => {
   const currentLoginState = useSelector(selectors.login.getLoginState);
@@ -14,14 +13,14 @@ const LoginFormContainer = () => {
 
   return (
     <Dialog
-      onClose={() => dispatch(closeLoginForm())}
+      onClose={() => dispatch(actions.login.closeLoginForm())}
       aria-labelledby='customized-dialog-title'
       open={currentLoginState}
     >
       <>
         <MuiDialogTitle
           id='customized-dialog-title'
-          onClose={() => dispatch(closeLoginForm())}
+          onClose={() => dispatch(actions.login.closeLoginForm())}
         >
           Witaj w sklepie Bazarek!
           <Typography variant='subtitle1'>Wpisz Swój email i hasło</Typography>

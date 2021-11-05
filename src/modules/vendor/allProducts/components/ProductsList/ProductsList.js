@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Box,
   IconButton,
@@ -12,17 +13,14 @@ import {
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { useProductContext } from "../../../../../context";
-import { StyledCard } from "./ProductsList.style";
+import { selectors } from "../../../../../store";
+import { InfoSnackbar } from "../../../shared";
+import { Loader } from "../../../shared";
 import { Header } from "../Header";
 import { useDeleteProduct } from "./ProductsList.utils";
-import { InfoSnackbar } from "../../../shared";
-import { selectors } from "../../../../../store";
-import { useSelector } from "react-redux";
-import { Loader } from "../../../shared";
+import { StyledCard } from "./ProductsList.style";
 
 const ProductsList = () => {
-  const { productContext } = useProductContext();
   const {
     handleDelete,
     openSnackbar,
@@ -83,7 +81,7 @@ const ProductsList = () => {
         ))}
       <InfoSnackbar
         openSnackbar={openSnackbar}
-        message={successMessage || errorMessage}
+        message={successMessage ? successMessage : errorMessage}
         setOpenSnackbar={setOpenSnackbar}
         handleCloseSnackbar={handleCloseSnackbar}
       />

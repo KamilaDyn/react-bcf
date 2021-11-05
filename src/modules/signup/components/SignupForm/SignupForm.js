@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { Box, Grid, Typography, Link } from "@material-ui/core";
-import { openLoginForm, selectors } from "../../../../store";
+import { actions, selectors } from "../../../../store";
 import { StyledButton } from "../../../../shared";
 import { RegisterBySocialMedia } from "../RegisterBySocialMedia";
 import { useSignUpForm, SignupSchema, signupFields } from "./SignupForm.utils";
 import { LoginButton } from "./SignupForm.style";
-import { getAllProducts } from "../../../../store/product/actions/actionsCreator";
 
 const SignupForm = () => {
   const { initialValues, onSubmit } = useSignUpForm();
@@ -67,7 +66,7 @@ const SignupForm = () => {
                   &nbsp;
                   <LoginButton
                     onClick={() => {
-                      dispatch(openLoginForm());
+                      dispatch(actions.login.openLoginForm());
                     }}
                   >
                     Zaloguj

@@ -2,6 +2,7 @@ import { Types } from "./actions";
 
 const initialState = {
   products: [],
+  product: {},
   errorMessage: "",
   successMessage: "",
 };
@@ -13,19 +14,19 @@ export const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         products: payload,
-        successMessage: "",
+        product: {},
       };
     case Types.INITIAL_PRODUCT_VALUES:
       return {
         ...state,
-        products: payload,
+        product: payload,
         successMessage: "",
         errorMessage: "",
       };
     case Types.ADD_NEW_PRODUCT:
       return {
         ...state,
-        products: payload,
+        product: payload,
         successMessage: "Nowy produkt został dodany",
         errorMessage: "",
       };
@@ -41,14 +42,11 @@ export const ProductReducer = (state = initialState, action) => {
     case Types.GET_SINGLE_PRODUCT:
       return {
         ...state,
-        products: payload,
-        errorMessage: "",
-        successMessage: "",
+        product: payload,
       };
     case Types.EDIT_PRODUCT:
       return {
         ...state,
-        products: (state.products[payload.id] = payload.id),
         successMessage: "Product został edytowany",
         errorMessage: "",
       };

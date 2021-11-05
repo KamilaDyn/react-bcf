@@ -4,7 +4,6 @@ import { actions, selectors } from "../../../../../store";
 
 export const useSidebarElements = () => {
   const productLength = useSelector(selectors.products.getProducts).length;
-  console.log(productLength);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.products.getAllProducts());

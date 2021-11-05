@@ -24,4 +24,6 @@ export const selectors = {
 
 export const actions = {
   products: products.actions,
+  auth: auth.actions,
+  login: login.actions,
 };

@@ -1,5 +1,5 @@
 import { Types } from "./actionsType";
-import { closeLoginForm } from "../../login";
+import { login } from "../../login";
 import {
   formatError,
   addUser,
@@ -8,7 +8,7 @@ import {
 } from "../services";
 const bcrypt = require("bcryptjs");
 
-export const singupUser = (user, history) => {
+const singupUser = (user, history) => {
   return async (dispatch) => {
     await addUser(user)
       .then((response) => {
@@ -25,17 +25,17 @@ export const singupUser = (user, history) => {
   };
 };
 
-export function signupFailed(message) {
+const signupFailed = (message) => {
   return {
     type: Types.ADD_USER_FAIL,
     payload: message,
   };
-}
-export const singupUserSuccess = (user) => {
+};
+const singupUserSuccess = (user) => {
   return { type: Types.ADD_USER, payload: { user } };
 };
 
-export const loginUser = (email, password, history) => {
+const loginUser = (email, password, history) => {
   return async (dispatch) => {
     await loginRequest()
       .then((response) => {
@@ -46,7 +46,7 @@ export const loginUser = (email, password, history) => {
           saveTokenInLocalStorage(user);
           dispatch(loginSuccess(user.email, user.password));
           setTimeout(() => {
-            dispatch(closeLoginForm());
+            dispatch(login.actions.closeLoginForm());
             history.push("/");
           }, 500);
         } else {
@@ -62,18 +62,24 @@ export const loginUser = (email, password, history) => {
   };
 };
 
-export const loginSuccess = (email, password) => {
+const loginSuccess = (email, password) => {
   return { type: Types.SUCCESS_LOGIN, payload: { email, password } };
 };
 
-export const loginFailedAction = (message) => ({
+const loginFailedAction = (message) => ({
   type: Types.LOGIN_FAIL,
   payload: message,
 });
 
-export const logoutUser = () => {
+const logoutUser = () => {
   localStorage.removeItem("currentUser");
   return {
     type: Types.LOGOUT_USER,
   };
+};
+
+export const authActions = {
+  singupUser,
+  loginUser,
+  logoutUser,
 };

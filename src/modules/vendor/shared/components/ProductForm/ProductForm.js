@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { selectors } from "../../../../../store";
 
 const ProductForm = ({ onSubmit }) => {
-  const product = useSelector(selectors.products.getProducts);
+  const product = useSelector(selectors.products.getProduct);
   return (
     <StyledBox>
       <Formik

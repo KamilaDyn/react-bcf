@@ -1,2 +1,2 @@
-export { openLoginForm, closeLoginForm } from "./actionsCreator";
+export { loginActions } from "./actionsCreator";
 export { Types } from "./actionsType";

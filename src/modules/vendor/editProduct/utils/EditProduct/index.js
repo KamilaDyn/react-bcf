@@ -5,11 +5,12 @@ import { actions } from "../../../../../store";
 export const useEditProduct = (productId) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { editOneProduct, getSingleProduct } = actions.products;
   const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(actions.products.getSingleProduct(productId));
+      dispatch(getSingleProduct(productId));
     }, 500);
   }, []);
 
@@ -17,7 +18,7 @@ export const useEditProduct = (productId) => {
     setTimeout(() => {
       setLoading(true);
     }, 1000);
-  });
+  }, []);
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
@@ -26,7 +27,7 @@ export const useEditProduct = (productId) => {
     setOpenSnackbar(false);
   };
   const onSubmit = (initialProductValues) => {
-    dispatch(actions.products.editOneProduct(initialProductValues));
+    dispatch(editOneProduct(initialProductValues));
     setTimeout(() => {
       setOpenSnackbar(true);
     }, 300);
