@@ -2,7 +2,6 @@ import { Types } from "./actions";
 
 const initialState = {
   products: [],
-  product: {},
   errorMessage: "",
   successMessage: "",
 };
@@ -14,39 +13,28 @@ export const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         products: payload,
-        product: {},
-      };
-    case Types.INITIAL_PRODUCT_VALUES:
-      return {
-        ...state,
-        product: payload,
-        successMessage: "",
-        errorMessage: "",
       };
     case Types.ADD_NEW_PRODUCT:
       return {
         ...state,
-        product: payload,
+        products: [...state.products, payload],
         successMessage: "Nowy produkt został dodany",
         errorMessage: "",
       };
     case Types.DELETE_PRODUCT:
+      console.log(payload);
       return {
         ...state,
-        products: state.products.filter(
-          (products) => products.id !== payload.id
-        ),
+        products: state.products.filter((product) => product.id !== payload),
         errorMessage: "",
         successMessage: "Produkt został usunięty",
-      };
-    case Types.GET_SINGLE_PRODUCT:
-      return {
-        ...state,
-        product: payload,
       };
     case Types.EDIT_PRODUCT:
       return {
         ...state,
+        products: state.products.map((product) =>
+          product.id === payload.id ? payload : product
+        ),
         successMessage: "Product został edytowany",
         errorMessage: "",
       };
@@ -58,6 +46,7 @@ export const ProductReducer = (state = initialState, action) => {
       };
 
     default:
+      console.warn(`Nie mamy akcji typu ${type}`);
       return state;
   }
 };

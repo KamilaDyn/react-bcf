@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { actions } from "../../../../../store";
+import { actions } from "../../../../store";
+import { getProduct } from "./services";
 
 export const useEditProduct = (productId) => {
+  const [singleProduct, setSingleProduct] = useState({});
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { editOneProduct, getSingleProduct } = actions.products;
+  const { editOneProduct } = actions.products;
   const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(getSingleProduct(productId));
+      getProduct(productId, setSingleProduct);
     }, 500);
   }, []);
 
@@ -39,5 +41,6 @@ export const useEditProduct = (productId) => {
     setOpenSnackbar,
     handleCloseSnackbar,
     loading,
+    singleProduct,
   };
 };

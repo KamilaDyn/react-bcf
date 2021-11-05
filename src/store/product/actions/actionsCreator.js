@@ -4,7 +4,6 @@ import {
   addProduct,
   deleteProduct,
   editProduct,
-  getProduct,
   formatError,
 } from "../services";
 
@@ -23,10 +22,6 @@ const getAllProducts = () => {
 const getProductsSuccess = (data) => {
   return { type: Types.GET_PRODUCTS, payload: data };
 };
-const setInitialProductValues = (data) => {
-  return { type: Types.INITIAL_PRODUCT_VALUES, payload: data };
-};
-
 const addNewProduct = (product) => {
   return async (dispatch) => {
     await addProduct(product)
@@ -48,7 +43,7 @@ const deleteOneProduct = (productId) => {
   return async (dispatch) => {
     await deleteProduct(productId)
       .then((response) => {
-        dispatch(deleteProductSuccess(response.data));
+        dispatch(deleteProductSuccess(productId));
       })
       .catch((error) => {
         console.warn(error.response.statusText);
@@ -60,24 +55,6 @@ const deleteOneProduct = (productId) => {
 
 const deleteProductSuccess = (id) => {
   return { type: Types.DELETE_PRODUCT, payload: id };
-};
-
-const getSingleProduct = (id) => {
-  return async (dispatch) => {
-    await getProduct(id)
-      .then((response) => {
-        dispatch(getProductSuccess(response.data));
-      })
-      .catch((error) => {
-        console.warn(error);
-        const errorMessage = formatError(error.response.statusText);
-        dispatch(errorRequest(errorMessage));
-      });
-  };
-};
-
-const getProductSuccess = (item) => {
-  return { type: Types.GET_SINGLE_PRODUCT, payload: item };
 };
 
 const editOneProduct = (item) => {
@@ -107,9 +84,7 @@ const errorRequest = (message) => {
 
 export const productActions = {
   getAllProducts,
-  setInitialProductValues,
   addNewProduct,
   deleteOneProduct,
-  getSingleProduct,
   editOneProduct,
 };

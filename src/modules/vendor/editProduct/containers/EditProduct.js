@@ -4,7 +4,7 @@ import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { box } from "../../../../assets";
 import { selectors } from "../../../../store";
 import { ProductForm, Sidebar, InfoSnackbar, Loader } from "../../shared";
-import { useEditProduct } from "../utils";
+import { useEditProduct } from "./EditProduct.utils";
 
 const EditProduct = (props) => {
   const {
@@ -15,6 +15,7 @@ const EditProduct = (props) => {
     openSnackbar,
     setFieldValue,
     loading,
+    singleProduct,
   } = useEditProduct(props.match.params.id);
   const successMessage = useSelector(selectors.products.getSuccessMessage);
   const errorMessage = useSelector(selectors.products.getErrorMessage);
@@ -33,6 +34,7 @@ const EditProduct = (props) => {
               <Typography variant='h2'>Edytuj Produkt</Typography>
             </Box>
             <ProductForm
+              initialProductValues={singleProduct}
               onSubmit={onSubmit}
               handleChange={handleChange}
               setFieldValue={setFieldValue}

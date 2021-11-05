@@ -8,6 +8,7 @@ import { useSidebarElements } from "./Sidebar.utils";
 
 const Sidebar = () => {
   const { productLength } = useSidebarElements();
+
   return (
     <StyledCard variant='outlined'>
       <StyledNavLink to={routes.addNewProduct} activeStyle={activeStyle}>

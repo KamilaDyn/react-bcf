@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { actions } from "../../../../../store";
 import { useDispatch } from "react-redux";
 
@@ -18,10 +18,6 @@ export const useAddNewProduct = () => {
     image: "",
   };
 
-  useEffect(() => {
-    dispatch(actions.products.setInitialProductValues(initialProductValues));
-  }, []);
-
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -33,10 +29,6 @@ export const useAddNewProduct = () => {
     dispatch(actions.products.addNewProduct(initialProductValues));
     resetForm();
     setOpenSnackbar(true);
-    setTimeout(() => {
-      dispatch(actions.products.getAllProducts());
-      setOpenSnackbar(true);
-    }, 300);
   };
 
   return {
@@ -44,5 +36,6 @@ export const useAddNewProduct = () => {
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
+    initialProductValues,
   };
 };

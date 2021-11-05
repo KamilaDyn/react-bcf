@@ -26,9 +26,6 @@ export const useDeleteProduct = () => {
     setOpenPermission(true);
     dispatch(deleteOneProduct(id));
     setOpenSnackbar(true);
-    setTimeout(() => {
-      dispatch(getAllProducts());
-    }, 500);
   };
   const handleClosePermission = () => {
     setOpenPermission(false);
