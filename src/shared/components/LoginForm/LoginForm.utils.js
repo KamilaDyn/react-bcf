@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { actions } from "../../../store";
+import { actions } from "store";
 
 export const useLoginForm = () => {
   const initialValues = {

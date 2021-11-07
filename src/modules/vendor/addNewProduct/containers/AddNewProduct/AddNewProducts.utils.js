@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { actions } from "../../../../../store";
 import { useDispatch } from "react-redux";
+import { actions } from "store";
 
 export const useAddNewProduct = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);

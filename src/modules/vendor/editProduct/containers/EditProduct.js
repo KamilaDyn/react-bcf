@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Box, Container, Grid, Typography } from "@material-ui/core";
-import { box } from "../../../../assets";
-import { selectors } from "../../../../store";
+import { box } from "assets";
+import { selectors } from "store";
 import { ProductForm, Sidebar, InfoSnackbar, Loader } from "../../shared";
 import { useEditProduct } from "./EditProduct.utils";
 

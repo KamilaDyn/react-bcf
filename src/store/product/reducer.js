@@ -22,7 +22,6 @@ export const ProductReducer = (state = initialState, action) => {
         errorMessage: "",
       };
     case Types.DELETE_PRODUCT:
-      console.log(payload);
       return {
         ...state,
         products: state.products.filter((product) => product.id !== payload),

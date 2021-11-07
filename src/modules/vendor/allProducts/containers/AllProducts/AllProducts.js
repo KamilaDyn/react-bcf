@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@material-ui/core";
-import { box } from "../../../../../assets";
+import { box } from "assets";
 import { Sidebar } from "../../../shared";
 import { ProductsList } from "../../components";
 

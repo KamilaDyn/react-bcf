@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, Box } from "@material-ui/core";
-import { StyledButton } from "../../../../shared";
-import { googleIcon } from "../../../../assets";
+import { StyledButton } from "shared";
+import { googleIcon } from "assets";
 import { Image } from "./RegisterBySocialMedia.style";
 
 const RegisterBySocialMedia = () => {

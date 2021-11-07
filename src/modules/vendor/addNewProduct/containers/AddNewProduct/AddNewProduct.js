@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import { box } from "../../../../../assets";
-import { selectors } from "../../../../../store";
+import { Box, Container, Grid, Typography } from "@material-ui/core";
 import { ProductForm, Sidebar, InfoSnackbar } from "../../../shared";
+import { box } from "assets";
+import { selectors } from "store";
 import { useAddNewProduct } from "./AddNewProducts.utils";
 
 const AddNewProduct = () => {

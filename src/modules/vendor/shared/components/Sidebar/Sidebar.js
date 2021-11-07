@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ListAltIcon from "@material-ui/icons/ListAlt";
-import { routes } from "../../../../../config/routes";
+import { routes } from "config/routes";
 import { StyledCard, activeStyle, StyledNavLink } from "./Sidebar.style";
 import { useSidebarElements } from "./Sidebar.utils";
 

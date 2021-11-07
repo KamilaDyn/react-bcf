@@ -9,8 +9,8 @@ import {
 } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
 import { Field, Formik, Form } from "formik";
-import { selectors } from "../../../store";
-import { googleIcon } from "../../../assets";
+import { selectors } from "store";
+import { googleIcon } from "assets";
 import { StyledButton } from "../../atoms";
 import { Image } from "./LoginForm.style";
 import { useLoginForm } from "./LoginForm.utils";

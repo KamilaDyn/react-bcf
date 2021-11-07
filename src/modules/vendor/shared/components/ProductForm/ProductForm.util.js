@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { URL } from "../../../../../shared";
+import { URL } from "shared";
 
 export const SignupSchema = Yup.object().shape({
   title: Yup.string()

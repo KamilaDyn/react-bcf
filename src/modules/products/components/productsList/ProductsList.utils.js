@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectors, actions } from "../../../../store";
+import { selectors, actions } from "store";
 
 export const useProductList = () => {
   const allProducts = useSelector(selectors.products.getProducts);
@@ -9,7 +9,5 @@ export const useProductList = () => {
   useEffect(() => {
     dispatch(actions.products.getAllProducts());
   }, []);
-  return {
-    allProducts,
-  };
+  return allProducts;
 };

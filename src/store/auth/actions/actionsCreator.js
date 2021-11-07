@@ -41,10 +41,17 @@ const loginUser = (email, password, history) => {
       .then((response) => {
         const users = response.data;
         const user = users.find((user) => user.email === email);
-        const userPassword = bcrypt.compareSync(password, user.password);
+        const userPassword = bcrypt.compareSync(password, user.accessToken);
+        const payloadUser = {
+          firstName: user.firstName,
+          secondName: user.secondName,
+          email: user.email,
+          accessToken: user.accessToken,
+          phone: user.phone,
+        };
         if (user && userPassword) {
-          saveTokenInLocalStorage(user);
-          dispatch(loginSuccess(user.email, user.password));
+          saveTokenInLocalStorage(payloadUser);
+          dispatch(loginSuccess(payloadUser));
           setTimeout(() => {
             dispatch(login.actions.closeLoginForm());
             history.push("/");
@@ -62,8 +69,8 @@ const loginUser = (email, password, history) => {
   };
 };
 
-const loginSuccess = (email, password) => {
-  return { type: Types.SUCCESS_LOGIN, payload: { email, password } };
+const loginSuccess = (user) => {
+  return { type: Types.SUCCESS_LOGIN, payload: { user } };
 };
 
 const loginFailedAction = (message) => ({

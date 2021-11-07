@@ -225,64 +225,16 @@
       "stock": 1,
       "uploadedImage": "",
       "id": 24
-    },
-    {
-      "title": "czapka",
-      "description": "lorem is[[  snam",
-      "tags": "",
-      "stock": 1,
-      "price": 20,
-      "sale": 10,
-      "image": "https://sklep.sizeer.com/media/cache/gallery/rc/zyosjr1u/champion-czapka-zimowa-beanie-cap-unisex-czapki-zimowe-bordowy-805103rs501.jpg",
-      "category": "Elektronika",
-      "id": 25
-    },
-    {
-      "title": "czapka",
-      "description": "lorem ispusm sol e el a",
-      "tags": "",
-      "stock": 4,
-      "price": 40,
-      "sale": 20,
-      "image": "https://sklep.sizeer.com/media/cache/gallery/rc/zyosjr1u/champion-czapka-zimowa-beanie-cap-unisex-czapki-zimowe-bordowy-805103rs501.jpg",
-      "category": "Odzież damska",
-      "id": 26
-    },
-    {
-      "title": "czapkaee",
-      "description": "las teela  ans a snsna",
-      "stock": 1,
-      "tags": "",
-      "price": 20,
-      "sale": 10,
-      "category": "Odzież damska",
-      "file": "",
-      "image": "https://sklep.sizeer.com/media/cache/gallery/rc/zyosjr1u/champion-czapka-zimowa-beanie-cap-unisex-czapki-zimowe-bordowy-805103rs501.jpg",
-      "id": 27
-    },
-    {
-      "title": "nowy prod",
-      "description": "opis , jjaks , ollsk, kkkmshs, sjjsualas m",
-      "stock": 1,
-      "tags": "",
-      "price": 4,
-      "sale": 3,
-      "category": "Elektronika",
-      "file": "",
-      "image": "https://images.streetsupply.pl/img/390/390/resize/product/1/3/132896_ghea_1.jpg",
-      "id": 28
     }
   ],
   "users": [
     {
       "email": "anna.nowak@mail.pl",
-      "password": "$2a$10$8Pk20kvzd2ORvLY5AuRq3OnYJpGN7RvaBQlc6gY4g62talFsoM9ze",
+      "accessToken": "$2a$10$ybX.bOm448m2Iwl8QiWG4ehJOprQF0d18dU0QaA2TJPBeAc81X3pK",
+      "firstName": "Anna",
+      "secondName": "Nowak",
+      "phone": "123456789",
       "id": 1
-    },
-    {
-      "email": "anna.nowak@mail.com",
-      "password": "$2a$10$yogY2aSLUHJifWQ6thblH.JLsMYvoMd5fT/Qk4jyzTsmiwdPiA4eG",
-      "id": 2
     }
   ]
 }

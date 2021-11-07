@@ -3,8 +3,8 @@ import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
-import { shoppingBag } from "../../../assets";
-import { NumberInput, useQuantity } from "../../../shared";
+import { shoppingBag } from "assets";
+import { NumberInput, useQuantity } from "shared";
 import { StyledButton, StyledIconButton } from "../../atoms";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {

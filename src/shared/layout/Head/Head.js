@@ -5,9 +5,9 @@ import { Grid, Tooltip, Typography, Box } from "@material-ui/core";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import { actions, selectors } from "../../../store";
-import { routes } from "../../../config/routes";
-import { logo } from "../../../assets";
+import { actions, selectors } from "store";
+import { routes } from "config/routes";
+import { logo } from "assets";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
 
 const Head = ({
