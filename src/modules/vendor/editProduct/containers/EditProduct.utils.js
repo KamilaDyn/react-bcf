@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { actions } from "store";
-import { getProduct } from "./services";
+import { useDispatch, useSelector } from "react-redux";
+import { actions, selectors } from "store";
 
 export const useEditProduct = (productId) => {
-  const [singleProduct, setSingleProduct] = useState({});
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { editOneProduct } = actions.products;
+  const { editOneProduct, getSingleProduct } = actions.products;
   const dispatch = useDispatch();
+  const singleProduct = useSelector(selectors.products.getSingleProduct);
 
   useEffect(() => {
     setTimeout(() => {
-      getProduct(productId, setSingleProduct);
+      dispatch(getSingleProduct(productId));
     }, 500);
   }, []);
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Box, Grid, Typography } from "@material-ui/core";
-import { StyledCard } from "../atoms";
 import { selectors } from "store";
+import { StyledCard } from "../atoms";
 
 const PersonalData = () => {
   const profile = useSelector(selectors.auth.getProfile);

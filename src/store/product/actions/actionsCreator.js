@@ -5,6 +5,7 @@ import {
   deleteProduct,
   editProduct,
   formatError,
+  getProduct,
 } from "../services";
 
 const getAllProducts = () => {
@@ -56,7 +57,21 @@ const deleteOneProduct = (productId) => {
 const deleteProductSuccess = (id) => {
   return { type: Types.DELETE_PRODUCT, payload: id };
 };
+const getSingleProduct = (id) => {
+  return async (dispatch) => {
+    return await getProduct(id)
+      .then((response) => dispatch(getProductSuccess(response.data)))
+      .catch((error) => {
+        console.warn(error.response.statusText);
+        const errorMessage = formatError(error.response.statusText);
+        dispatch(errorRequest(errorMessage));
+      });
+  };
+};
 
+const getProductSuccess = (item) => {
+  return { type: Types.GET_SINGLE_PRODUCT, payload: item };
+};
 const editOneProduct = (item) => {
   return async (dispatch) => {
     await editProduct(item)
@@ -87,4 +102,5 @@ export const productActions = {
   addNewProduct,
   deleteOneProduct,
   editOneProduct,
+  getSingleProduct,
 };

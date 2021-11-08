@@ -60,9 +60,7 @@ const loginUser = (email, password, history) => {
           dispatch(loginFailedAction("Niepoprawny mail lub hasło"));
         }
       })
-
       .catch((error) => {
-        console.log(error);
         const errorMessage = formatError(error.response.data);
         dispatch(loginFailedAction(errorMessage));
       });

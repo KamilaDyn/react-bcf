@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-
+import { configureStore } from "store";
 import {
   Products,
   Profile,
@@ -13,7 +13,6 @@ import {
 import { routes } from "./config/routes";
 import MainTemplate from "./views/MainTemplate/MainTemplate";
 import { ProductProvider } from "./productProvider";
-import { configureStore } from "./store";
 const store = configureStore();
 class App extends Component {
   render() {

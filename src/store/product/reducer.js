@@ -4,6 +4,7 @@ const initialState = {
   products: [],
   errorMessage: "",
   successMessage: "",
+  editProduct: {},
 };
 
 export const ProductReducer = (state = initialState, action) => {
@@ -13,6 +14,7 @@ export const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         products: payload,
+        editProduct: {},
       };
     case Types.ADD_NEW_PRODUCT:
       return {
@@ -20,6 +22,7 @@ export const ProductReducer = (state = initialState, action) => {
         products: [...state.products, payload],
         successMessage: "Nowy produkt został dodany",
         errorMessage: "",
+        editProduct: {},
       };
     case Types.DELETE_PRODUCT:
       return {
@@ -27,6 +30,14 @@ export const ProductReducer = (state = initialState, action) => {
         products: state.products.filter((product) => product.id !== payload),
         errorMessage: "",
         successMessage: "Produkt został usunięty",
+        editProduct: {},
+      };
+    case Types.GET_SINGLE_PRODUCT:
+      return {
+        ...state,
+        editProduct: payload,
+        errorMessage: "",
+        successMessage: "",
       };
     case Types.EDIT_PRODUCT:
       return {
@@ -36,12 +47,14 @@ export const ProductReducer = (state = initialState, action) => {
         ),
         successMessage: "Product został edytowany",
         errorMessage: "",
+        editProduct: payload,
       };
     case Types.ERROR_REQUEST:
       return {
         ...state,
         successMessage: "",
         errorMessage: payload,
+        editProduct: {},
       };
 
     default:
