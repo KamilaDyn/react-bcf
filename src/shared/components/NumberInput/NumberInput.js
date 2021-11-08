@@ -2,33 +2,21 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import { StyledInput } from "./NumberInput.style";
 
-const NumberInput = ({
-  index,
-  decrement,
-  increment,
-  quantity,
-  setQuantity,
-}) => {
+const NumberInput = ({ decrement, increment, quantity, item }) => {
   return (
     <>
       <Button
         disabled={quantity === 1 ? true : false}
         onClick={() => {
-          decrement(index);
+          decrement(item);
         }}
       >
         -
       </Button>
-      <StyledInput
-        max='99'
-        type='number'
-        required
-        onChange={(e) => setQuantity(Number(e.target.value))}
-        value={quantity}
-      />
+      <StyledInput max='99' type='number' required value={quantity} />
       <Button
         onClick={() => {
-          increment(index);
+          increment(item);
         }}
         disabled={quantity === 99 ? true : false}
       >

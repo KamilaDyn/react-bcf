@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+import { selectors } from "store";
 import { shoppingBag } from "assets";
-import { NumberInput, useQuantity } from "shared";
+import { NumberInput } from "shared";
 import { StyledButton, StyledIconButton } from "../../atoms";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {
@@ -20,12 +22,12 @@ const ShoppingCard = () => {
   const {
     handleDelete,
     handleDrawer,
-    dispatch,
     openShoppingCard,
-    shoppingList,
     calculatePrice,
+    increment,
+    decrement,
   } = useShoppingCardData();
-  const { setQuantity, increment, decrement } = useQuantity();
+  const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   return (
     <StyledDrawer variant='persistent' anchor='right' open={openShoppingCard}>
       <StyledIconButton onClick={() => handleDrawer(false)} isCard>
@@ -46,9 +48,8 @@ const ShoppingCard = () => {
                   <ControlBox>
                     <NumberInput
                       column
-                      index={index}
+                      item={item}
                       quantity={item.count}
-                      setQuantity={setQuantity}
                       increment={increment}
                       decrement={decrement}
                     />
@@ -69,7 +70,7 @@ const ShoppingCard = () => {
                 <Grid item xs={2}>
                   <StyledIconButton
                     deleteBtn
-                    onClick={() => handleDelete(item.id, dispatch)}
+                    onClick={() => handleDelete(item.id)}
                   >
                     <Tooltip title='Usuń produkt' placement='top'>
                       <DeleteOutlineIcon />
