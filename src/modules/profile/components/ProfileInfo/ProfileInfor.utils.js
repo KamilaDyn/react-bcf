@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../../../../store";
+import { actions } from "store";
 
 export const useHandleLoginOut = () => {
   const dispatch = useDispatch();
   const handleLoginOut = () => {
     setTimeout(() => {
-      dispatch(logoutUser());
+      dispatch(actions.auth.logoutUser());
     }, 500);
   };
   return { handleLoginOut };

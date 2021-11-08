@@ -1,20 +1,17 @@
 import { Types } from "./actions";
 
-const email = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).email
-  : "";
-const token = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).password
+const profile = localStorage.getItem("currentUser")
+  ? JSON.parse(localStorage.getItem("currentUser"))
   : "";
 export const initialState = {
   profile: {
-    firstName: "",
-    secondName: "",
-    email: "" || email,
-    token: "" || token,
-    phone: "",
+    firstName: "" || profile.firstName,
+    secondName: "" || profile.secondName,
+    email: "" || profile.email,
+    accessToken: "" || profile.accessToken,
+    phone: "" || profile.phone,
   },
-  isLoggedIn: email ? true : false,
+  isLoggedIn: profile.email ? true : false,
   errorMessage: "",
   successMessage: "",
 };
@@ -29,18 +26,10 @@ export const AuthReducer = (state = initialState, action) => {
         errorMessage: "",
         isLoggedIn: true,
       };
-    case Types.REQUEST_LOGIN:
-      return {
-        ...state,
-        isLoggedIn: false,
-      };
     case Types.SUCCESS_LOGIN:
       return {
         ...state,
-        profile: {
-          email: payload.email,
-          token: payload.password,
-        },
+        profile: payload.user,
         isLoggedIn: true,
         errorMessage: "",
         successMessage: "Zostałeś zalogowany",

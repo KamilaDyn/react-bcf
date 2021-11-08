@@ -1,7 +1,12 @@
 import { Types } from "./actionsType";
-export const openLoginForm = () => {
+const openLoginForm = () => {
   return { type: Types.OPEN_LOGIN_FORM };
 };
-export const closeLoginForm = () => {
+const closeLoginForm = () => {
   return { type: Types.CLOSE_LOGIN_FORM };
+};
+
+export const loginActions = {
+  openLoginForm,
+  closeLoginForm,
 };

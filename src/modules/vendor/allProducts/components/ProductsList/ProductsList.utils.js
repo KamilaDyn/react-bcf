@@ -1,21 +1,31 @@
-import { useState } from "react";
-import { useProductContext } from "../../../../../context";
-import { deleteProduct } from "../../services";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { actions } from "store";
 
 export const useDeleteProduct = () => {
-  const [message, setMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [openPermission, setOpenPermission] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [productId, setProductId] = useState("");
-  const { productContext } = useProductContext();
+  const { getAllProducts, deleteOneProduct } = actions.products;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(getAllProducts());
+    }, 300);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 600);
+  });
 
   const handleDelete = (id) => {
     setOpenPermission(true);
-    deleteProduct(id, setMessage);
+    dispatch(deleteOneProduct(id));
     setOpenSnackbar(true);
-    setTimeout(() => {
-      productContext.getProducts();
-    }, 500);
   };
   const handleClosePermission = () => {
     setOpenPermission(false);
@@ -30,8 +40,6 @@ export const useDeleteProduct = () => {
 
   return {
     handleDelete,
-    message,
-    setMessage,
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
@@ -40,5 +48,6 @@ export const useDeleteProduct = () => {
     setOpenPermission,
     productId,
     setProductId,
+    loading,
   };
 };

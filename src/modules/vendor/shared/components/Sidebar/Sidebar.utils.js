@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectors, actions } from "store";
+import { actions, selectors } from "store";
 
-export const useProductList = () => {
-  const allProducts = useSelector(selectors.products.getProducts);
-
+export const useSidebarElements = () => {
+  const productLength = useSelector(selectors.products.getProducts).length;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.products.getAllProducts());
   }, []);
-  return allProducts;
+  return { productLength };
 };

@@ -1,28 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Box,
-  IconButton,
-  Grid,
-  Typography,
   Dialog,
   DialogTitle,
   DialogActions,
   Button,
 } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { useProductContext } from "../../../../../context";
-import { StyledCard } from "./ProductsList.style";
+import { selectors } from "store";
+import { InfoSnackbar, Loader } from "../../../shared";
 import { Header } from "../Header";
 import { useDeleteProduct } from "./ProductsList.utils";
-import { InfoSnackbar } from "../../../shared";
+import ProductItem from "../ProductItem/ProductItem";
 
 const ProductsList = () => {
-  const { productContext } = useProductContext();
   const {
     handleDelete,
-    message,
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
@@ -31,53 +24,20 @@ const ProductsList = () => {
     setOpenPermission,
     productId,
     setProductId,
+    loading,
   } = useDeleteProduct();
-
+  const successMessage = useSelector(selectors.products.getSuccessMessage);
+  const errorMessage = useSelector(selectors.products.getErrorMessage);
   return (
     <Box>
       <Header />
-      {productContext.products.map((item) => (
-        <StyledCard id={item.id}>
-          <Grid container alignItems='center' spacing={2}>
-            <Grid item xs={5}>
-              <Typography color='inherit'> {item.title}</Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <Typography color='inherit'>{item.stock}</Typography>
-            </Grid>
-            <Grid item xs={2}>
-              <Typography color='inherit'>${item.price}</Typography>
-            </Grid>
-            <Grid item xs={2}>
-              <Typography color='inherit'>
-                {item.sale ? `$${item.sale}` : ""}
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <IconButton
-                component={Link}
-                to={`/vendor/edit-product/${item.id}`}
-              >
-                <EditIcon />
-              </IconButton>
-            </Grid>
-            <Grid item xs={1}>
-              <IconButton>
-                <DeleteIcon
-                  color='primary'
-                  onClick={() => {
-                    setOpenPermission(true);
-                    setProductId(item.id);
-                  }}
-                />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </StyledCard>
-      ))}
+      <ProductItem
+        setOpenPermission={setOpenPermission}
+        setProductId={setProductId}
+      />
       <InfoSnackbar
         openSnackbar={openSnackbar}
-        message={message}
+        message={successMessage ? successMessage : errorMessage}
         setOpenSnackbar={setOpenSnackbar}
         handleCloseSnackbar={handleCloseSnackbar}
       />
@@ -101,6 +61,7 @@ const ProductsList = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      <Loader loading={loading} />
     </Box>
   );
 };

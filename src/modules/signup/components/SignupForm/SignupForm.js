@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { Box, Grid, Typography, Link } from "@material-ui/core";
-import { openLoginForm, selectors } from "../../../../store";
-import { StyledButton } from "../../../../shared";
+import { actions, selectors } from "store";
+import { StyledButton } from "shared";
 import { RegisterBySocialMedia } from "../RegisterBySocialMedia";
 import { useSignUpForm, SignupSchema, signupFields } from "./SignupForm.utils";
 import { LoginButton } from "./SignupForm.style";
@@ -64,7 +64,11 @@ const SignupForm = () => {
                 <Grid item container xs={12} justifyContent='center'>
                   <Typography color='secondary'>Masz już konto ? </Typography>
                   &nbsp;
-                  <LoginButton onClick={() => dispatch(openLoginForm())}>
+                  <LoginButton
+                    onClick={() => {
+                      dispatch(actions.login.openLoginForm());
+                    }}
+                  >
                     Zaloguj
                   </LoginButton>
                 </Grid>

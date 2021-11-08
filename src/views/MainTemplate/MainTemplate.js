@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "@material-ui/styles";
+import { Footer, Head, Main, LoginFormContainer, ShoppingCard } from "shared";
 import { theme } from "../../theme";
-import {
-  Footer,
-  Head,
-  Main,
-  LoginFormContainer,
-  ShoppingCard,
-} from "../../shared";
 import { useProductContext } from "../../context";
 import { StyledContainer } from "./MainTemplate.style";
 

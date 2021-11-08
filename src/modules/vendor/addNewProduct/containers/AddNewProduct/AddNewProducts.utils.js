@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useProductContext } from "../../../../../context";
-import { addProduct } from "../../services";
+import { useDispatch } from "react-redux";
+import { actions } from "store";
 
 export const useAddNewProduct = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [message, setMessage] = useState("");
-  const { productContext } = useProductContext();
+  const dispatch = useDispatch();
 
   const initialProductValues = {
     title: "",
@@ -27,21 +26,16 @@ export const useAddNewProduct = () => {
   };
 
   const onSubmit = (initialProductValues, { resetForm }) => {
-    addProduct(initialProductValues, setMessage);
+    dispatch(actions.products.addNewProduct(initialProductValues));
     resetForm();
     setOpenSnackbar(true);
-    setTimeout(() => {
-      productContext.getProducts();
-    }, 500);
   };
 
   return {
     onSubmit,
-    initialProductValues,
     openSnackbar,
     setOpenSnackbar,
     handleCloseSnackbar,
-    setMessage,
-    message,
+    initialProductValues,
   };
 };

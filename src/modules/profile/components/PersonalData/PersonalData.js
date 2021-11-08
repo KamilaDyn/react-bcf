@@ -1,32 +1,38 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Box, Grid, Typography } from "@material-ui/core";
+import { selectors } from "store";
 import { StyledCard } from "../atoms";
 
-const personInfo = [
-  {
-    id: 1,
-    key: 'Imię',
-    value: 'Kamila'
-  },
-  {
-    id: 2, key: 'Nazwisko',
-    value: 'Dynysiuk'
-  },
-  {
-    id: 3, key: 'Email',
-    value: 'kamila@mail.com'
-  },
-  {
-    id: 4, key: 'Telefon',
-    value: '123456789'
-  },
-  {
-    id: 5, key: 'Data urodzenia',
-    value: '01.01.1990'
-  }
-]
-
 const PersonalData = () => {
+  const profile = useSelector(selectors.auth.getProfile);
+  const personInfo = [
+    {
+      id: 1,
+      key: "Imię",
+      value: profile.firstName,
+    },
+    {
+      id: 2,
+      key: "Nazwisko",
+      value: profile.secondName,
+    },
+    {
+      id: 3,
+      key: "Email",
+      value: profile.email,
+    },
+    {
+      id: 4,
+      key: "Telefon",
+      value: profile.phone,
+    },
+    {
+      id: 5,
+      key: "Data urodzenia",
+      value: "01.01.1990",
+    },
+  ];
   return (
     <StyledCard>
       <Grid container spacing={3} justifyContent='space-between'>

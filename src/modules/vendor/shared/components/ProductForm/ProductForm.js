@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
-import { StyledBox } from "./ProductForm.style";
 import { InputsComponent } from "../InputsComponent";
+import { StyledBox } from "./ProductForm.style";
 import { SignupSchema } from "./ProductForm.util";
 
 const ProductForm = ({ onSubmit, initialProductValues }) => {

@@ -1,21 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Box, Container, Grid, Typography } from "@material-ui/core";
-import { box } from "../../../../../assets";
+import { box } from "assets";
+import { selectors } from "store";
 import { ProductForm, Sidebar, InfoSnackbar } from "../../../shared";
-import { useAddNewProduct } from "../../utils";
+import { useAddNewProduct } from "./AddNewProducts.utils";
 
 const AddNewProduct = () => {
-  const {
-    initialProductValues,
-    productCategory,
-    onSubmit,
-    message,
-    setOpenSnackbar,
-    handleCloseSnackbar,
-    handleChange,
-    openSnackbar,
-    setFieldValue,
-  } = useAddNewProduct();
+  const { onSubmit, setOpenSnackbar, handleCloseSnackbar, openSnackbar } =
+    useAddNewProduct();
+  const successMessage = useSelector(selectors.products.getSuccessMessage);
+  const errorMessage = useSelector(selectors.products.getErrorMessage);
+  const { initialProductValues } = useAddNewProduct();
   return (
     <Container>
       <Grid container spacing={3}>
@@ -30,15 +26,12 @@ const AddNewProduct = () => {
             <Typography variant='h2'>Dodaj nowy produkt</Typography>
           </Box>
           <ProductForm
-            initialProductValues={initialProductValues}
-            productCategory={productCategory}
             onSubmit={onSubmit}
-            handleChange={handleChange}
-            setFieldValue={setFieldValue}
+            initialProductValues={initialProductValues}
           />
           <InfoSnackbar
             openSnackbar={openSnackbar}
-            message={message}
+            message={successMessage || errorMessage}
             setOpenSnackbar={setOpenSnackbar}
             handleCloseSnackbar={handleCloseSnackbar}
           />
