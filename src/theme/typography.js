@@ -10,7 +10,7 @@ const typography = {
     "Open Sans",
     "TitilliumWeb",
     "Righteous",
-  ],
+  ].join(","),
   h1: {
     fontSize: "2.6rem",
     color: palette.primary.main,

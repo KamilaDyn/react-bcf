@@ -1,4 +1,4 @@
-import { Container, styled } from "@material-ui/core";
+import { Container, styled } from "@mui/material";
 export const StyledContainer = styled(Container)(({ theme }) => ({
   minHeight: "calc(100vh - 6.25rem)",
   position: "relative",
