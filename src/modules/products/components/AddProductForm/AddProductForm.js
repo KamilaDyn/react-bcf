@@ -1,6 +1,7 @@
 import React from "react";
 import { Tooltip } from "@material-ui/core";
-import { NumberInput, StyledIconButton } from "shared";
+import { NumberInput } from "shared/components";
+import { StyledIconButton } from "shared/atoms";
 import { useAddProduct, useQuantity } from "./AddProductForm.utils";
 import { Form, StyledShoppingCardIcon } from "./AddProductForm.style";
 

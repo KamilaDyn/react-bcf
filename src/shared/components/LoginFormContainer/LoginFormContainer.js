@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Grid, Link, Typography } from "@material-ui/core";
 import { selectors, actions } from "store";
 import { routes } from "config/routes";
-import { MuiDialogTitle } from "shared";
+import { MuiDialogTitle } from "shared/molecules";
 import { LoginForm } from "../LoginForm";
 import { ResetContainer } from "./LoginFormContainer.style";
 

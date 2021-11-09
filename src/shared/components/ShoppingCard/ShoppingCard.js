@@ -6,7 +6,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import { selectors } from "store";
 import { shoppingBag } from "assets";
-import { NumberInput } from "shared";
+import { NumberInput } from "shared/components";
 import { StyledButton, StyledIconButton } from "../../atoms";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {
