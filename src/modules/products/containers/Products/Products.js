@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, Typography } from "@material-ui/core/";
-import NewReleasesOutlinedIcon from "@material-ui/icons/NewReleasesOutlined";
+import { Link, Typography } from "@mui/material/";
+import NewReleasesOutlinedIcon from "@mui/icons-material/NewReleasesOutlined";
 import { ProductsList } from "../../components/ProductsList";
 import { HeadSection } from "../../components/atoms";
 import { NewProductBox, Wrapper } from "./Products.style";

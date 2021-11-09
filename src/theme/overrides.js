@@ -1,7 +1,7 @@
-import breakpoints from "./breakpoints";
+import customBreakpoints from "./breakpoints";
 import palette from "./palette";
 import typography from "./typography";
-import spacing from "./spacing";
+import customSpacing from "./spacing";
 
 const overrides = {
   MuiTypography: {
@@ -21,13 +21,13 @@ const overrides = {
       minWidth: 0,
       minHeight: 0,
       lineHeight: 0,
-      padding: spacing(1, 3),
+      padding: customSpacing.spacing(1, 3),
       borderRadius: "4px",
       cursor: "pointer",
       fontSize: typography.body1.fontSize,
       fontWeight: "bold",
       transition: ".3s",
-      [breakpoints.up("md")]: {
+      [customBreakpoints.breakpoints.up("md")]: {
         fontSize: typography.h3.fontSize,
       },
       "&:hover": {
@@ -48,9 +48,9 @@ const overrides = {
   },
   MuiContainer: {
     root: {
-      [breakpoints.up("sm")]: {
-        paddingLeft: spacing(4),
-        paddingRight: spacing(4),
+      [customBreakpoints.breakpoints.up("sm")]: {
+        paddingLeft: customSpacing.spacing(4),
+        paddingRight: customSpacing.spacing(4),
       },
     },
   },
@@ -73,7 +73,7 @@ const overrides = {
       objectFit: "cover",
       color: "transparent",
       textIndent: "10000px",
-      padding: spacing(3),
+      padding: customSpacing.spacing(3),
       fontSize: typography.h4.fontSize,
     },
     img: {
@@ -125,7 +125,7 @@ const overrides = {
   },
   MuiDialogTitle: {
     root: {
-      paddingTop: spacing(10),
+      paddingTop: customSpacing.spacing(10),
     },
   },
   MuiDialogContent: {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, Grid, Link } from "@material-ui/core";
+import { Card, CardHeader, Grid, Link } from "@mui/material";
 import { StyledMedia, StyledTypography } from "./ProductsList.style";
 import { useProductList } from "./ProductsList.utils";
 

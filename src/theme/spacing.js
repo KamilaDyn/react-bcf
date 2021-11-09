@@ -1,5 +1,6 @@
-import createSpacing from "@material-ui/core/styles/createSpacing";
+import { createTheme } from "@mui/material";
 
-const spacing = createSpacing(4);
-
-export default spacing;
+const customSpacing = createTheme({
+  spacing: 4,
+});
+export default customSpacing;

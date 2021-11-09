@@ -1,5 +1,5 @@
-import { styled } from "@material-ui/core/styles";
-import { CardMedia, Typography } from "@material-ui/core";
+import { styled } from "@mui/material/styles";
+import { CardMedia, Typography } from "@mui/material";
 
 export const StyledMedia = styled(CardMedia)({
   height: 0,
