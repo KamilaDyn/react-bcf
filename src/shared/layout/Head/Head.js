@@ -8,18 +8,16 @@ import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOut
 import { actions, selectors } from "store";
 import { routes } from "config/routes";
 import { logo } from "assets";
+import { useAmountOfProduct } from "../../utils";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
 
-const Head = ({
-  setOpenShoppingCard,
-  openShoppingCard,
-  countItems,
-  shoppingList,
-}) => {
+const Head = ({ setOpenShoppingCard, openShoppingCard }) => {
   const user = useSelector(selectors.auth.getEmail);
   const logged = useSelector(selectors.auth.getIsLoggedIn);
+  const countItemsInBasket = useAmountOfProduct();
   const dispatch = useDispatch();
   const history = useHistory();
+
   return (
     <StyledGrid
       container
@@ -71,10 +69,7 @@ const Head = ({
           aria-label='open drawer'
           onClick={() => setOpenShoppingCard(!openShoppingCard)}
         >
-          <StyledBadge
-            color='primary'
-            badgeContent={shoppingList.length > 0 ? countItems() : "0"}
-          >
+          <StyledBadge color='primary' badgeContent={countItemsInBasket()}>
             <LocalMallOutlinedIcon />
           </StyledBadge>
         </StyledIconButton>

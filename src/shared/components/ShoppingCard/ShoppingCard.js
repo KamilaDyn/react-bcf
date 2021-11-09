@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+import { selectors } from "store";
 import { shoppingBag } from "assets";
-import { NumberInput, useQuantity } from "shared";
+import { NumberInput } from "shared/components";
 import { StyledButton, StyledIconButton } from "../../atoms";
 import { useShoppingCardData } from "./ShoppingCard.utils";
 import {
@@ -16,19 +18,13 @@ import {
   Image,
 } from "./ShoppingCard.style";
 
-const ShoppingCard = () => {
-  const {
-    handleDelete,
-    handleDrawer,
-    dispatch,
-    openShoppingCard,
-    shoppingList,
-    calculatePrice,
-  } = useShoppingCardData();
-  const { setQuantity, increment, decrement } = useQuantity();
+const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard }) => {
+  const { handleDelete, calculatePrice, increment, decrement } =
+    useShoppingCardData();
+  const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   return (
     <StyledDrawer variant='persistent' anchor='right' open={openShoppingCard}>
-      <StyledIconButton onClick={() => handleDrawer(false)} isCard>
+      <StyledIconButton onClick={() => setOpenShoppingCard(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
       <Divider />
@@ -46,9 +42,8 @@ const ShoppingCard = () => {
                   <ControlBox>
                     <NumberInput
                       column
-                      index={index}
+                      item={item}
                       quantity={item.count}
-                      setQuantity={setQuantity}
                       increment={increment}
                       decrement={decrement}
                     />
@@ -60,16 +55,16 @@ const ShoppingCard = () => {
                 <Grid item xs={5}>
                   <Typography variant='h5'>{item.name}</Typography>
                   <small>
-                    {item.itemPrice}$ x {item.count}
+                    {item.itemPrice.toFixed(2)}$ x {item.count}
                   </small>
                   <Typography variant='subtitle2'>
-                    Cena: {item.price + "$"}
+                    Cena: {item.price.toFixed(2) + "$"}
                   </Typography>
                 </Grid>
                 <Grid item xs={2}>
                   <StyledIconButton
                     deleteBtn
-                    onClick={() => handleDelete(item.id, dispatch)}
+                    onClick={() => handleDelete(item.id)}
                   >
                     <Tooltip title='Usuń produkt' placement='top'>
                       <DeleteOutlineIcon />
