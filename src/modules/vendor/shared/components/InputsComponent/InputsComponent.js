@@ -37,7 +37,7 @@ const InputsComponent = () => {
         <Grid item xs={6}>
           <FormControl>
             <Field
-              key={values.category}
+              key={`${values.category}-1`}
               component={Select}
               name='category'
               defaultValue={values.category || categories[0]}
