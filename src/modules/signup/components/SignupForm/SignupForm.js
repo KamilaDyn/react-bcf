@@ -4,7 +4,7 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import { Box, Grid, Typography, Link } from "@material-ui/core";
 import { actions, selectors } from "store";
-import { StyledButton } from "shared";
+import { StyledButton } from "shared/atoms";
 import { RegisterBySocialMedia } from "../RegisterBySocialMedia";
 import { useSignUpForm, SignupSchema, signupFields } from "./SignupForm.utils";
 import { LoginButton } from "./SignupForm.style";

@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardHeader, Grid, Link } from "@mui/material";
+import { AddProductForm } from "../AddProductForm";
 import { StyledMedia, StyledTypography } from "./ProductsList.style";
 import { useProductList } from "./ProductsList.utils";
 
@@ -23,6 +24,7 @@ const ProductsList = ({ open }) => {
                 <StyledMedia image={image} title={title} alt={title} />
               </Link>
               <StyledTypography>{price}$</StyledTypography>
+              <AddProductForm index={index} id={id} />
             </Card>
           </Grid>
         ))}

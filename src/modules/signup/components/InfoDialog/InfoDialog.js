@@ -4,10 +4,6 @@ import { Dialog, DialogActions, DialogTitle, Button } from "@material-ui/core";
 const InfoDialog = () => {
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
