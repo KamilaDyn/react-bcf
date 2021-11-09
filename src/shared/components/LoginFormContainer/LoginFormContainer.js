@@ -15,7 +15,7 @@ const LoginFormContainer = () => {
     <Dialog
       onClose={() => dispatch(actions.login.closeLoginForm())}
       aria-labelledby='customized-dialog-title'
-      open={currentLoginState}
+      open={currentLoginState || false}
     >
       <>
         <MuiDialogTitle

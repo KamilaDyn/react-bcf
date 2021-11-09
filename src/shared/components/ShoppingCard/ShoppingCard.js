@@ -18,19 +18,13 @@ import {
   Image,
 } from "./ShoppingCard.style";
 
-const ShoppingCard = () => {
-  const {
-    handleDelete,
-    handleDrawer,
-    openShoppingCard,
-    calculatePrice,
-    increment,
-    decrement,
-  } = useShoppingCardData();
+const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard }) => {
+  const { handleDelete, calculatePrice, increment, decrement } =
+    useShoppingCardData();
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   return (
     <StyledDrawer variant='persistent' anchor='right' open={openShoppingCard}>
-      <StyledIconButton onClick={() => handleDrawer(false)} isCard>
+      <StyledIconButton onClick={() => setOpenShoppingCard(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
       <Divider />
@@ -61,10 +55,10 @@ const ShoppingCard = () => {
                 <Grid item xs={5}>
                   <Typography variant='h5'>{item.name}</Typography>
                   <small>
-                    {item.itemPrice}$ x {item.count}
+                    {item.itemPrice.toFixed(2)}$ x {item.count}
                   </small>
                   <Typography variant='subtitle2'>
-                    Cena: {item.price + "$"}
+                    Cena: {item.price.toFixed(2) + "$"}
                   </Typography>
                 </Grid>
                 <Grid item xs={2}>

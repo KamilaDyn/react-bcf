@@ -30,17 +30,17 @@ const InputsComponent = () => {
             type='text'
             label='Nazwa produktu'
             InputLabelProps={{
-              shrink: values.title && true,
+              shrink: values.title ? true : false,
             }}
           />
         </Grid>
         <Grid item xs={6}>
           <FormControl>
             <Field
+              key={values.category}
               component={Select}
               name='category'
               defaultValue={values.category || categories[0]}
-              disableUnderline
               variant='outlined'
             >
               {categories.map((value) => (
@@ -58,7 +58,7 @@ const InputsComponent = () => {
             type='text'
             label='Link do obrazka'
             InputLabelProps={{
-              shrink: values.image && true,
+              shrink: values.image ? true : false,
             }}
           />
         </Grid>
@@ -107,19 +107,19 @@ const InputsComponent = () => {
             multiline
             minRows={5}
             InputLabelProps={{
-              shrink: values.description && true,
+              shrink: values.description ? true : false,
             }}
           />
         </Grid>
         {fieldsData.map(({ name, type, label, shrinkValue }) => (
-          <Grid item xs={6}>
+          <Grid item xs={6} key={name}>
             <Field
               component={TextField}
               name={name}
               type={type}
               label={label}
               InputLabelProps={{
-                shrink: shrinkValue && true,
+                shrink: shrinkValue ? true : false,
               }}
             />
           </Grid>

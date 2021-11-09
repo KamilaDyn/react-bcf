@@ -1,10 +1,7 @@
-import { useProductContext } from "../../../context";
 import { useSelector, useDispatch } from "react-redux";
 import { selectors, actions } from "store";
 
 export const useShoppingCardData = () => {
-  const { productContext } = useProductContext();
-  const { openShoppingCard, quantity, setOpenShoppingCard } = productContext;
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   const products = useSelector(selectors.products.getProducts);
   const dispatch = useDispatch();
@@ -17,9 +14,7 @@ export const useShoppingCardData = () => {
   const handleDelete = (id) => {
     dispatch(deleteProductFromList(id));
   };
-  const handleDrawer = () => {
-    setOpenShoppingCard(false);
-  };
+
   const calculatePrice = () => {
     if (shoppingList.length > 0) {
       const item = shoppingList.filter((item) => item.price > 0);
@@ -52,12 +47,8 @@ export const useShoppingCardData = () => {
 
   return {
     handleDelete,
-    handleDrawer,
     calculatePrice,
     shoppingList,
-    openShoppingCard,
-    setOpenShoppingCard,
-    quantity,
     increment,
     decrement,
   };

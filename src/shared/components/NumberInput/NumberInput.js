@@ -13,7 +13,13 @@ const NumberInput = ({ decrement, increment, quantity, item }) => {
       >
         -
       </Button>
-      <StyledInput max='99' type='number' required value={quantity} />
+      <StyledInput
+        max='99'
+        type='number'
+        required
+        value={quantity || ""}
+        onChange={(e) => e.target.value}
+      />
       <Button
         onClick={() => {
           increment(item);

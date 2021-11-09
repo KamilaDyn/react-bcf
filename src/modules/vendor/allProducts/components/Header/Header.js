@@ -16,7 +16,7 @@ const Header = () => {
     <StyledBox>
       <Grid container spacing={3} alignItems='center'>
         {header.map(({ name, size }) => (
-          <Grid item xs={size}>
+          <Grid item xs={size} key={name}>
             <Typography variant='body1'>{name}</Typography>
           </Grid>
         ))}
