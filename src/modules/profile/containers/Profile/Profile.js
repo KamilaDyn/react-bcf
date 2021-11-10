@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid } from "@mui/material";
 import { Dashboard } from "../../components/Dashboard";
 import { ProfileInfo } from "../../components/ProfileInfo";
 

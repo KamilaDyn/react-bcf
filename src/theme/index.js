@@ -47,12 +47,12 @@ export const theme = createTheme({
           padding: customSpacing.spacing(1, 3),
           borderRadius: "4px",
           cursor: "pointer",
-          fontSize: typography.body1.fontSize,
+          // fontSize: typography.body1.fontSize,
           fontWeight: "bold",
           transition: ".3s",
-          [customBreakpoints.breakpoints.up("md")]: {
-            fontSize: typography.h3.fontSize,
-          },
+          // [customBreakpoints.breakpoints.up("md")]: {
+          //   fontSize: typography.h3.fontSize,
+          // },
           "&:hover": {
             backgroundColor: palette.primary.main,
             color: palette.primary.contrastText,
@@ -86,6 +86,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           textAlign: "center",
+          textDecoration: "none",
           "&:hover": {
             color: palette.primary.main,
           },
@@ -105,11 +106,9 @@ export const theme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          color: palette.secondary.main,
           fontSize: typography.h3.fontSize,
         },
       },
     },
   },
-  props,
 });

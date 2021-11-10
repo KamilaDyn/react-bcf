@@ -62,7 +62,7 @@ const Head = ({ setOpenShoppingCard, openShoppingCard }) => {
             title={logged && user ? user.split("@")[0] : "Profil"}
             placement='top'
           >
-            <PersonOutlineIcon />
+            <PersonOutlineIcon color='secondary' />
           </Tooltip>
         </StyledIconButton>
         <StyledIconButton
@@ -70,7 +70,7 @@ const Head = ({ setOpenShoppingCard, openShoppingCard }) => {
           onClick={() => setOpenShoppingCard(!openShoppingCard)}
         >
           <StyledBadge color='primary' badgeContent={countItemsInBasket()}>
-            <LocalMallOutlinedIcon />
+            <LocalMallOutlinedIcon color='secondary' />
           </StyledBadge>
         </StyledIconButton>
         {logged && (
@@ -79,7 +79,7 @@ const Head = ({ setOpenShoppingCard, openShoppingCard }) => {
             onClick={() => history.push(routes.addNewProduct)}
           >
             <Tooltip title='Dodaj produkty' placement='top'>
-              <AddCircleOutlineOutlinedIcon />
+              <AddCircleOutlineOutlinedIcon color='secondary' />
             </Tooltip>
           </StyledIconButton>
         )}

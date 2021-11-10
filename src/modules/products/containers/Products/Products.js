@@ -13,7 +13,9 @@ const Products = () => {
           <NewReleasesOutlinedIcon color='primary' />
           <Typography variant='h2'>Lista Produktów</Typography>
         </NewProductBox>
-        <Link href='#'>Wszystko &#187;</Link>
+        <Link href='#' underline='none'>
+          Wszystko &#187;
+        </Link>
       </HeadSection>
       <ProductsList />
     </Wrapper>
