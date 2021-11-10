@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Dialog, Grid, Link, Typography } from "@material-ui/core";
+import { Dialog, Grid, Link, Typography } from "@mui/material";
 import { selectors, actions } from "store";
 import { routes } from "config/routes";
 import { MuiDialogTitle } from "shared/molecules";

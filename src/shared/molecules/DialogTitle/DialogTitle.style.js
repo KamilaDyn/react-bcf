@@ -1,4 +1,4 @@
-import { IconButton, styled } from "@material-ui/core";
+import { IconButton, styled } from "@mui/material";
 
 export const CloseButton = styled(IconButton)(({ theme }) => ({
   position: "absolute",

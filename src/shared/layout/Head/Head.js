@@ -1,10 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Grid, Tooltip, Typography, Box } from "@material-ui/core";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import { Grid, Tooltip, Typography, Box } from "@mui/material";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import { actions, selectors } from "store";
 import { routes } from "config/routes";
 import { logo } from "assets";

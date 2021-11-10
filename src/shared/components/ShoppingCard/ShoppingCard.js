@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+import { Avatar, Divider, Grid, Tooltip, Typography } from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import { selectors } from "store";
 import { shoppingBag } from "assets";
 import { NumberInput } from "shared/components";
