@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
-import { Box, Grid, Typography, Link } from "@material-ui/core";
+import { Box, Grid, Typography, Link } from "@mui/material";
 import { actions, selectors } from "store";
 import { StyledButton } from "shared/atoms";
 import { RegisterBySocialMedia } from "../RegisterBySocialMedia";
@@ -33,10 +33,12 @@ const SignupForm = () => {
               {signupFields.map((field) => (
                 <Grid container item key={field.id}>
                   <Field
+                    fullWidth
                     component={TextField}
                     name={field.name}
                     type={field.type}
                     label={field.label}
+                    variant='outlined'
                   />
                 </Grid>
               ))}

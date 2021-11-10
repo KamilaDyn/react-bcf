@@ -1,6 +1,6 @@
 import React from "react";
-import { Snackbar, IconButton } from "@material-ui/core";
-import CancelIcon from "@material-ui/icons/Cancel";
+import { Snackbar, IconButton } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const InfoSnackbar = ({ message, openSnackbar, handleCloseSnackbar }) => {
   const action = (

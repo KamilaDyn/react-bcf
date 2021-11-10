@@ -1,13 +1,7 @@
 import React from "react";
 import { Form, Field } from "formik";
-import {
-  Grid,
-  MenuItem,
-  Typography,
-  Box,
-  FormControl,
-} from "@material-ui/core";
-import { TextField, Select } from "formik-material-ui";
+import { Grid, MenuItem, Typography, Box, FormControl } from "@mui/material";
+import { TextField, Select } from "formik-mui";
 import { StyledBox, StyledButton, Divider } from "./InputsComponent.style";
 import { categories, useInputsData } from "./InputsComponent.utils";
 
@@ -25,6 +19,7 @@ const InputsComponent = () => {
       <Grid container spacing={6}>
         <Grid item xs={6}>
           <Field
+            fullWidth
             component={TextField}
             name='title'
             type='text'
@@ -35,7 +30,7 @@ const InputsComponent = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <FormControl>
+          <FormControl fullWidth>
             <Field
               key={`category-${values.category}`}
               component={Select}
@@ -53,6 +48,7 @@ const InputsComponent = () => {
         </Grid>
         <Grid item xs={6}>
           <Field
+            fullWidth
             component={TextField}
             name='image'
             type='text'
@@ -99,6 +95,7 @@ const InputsComponent = () => {
         </Grid>
         <Grid item xs={12}>
           <Field
+            fullWidth
             component={TextField}
             name='description'
             type='text'
@@ -114,6 +111,7 @@ const InputsComponent = () => {
         {fieldsData.map(({ name, type, label, shrinkValue }) => (
           <Grid item xs={6} key={name}>
             <Field
+              fullWidth
               component={TextField}
               name={name}
               type={type}

@@ -1,4 +1,4 @@
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 
 export const Image = styled("img")(({ theme }) => ({
   width: "1.2rem",

@@ -47,12 +47,9 @@ export const theme = createTheme({
           padding: customSpacing.spacing(1, 3),
           borderRadius: "4px",
           cursor: "pointer",
-          // fontSize: typography.body1.fontSize,
           fontWeight: "bold",
           transition: ".3s",
-          // [customBreakpoints.breakpoints.up("md")]: {
-          //   fontSize: typography.h3.fontSize,
-          // },
+
           "&:hover": {
             backgroundColor: palette.primary.main,
             color: palette.primary.contrastText,

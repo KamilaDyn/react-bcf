@@ -1,4 +1,4 @@
-import { Box, styled } from "@material-ui/core";
+import { Box, styled } from "@mui/material";
 
 export const StyledBox = styled(Box)(({ isloaded, isChild }) => ({
   backgroundColor: "white",

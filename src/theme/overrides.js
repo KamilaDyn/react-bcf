@@ -3,21 +3,6 @@ import palette from "./palette";
 import typography from "./typography";
 import customSpacing from "./spacing";
 
-// const overrides = {
-//   components: {
-//     // Name of the component
-//     MuiButton: {
-//       styleOverrides: {
-//         // Name of the slot
-//         root: {
-//           // Some CSS
-//           fontSize: "3rem",
-//         },
-//       },
-//     },
-//   },
-// };
-
 const overrides = {
   components: {
     MuiTypography: {
@@ -38,7 +23,6 @@ const overrides = {
           minWidth: 0,
           minHeight: 0,
           lineHeight: 0,
-          padding: customSpacing.spacing(1, 3),
           borderRadius: "4px",
           cursor: "pointer",
           fontSize: typography.body1.fontSize,
@@ -59,10 +43,10 @@ const overrides = {
         },
       },
     },
-    MuiCard:{
-      root:{
-        height: '100%',
-      }
+    MuiCard: {
+      root: {
+        height: "100%",
+      },
     },
     MuiContainer: {
       root: {
