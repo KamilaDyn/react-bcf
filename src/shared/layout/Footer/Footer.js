@@ -25,7 +25,7 @@ const Footer = () => {
 
           <List component='nav'>
             {listLinkAboutUs.map((value) => (
-              <ListItem key='value'>
+              <ListItem key={value}>
                 <Link href='#' underline='none' color='textSecondary'>
                   {value}
                 </Link>

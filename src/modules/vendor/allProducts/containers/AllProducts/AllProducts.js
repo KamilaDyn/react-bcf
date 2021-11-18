@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@material-ui/core";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { box } from "assets";
 import { Sidebar } from "../../../shared";
 import { ProductsList } from "../../components";

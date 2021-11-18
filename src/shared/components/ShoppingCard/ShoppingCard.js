@@ -18,13 +18,13 @@ import {
   Image,
 } from "./ShoppingCard.style";
 
-const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard }) => {
+const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
   const { handleDelete, calculatePrice, increment, decrement } =
     useShoppingCardData();
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   return (
     <StyledDrawer variant='persistent' anchor='right' open={openShoppingCard}>
-      <StyledIconButton onClick={() => setOpenShoppingCard(false)} isCard>
+      <StyledIconButton  onClick={() => setOpenShoppingCard(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
       <Divider />
@@ -36,7 +36,7 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard }) => {
       {shoppingList.length > 0 ? (
         <>
           {shoppingList.map((item, index) => (
-            <ItemContainer key={item.id}>
+            <ItemContainer key={`shoppingList-${item.id}`}>
               <Grid item spacing={2} container alignItems='center'>
                 <Grid item xs={2}>
                   <ControlBox>

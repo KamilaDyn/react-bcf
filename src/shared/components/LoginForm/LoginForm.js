@@ -7,7 +7,7 @@ import {
   LinearProgress,
   Typography,
 } from "@mui/material";
-import { TextField } from "formik-material-ui";
+import { TextField } from "formik-mui";
 import { Field, Formik, Form } from "formik";
 import { selectors } from "store";
 import { googleIcon } from "assets";
@@ -37,19 +37,23 @@ const LoginForm = () => {
             >
               <Grid container item>
                 <Field
+                  fullWidth
                   component={TextField}
                   name='email'
                   type='email'
                   label='Email'
+                  variant='outlined'
                 />
               </Grid>
 
               <Grid container item>
                 <Field
+                  fullWidth
                   component={TextField}
                   type='password'
                   label='Password'
                   name='password'
+                  variant='outlined'
                 />
                 {isSubmitting && <LinearProgress />}
               </Grid>

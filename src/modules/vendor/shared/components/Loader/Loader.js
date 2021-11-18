@@ -4,7 +4,7 @@ import { StyledBox } from "./Loader.style";
 
 const Loader = ({ loading }) => {
   return (
-    <StyledBox sx={{ display: "flex" }} isloaded={loading}>
+    <StyledBox sx={{ display: "flex" }} isLoaded>
       <StyledBox isChild>
         <CircularProgress
           style={{

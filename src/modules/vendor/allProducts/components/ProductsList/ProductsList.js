@@ -1,17 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-  Box,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  Button,
-} from "@material-ui/core";
+import { Box, Dialog, DialogTitle, DialogActions, Button } from "@mui/material";
 import { selectors } from "store";
 import { InfoSnackbar, Loader } from "../../../shared";
 import { Header } from "../Header";
-import { useDeleteProduct } from "./ProductsList.utils";
 import ProductItem from "../ProductItem/ProductItem";
+import { useDeleteProduct } from "./ProductsList.utils";
 
 const ProductsList = () => {
   const {
@@ -61,7 +55,7 @@ const ProductsList = () => {
           </Button>
         </DialogActions>
       </Dialog>
-      <Loader loading={loading} />
+      {/* <Loader loading={loading} /> */}
     </Box>
   );
 };
