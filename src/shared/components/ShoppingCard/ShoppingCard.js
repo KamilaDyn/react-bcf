@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Avatar, Divider, Grid, Tooltip, Typography } from "@material-ui/core";
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+import { Avatar, Divider, Grid, Tooltip, Typography } from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import { selectors } from "store";
 import { shoppingBag } from "assets";
 import { NumberInput } from "shared/components";
@@ -18,13 +18,13 @@ import {
   Image,
 } from "./ShoppingCard.style";
 
-const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard }) => {
+const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
   const { handleDelete, calculatePrice, increment, decrement } =
     useShoppingCardData();
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   return (
     <StyledDrawer variant='persistent' anchor='right' open={openShoppingCard}>
-      <StyledIconButton onClick={() => setOpenShoppingCard(false)} isCard>
+      <StyledIconButton  onClick={() => setOpenShoppingCard(false)} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
       <Divider />
@@ -36,7 +36,7 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard }) => {
       {shoppingList.length > 0 ? (
         <>
           {shoppingList.map((item, index) => (
-            <ItemContainer key={item.id}>
+            <ItemContainer key={`shoppingList-${item.id}`}>
               <Grid item spacing={2} container alignItems='center'>
                 <Grid item xs={2}>
                   <ControlBox>

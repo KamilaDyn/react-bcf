@@ -1,22 +1,22 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 import { StyledBox } from "./Header.style";
 
 const header = [
-  { name: "Nazwa", size: 5 },
-  { name: "Ilość", size: 1 },
-  { name: "Cena regularna", size: 2 },
-  { name: "Cena promocyjna", size: 2 },
-  { name: "", size: 1 },
-  { name: "", size: 1 },
+  { id: 1, name: "Nazwa", size: 5 },
+  { id: 2, name: "Ilość", size: 1 },
+  { id: 3, name: "Cena regularna", size: 2 },
+  { id: 4, name: "Cena promocyjna", size: 2 },
+  { id: 5, name: "", size: 1 },
+  { id: 6, name: "", size: 1 },
 ];
 
 const Header = () => {
   return (
     <StyledBox>
       <Grid container spacing={3} alignItems='center'>
-        {header.map(({ name, size }) => (
-          <Grid item xs={size} key={name}>
+        {header.map(({ name, size, id }) => (
+          <Grid item xs={size} key={id}>
             <Typography variant='body1'>{name}</Typography>
           </Grid>
         ))}

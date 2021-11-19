@@ -1,6 +1,6 @@
-import { Container, styled } from "@material-ui/core";
+import { Box, styled } from "@mui/material";
 
-export const StyledContainer = styled(Container)(({ theme, isCardOpen }) => ({
+export const StyledContainer = styled(Box)(({ theme, isCardOpen }) => ({
   width: "100%",
   ...(isCardOpen && {
     maxWidth: "calc(100% - 380px)",

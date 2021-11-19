@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Box } from "@material-ui/core";
+import { Grid, Typography, Box } from "@mui/material";
 import { StyledButton } from "shared/atoms";
 import { googleIcon } from "assets";
 import { Image } from "./RegisterBySocialMedia.style";

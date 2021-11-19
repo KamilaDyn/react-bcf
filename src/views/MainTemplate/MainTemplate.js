@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import { Footer, Head, Main } from "shared/layout";
 import { LoginFormContainer, ShoppingCard } from "shared/components";
 import { theme } from "../../theme";

@@ -1,5 +1,5 @@
-import { styled } from "@material-ui/core/styles";
-import { Box, Container } from "@material-ui/core/";
+import { styled } from "@mui/material/styles";
+import { Box, Container } from "@mui/material/";
 
 export const NewProductBox = styled(Box)({
   display: "flex",

@@ -1,4 +1,4 @@
-import { Avatar, Box, styled } from "@material-ui/core";
+import { Avatar, Box, styled } from "@mui/material";
 
 export const ShoppingInfo = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(8),

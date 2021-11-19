@@ -1,6 +1,4 @@
-import createPalette from "@material-ui/core/styles/createPalette";
-
-const palette = createPalette({
+const palette = {
   primary: {
     light: "#e3364e",
     main: "#D23F57",
@@ -22,5 +20,5 @@ const palette = createPalette({
   action: {
     hover: "#e3364e",
   },
-});
+};
 export default palette;

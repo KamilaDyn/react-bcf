@@ -1,5 +1,5 @@
-import { styled } from "@material-ui/core";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import { styled } from "@mui/material";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 export const Form = styled("form")(({ theme }) => ({
   display: "flex",
   flexWrap: "nowrap",

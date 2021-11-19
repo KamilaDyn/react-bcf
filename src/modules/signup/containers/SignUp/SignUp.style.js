@@ -1,4 +1,4 @@
-import { styled, Container } from "@material-ui/core";
+import { styled, Container } from "@mui/material";
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.primary.contrastText,

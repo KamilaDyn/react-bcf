@@ -1,4 +1,4 @@
-import { Box, Drawer, styled } from "@material-ui/core";
+import { Box, Drawer, styled } from "@mui/material";
 
 export const StyledDrawer = styled(Drawer)({
   width: "100%",

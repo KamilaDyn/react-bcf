@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
-import { TextField } from "formik-material-ui";
-import { Box, Grid, Typography, Link } from "@material-ui/core";
+import { TextField } from "formik-mui";
+import { Box, Grid, Typography, Link } from "@mui/material";
 import { actions, selectors } from "store";
 import { StyledButton } from "shared/atoms";
 import { RegisterBySocialMedia } from "../RegisterBySocialMedia";
@@ -33,20 +33,22 @@ const SignupForm = () => {
               {signupFields.map((field) => (
                 <Grid container item key={field.id}>
                   <Field
+                    fullWidth
                     component={TextField}
                     name={field.name}
                     type={field.type}
                     label={field.label}
+                    variant='outlined'
                   />
                 </Grid>
               ))}
 
               <Grid item container justifyContent='center'>
                 <StyledButton
+                  register
                   variant='contained'
                   color='primary'
                   onClick={submitForm}
-                  style={{ width: "100%" }}
                 >
                   Zarejestruj
                 </StyledButton>
@@ -80,7 +82,7 @@ const SignupForm = () => {
                   justifyContent='center'
                 >
                   <Typography color='secondary' align='center'>
-                    Zapomniałeś hasła?{" "}
+                    Zapomniałeś hasła?
                   </Typography>
                   &nbsp;
                   <Link href='#'>Zresetuj</Link>

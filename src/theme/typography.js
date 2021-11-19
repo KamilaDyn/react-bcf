@@ -1,6 +1,6 @@
 import palette from "./palette";
-import breakpoints from "./breakpoints";
-import spacing from "./spacing";
+import customBreakpoints from "./breakpoints";
+import customSpacing from "./spacing";
 
 const typography = {
   fontFamily: [
@@ -10,7 +10,7 @@ const typography = {
     "Open Sans",
     "TitilliumWeb",
     "Righteous",
-  ],
+  ].join(","),
   h1: {
     fontSize: "2.6rem",
     color: palette.primary.main,
@@ -24,11 +24,11 @@ const typography = {
     fontSize: "2.1rem",
     color: palette.secondary.main,
     fontWeight: "bold",
-    padding: spacing(4, 2),
-    [breakpoints.up("xs")]: {
+    padding: customSpacing.spacing(4, 2),
+    [customBreakpoints.breakpoints.up("xs")]: {
       fontSize: "1.8rem",
     },
-    [breakpoints.up("md")]: {
+    [customBreakpoints.breakpoints.up("md")]: {
       fontSize: "1.6rem",
     },
   },
@@ -37,14 +37,14 @@ const typography = {
     color: palette.secondary.contrastText,
     fontFamily: "Righteous, Lato, Roboto",
     textAlign: "center",
-    padding: spacing(4, 0),
-    [breakpoints.up("md")]: {
+    padding: customSpacing.spacing(4, 0),
+    [customBreakpoints.breakpoints.up("md")]: {
       fontSize: "1.4rem",
     },
   },
   h4: {
     fontSize: "1.2rem",
-    [breakpoints.up("md")]: {
+    [customBreakpoints.breakpoints.up("md")]: {
       fontSize: "1rem",
     },
   },

@@ -1,4 +1,4 @@
-import { IconButton, styled } from "@material-ui/core";
+import { IconButton, styled } from "@mui/material";
 
 const StyledIconButton = styled(IconButton)(
   ({ theme, expandedOpen, isCard, deleteBtn }) => ({

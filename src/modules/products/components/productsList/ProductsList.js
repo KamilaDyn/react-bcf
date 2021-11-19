@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, Grid, Link } from "@material-ui/core";
+import { Card, CardHeader, Grid, Link } from "@mui/material";
 import { AddProductForm } from "../AddProductForm";
 import { StyledMedia, StyledTypography } from "./ProductsList.style";
 import { useProductList } from "./ProductsList.utils";
@@ -9,7 +9,7 @@ const ProductsList = ({ open }) => {
   return (
     <Grid container spacing={4}>
       {allProducts.length &&
-        allProducts.map(({ id, title, image, category, price }, index) => (
+        allProducts.map(({ id, title, image, category, price }) => (
           <Grid
             item
             xs={12}
@@ -24,7 +24,7 @@ const ProductsList = ({ open }) => {
                 <StyledMedia image={image} title={title} alt={title} />
               </Link>
               <StyledTypography>{price}$</StyledTypography>
-              <AddProductForm index={index} id={id} />
+              <AddProductForm  id={id} />
             </Card>
           </Grid>
         ))}

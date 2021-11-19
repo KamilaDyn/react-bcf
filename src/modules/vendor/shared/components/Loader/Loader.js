@@ -1,10 +1,10 @@
 import React from "react";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@mui/material";
 import { StyledBox } from "./Loader.style";
 
 const Loader = ({ loading }) => {
   return (
-    <StyledBox sx={{ display: "flex" }} isloaded={loading}>
+    <StyledBox isLoaded={loading}>
       <StyledBox isChild>
         <CircularProgress
           style={{

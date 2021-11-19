@@ -1,7 +1,7 @@
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 
 export const StyledButton = styled("button")(
-  ({ theme, submitForm, google, facebook }) => ({
+  ({ theme, submitForm, google, facebook, register }) => ({
     backgroundColor: theme.palette.primary.main,
     padding: theme.spacing(2, 4),
     fontSize: theme.typography.h4.fontSize,
@@ -15,6 +15,9 @@ export const StyledButton = styled("button")(
     "&:hover": {
       backgroundColor: theme.palette.primary.light,
     },
+    ...(register && {
+      width: '100%'
+    }),
     ...(submitForm && {
       width: "100%",
       margin: 0,

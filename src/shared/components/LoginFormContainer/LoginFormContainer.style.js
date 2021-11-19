@@ -1,4 +1,4 @@
-import { Grid, styled } from "@material-ui/core";
+import { Grid, styled } from "@mui/material";
 
 export const ResetContainer = styled(Grid)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.contrastText,

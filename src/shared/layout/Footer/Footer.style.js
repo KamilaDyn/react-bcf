@@ -1,6 +1,6 @@
-import { Container, styled, Typography } from "@material-ui/core";
+import { Box, styled, Typography } from "@mui/material";
 
-export const StyledContainer = styled(Container)(({ theme }) => ({
+export const StyledContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.main,
   maxWidth: "100vw",
   padding: theme.spacing(15, 20),

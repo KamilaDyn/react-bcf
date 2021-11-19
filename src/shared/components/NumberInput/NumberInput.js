@@ -1,11 +1,12 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { StyledInput } from "./NumberInput.style";
 
 const NumberInput = ({ decrement, increment, quantity, item }) => {
   return (
     <>
       <Button
+        variant='outlined'
         disabled={quantity === 1 ? true : false}
         onClick={() => {
           decrement(item);
@@ -21,6 +22,7 @@ const NumberInput = ({ decrement, increment, quantity, item }) => {
         onChange={(e) => e.target.value}
       />
       <Button
+        variant='outlined'
         onClick={() => {
           increment(item);
         }}

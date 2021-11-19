@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog, DialogActions, DialogTitle, Button } from "@material-ui/core";
+import { Dialog, DialogActions, DialogTitle, Button } from "@mui/material";
 
 const InfoDialog = () => {
   const [open, setOpen] = React.useState(false);
