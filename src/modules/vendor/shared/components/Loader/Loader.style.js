@@ -10,7 +10,7 @@ export const StyledBox = styled(Box)(({ isLoaded, isChild }) => ({
   top: 0,
   left: 0,
   ...(isLoaded && {
-    display: "none !important",
+    display: "none",
   }),
   ...(isChild && {
     width: "100%",
