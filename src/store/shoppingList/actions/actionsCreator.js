@@ -14,9 +14,14 @@ const decrementProductInList = (item) => {
 const deleteProductFromList = (id) => {
   return { type: Types.DELETE_PRODUCT_FROM_LIST, payload: id };
 };
+const toggleShoppingCard = () => {
+  return { type: Types.TOGGLE_SHOPPING_CARD };
+};
+
 export const shoppingListActions = {
   addNewProductToList,
   incrementProductInList,
   decrementProductInList,
   deleteProductFromList,
+  toggleShoppingCard,
 };

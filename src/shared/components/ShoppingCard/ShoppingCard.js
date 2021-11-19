@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Avatar, Divider, Grid, Tooltip, Typography } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import { selectors } from "store";
+import { actions, selectors } from "store";
 import { shoppingBag } from "assets";
 import { NumberInput } from "shared/components";
 import { StyledButton, StyledIconButton } from "../../atoms";
@@ -22,9 +22,15 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
   const { handleDelete, calculatePrice, increment, decrement } =
     useShoppingCardData();
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
+  const isShoppingCardOpen = useSelector(selectors.shoppingList.getCardOpen);
+  const dispatch = useDispatch();
+
   return (
-    <StyledDrawer variant='persistent' anchor='right' open={openShoppingCard}>
-      <StyledIconButton  onClick={() => setOpenShoppingCard(false)} isCard>
+    <StyledDrawer variant='persistent' anchor='right' open={isShoppingCardOpen}>
+      <StyledIconButton
+        onClick={() => dispatch(actions.shoppingList.toggleShoppingCard())}
+        isCard
+      >
         <ChevronRightIcon />
       </StyledIconButton>
       <Divider />

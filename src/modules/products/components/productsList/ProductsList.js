@@ -1,11 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Card, CardHeader, Grid, Link } from "@mui/material";
+import { selectors } from "store";
 import { AddProductForm } from "../AddProductForm";
 import { StyledMedia, StyledTypography } from "./ProductsList.style";
 import { useProductList } from "./ProductsList.utils";
 
-const ProductsList = ({ open }) => {
+const ProductsList = () => {
   const allProducts = useProductList();
+  const isCardOpen = useSelector(selectors.shoppingList.getCardOpen);
   return (
     <Grid container spacing={4}>
       {allProducts.length &&
@@ -13,9 +16,9 @@ const ProductsList = ({ open }) => {
           <Grid
             item
             xs={12}
-            sm={open ? 12 : 6}
-            md={open ? 6 : 4}
-            lg={open ? 4 : 3}
+            sm={isCardOpen ? 12 : 6}
+            md={isCardOpen ? 6 : 4}
+            lg={isCardOpen ? 4 : 3}
             key={id}
           >
             <Card>
@@ -24,7 +27,7 @@ const ProductsList = ({ open }) => {
                 <StyledMedia image={image} title={title} alt={title} />
               </Link>
               <StyledTypography>{price}$</StyledTypography>
-              <AddProductForm  id={id} />
+              <AddProductForm id={id} />
             </Card>
           </Grid>
         ))}

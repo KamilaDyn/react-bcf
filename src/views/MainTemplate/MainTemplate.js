@@ -7,22 +7,16 @@ import { StyledContainer } from "./MainTemplate.style";
 
 const MainTemplate = ({ children }) => {
   const [openLoggingForm, setOpenLoggingForm] = useState(false);
-  const [openShoppingCard, setOpenShoppingCard] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <Head
-        openShoppingCard={openShoppingCard}
-        setOpenShoppingCard={setOpenShoppingCard}
         setOpenLoggingForm={setOpenLoggingForm}
         openLoggingForm={openLoggingForm}
       />
       <StyledContainer>
-        <Main openShoppingCard={openShoppingCard}>{children}</Main>
-        <ShoppingCard
-          openShoppingCard={openShoppingCard}
-          setOpenShoppingCard={setOpenShoppingCard}
-        />
+        <Main>{children}</Main>
+        <ShoppingCard />
       </StyledContainer>
       <LoginFormContainer
         openLoggingForm={openLoggingForm}

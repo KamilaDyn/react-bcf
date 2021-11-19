@@ -11,7 +11,7 @@ import { logo } from "assets";
 import { useAmountOfProduct } from "../../utils";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
 
-const Head = ({ setOpenShoppingCard, openShoppingCard }) => {
+const Head = () => {
   const user = useSelector(selectors.auth.getEmail);
   const logged = useSelector(selectors.auth.getIsLoggedIn);
   const countItemsInBasket = useAmountOfProduct();
@@ -67,7 +67,7 @@ const Head = ({ setOpenShoppingCard, openShoppingCard }) => {
         </StyledIconButton>
         <StyledIconButton
           aria-label='open drawer'
-          onClick={() => setOpenShoppingCard(!openShoppingCard)}
+          onClick={() => dispatch(actions.shoppingList.toggleShoppingCard())}
         >
           <StyledBadge color='primary' badgeContent={countItemsInBasket()}>
             <LocalMallOutlinedIcon color='secondary' />
