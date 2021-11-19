@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const StyledBox = styled(Box)(({ isloaded, isChild }) => ({
+export const StyledBox = styled(Box)(({ isLoaded, isChild }) => ({
   backgroundColor: "white",
   opacity: 0.85,
   width: "100%",
@@ -9,8 +9,8 @@ export const StyledBox = styled(Box)(({ isloaded, isChild }) => ({
   position: "absolute",
   top: 0,
   left: 0,
-  ...(isloaded && {
-    display: "none",
+  ...(isLoaded && {
+    display: "none !important",
   }),
   ...(isChild && {
     width: "100%",

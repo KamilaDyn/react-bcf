@@ -55,7 +55,7 @@ const ProductsList = () => {
           </Button>
         </DialogActions>
       </Dialog>
-      {/* <Loader loading={loading} /> */}
+      <Loader loading />
     </Box>
   );
 };

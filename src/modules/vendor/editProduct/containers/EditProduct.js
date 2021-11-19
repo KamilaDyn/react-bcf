@@ -48,7 +48,7 @@ const EditProduct = (props) => {
             />
           </Grid>
         </Grid>
-        {/* <Loader loading={loading} /> */}
+        <Loader loading={loading} />
       </Container>
     </>
   );

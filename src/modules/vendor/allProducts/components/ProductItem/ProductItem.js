@@ -39,13 +39,12 @@ const ProductItem = ({ setOpenPermission, setProductId }) => {
                 </IconButton>
               </Grid>
               <Grid item xs={1}>
-                <IconButton size='large'>
-                  <DeleteIcon
-                    color='primary'
-                    onClick={() => {
+                <IconButton size='large'   onClick={() => {
                       setOpenPermission(true);
                       setProductId(item.id);
-                    }}
+                    }}>
+                  <DeleteIcon
+                    color='primary'
                   />
                 </IconButton>
               </Grid>
