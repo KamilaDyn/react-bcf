@@ -9,6 +9,7 @@ import { actions, selectors } from "store";
 import { routes } from "config/routes";
 import { logo } from "assets";
 import { useAmountOfProduct } from "../../utils";
+import { SearchProduct } from "../../components";
 import { StyledGrid, StyledBadge, StyledIconButton } from "./Head.style";
 
 const Head = () => {
@@ -21,13 +22,13 @@ const Head = () => {
   return (
     <StyledGrid
       container
-      spacing={5}
+      spacing={3}
       justifyContent='center'
       direction='column'
     >
       <Grid
         xs={12}
-        sm={6}
+        sm={3}
         container
         item
         alignItems='center'
@@ -44,7 +45,17 @@ const Head = () => {
       </Grid>
       <Grid
         xs={12}
-        sm={6}
+        sm={5}
+        container
+        item
+        alignItems='center'
+        justifyContent='center'
+      >
+        <SearchProduct />
+      </Grid>
+      <Grid
+        xs={12}
+        sm={3}
         container
         item
         alignItems='center'

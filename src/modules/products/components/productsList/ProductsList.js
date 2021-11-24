@@ -1,9 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Card, CardHeader, Grid, Link } from "@mui/material";
+import { Grid } from "@mui/material";
 import { selectors } from "store";
-import { AddProductForm } from "../AddProductForm";
-import { StyledMedia, StyledTypography } from "./ProductsList.style";
+import { ProductCard } from "shared/components";
 import { useProductList } from "./ProductsList.utils";
 
 const ProductsList = () => {
@@ -21,14 +20,13 @@ const ProductsList = () => {
             lg={isCardOpen ? 4 : 3}
             key={id}
           >
-            <Card>
-              <CardHeader title={title} subheader={category} />
-              <Link href='#'>
-                <StyledMedia image={image} title={title} alt={title} />
-              </Link>
-              <StyledTypography>{price}$</StyledTypography>
-              <AddProductForm id={id} />
-            </Card>
+            <ProductCard
+              id={id}
+              title={title}
+              image={image}
+              category={category}
+              price={price}
+            />
           </Grid>
         ))}
     </Grid>
