@@ -1,21 +1,10 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { selectors } from "store";
-import { Box, Grid } from "@mui/material";
-import { ProductCard } from "shared/components";
-import { actions } from "store";
+import React from 'react';
+import { Box, Grid } from '@mui/material';
+import { ProductCard } from 'shared/components';
+import { useProductTypeList } from './ProductsTypeList.utils.js';
 
 const ProductTypeList = ({ type }) => {
-  const isCardOpen = useSelector(selectors.shoppingList.getCardOpen);
-  const foundProducts = useSelector(
-    selectors.searchProducts.getSearchedProducts
-  );
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    setTimeout(() => {
-      dispatch(actions.searchProducts.searchProducts(type));
-    }, 200);
-  }, []);
+  const { foundProducts, isCardOpen } = useProductTypeList(type);
   return (
     <Box>
       <Grid container spacing={4}>

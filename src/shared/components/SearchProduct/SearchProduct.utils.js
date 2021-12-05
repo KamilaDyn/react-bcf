@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectors } from "store";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectors } from 'store';
 
 export const useSearchInput = () => {
-  const [searchProduct, setSearchProduct] = useState("");
+  const [searchProduct, setSearchProduct] = useState('');
   const [displayProducts, setDisplayProducts] = useState(false);
   const products = useSelector(selectors.products.getProducts);
 
@@ -17,12 +17,10 @@ export const useSearchInput = () => {
       product.type.toLowerCase().indexOf(searchProduct.toLowerCase()) !== -1
     );
   });
-  const productItems = filterProductsByName.map((product, i) => {
-    return {
-      title: product.title.substr(0, 50),
-      type: product.type,
-    };
-  });
+  const productItems = filterProductsByName.map((product, i) => ({
+    title: product.title.substr(0, 50),
+    type: product.type,
+  }));
   return {
     handleSearch,
     filterProductsByName,
