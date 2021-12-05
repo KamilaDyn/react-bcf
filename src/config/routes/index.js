@@ -5,4 +5,5 @@ export const routes = {
   addNewProduct: "/vendor/add-new-product",
   editProduct: "/vendor/edit-product/:id",
   products: "/vendor/products",
+  searchProducts: "/products/search/:type",
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Tooltip } from "@mui/material";
-import { NumberInput } from "shared/components";
-import { StyledIconButton } from "shared/atoms";
+import { NumberInput } from "../NumberInput";
+import { StyledIconButton } from "../../atoms";
 import { useAddProduct, useQuantity } from "./AddProductForm.utils";
 import { Form, StyledShoppingCardIcon } from "./AddProductForm.style";
 
