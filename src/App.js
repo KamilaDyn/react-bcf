@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
-import { configureStore } from "store";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from 'store';
 import {
   Products,
   Profile,
@@ -10,9 +10,9 @@ import {
   AllProducts,
   SignUp,
   SearchProducts,
-} from "./modules";
-import { routes } from "./config/routes";
-import MainTemplate from "./views/MainTemplate/MainTemplate";
+} from './modules';
+import { routes } from './config/routes';
+import MainTemplate from './views/MainTemplate/MainTemplate';
 const store = configureStore();
 class App extends Component {
   render() {
