@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Box, Grid } from '@mui/material';
 import { CategorySelect } from '../../components';
 
-const Menu: FC = (): JSX.Element => {
+const Menu: FC = () => {
   return (
     <Box px={10} mb={5}>
       <Grid container spacing={3}>

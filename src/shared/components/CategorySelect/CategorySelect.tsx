@@ -12,7 +12,8 @@ import {
   StyledBox,
 } from './CategorySelect.style';
 import { useSelectCategory } from './CategorySelect.utils';
-const CategorySelect: FC = (): JSX.Element => {
+
+const CategorySelect: FC = () => {
   const { reduceCategory, selectCategory, setSelectCategory } =
     useSelectCategory();
 
@@ -32,7 +33,7 @@ const CategorySelect: FC = (): JSX.Element => {
         </StyledButton>
         {selectCategory && (
           <StyledBox category={selectCategory}>
-            {reduceCategory.map((value) => (
+            {reduceCategory.map((value: string) => (
               <MenuItem
                 component={Link}
                 to={`/products/search/${value}`}

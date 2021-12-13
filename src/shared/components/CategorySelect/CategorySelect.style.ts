@@ -1,6 +1,6 @@
 import { Box, Button, styled, Typography } from '@mui/material';
 
-type Props = {
+type StyledBoxProps = {
   category: boolean;
 };
 export const StyledButton = styled(Button)(({ theme }) => ({
@@ -16,7 +16,7 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
   paddingLeft: theme.spacing(1),
 }));
 
-export const StyledBox = styled(Box)<Props>(({ theme, category }) => ({
+export const StyledBox = styled(Box)<StyledBoxProps>(({ theme, category }) => ({
   width: 250,
   backgroundColor: theme.palette.primary.contrastText,
   boxShadow: 'rgb(43 52 69 / 10%) 0px 4px 16px',
