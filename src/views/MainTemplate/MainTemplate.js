@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import { Footer, Head, Main } from "shared/layout";
-import { LoginFormContainer, ShoppingCard } from "shared/components";
-import { theme } from "../../theme";
-import { StyledContainer } from "./MainTemplate.style";
+import React, { useState } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { Footer, Head, Main, Menu } from 'shared/layout';
+import { LoginFormContainer, ShoppingCard } from 'shared/components';
+import { theme } from '../../theme';
+import { StyledContainer } from './MainTemplate.style';
 
 const MainTemplate = ({ children }) => {
   const [openLoggingForm, setOpenLoggingForm] = useState(false);
@@ -14,6 +14,7 @@ const MainTemplate = ({ children }) => {
         setOpenLoggingForm={setOpenLoggingForm}
         openLoggingForm={openLoggingForm}
       />
+      <Menu />
       <StyledContainer>
         <Main>{children}</Main>
         <ShoppingCard />
