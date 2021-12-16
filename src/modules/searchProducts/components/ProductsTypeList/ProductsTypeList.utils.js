@@ -11,7 +11,7 @@ export const useProductTypeList = (type) => {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(actions.searchProducts.searchProducts(type));
+      dispatch(actions.searchProducts.searchProducts(type, null));
     }, 200);
   }, []);
   return { foundProducts, isCardOpen };

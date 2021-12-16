@@ -7,6 +7,8 @@ export const ProductsTypeReducer = (productsType = [], action) => {
       return payload;
     case Types.SEARCH_PRODUCTS_BY_CATEGORY:
       return payload;
+    case Types.SORT_TYPES_BY_LOWER_PRICE:
+      return payload;
     default:
       return productsType;
   }
