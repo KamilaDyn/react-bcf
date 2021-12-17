@@ -8,7 +8,6 @@ export const useProductTypeList = (type) => {
   );
   const isCardOpen = useSelector(selectors.shoppingList.getCardOpen);
   const dispatch = useDispatch();
-
   useEffect(() => {
     setTimeout(() => {
       dispatch(actions.searchProducts.searchProducts(type));

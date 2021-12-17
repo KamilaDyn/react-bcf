@@ -1,22 +1,15 @@
 import React, { FC } from 'react';
-import {
-  Box,
-  FormControl,
-  Select,
-  MenuItem,
-  SelectChangeEvent,
-} from '@mui/material';
+import { Box, FormControl, Select, MenuItem } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { actions, selectors } from 'store';
 import { useSortBy } from './SortBy.utils';
-
-interface ISortby {
+interface ISort {
   type: string;
 }
 
-const SortBy: FC<ISortby> = () => {
-  const { setSortBy, sortBy, sortProductsByValue } = useSortBy();
-  const handleChange = (event: SelectChangeEvent) => {
-    setSortBy(event.target.value);
-  };
+const SortBy: FC<ISort> = ({ type }) => {
+  const { handleChange, sortBy, filteredProducts } = useSortBy();
+  const dispatch = useDispatch();
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -29,14 +22,18 @@ const SortBy: FC<ISortby> = () => {
         >
           <MenuItem
             value="relevant"
-            onClick={() => sortProductsByValue('relevant')}
+            onClick={() =>
+              dispatch(actions.searchProducts.searchProducts(type))
+            }
           >
             Trafność: największa
           </MenuItem>
           <MenuItem
             value="asc"
             onClick={() => {
-              sortProductsByValue('asc');
+              dispatch(
+                actions.searchProducts.orderProductsAsc(filteredProducts)
+              );
             }}
           >
             Cena: najmniejsza
@@ -44,7 +41,9 @@ const SortBy: FC<ISortby> = () => {
           <MenuItem
             value="desc"
             onClick={() => {
-              sortProductsByValue('desc');
+              dispatch(
+                actions.searchProducts.orderProductsDesc(filteredProducts)
+              );
             }}
           >
             Cena: największa

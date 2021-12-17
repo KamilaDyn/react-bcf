@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { SelectChangeEvent } from '@mui/material';
 import { selectors } from 'store';
 
 export const useSortBy = () => {
@@ -7,28 +8,14 @@ export const useSortBy = () => {
   const filteredProducts = useSelector(
     selectors.searchProducts.getSearchedProducts
   );
-
-  const sortByHightPrice = filteredProducts.sort((a, b) => {
-    return b.price - a.price;
-  });
-  const sortByLowPrice = filteredProducts.sort((a, b) => {
-    return a.price - b.price;
-  });
-
-  const sortProductsByValue = (value: string) => {
-    switch (value) {
-      case 'asc':
-        return sortByLowPrice;
-      case 'desc':
-        return sortByHightPrice;
-      default:
-        return filteredProducts;
-    }
+  const handleChange = (event: SelectChangeEvent) => {
+    setSortBy(event.target.value);
   };
 
   return {
     sortBy,
     setSortBy,
-    sortProductsByValue,
+    filteredProducts,
+    handleChange,
   };
 };

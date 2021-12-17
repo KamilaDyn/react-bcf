@@ -2,7 +2,8 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 import { ProductCard } from 'shared/components';
 import { useProductTypeList } from './ProductsTypeList.utils.js';
-
+import { useSelector } from 'react-redux';
+import { actions, selectors } from 'store';
 const ProductTypeList = ({ type }) => {
   const { foundProducts, isCardOpen } = useProductTypeList(type);
   return (
