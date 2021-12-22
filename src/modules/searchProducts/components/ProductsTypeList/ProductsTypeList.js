@@ -1,11 +1,13 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-import { ProductCard } from 'shared/components';
+import { ProductCard, useOrderProducts } from 'shared';
 import { useProductTypeList } from './ProductsTypeList.utils.js';
-import { useSelector } from 'react-redux';
-import { actions, selectors } from 'store';
-const ProductTypeList = ({ type }) => {
-  const { foundProducts, isCardOpen } = useProductTypeList(type);
+
+const ProductTypeList = () => {
+  const isCardOpen = useProductTypeList();
+  const { foundProducts } = useOrderProducts();
+  console.log('found', foundProducts);
+
   return (
     <Box>
       <Grid container spacing={4}>
