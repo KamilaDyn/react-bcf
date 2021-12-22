@@ -3,16 +3,14 @@ import { Box, Grid } from '@mui/material';
 import { ProductCard, useOrderProducts } from 'shared';
 import { useProductTypeList } from './ProductsTypeList.utils.js';
 
-const ProductTypeList = () => {
-  const isCardOpen = useProductTypeList();
-  const { foundProducts } = useOrderProducts();
-  console.log('found', foundProducts);
-
+const ProductTypeList = ({ type }) => {
+  const isCardOpen = useProductTypeList(type);
+  const { products } = useOrderProducts(type);
   return (
     <Box>
       <Grid container spacing={4}>
-        {foundProducts.length &&
-          foundProducts.map(({ id, title, image, category, price }) => (
+        {products.length &&
+          products.map(({ id, title, image, category, price }) => (
             <Grid
               item
               xs={12}

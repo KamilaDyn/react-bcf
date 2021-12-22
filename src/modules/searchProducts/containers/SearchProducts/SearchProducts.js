@@ -6,7 +6,7 @@ const SearchProducts = (props) => {
   return (
     <Box p={5}>
       <SearchCard type={props.match.params.type} />
-      <ProductsTypeList />
+      <ProductsTypeList type={props.match.params.type} />
     </Box>
   );
 };
