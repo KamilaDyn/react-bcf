@@ -10,6 +10,7 @@ import {
   AllProducts,
   SignUp,
   SearchProducts,
+  Checkout,
 } from './modules';
 import { routes } from './config/routes';
 import MainTemplate from './views/MainTemplate/MainTemplate';
@@ -36,6 +37,7 @@ class App extends Component {
                 path={routes.searchProducts}
                 component={SearchProducts}
               />
+              <Route exact path={routes.checkout} component={Checkout} />
             </Switch>
           </MainTemplate>
         </Router>
