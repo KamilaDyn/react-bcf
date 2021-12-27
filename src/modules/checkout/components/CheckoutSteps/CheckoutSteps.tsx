@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { FC } from 'react';
 import {
   Stack,
   Stepper,
@@ -27,7 +27,7 @@ function StepText(props: StepIconProps) {
   );
 }
 
-export default function CustomizedSteppers() {
+const CheckoutSteps: FC = () => {
   return (
     <Stack sx={{ width: '80%' }} spacing={4}>
       <Stepper alternativeLabel activeStep={0} connector={<Connector />}>
@@ -39,4 +39,6 @@ export default function CustomizedSteppers() {
       </Stepper>
     </Stack>
   );
-}
+};
+
+export default CheckoutSteps;
