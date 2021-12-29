@@ -5,9 +5,9 @@ import { SingleProductCart, Sidebar } from '../../components';
 
 const Cart: FC = () => {
   return (
-    <Container>
+    <Box>
       <CheckoutSteps />
-      <Grid container>
+      <Grid container marginY={10}>
         <Grid item xs={12} md={8}>
           <SingleProductCart />
         </Grid>
@@ -15,7 +15,7 @@ const Cart: FC = () => {
           <Sidebar />
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 

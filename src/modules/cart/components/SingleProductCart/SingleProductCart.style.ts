@@ -7,5 +7,6 @@ export const StyledIconButton = styled(IconButton)({
 });
 
 export const StyledCard = styled(Card)(({ theme }) => ({
-  margin: theme.spacing(6, 0),
+  marginBottom: theme.spacing(6),
+  position: 'relative',
 }));

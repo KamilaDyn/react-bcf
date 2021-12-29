@@ -19,7 +19,7 @@ const SingleProductCart: FC = () => {
   return (
     <Container>
       {shoppingList.map((item, index) => (
-        <StyledCard key={item.id} style={{ position: 'relative' }}>
+        <StyledCard key={item.id}>
           <Grid container display="flex" alignItems="center" spacing={3}>
             <Grid
               container
