@@ -22,6 +22,7 @@ export const initialValues: MyFormValues = {
 };
 
 export const SignupSchema = Yup.object().shape({
+  checkbox: Yup.boolean(),
   email: Yup.string()
     .email('Adres musi zawierać @')
     .required('Wymagany adress email'),
@@ -41,25 +42,42 @@ export const SignupSchema = Yup.object().shape({
   postCode: Yup.string()
     .min(3, 'Nieprawidłowy kod pocztowy')
     .required('Wpisz kod pocztowy'),
-  billingEmail: Yup.string()
-    .email('Adres musi zawierać @')
-    .required('Wymagany adress email'),
-  billingFirstName: Yup.string()
-    .min(2, 'Imię jest za krótkie')
-    .required('Wpisz imię'),
-  billingSecondName: Yup.string()
-    .min(3, 'Nazwisko za krótkie')
-    .required('Wpisz nazwisko'),
-  billingStreet: Yup.string()
-    .min(3, 'Ulica jest za krótka')
-    .required('Wpisz nazwę ulicy'),
-  billingCity: Yup.string()
-    .min(3, 'Nazwa miasta jest za krótka')
-    .required('Wpisz nazwę miasta'),
-  billingCountry: Yup.string()
-    .min(3, 'Nazwa kraju jest za krótka ')
-    .required('Wpisz nazwę kraju'),
-  billingPostCode: Yup.string()
-    .min(3, 'Nieprawidłowy kod pocztowy')
-    .required('Wpisz kod pocztowy'),
+  billingEmail: Yup.string().when('checkbox', {
+    is: false,
+    then: Yup.string()
+      .email('Adres musi zawierać @')
+      .required('Wymagany adress email'),
+  }),
+  billingFirstName: Yup.string().when('checkbox', {
+    is: false,
+    then: Yup.string().min(2, 'Imię jest za krótkie').required('Wpisz imię'),
+  }),
+  billingSecondName: Yup.string().when('checkbox', {
+    is: false,
+    then: Yup.string().min(3, 'Nazwisko za krótkie').required('Wpisz nazwisko'),
+  }),
+  billingStreet: Yup.string().when('checkbox', {
+    is: false,
+    then: Yup.string()
+      .min(3, 'Ulica jest za krótka')
+      .required('Wpisz nazwę ulicy'),
+  }),
+  billingCity: Yup.string().when('checkbox', {
+    is: false,
+    then: Yup.string()
+      .min(3, 'Nazwa miasta jest za krótka')
+      .required('Wpisz nazwę miasta'),
+  }),
+  billingCountry: Yup.string().when('checkbox', {
+    is: false,
+    then: Yup.string()
+      .min(3, 'Nazwa kraju jest za krótka ')
+      .required('Wpisz nazwę kraju'),
+  }),
+  billingPostCode: Yup.string().when('checkbox', {
+    is: false,
+    then: Yup.string()
+      .min(3, 'Nieprawidłowy kod pocztowy')
+      .required('Wpisz kod pocztowy'),
+  }),
 });

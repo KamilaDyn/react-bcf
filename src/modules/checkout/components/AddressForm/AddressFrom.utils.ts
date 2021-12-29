@@ -2,7 +2,7 @@ import { useFormikContext } from 'formik';
 import { MyFormValues } from '../../utils';
 
 export const useAddressForm = () => {
-  const { values } = useFormikContext<MyFormValues>();
+  const { values, handleSubmit } = useFormikContext<MyFormValues>();
 
   const billingFormDetails = [
     {
@@ -65,7 +65,7 @@ export const useAddressForm = () => {
 
   return {
     billingFormDetails,
-    values,
+    handleSubmit,
   };
 };
 

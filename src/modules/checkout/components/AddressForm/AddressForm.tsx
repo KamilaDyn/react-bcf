@@ -14,14 +14,10 @@ type IForm = {
 };
 
 const AddressForm: FC = () => {
-  const { billingFormDetails } = useAddressForm();
-
-  const onSubmit = () => {
-    console.log('ok');
-  };
+  const { billingFormDetails, handleSubmit } = useAddressForm();
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={handleSubmit}>
       <StyledCard>
         <Grid container spacing={3} justifyContent="center" alignItems="center">
           {addressFormDetails.map(({ name, type, label, id }: IForm) => (
