@@ -10,7 +10,8 @@ interface Product {
   description: string;
   category: string;
   type: string;
-  image?: string | any;
+  image: string;
+  stock: number;
 }
 
 export const useSelectCategory = () => {
