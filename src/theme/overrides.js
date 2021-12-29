@@ -20,6 +20,7 @@ const overrides = {
           cursor: 'pointer',
           fontWeight: 'bold',
           transition: '.3s',
+          backgroundColor: 'pink',
 
           '&:hover': {
             backgroundColor: palette.primary.main,

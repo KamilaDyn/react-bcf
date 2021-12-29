@@ -7,4 +7,5 @@ export const routes = {
   products: '/vendor/products',
   searchProducts: '/products/search/:type',
   checkout: '/checkout',
+  cart: '/cart',
 };
