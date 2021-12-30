@@ -6,6 +6,6 @@ export const routes = {
   editProduct: '/vendor/edit-product/:id',
   products: '/vendor/products',
   searchProducts: '/products/search/:type',
-  checkout: '/checkout',
-  cart: '/cart',
+  addressDetails: '/checkout/address-details',
+  cartList: '/checkout/cart-products-list',
 };

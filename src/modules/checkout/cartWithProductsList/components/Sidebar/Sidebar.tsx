@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Card, Typography, Divider } from '@mui/material';
 import { StyledCard } from './Sidebar.style';
-import { AdditionalInfoForm } from '../../components';
+import { AdditionalInfoForm } from '../AdditionalInfoForm';
 
 const Sidebar: FC = () => {
   return (

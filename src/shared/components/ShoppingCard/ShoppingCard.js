@@ -88,7 +88,7 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
           <StyledButton
             onClick={() => {
               dispatch(actions.shoppingList.toggleShoppingCard());
-              history.push(routes.cart);
+              history.push(routes.cartList);
             }}
           >
             Zapłać teraz: {calculatePrice()}$

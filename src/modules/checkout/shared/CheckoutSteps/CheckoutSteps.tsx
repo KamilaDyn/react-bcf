@@ -14,10 +14,10 @@ function StepText(props: StepIconProps) {
   const { active, completed, className } = props;
 
   const text: { [index: string]: React.ReactElement } = {
-    1: <Typography>Karta</Typography>,
-    2: <Typography>Szczegóły</Typography>,
-    3: <Typography>Płatność</Typography>,
-    4: <Typography>Podsumowanie</Typography>,
+    1: <Typography>1.Karta</Typography>,
+    2: <Typography>2.Szczegóły</Typography>,
+    3: <Typography>3.Płatność</Typography>,
+    4: <Typography>4.Podsumowanie</Typography>,
   };
 
   return (
@@ -31,7 +31,7 @@ const CheckoutSteps: FC = () => {
   return (
     <Stack sx={{ width: '80%' }} spacing={4}>
       <Stepper alternativeLabel activeStep={0} connector={<Connector />}>
-        {steps.map((label) => (
+        {Object.values(steps).map((label) => (
           <Step key={label}>
             <StepLabel StepIconComponent={StepText} />
           </Step>

@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Box, Container, Grid } from '@mui/material';
-import { CheckoutSteps } from 'modules/checkout/components';
+import { CheckoutSteps } from '../../../shared';
 import { SingleProductCart, Sidebar } from '../../components';
 
-const Cart: FC = () => {
+const CartWithProductsList: FC = () => {
   return (
     <Box>
       <CheckoutSteps />
@@ -19,4 +19,4 @@ const Cart: FC = () => {
   );
 };
 
-export default Cart;
+export default CartWithProductsList;

@@ -33,7 +33,16 @@ const getProductCategorySuccess = (data) => {
   return { type: Types.SEARCH_PRODUCTS_BY_CATEGORY, payload: data };
 };
 
+const orderProductsAsc = (data) => {
+  return { type: Types.ORDER_PRODUCTS_ASC, payload: data };
+};
+const orderProductsDesc = (data) => {
+  return { type: Types.ORDER_PRODUCTS_DESC, payload: data };
+};
+
 export const searchProductsActions = {
   searchProducts,
   searchProductsByCategory,
+  orderProductsDesc,
+  orderProductsAsc,
 };
