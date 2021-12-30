@@ -1,7 +1,7 @@
-import customBreakpoints from "./breakpoints";
-import palette from "./palette";
-import typography from "./typography";
-import customSpacing from "./spacing";
+import customBreakpoints from './breakpoints';
+import palette from './palette';
+import typography from './typography';
+import customSpacing from './spacing';
 
 const overrides = {
   components: {
@@ -16,18 +16,18 @@ const overrides = {
           minHeight: 0,
           lineHeight: 0,
           padding: customSpacing.spacing(1, 3),
-          borderRadius: "4px",
-          cursor: "pointer",
-          fontWeight: "bold",
-          transition: ".3s",
+          borderRadius: '4px',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          transition: '.3s',
 
-          "&:hover": {
+          '&:hover': {
             backgroundColor: palette.primary.main,
             color: palette.primary.contrastText,
           },
-          "&:disabled": {
-            cursor: "not-allowed",
-            pointerEvents: "none",
+          '&:disabled': {
+            cursor: 'not-allowed',
+            pointerEvents: 'none',
             opacity: 0.62,
           },
         },
@@ -36,14 +36,14 @@ const overrides = {
     MuiCard: {
       styleOverrides: {
         root: {
-          height: "100%",
+          height: '100%',
         },
       },
     },
     MuiContainer: {
       styleOverrides: {
         root: {
-          [customBreakpoints.breakpoints.up("sm")]: {
+          [customBreakpoints.breakpoints.up('sm')]: {
             paddingLeft: customSpacing.spacing(4),
             paddingRight: customSpacing.spacing(4),
           },
@@ -53,9 +53,9 @@ const overrides = {
     MuiLink: {
       styleOverrides: {
         root: {
-          textAlign: "center",
-          textDecoration: "none",
-          "&:hover": {
+          textAlign: 'center',
+          textDecoration: 'none',
+          '&:hover': {
             color: palette.primary.main,
           },
         },
@@ -64,10 +64,10 @@ const overrides = {
     MuiListItem: {
       styleOverrides: {
         gutters: {
-          textAlign: "center",
+          textAlign: 'center',
         },
         root: {
-          justifyContent: "center",
+          justifyContent: 'center',
         },
       },
     },
@@ -75,6 +75,14 @@ const overrides = {
       styleOverrides: {
         root: {
           fontSize: typography.h3.fontSize,
+        },
+      },
+    },
+    MuiStepper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'red',
+          height: 200,
         },
       },
     },
