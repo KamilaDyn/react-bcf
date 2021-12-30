@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Container } from '@mui/material';
 import { CheckoutSteps } from '../../components';
 
-const Checkout: FC = () => {
+const AddressDetails: FC = () => {
   return (
     <Container>
       <CheckoutSteps />
@@ -10,4 +10,4 @@ const Checkout: FC = () => {
   );
 };
 
-export default Checkout;
+export default AddressDetails;
