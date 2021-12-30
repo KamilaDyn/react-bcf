@@ -1,6 +1,6 @@
-export const steps = [
-  '1. Karta',
-  '2. Szczegóły',
-  '3. Płatność',
-  '4. Podsumowanie',
-];
+export enum steps {
+  card = '1.Karta',
+  details = '2.Szczegóły',
+  payments = '3.Płatność',
+  sum = '4.Podsumowanie',
+}
