@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { MyFormValues } from '../../utils';
+import { MyFormValues } from '../utils';
 
 export const initialValues: MyFormValues = {
   firstName: '',

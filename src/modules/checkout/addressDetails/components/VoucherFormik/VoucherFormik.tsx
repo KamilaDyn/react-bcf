@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-mui';
 import { Box } from '@mui/material';
-import { StyledButton } from '../../atoms';
+import { StyledButton } from '../atoms';
 const VoucherFormik: FC = () => {
   return (
     <Formik

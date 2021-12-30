@@ -1,5 +1,5 @@
 import { useFormikContext } from 'formik';
-import { MyFormValues } from '../../utils';
+import { MyFormValues } from '../utils';
 
 export const useAddressForm = () => {
   const { values, handleSubmit } = useFormikContext<MyFormValues>();

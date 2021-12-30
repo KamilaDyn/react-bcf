@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Field, Form } from 'formik';
 import { TextField } from 'formik-mui';
-import { StyledButton, StyledCard } from '../../atoms';
+import { StyledButton, StyledCard } from '../atoms';
 import { addressFormDetails, useAddressForm } from './AddressFrom.utils';
 
 type IForm = {

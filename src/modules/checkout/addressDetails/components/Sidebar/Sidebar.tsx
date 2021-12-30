@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Typography, Divider } from '@mui/material';
-import { StyledCard } from '../../atoms';
+import { StyledCard } from '../atoms';
 import { VoucherFormik } from '../VoucherFormik';
 import { StyledBox } from './Sidebar.style';
 import { sidebarList } from './sidebar.utils';

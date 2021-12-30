@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Grid } from '@mui/material';
-import { CheckoutSteps, AddressFormik, Sidebar } from '../../components';
+import { CheckoutSteps, AddressFormik, Sidebar } from '../../components/';
 
 const AddressDetails: FC = () => {
   return (
