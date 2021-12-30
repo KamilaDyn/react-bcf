@@ -1,9 +1,9 @@
-import React from 'react';
-import { Form, Field } from 'formik';
-import { Grid, MenuItem, Typography, Box, FormControl } from '@mui/material';
-import { TextField, Select } from 'formik-mui';
-import { StyledBox, StyledButton, Divider } from './InputsComponent.style';
-import { categories, useInputsData } from './InputsComponent.utils';
+import React from "react";
+import { Form, Field } from "formik";
+import { Grid, MenuItem, Typography, Box, FormControl } from "@mui/material";
+import { TextField, Select } from "formik-mui";
+import { StyledBox, StyledButton, Divider } from "./InputsComponent.style";
+import { categories, useInputsData } from "./InputsComponent.utils";
 
 const InputsComponent = () => {
   const {
@@ -21,9 +21,9 @@ const InputsComponent = () => {
           <Field
             fullWidth
             component={TextField}
-            name="title"
-            type="text"
-            label="Nazwa produktu"
+            name='title'
+            type='text'
+            label='Nazwa produktu'
             InputLabelProps={{
               shrink: values.title ? true : false,
             }}
@@ -34,9 +34,9 @@ const InputsComponent = () => {
             <Field
               key={`category-${values.category}`}
               component={Select}
-              name="category"
+              name='category'
               defaultValue={values.category || categories[0]}
-              variant="outlined"
+              variant='outlined'
             >
               {categories.map((value) => (
                 <MenuItem key={value} value={value}>
@@ -50,57 +50,57 @@ const InputsComponent = () => {
           <Field
             fullWidth
             component={TextField}
-            name="image"
-            type="text"
-            label="Link do obrazka"
+            name='image'
+            type='text'
+            label='Link do obrazka'
             InputLabelProps={{
               shrink: values.image ? true : false,
             }}
           />
         </Grid>
         <Grid item xs={6}>
-          <StyledBox addImg typeIndex="0">
+          <StyledBox addImg typeIndex='0'>
             <input
-              name="file"
+              name='file'
               ref={inputEl}
-              type="file"
+              type='file'
               multiple
-              typeIndex="-1"
-              accept=".jpeg,.jpg,.png,.gif"
+              typeIndex='-1'
+              accept='.jpeg,.jpg,.png,.gif'
               hidden
               onChange={(event) => {
                 setFieldValue(
-                  'file',
+                  "file",
                   URL.createObjectURL(event.target.files[0])
                 );
               }}
             />
-            <Typography variant="h5" align="center">
+            <Typography variant='h5' align='center'>
               Przeciągnij i upuść obrazek tutaj
             </Typography>
-            <Box display="flex" alignItems="center" margin={2}>
+            <Box display='flex' alignItems='center' margin={2}>
               <Divider />
               <Typography>lub</Typography>
               <Divider />
             </Box>
             <StyledButton
-              sixe="medium"
-              variant="contained"
+              sixe='medium'
+              variant='contained'
               onClick={triggerClick}
             >
               Wybierz obraz
             </StyledButton>
-            <Typography align="center">Rozmiar obrazka 200x200</Typography>
+            <Typography align='center'>Rozmiar obrazka 200x200</Typography>
           </StyledBox>
         </Grid>
         <Grid item xs={12}>
           <Field
             fullWidth
             component={TextField}
-            name="description"
-            type="text"
-            label="Opis produktu"
-            placeholder="Opis produktu"
+            name='description'
+            type='text'
+            label='Opis produktu'
+            placeholder='Opis produktu'
             multiline
             minRows={5}
             InputLabelProps={{
@@ -122,13 +122,13 @@ const InputsComponent = () => {
             />
           </Grid>
         ))}
-        <Grid item container justifyContent="center">
+        <Grid item container justifyContent='center'>
           <StyledButton
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             onClick={handleSubmit}
           >
-            {values.title === '' ? 'Dodaj produkt' : 'Edytuj produkt'}
+            {values.title === "" ? "Dodaj produkt" : "Edytuj produkt"}
           </StyledButton>
         </Grid>
       </Grid>
