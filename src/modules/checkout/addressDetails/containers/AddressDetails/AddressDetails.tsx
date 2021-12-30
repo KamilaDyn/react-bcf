@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Grid } from '@mui/material';
 import { CheckoutSteps, AddressFormik, Sidebar } from '../../components';
 
-const Checkout: FC = () => {
+const AddressDetails: FC = () => {
   return (
     <Grid container spacing={5} p={3} display="flex" justifyContent="center">
       <Grid container item xs={8} md={7}>
@@ -20,4 +20,4 @@ const Checkout: FC = () => {
   );
 };
 
-export default Checkout;
+export default AddressDetails;
