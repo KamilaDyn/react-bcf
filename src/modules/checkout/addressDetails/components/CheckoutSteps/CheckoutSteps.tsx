@@ -28,7 +28,6 @@ function StepText(props: StepIconProps) {
 }
 
 const CheckoutSteps: FC = () => {
-  Object.values(steps).map((label) => console.log(label));
   return (
     <Stack sx={{ width: '80%' }} spacing={4}>
       <Stepper alternativeLabel activeStep={0} connector={<Connector />}>
