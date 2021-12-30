@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-mui';
-import { StyledButton } from 'shared';
+import { StyledButton } from '../../../shared';
 
 enum Options {
   Option1,
@@ -75,7 +75,7 @@ const AdditionalInfoForm: FC = () => {
                 </RadioGroup>
               </FormControl>
             </Box>
-            <StyledButton>Oblicz z dostawą </StyledButton>
+            <StyledButton transparent>Oblicz z dostawą </StyledButton>
             <StyledButton>Przejdź do szczegółów </StyledButton>
           </Form>
         )}
