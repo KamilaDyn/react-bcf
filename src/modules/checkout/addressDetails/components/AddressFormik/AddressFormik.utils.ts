@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
-import { MyFormValues } from '../utils';
+import { PersonalDataFormValues } from '../utils';
 
-export const initialValues: MyFormValues = {
+export const initialValues: PersonalDataFormValues = {
   firstName: '',
   secondName: '',
   email: '',

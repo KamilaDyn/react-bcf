@@ -5,14 +5,6 @@ import { TextField } from 'formik-mui';
 import { StyledButton, StyledCard } from '../atoms';
 import { addressFormDetails, useAddressForm } from './AddressFrom.utils';
 
-type IForm = {
-  name: string;
-  label: string;
-  type: string;
-  id: number;
-  value?: string;
-};
-
 const AddressForm: FC = () => {
   const { billingFormDetails, handleSubmit } = useAddressForm();
 
@@ -20,7 +12,7 @@ const AddressForm: FC = () => {
     <Form onSubmit={handleSubmit}>
       <StyledCard>
         <Grid container spacing={3} justifyContent="center" alignItems="center">
-          {addressFormDetails.map(({ name, type, label, id }: IForm) => (
+          {addressFormDetails.map(({ name, type, label, id }) => (
             <Grid item xs={6} key={id}>
               <Field
                 fullWidth
@@ -43,7 +35,7 @@ const AddressForm: FC = () => {
               Taki sam jak adres wysyłki
             </label>
           </Grid>
-          {billingFormDetails.map(({ name, type, label, id, value }: IForm) => (
+          {billingFormDetails.map(({ name, type, label, id, value }) => (
             <Grid item xs={6} key={id}>
               <Field
                 fullWidth

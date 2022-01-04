@@ -1,10 +1,37 @@
 import { useFormikContext } from 'formik';
-import { MyFormValues } from '../utils';
+
+interface MyValue {
+  values: object;
+  checkbox: boolean;
+  firstName: string;
+  billingFirstName: string;
+  secondName: string;
+  billingSecondName: string;
+  email: string;
+  billingEmail: string;
+  phone: string;
+  billingPhone: string;
+  street: string;
+  billingStreet: string;
+  postCode: string;
+  billingPostCode: string;
+  city: string;
+  billingCity: string;
+  country: string;
+  billingCountry: string;
+}
+interface BillingItem {
+  id: number;
+  name: string;
+  label: string;
+  type: string;
+  value?: string;
+}
 
 export const useAddressForm = () => {
-  const { values, handleSubmit } = useFormikContext<MyFormValues>();
+  const { values, handleSubmit } = useFormikContext<MyValue>();
 
-  const billingFormDetails = [
+  const billingFormDetails: BillingItem[] = [
     {
       id: 1,
       name: 'billingFirstName',
@@ -69,7 +96,7 @@ export const useAddressForm = () => {
   };
 };
 
-export const addressFormDetails = [
+export const addressFormDetails: BillingItem[] = [
   { id: 1, name: 'firstName', label: 'Imię', type: 'text' },
   { id: 2, name: 'secondName', label: 'Nazwisko', type: 'text' },
   { id: 3, name: 'email', label: 'Adress email', type: 'email' },
