@@ -5,4 +5,4 @@ export { AddNewProduct } from './vendor/addNewProduct/containers';
 export { EditProduct } from './vendor/editProduct/containers';
 export { AllProducts } from './vendor/allProducts/containers';
 export { SearchProducts } from './searchProducts/containers';
-export { AddressDetails } from './checkout/addressDetails/containers';
+export { Checkout } from './checkout/containers';
