@@ -42,10 +42,7 @@ const CheckoutSteps: FC<Props> = ({ setActiveStep, activeStep }) => {
       >
         {Object.values(steps).map((label, index) => (
           <Step key={label}>
-            <StepLabel
-              StepIconComponent={StepText}
-              onClick={() => setActiveStep(index)}
-            />
+            <StepLabel StepIconComponent={StepText} />
           </Step>
         ))}
       </Stepper>

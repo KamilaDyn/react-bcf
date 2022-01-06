@@ -1,13 +1,15 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Formik } from 'formik';
 import { CheckoutFormContent } from '../CheckoutFormContent';
-import { SignupSchema, initialValues } from './CheckoutFormik.utils';
 import { steps } from '../shared';
+import { SignupSchema, initialValues } from './CheckoutFormik.utils';
+
 interface Props {
   activeStep: number;
   setActiveStep: (activeStep: number) => void;
 }
-const CheckoutFormik: FC<Props> = ({ activeStep, setActiveStep }) => {
+
+const CheckoutFormik: FC<Props> = ({ activeStep, setActiveStep, children }) => {
   const isLastStep = activeStep === Object.keys(steps).length - 1;
   const currentValidationSchema = SignupSchema[activeStep];
   const sleep = (ms) => {
@@ -29,7 +31,6 @@ const CheckoutFormik: FC<Props> = ({ activeStep, setActiveStep }) => {
       actions.setSubmitting(false);
     }
   };
-
   return (
     <Formik
       initialValues={initialValues}

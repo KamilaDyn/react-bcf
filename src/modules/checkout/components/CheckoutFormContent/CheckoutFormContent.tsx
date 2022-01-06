@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Grid } from '@mui/material';
-import { Form, useFormikContext } from 'formik';
-import { AddressForm, PaymentForm } from '../forms';
+import { Form } from 'formik';
 import { StyledButton } from '../shared';
+import { AddressForm } from '../forms';
 
 interface Props {
   activeStep: number;
@@ -17,7 +17,7 @@ function renderStepContent(step: number) {
     case 1:
       return <AddressForm />;
     case 2:
-      return <PaymentForm />;
+      return <div>Payment form</div>;
     case 3:
       return <div>Podsumowanie (submit)</div>;
     default:
@@ -30,16 +30,16 @@ const CheckoutFormContent: FC<Props> = ({
   setActiveStep,
   isLastStep,
 }) => {
-  const { isValid } = useFormikContext();
   return (
     <Form>
       {renderStepContent(activeStep)}
-
       <Grid container spacing={3}>
         <Grid item xs={6}>
           {activeStep !== 0 && (
             <StyledButton
-              onClick={() => setActiveStep(activeStep - 1)}
+              onClick={() => {
+                setActiveStep(activeStep - 1);
+              }}
               transparent
             >
               Wróć
@@ -47,7 +47,7 @@ const CheckoutFormContent: FC<Props> = ({
           )}
         </Grid>
         <Grid item xs={6}>
-          <StyledButton type="submit" disabled={!isValid}>
+          <StyledButton type="submit">
             {isLastStep ? 'Potwierdź' : 'Dalej'}
           </StyledButton>
         </Grid>

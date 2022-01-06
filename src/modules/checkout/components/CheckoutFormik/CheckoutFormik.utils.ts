@@ -20,7 +20,9 @@ export const initialValues: PersonalDataFormValues = {
   billingCountry: '',
   checkbox: false,
 };
-const firstStep = Yup.object().shape({});
+const firstStep = Yup.object().shape({
+  voucher: Yup.string().min(6, 'za krótki text'),
+});
 const secondStep = Yup.object().shape({
   checkbox: Yup.boolean(),
   email: Yup.string()
@@ -82,7 +84,7 @@ const secondStep = Yup.object().shape({
   }),
 });
 const thirdStep = Yup.object().shape({
-  card: Yup.string().min(3, 'Nazwisko za krótkie'),
+  card: Yup.string().min(3, 'Nazwisko za krótkie').required('wpisz voucher'),
 });
 
 export const SignupSchema = [firstStep, secondStep, thirdStep];
