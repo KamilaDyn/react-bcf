@@ -9,4 +9,9 @@ export {
 } from './components';
 export { Form, StyledButton, StyledIconButton } from './atoms';
 export { MuiDialogTitle } from './molecules';
-export { URL, useAmountOfProduct, useOrderProducts } from './utils';
+export {
+  URL,
+  useAmountOfProduct,
+  useOrderProducts,
+  useManageProducts,
+} from './utils';

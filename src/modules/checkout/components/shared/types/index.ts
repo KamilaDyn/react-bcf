@@ -6,3 +6,12 @@ export interface BaseStepProps {
 export interface SetProps extends BaseStepProps {
   isLastStep: boolean;
 }
+
+export interface ProductsTypes {
+  name: string;
+  img: string;
+  id: number;
+  itemPrice: number;
+  count: number;
+  price: number;
+}
