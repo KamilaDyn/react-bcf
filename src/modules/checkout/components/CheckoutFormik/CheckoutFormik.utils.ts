@@ -1,25 +1,6 @@
 import * as Yup from 'yup';
-import { PersonalDataFormValues } from '../shared';
+import { PersonalDataFormValues, steps } from '../shared';
 
-export const initialValues: PersonalDataFormValues = {
-  firstName: '',
-  secondName: '',
-  email: '',
-  phone: '',
-  street: '',
-  postCode: '',
-  city: '',
-  country: '',
-  billingFirstName: '',
-  billingSecondName: '',
-  billingEmail: '',
-  billingPhone: '',
-  billingStreet: '',
-  billingPostCode: '',
-  billingCity: '',
-  billingCountry: '',
-  checkbox: false,
-};
 const firstStep = Yup.object().shape({
   voucher: Yup.string().min(6, 'za krótki text'),
 });
@@ -88,3 +69,53 @@ const thirdStep = Yup.object().shape({
 });
 
 export const SignupSchema = [firstStep, secondStep, thirdStep];
+
+export const useCheckoutFormik = (activeStep, setActiveStep) => {
+  const isLastStep = activeStep === Object.keys(steps).length - 1;
+  const currentValidationSchema = SignupSchema[activeStep];
+  const sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+  const submitForm = async (values, actions) => {
+    await sleep(1000);
+    alert(JSON.stringify(values, null, 2));
+    actions.setSubmitting(false);
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleSubmit = (values, actions) => {
+    if (isLastStep) {
+      submitForm(values, actions);
+    } else {
+      setActiveStep(activeStep + 1);
+      actions.setTouched({});
+      actions.setSubmitting(false);
+    }
+  };
+
+  return {
+    handleSubmit,
+    isLastStep,
+    currentValidationSchema,
+  };
+};
+
+export const initialValues: PersonalDataFormValues = {
+  firstName: '',
+  secondName: '',
+  email: '',
+  phone: '',
+  street: '',
+  postCode: '',
+  city: '',
+  country: '',
+  billingFirstName: '',
+  billingSecondName: '',
+  billingEmail: '',
+  billingPhone: '',
+  billingStreet: '',
+  billingPostCode: '',
+  billingCity: '',
+  billingCountry: '',
+  checkbox: false,
+};

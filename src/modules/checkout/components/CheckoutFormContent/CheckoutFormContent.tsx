@@ -1,14 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Grid } from '@mui/material';
 import { Form } from 'formik';
-import { StyledButton } from '../shared';
+import { StyledButton, SetProps } from '../shared';
 import { AddressForm } from '../forms';
-
-interface Props {
-  activeStep: number;
-  setActiveStep: (setActiveStep: number) => void;
-  isLastStep: boolean;
-}
 
 function renderStepContent(step: number) {
   switch (step) {
@@ -25,7 +19,7 @@ function renderStepContent(step: number) {
   }
 }
 
-const CheckoutFormContent: FC<Props> = ({
+const CheckoutFormContent: FC<SetProps> = ({
   activeStep,
   setActiveStep,
   isLastStep,

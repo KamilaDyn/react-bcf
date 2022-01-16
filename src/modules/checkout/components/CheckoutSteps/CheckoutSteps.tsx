@@ -7,9 +7,8 @@ import {
   StepIconProps,
   Typography,
 } from '@mui/material';
+import { steps } from '../shared';
 import { Connector, StepContainer } from './CheckoutSteps.style';
-import { steps } from './CheckoutSteps.utils';
-
 function StepText(props: StepIconProps) {
   const { active, completed, className } = props;
 
