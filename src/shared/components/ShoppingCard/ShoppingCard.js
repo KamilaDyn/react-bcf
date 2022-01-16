@@ -84,7 +84,12 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
             </ItemContainer>
           ))}
 
-          <StyledButton onClick={history.push(routes.checkout)}>
+          <StyledButton
+            onClick={() => {
+              history.push(routes.checkout);
+              dispatch(actions.shoppingList.toggleShoppingCard());
+            }}
+          >
             Zapłać teraz: {calculatePrice()}$
           </StyledButton>
         </>
