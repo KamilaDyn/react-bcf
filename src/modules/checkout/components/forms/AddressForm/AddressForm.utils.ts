@@ -20,6 +20,7 @@ interface MyValue {
   country: string;
   billingCountry: string;
 }
+
 interface BillingItem {
   id: number;
   name: string;
@@ -30,7 +31,6 @@ interface BillingItem {
 
 export const useAddressForm = () => {
   const { values, handleSubmit } = useFormikContext<MyValue>();
-
   const billingFormDetails: BillingItem[] = [
     {
       id: 1,

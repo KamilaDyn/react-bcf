@@ -7,9 +7,8 @@ import {
   StepIconProps,
   Typography,
 } from '@mui/material';
+import { steps } from '../shared';
 import { Connector, StepContainer } from './CheckoutSteps.style';
-import { steps } from './CheckoutSteps.utils';
-
 function StepText(props: StepIconProps) {
   const { active, completed, className } = props;
 
@@ -27,11 +26,20 @@ function StepText(props: StepIconProps) {
   );
 }
 
-const CheckoutSteps: FC = () => {
+interface Props {
+  setActiveStep: (index: number) => void;
+  activeStep: number;
+}
+
+const CheckoutSteps: FC<Props> = ({ setActiveStep, activeStep }) => {
   return (
     <Stack sx={{ width: '80%' }} spacing={4}>
-      <Stepper alternativeLabel activeStep={0} connector={<Connector />}>
-        {Object.values(steps).map((label) => (
+      <Stepper
+        alternativeLabel
+        activeStep={activeStep}
+        connector={<Connector />}
+      >
+        {Object.values(steps).map((label, index) => (
           <Step key={label}>
             <StepLabel StepIconComponent={StepText} />
           </Step>

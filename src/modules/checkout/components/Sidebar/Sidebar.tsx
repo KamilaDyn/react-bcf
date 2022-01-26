@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import { Typography, Divider } from '@mui/material';
-import { StyledCard } from '../atoms';
-import { VoucherFormik } from '../VoucherFormik';
-import { StyledBox } from './Sidebar.style';
+import { StyledBox, StyledCard } from './Sidebar.style';
 import { sidebarList } from './sidebar.utils';
 
 const Sidebar: FC = () => {
@@ -21,7 +19,6 @@ const Sidebar: FC = () => {
           3000$
         </Typography>
       </StyledBox>
-      <VoucherFormik />
     </StyledCard>
   );
 };

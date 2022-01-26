@@ -6,5 +6,5 @@ export const routes = {
   editProduct: '/vendor/edit-product/:id',
   products: '/vendor/products',
   searchProducts: '/products/search/:type',
-  addressDetails: '/checkout/address-details',
+  checkout: '/checkout',
 };

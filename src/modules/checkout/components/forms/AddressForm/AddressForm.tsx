@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import { Grid, Typography } from '@mui/material';
-import { Field, Form } from 'formik';
+import { Field } from 'formik';
 import { TextField } from 'formik-mui';
-import { StyledButton, StyledCard } from '../atoms';
-import { addressFormDetails, useAddressForm } from './AddressFrom.utils';
+import { StyledCard } from '../../shared';
+import { addressFormDetails, useAddressForm } from './AddressForm.utils';
 
 const AddressForm: FC = () => {
-  const { billingFormDetails, handleSubmit } = useAddressForm();
+  const { billingFormDetails } = useAddressForm();
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
       <StyledCard>
         <Grid container spacing={3} justifyContent="center" alignItems="center">
           {addressFormDetails.map(({ name, type, label, id }) => (
@@ -50,15 +50,7 @@ const AddressForm: FC = () => {
           ))}
         </Grid>
       </StyledCard>
-      <Grid container spacing={3} justifyContent="center" alignItems="center">
-        <Grid item xs={6}>
-          <StyledButton transparent>Wróć do karty</StyledButton>
-        </Grid>
-        <Grid item xs={6}>
-          <StyledButton type="submit">Przejdź do zapłaty</StyledButton>
-        </Grid>
-      </Grid>
-    </Form>
+    </>
   );
 };
 

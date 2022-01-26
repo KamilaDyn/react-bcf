@@ -1,2 +1,2 @@
-export { StyledCard } from './StyledCard';
 export { StyledButton } from './StyledButton';
+export { StyledCard } from './StyledCard';
