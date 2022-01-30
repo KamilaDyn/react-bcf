@@ -1,12 +1,12 @@
-import { Types } from "./actionsType";
-import { login } from "../../login";
+import { Types } from './actionsType';
+import { login } from '../../login';
 import {
   formatError,
   addUser,
   loginRequest,
   saveTokenInLocalStorage,
-} from "../services";
-const bcrypt = require("bcryptjs");
+} from '../services';
+const bcrypt = require('bcryptjs');
 
 const singupUser = (user, history) => {
   return async (dispatch) => {
@@ -15,7 +15,7 @@ const singupUser = (user, history) => {
         if (response.data.user) {
           saveTokenInLocalStorage(response.data);
           dispatch(singupUserSuccess(response.data));
-          history.push("/");
+          history.push('/');
         }
       })
       .catch((error) => {
@@ -54,15 +54,12 @@ const loginUser = (email, password, history) => {
           dispatch(loginSuccess(payloadUser));
           setTimeout(() => {
             dispatch(login.actions.closeLoginForm());
-            history.push("/");
+            history.push('/');
           }, 500);
-        } else {
-          dispatch(loginFailedAction("Niepoprawny mail lub hasło"));
         }
       })
       .catch((error) => {
-        const errorMessage = formatError(error.response.data);
-        dispatch(loginFailedAction(errorMessage));
+        dispatch(loginFailedAction('Niepoprawny mail lub hasło'));
       });
   };
 };
@@ -77,7 +74,7 @@ const loginFailedAction = (message) => ({
 });
 
 const logoutUser = () => {
-  localStorage.removeItem("currentUser");
+  localStorage.removeItem('currentUser');
   return {
     type: Types.LOGOUT_USER,
   };
