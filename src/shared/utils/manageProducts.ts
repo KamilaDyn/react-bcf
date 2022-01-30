@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectors, actions } from 'store';
+import { useCalculatePrice } from 'shared';
 
 export const useManageProducts = () => {
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   const products = useSelector(selectors.products.getProducts);
+  const { calculatePrice } = useCalculatePrice();
   const dispatch = useDispatch();
   const {
     incrementProductInList,
@@ -12,42 +14,52 @@ export const useManageProducts = () => {
   } = actions.shoppingList;
 
   const handleDelete = (id) => {
-    dispatch(deleteProductFromList(id));
-  };
-
-  const calculatePrice = () => {
-    if (shoppingList.length > 0) {
-      const item = shoppingList.filter((item) => item.price > 0);
-      return item
-        .map((i) => i.price)
-        .reduce((a, b) => a + b, 0)
-        .toFixed(2);
-    }
+    return new Promise((resolve, reject) => {
+      dispatch(deleteProductFromList(id));
+      return resolve(shoppingList.filter((data) => data.id !== id));
+    }).then((response) => {
+      calculatePrice(response);
+    });
   };
   const increment = (product) => {
-    const currentProduct = [...shoppingList];
-    const prodPrice = products.find((item) => {
-      return item.id === product.id;
-    });
-    const findProduct = currentProduct.find((item) => item.id === product.id);
-    findProduct.count = findProduct.count + 1;
-    findProduct.price = findProduct.price + prodPrice.price;
-    dispatch(incrementProductInList(currentProduct));
+    return new Promise((resolve, reject) => {
+      const currentProduct = [...shoppingList];
+      const prodPrice = products.find((item) => {
+        return item.id === product.id;
+      });
+      const findProduct = currentProduct.find((item) => item.id === product.id);
+      findProduct.count = findProduct.count + 1;
+      findProduct.price = findProduct.price + prodPrice.price;
+
+      if (currentProduct) {
+        dispatch(incrementProductInList(currentProduct));
+        return resolve(shoppingList);
+      } else {
+        return reject('nie możemy dodać produktu');
+      }
+    })
+      .then((resolve) => {
+        calculatePrice(resolve);
+      })
+      .catch((error) => console.error(error));
   };
   const decrement = (product) => {
-    const currentProduct = [...shoppingList];
-    const prodPrice = products.find((item) => {
-      return item.id === product.id;
+    return new Promise((resolve, reject) => {
+      const currentProduct = [...shoppingList];
+      const prodPrice = products.find((item) => {
+        return item.id === product.id;
+      });
+      const findProduct = currentProduct.find((item) => item.id === product.id);
+      findProduct.count = findProduct.count - 1;
+      findProduct.price = findProduct.price - prodPrice.price;
+      dispatch(decrementProductInList(currentProduct));
+      return resolve(shoppingList);
+    }).then((response) => {
+      calculatePrice(response);
     });
-    const findProduct = currentProduct.find((item) => item.id === product.id);
-    findProduct.count = findProduct.count - 1;
-    findProduct.price = findProduct.price - prodPrice.price;
-    dispatch(decrementProductInList(currentProduct));
   };
-
   return {
     handleDelete,
-    calculatePrice,
     shoppingList,
     increment,
     decrement,

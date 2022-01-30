@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar, Divider, Grid, Tooltip, Typography } from '@mui/material';
@@ -7,10 +6,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { actions, selectors } from 'store';
 import { shoppingBag } from 'assets';
+import { useManageProducts } from 'shared';
 import { NumberInput } from 'shared/components';
 import { routes } from 'config/routes';
 import { StyledButton, StyledIconButton } from '../../atoms';
-import { useShoppingCardData } from './ShoppingCard.utils';
 import {
   ControlBox,
   EmptyCard,
@@ -21,19 +20,17 @@ import {
 } from './ShoppingCard.style';
 
 const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
-  const { handleDelete, calculatePrice, increment, decrement } =
-    useShoppingCardData();
+  const { handleDelete, increment, decrement } = useManageProducts();
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   const isShoppingCardOpen = useSelector(selectors.shoppingList.getCardOpen);
+  const finalPrice = useSelector(selectors.shoppingList.finalPrice);
+  const { toggleShoppingCard } = actions.shoppingList;
   const dispatch = useDispatch();
   const history = useHistory();
 
   return (
     <StyledDrawer variant="persistent" anchor="right" open={isShoppingCardOpen}>
-      <StyledIconButton
-        onClick={() => dispatch(actions.shoppingList.toggleShoppingCard())}
-        isCard
-      >
+      <StyledIconButton onClick={() => dispatch(toggleShoppingCard())} isCard>
         <ChevronRightIcon />
       </StyledIconButton>
       <Divider />
@@ -42,7 +39,7 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
         <Typography variant="h2">Twój koszyk</Typography>
       </StyledBox>
       <Divider light />
-      {shoppingList.length > 0 ? (
+      {shoppingList && shoppingList.length > 0 ? (
         <>
           {shoppingList.map((item, index) => (
             <ItemContainer key={`shoppingList-${item.id}`}>
@@ -87,10 +84,10 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
           <StyledButton
             onClick={() => {
               history.push(routes.checkout);
-              dispatch(actions.shoppingList.toggleShoppingCard());
+              dispatch(toggleShoppingCard());
             }}
           >
-            Zapłać teraz: {calculatePrice()}$
+            Zapłać teraz: {finalPrice}$
           </StyledButton>
         </>
       ) : (

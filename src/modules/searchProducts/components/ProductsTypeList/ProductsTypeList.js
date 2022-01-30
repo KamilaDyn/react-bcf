@@ -9,7 +9,8 @@ const ProductTypeList = ({ type }) => {
   return (
     <Box>
       <Grid container spacing={4}>
-        {products.length &&
+        {products &&
+          products.length &&
           products.map(({ id, title, image, category, price }) => (
             <Grid
               item

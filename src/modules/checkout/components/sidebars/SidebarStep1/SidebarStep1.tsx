@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import {
   Box,
   Typography,
@@ -12,48 +11,69 @@ import {
 } from '@mui/material';
 import { Field } from 'formik';
 import { TextField } from 'formik-mui';
-import { selectors } from 'store';
-import { useManageProducts } from 'shared';
 import { StyledCard, StyledButton } from '../../shared';
-
-enum Options {
-  Option1,
-  Option2,
-  Option3,
-}
+import { useSidebar } from './SidebarStep1.utils';
 
 const SidebarStep1: FC = () => {
-  const { calculatePrice } = useManageProducts();
+  const {
+    applyVoucher,
+    isVoucherUsed,
+    finalPrice,
+    reducePriceByDelivery,
+    handleChange,
+    deliveryValue,
+  } = useSidebar();
+
   return (
     <StyledCard>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="h4">Total: </Typography>
+        <Typography variant="h4">Razem: </Typography>
         <Typography variant="h3" color="secondary">
-          {calculatePrice()}
+          {finalPrice}
         </Typography>
       </Box>
+      {isVoucherUsed && (
+        <Box my={3}>
+          <Typography>Kod rabatowy w kwocie 150$ dodany </Typography>
+        </Box>
+      )}
       <Divider />
 
       <Field
         fullWidth
         component={TextField}
-        name="customernote"
+        name="customerNote"
         type="text"
         label="Wiadomość do sprzedawcy"
         placeholder="Wiadomość"
         multiline
         minRows={5}
       />
+      <Box my={3}>
+        <Field
+          fullWidth
+          component={TextField}
+          name="voucher"
+          type="text"
+          label="Kod rabatowy"
+          placeholder="Kod rabatowy"
+        />
+        <StyledButton
+          transparent
+          onClick={applyVoucher}
+          disabled={isVoucherUsed}
+        >
+          Wykorzystaj rabat
+        </StyledButton>
+      </Box>
       <Box mt={3} display="flex" flexDirection="column">
         <FormControl component="fieldset">
           <FormLabel component="legend">Wybierz sposób dostawy</FormLabel>
           <RadioGroup
             aria-label="delivery"
-            name="radio-buttons-group"
-            //   value={values.selectedOption.toString()}
-            //   onChange={(event) => {
-            //     setFieldValue(name, event.currentTarget.value);
-            //   }}
+            name="deliveryType"
+            value={deliveryValue}
+            onChange={handleChange}
           >
             <FormControlLabel
               value="dpd"
@@ -73,7 +93,9 @@ const SidebarStep1: FC = () => {
           </RadioGroup>
         </FormControl>
       </Box>
-      <StyledButton transparent>Oblicz z dostawą </StyledButton>
+      <StyledButton transparent onClick={reducePriceByDelivery}>
+        OBLICZ DOSTAWĘ
+      </StyledButton>
     </StyledCard>
   );
 };

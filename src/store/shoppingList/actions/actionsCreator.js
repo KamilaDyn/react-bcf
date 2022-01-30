@@ -1,4 +1,8 @@
-import { Types } from "./actionsType";
+import { Types } from './actionsType';
+
+const currentShoppingList = () => {
+  return { type: Types.SHOPPING_LIST };
+};
 
 const addNewProductToList = (item) => {
   return { type: Types.ADD_PRODUCT_TO_LIST, payload: item };
@@ -18,10 +22,39 @@ const toggleShoppingCard = () => {
   return { type: Types.TOGGLE_SHOPPING_CARD };
 };
 
+const finalShoppingPrice = (item) => {
+  return { type: Types.FINAL_SHOPPING_PRICE, payload: item };
+};
+const reducePriceWihVoucher = (item) => {
+  return {
+    type: Types.REDUCE_PRICE_WITH_VOUCHER,
+    payload: item,
+  };
+};
+
+const reducePriceByDeliveryPrice = (price, deliveryType) => {
+  return {
+    type: Types.REDUCE_PRICE_WITH_DELIVERY_TYPE,
+    payload: { price, deliveryType },
+  };
+};
+const cleanBasket = (state) => {
+  console.log('state', state);
+  return {
+    type: Types.CLEAN_BASKET,
+    payload: state,
+  };
+};
+
 export const shoppingListActions = {
   addNewProductToList,
   incrementProductInList,
   decrementProductInList,
   deleteProductFromList,
   toggleShoppingCard,
+  finalShoppingPrice,
+  currentShoppingList,
+  reducePriceWihVoucher,
+  reducePriceByDeliveryPrice,
+  cleanBasket,
 };

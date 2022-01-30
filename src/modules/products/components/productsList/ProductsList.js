@@ -1,16 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Grid } from "@mui/material";
-import { selectors } from "store";
-import { ProductCard } from "shared/components";
-import { useProductList } from "./ProductsList.utils";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Grid } from '@mui/material';
+import { selectors } from 'store';
+import { ProductCard } from 'shared/components';
+import { useProductList } from './ProductsList.utils';
 
 const ProductsList = () => {
   const allProducts = useProductList();
   const isCardOpen = useSelector(selectors.shoppingList.getCardOpen);
   return (
     <Grid container spacing={4}>
-      {allProducts.length &&
+      {allProducts &&
+        allProducts.length &&
         allProducts.map(({ id, title, image, category, price }) => (
           <Grid
             item

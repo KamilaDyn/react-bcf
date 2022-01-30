@@ -1,4 +1,8 @@
 export interface PersonalDataFormValues {
+  customerNote: string;
+  voucher: string;
+  checkbox: false;
+  deliveryType: string;
   firstName: string;
   secondName: string;
   email: string;
@@ -15,5 +19,13 @@ export interface PersonalDataFormValues {
   billingPostCode: string;
   billingCity: string;
   billingCountry: string;
-  checkbox: false;
+  userProducts: object[];
+  sumPrice: number;
+}
+
+export interface Values {
+  errors: object;
+  values: object;
+  voucher: string;
+  deliveryType: string;
 }

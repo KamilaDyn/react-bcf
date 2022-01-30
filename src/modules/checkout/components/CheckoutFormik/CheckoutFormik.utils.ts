@@ -1,4 +1,6 @@
 import * as Yup from 'yup';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectors, actions } from 'store';
 import { PersonalDataFormValues, steps } from '../shared';
 
 const firstStep = Yup.object().shape({
@@ -65,57 +67,107 @@ const secondStep = Yup.object().shape({
   }),
 });
 const thirdStep = Yup.object().shape({
-  card: Yup.string().min(3, 'Nazwisko za krótkie').required('wpisz voucher'),
+  // card: Yup.string().min(3, 'Nazwisko za krótkie').required('wpisz voucher'),
 });
-
 export const SignupSchema = [firstStep, secondStep, thirdStep];
 
 export const useCheckoutFormik = (activeStep, setActiveStep) => {
   const isLastStep = activeStep === Object.keys(steps).length - 1;
   const currentValidationSchema = SignupSchema[activeStep];
+  const userProducts = useSelector(selectors.shoppingList.getShoppingList);
+  const finalPrice = useSelector(selectors.shoppingList.finalPrice);
+  const deliveryType = useSelector(selectors.shoppingList.deliveryType);
+  const dispatch = useDispatch();
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
-  const submitForm = async (values, actions) => {
+  const submitForm = async (values, action) => {
     await sleep(1000);
     alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
+    action.setSubmitting(false);
     setActiveStep(activeStep + 1);
   };
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values, action) => {
+    const initialState = {
+      shoppingList: [],
+      finalPrice: 0,
+      cardOpen: false,
+      isVoucherUsed: false,
+      deliveryType: 'pickUpFromShop',
+    };
     if (isLastStep) {
-      submitForm(values, actions);
+      if (values.checkbox) {
+        const {
+          firstName,
+          secondName,
+          email,
+          phone,
+          street,
+          postCode,
+          city,
+          country,
+        } = values;
+        submitForm(
+          {
+            ...values,
+            sumPrice: finalPrice,
+            deliveryType: deliveryType,
+            billingFirstName: firstName,
+            billingSecondName: secondName,
+            billingEmail: email,
+            billingPhone: phone,
+            billingStreet: street,
+            billingPostCode: postCode,
+            billingCity: city,
+            billingCountry: country,
+          },
+          action
+        );
+      } else {
+        submitForm(
+          { ...values, sumPrice: finalPrice, deliveryType: deliveryType },
+          action
+        );
+      }
+      console.log(initialState);
+      dispatch(actions.shoppingList.cleanBasket(initialState));
+      return userProducts;
     } else {
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
     }
   };
+  const initialValues: PersonalDataFormValues = {
+    userProducts: userProducts,
+    customerNote: '',
+    deliveryType: deliveryType,
+    voucher: '',
+    firstName: '',
+    secondName: '',
+    email: '',
+    phone: '',
+    street: '',
+    postCode: '',
+    city: '',
+    country: '',
+    billingFirstName: '',
+    billingSecondName: '',
+    billingEmail: '',
+    billingPhone: '',
+    billingStreet: '',
+    billingPostCode: '',
+    billingCity: '',
+    billingCountry: '',
+    checkbox: false,
+    sumPrice: 0,
+  };
 
   return {
     handleSubmit,
     isLastStep,
     currentValidationSchema,
+    initialValues,
   };
-};
-
-export const initialValues: PersonalDataFormValues = {
-  firstName: '',
-  secondName: '',
-  email: '',
-  phone: '',
-  street: '',
-  postCode: '',
-  city: '',
-  country: '',
-  billingFirstName: '',
-  billingSecondName: '',
-  billingEmail: '',
-  billingPhone: '',
-  billingStreet: '',
-  billingPostCode: '',
-  billingCity: '',
-  billingCountry: '',
-  checkbox: false,
 };

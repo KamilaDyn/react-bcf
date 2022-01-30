@@ -14,4 +14,5 @@ export {
   useAmountOfProduct,
   useOrderProducts,
   useManageProducts,
+  useCalculatePrice,
 } from './utils';
