@@ -12,18 +12,13 @@ import {
 } from '@mui/material';
 import { Field } from 'formik';
 import { TextField } from 'formik-mui';
-import { selectors } from 'store';
 import { useManageProducts } from 'shared';
 import { StyledCard, StyledButton } from '../../shared';
-
-enum Options {
-  Option1,
-  Option2,
-  Option3,
-}
+import { useSidebar } from './SidebarStep1.utils';
 
 const SidebarStep1: FC = () => {
   const { calculatePrice } = useManageProducts();
+  const { handleChange, deliveryValue } = useSidebar();
   return (
     <StyledCard>
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -49,11 +44,9 @@ const SidebarStep1: FC = () => {
           <FormLabel component="legend">Wybierz sposób dostawy</FormLabel>
           <RadioGroup
             aria-label="delivery"
-            name="radio-buttons-group"
-            //   value={values.selectedOption.toString()}
-            //   onChange={(event) => {
-            //     setFieldValue(name, event.currentTarget.value);
-            //   }}
+            name="deliveryType"
+            value={deliveryValue}
+            onChange={handleChange}
           >
             <FormControlLabel
               value="dpd"
