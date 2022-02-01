@@ -2,12 +2,12 @@ import { FC } from 'react';
 import { Grid } from '@mui/material';
 import { Form } from 'formik';
 import { StyledButton, SetProps } from '../shared';
-import { AddressForm } from '../forms';
+import { AddressForm, SumProductsForm } from '../forms';
 
 function renderStepContent(step: number) {
   switch (step) {
     case 0:
-      return <div>Karty i produkty</div>;
+      return <SumProductsForm />;
     case 1:
       return <AddressForm />;
     case 2:

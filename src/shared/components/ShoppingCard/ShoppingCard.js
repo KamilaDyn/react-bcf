@@ -1,14 +1,16 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Avatar, Divider, Grid, Tooltip, Typography } from "@mui/material";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import { actions, selectors } from "store";
-import { shoppingBag } from "assets";
-import { NumberInput } from "shared/components";
-import { StyledButton, StyledIconButton } from "../../atoms";
-import { useShoppingCardData } from "./ShoppingCard.utils";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Avatar, Divider, Grid, Tooltip, Typography } from '@mui/material';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import { actions, selectors } from 'store';
+import { shoppingBag } from 'assets';
+import { NumberInput } from 'shared/components';
+import { routes } from 'config/routes';
+import { StyledButton, StyledIconButton } from '../../atoms';
+import { useShoppingCardData } from './ShoppingCard.utils';
 import {
   ControlBox,
   EmptyCard,
@@ -16,7 +18,7 @@ import {
   StyledBox,
   ItemContainer,
   Image,
-} from "./ShoppingCard.style";
+} from './ShoppingCard.style';
 
 const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
   const { handleDelete, calculatePrice, increment, decrement } =
@@ -24,9 +26,10 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   const isShoppingCardOpen = useSelector(selectors.shoppingList.getCardOpen);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
-    <StyledDrawer variant='persistent' anchor='right' open={isShoppingCardOpen}>
+    <StyledDrawer variant="persistent" anchor="right" open={isShoppingCardOpen}>
       <StyledIconButton
         onClick={() => dispatch(actions.shoppingList.toggleShoppingCard())}
         isCard
@@ -36,14 +39,14 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
       <Divider />
       <StyledBox>
         <LocalMallOutlinedIcon />
-        <Typography variant='h2'>Twój koszyk</Typography>
+        <Typography variant="h2">Twój koszyk</Typography>
       </StyledBox>
       <Divider light />
       {shoppingList.length > 0 ? (
         <>
           {shoppingList.map((item, index) => (
             <ItemContainer key={`shoppingList-${item.id}`}>
-              <Grid item spacing={2} container alignItems='center'>
+              <Grid item spacing={2} container alignItems="center">
                 <Grid item xs={2}>
                   <ControlBox>
                     <NumberInput
@@ -56,15 +59,15 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
                   </ControlBox>
                 </Grid>
                 <Grid item xs={3}>
-                  <Avatar alt={item.title} src={item.img} variant='square' />
+                  <Avatar alt={item.title} src={item.img} variant="square" />
                 </Grid>
                 <Grid item xs={5}>
-                  <Typography variant='h5'>{item.name}</Typography>
+                  <Typography variant="h5">{item.name}</Typography>
                   <small>
                     {item.itemPrice.toFixed(2)}$ x {item.count}
                   </small>
-                  <Typography variant='subtitle2'>
-                    Cena: {item.price.toFixed(2) + "$"}
+                  <Typography variant="subtitle2">
+                    Cena: {item.price.toFixed(2) + '$'}
                   </Typography>
                 </Grid>
                 <Grid item xs={2}>
@@ -72,7 +75,7 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
                     deleteBtn
                     onClick={() => handleDelete(item.id)}
                   >
-                    <Tooltip title='Usuń produkt' placement='top'>
+                    <Tooltip title="Usuń produkt" placement="top">
                       <DeleteOutlineIcon />
                     </Tooltip>
                   </StyledIconButton>
@@ -81,16 +84,23 @@ const ShoppingCard = ({ openShoppingCard, setOpenShoppingCard, ...props }) => {
             </ItemContainer>
           ))}
 
-          <StyledButton>Zapłać teraz: {calculatePrice()}$</StyledButton>
+          <StyledButton
+            onClick={() => {
+              history.push(routes.checkout);
+              dispatch(actions.shoppingList.toggleShoppingCard());
+            }}
+          >
+            Zapłać teraz: {calculatePrice()}$
+          </StyledButton>
         </>
       ) : (
         <EmptyCard>
           <Image
             src={shoppingBag}
-            alt='empty shopping card'
-            title='empty shopping card'
+            alt="empty shopping card"
+            title="empty shopping card"
           />
-          <Typography variant='h4'>
+          <Typography variant="h4">
             Twój kosz jest pusty. Nie wybrałeś jeszcze żadnego produktu.
           </Typography>
         </EmptyCard>
