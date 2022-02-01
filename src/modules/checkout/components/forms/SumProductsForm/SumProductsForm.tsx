@@ -21,7 +21,7 @@ const SumProductsForm: FC = () => {
         marginY={10}
       >
         <Grid item xs={12} md={8}>
-          {products.length > 0 &&
+          {products.length  &&
             products.map((item: ProductsTypes) => (
               <StyledCard>
                 <Grid item spacing={2} container alignItems="center">
