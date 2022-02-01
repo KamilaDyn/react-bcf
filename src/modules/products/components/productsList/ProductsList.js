@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Grid } from '@mui/material';
 import { selectors } from 'store';
-import { ProductCard } from 'shared/components';
+import { ProductCard } from 'shared';
 import { useProductList } from './ProductsList.utils';
 
 const ProductsList = () => {

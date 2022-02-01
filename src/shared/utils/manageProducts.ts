@@ -1,17 +1,34 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectors, actions } from 'store';
-import { useCalculatePrice } from 'shared';
 
 export const useManageProducts = () => {
   const shoppingList = useSelector(selectors.shoppingList.getShoppingList);
   const products = useSelector(selectors.products.getProducts);
-  const { calculatePrice } = useCalculatePrice();
+  const isVoucherUsed = useSelector(selectors.shoppingList.isVoucherUsed);
+
   const dispatch = useDispatch();
   const {
     incrementProductInList,
     decrementProductInList,
     deleteProductFromList,
+    finalShoppingPrice
   } = actions.shoppingList;
+
+  const calculatePrice = (products) => {
+    if (products && products.length) {
+      const item = products
+        .filter((item) => item.price > 0)
+        .map((i) => i.price)
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2);
+      if (isVoucherUsed) {
+        const reducePrice = item - 150;
+        dispatch(finalShoppingPrice(reducePrice));
+      } else {
+        dispatch(finalShoppingPrice(item));
+      }
+    }
+  };
 
   const handleDelete = (id) => {
     return new Promise((resolve, reject) => {

@@ -14,7 +14,7 @@ const SearchCard = ({ type }) => {
         <Grid item xs={12} sm={6}>
           <Typography variant="h6">Szukaj: {type}</Typography>
           <Typography variant="body1" color="textSecondary">
-            Wyników {foundProducts ? foundProducts.length : '0'}
+            Wyników {foundProducts ? foundProducts.length : 'Nie znaleniono produktów'}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>

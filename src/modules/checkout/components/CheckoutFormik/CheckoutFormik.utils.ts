@@ -67,7 +67,7 @@ const secondStep = Yup.object().shape({
   }),
 });
 const thirdStep = Yup.object().shape({
-  // card: Yup.string().min(3, 'Nazwisko za krótkie').required('wpisz voucher'),
+  card: Yup.string().min(10, 'Numer karty za krótkie')
 });
 export const SignupSchema = [firstStep, secondStep, thirdStep];
 
