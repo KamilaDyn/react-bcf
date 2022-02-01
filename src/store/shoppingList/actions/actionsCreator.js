@@ -32,7 +32,7 @@ const reducePriceWihVoucher = (item) => {
   };
 };
 
-const reducePriceByDeliveryPrice = (price, deliveryType) => {
+const raisePriceByDeliveryPrice = (price, deliveryType) => {
   return {
     type: Types.REDUCE_PRICE_WITH_DELIVERY_TYPE,
     payload: { price, deliveryType },
@@ -54,6 +54,6 @@ export const shoppingListActions = {
   finalShoppingPrice,
   currentShoppingList,
   reducePriceWihVoucher,
-  reducePriceByDeliveryPrice,
+  raisePriceByDeliveryPrice,
   cleanBasket,
 };

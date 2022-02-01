@@ -9,7 +9,7 @@ export const useSidebar = () => {
   const finalPrice = useSelector(selectors.shoppingList.finalPrice);
   const isVoucherUsed = useSelector(selectors.shoppingList.isVoucherUsed);
   const [prevValue, setPrevValue] = useState('pickUpFromShop');
-  const { reducePriceWihVoucher, reducePriceByDeliveryPrice } =
+  const { reducePriceWihVoucher, raisePriceByDeliveryPrice } =
     actions.shoppingList;
   const { values, errors } = useFormikContext<Values>();
   const dispatch = useDispatch();
@@ -27,19 +27,19 @@ export const useSidebar = () => {
     }
   };
 
-  const reducePriceByDelivery = () => {
+  const raisePriceByDelivery = () => {
     setPrevValue(deliveryValue);
     switch (deliveryValue) {
       case 'pickUpFromShop':
         switch (prevValue) {
           case 'dpd':
             dispatch(
-              reducePriceByDeliveryPrice(finalPrice - 15, 'pickUpFromShop')
+              raisePriceByDeliveryPrice(finalPrice - 15, 'pickUpFromShop')
             );
             return finalPrice;
           case 'ups':
             dispatch(
-              reducePriceByDeliveryPrice(finalPrice - 20, 'pickUpFromShop')
+              raisePriceByDeliveryPrice(finalPrice - 20, 'pickUpFromShop')
             );
             return finalPrice;
           default:
@@ -48,10 +48,10 @@ export const useSidebar = () => {
       case 'dpd':
         switch (prevValue) {
           case 'pickUpFromShop':
-            dispatch(reducePriceByDeliveryPrice(finalPrice + 15, 'dpd'));
+            dispatch(raisePriceByDeliveryPrice(finalPrice + 15, 'dpd'));
             return finalPrice;
           case 'ups':
-            dispatch(reducePriceByDeliveryPrice(finalPrice + 5, 'dpd'));
+            dispatch(raisePriceByDeliveryPrice(finalPrice + 5, 'dpd'));
             return finalPrice;
           default:
             return finalPrice;
@@ -59,10 +59,10 @@ export const useSidebar = () => {
       case 'ups':
         switch (prevValue) {
           case 'pickUpFromShop':
-            dispatch(reducePriceByDeliveryPrice(finalPrice + 20, 'ups'));
+            dispatch(raisePriceByDeliveryPrice(finalPrice + 20, 'ups'));
             return finalPrice;
           case 'dpd':
-            dispatch(reducePriceByDeliveryPrice(finalPrice + 5, 'ups'));
+            dispatch(raisePriceByDeliveryPrice(finalPrice + 5, 'ups'));
             return finalPrice;
           default:
             return finalPrice;
@@ -73,7 +73,7 @@ export const useSidebar = () => {
   };
 
   return {
-    reducePriceByDelivery,
+    raisePriceByDelivery,
     applyVoucher,
     isVoucherUsed,
     finalPrice,

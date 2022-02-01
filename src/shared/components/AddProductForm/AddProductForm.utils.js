@@ -10,7 +10,7 @@ export const useAddProduct = () => {
     actions.shoppingList;
 
   const calculatePrice = (products) => {
-    if (products && products.length > 0) {
+    if (products && products.length) {
       const item = products
         .filter((item) => item.price > 0)
         .map((i) => i.price)

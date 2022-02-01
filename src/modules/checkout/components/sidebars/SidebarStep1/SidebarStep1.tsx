@@ -20,7 +20,7 @@ const SidebarStep1: FC = () => {
     applyVoucher,
     isVoucherUsed,
     finalPrice,
-    reducePriceByDelivery,
+    raisePriceByDelivery,
     handleChange,
     deliveryValue,
   } = useSidebar();
@@ -94,7 +94,7 @@ const SidebarStep1: FC = () => {
           </RadioGroup>
         </FormControl>
       </Box>
-      <StyledButton transparent onClick={reducePriceByDelivery}>
+      <StyledButton transparent onClick={raisePriceByDelivery}>
         OBLICZ DOSTAWĘ
       </StyledButton>
     </StyledCard>
