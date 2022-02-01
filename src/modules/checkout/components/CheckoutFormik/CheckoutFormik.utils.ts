@@ -130,7 +130,6 @@ export const useCheckoutFormik = (activeStep, setActiveStep) => {
           action
         );
       }
-      console.log(initialState);
       dispatch(actions.shoppingList.cleanBasket(initialState));
       return userProducts;
     } else {

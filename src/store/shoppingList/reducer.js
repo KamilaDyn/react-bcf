@@ -57,7 +57,6 @@ export const ShoppingListReducer = (baskedState = initialState, action) => {
         finalPrice: payload.price,
       };
     case Types.CLEAN_BASKET:
-      console.log('payload', payload);
       return { baskedState: payload };
     case Types.TOGGLE_SHOPPING_CARD:
       return { ...baskedState, cardOpen: !baskedState.cardOpen };

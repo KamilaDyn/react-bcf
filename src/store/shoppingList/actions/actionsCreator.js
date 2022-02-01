@@ -39,7 +39,6 @@ const reducePriceByDeliveryPrice = (price, deliveryType) => {
   };
 };
 const cleanBasket = (state) => {
-  console.log('state', state);
   return {
     type: Types.CLEAN_BASKET,
     payload: state,

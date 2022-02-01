@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { Field } from 'formik';
 import { TextField } from 'formik-mui';
+import { useManageProducts } from 'shared';
 import { StyledCard, StyledButton } from '../../shared';
 import { useSidebar } from './SidebarStep1.utils';
 

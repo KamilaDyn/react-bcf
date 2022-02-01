@@ -14,9 +14,10 @@ export const useSidebar = () => {
   const { values, errors } = useFormikContext<Values>();
   const dispatch = useDispatch();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDeliveryValue((event.target as HTMLInputElement).value);
-  };
+ 
+  const handleChange = (_, value: string) => {
+    setDeliveryValue(value);
+  }
 
   const applyVoucher = () => {
     if (values.voucher && !errors.voucher) {
@@ -78,6 +79,5 @@ export const useSidebar = () => {
     finalPrice,
     values,
     handleChange,
-    deliveryValue,
-  };
-};
+    deliveryValue
+  }}

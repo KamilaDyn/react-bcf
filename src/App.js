@@ -37,7 +37,7 @@ class App extends Component {
                 path={routes.searchProducts}
                 component={SearchProducts}
               />
-              <Route path={routes.checkout} component={Checkout} />
+              <Route exact path={routes.checkout} component={Checkout} />
             </Switch>
           </MainTemplate>
         </Router>
