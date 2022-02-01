@@ -51,7 +51,7 @@ export const useSidebar = () => {
             dispatch(raisePriceByDeliveryPrice(finalPrice + 15, 'dpd'));
             return finalPrice;
           case 'ups':
-            dispatch(raisePriceByDeliveryPrice(finalPrice + 5, 'dpd'));
+            dispatch(raisePriceByDeliveryPrice(finalPrice - 5, 'dpd'));
             return finalPrice;
           default:
             return finalPrice;
