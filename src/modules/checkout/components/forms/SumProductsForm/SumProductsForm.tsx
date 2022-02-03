@@ -1,14 +1,15 @@
 import { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { Avatar, Box, Grid, Typography, Tooltip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { selectors } from 'store';
 import { NumberInput, useManageProducts } from 'shared';
 import { ProductsTypes } from '../../shared';
-import { useSumProducts } from './SumProductsForm.utils';
-import { StyledCard, StyledIconButton } from './SumProductsForm.style';
 import { SidebarStep1 } from '../../sidebars';
+import { StyledCard, StyledIconButton } from './SumProductsForm.style';
 
 const SumProductsForm: FC = () => {
-  const { products } = useSumProducts();
+  const products = useSelector(selectors.shoppingList.getShoppingList);
   const { increment, decrement, handleDelete } = useManageProducts();
   return (
     <>
