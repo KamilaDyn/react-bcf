@@ -1,8 +1,6 @@
 import { FC } from 'react';
-import { Typography, Divider } from '@mui/material';
-import { StyledBox, StyledCard } from './Sidebar.style';
-import { sidebarList } from './sidebar.utils';
-import { SidebarStep1 } from '../sidebars';
+import { StyledCard } from './Sidebar.style';
+import { SidebarStep1, SidebarStep2and3 } from '../sidebars';
 interface Props {
   activeStep: number;
 }
@@ -11,9 +9,9 @@ function renderStepSidebar(step: number) {
     case 0:
       return <SidebarStep1 />;
     case 1:
-      return <div>Sideabr 2</div>;
+      return <SidebarStep2and3 />;
     case 2:
-      return <div>Sideabr 3</div>;
+      return <SidebarStep2and3 />;
     case 3:
       return <div>sIDEBA</div>;
     default:

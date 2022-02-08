@@ -11,8 +11,7 @@ import {
 } from '@mui/material';
 import { Field } from 'formik';
 import { TextField } from 'formik-mui';
-import { useManageProducts } from 'shared';
-import { StyledCard, StyledButton } from '../../shared';
+import { StyledButton } from '../../shared';
 import { useSidebar } from './SidebarStep1.utils';
 
 const SidebarStep1: FC = () => {
@@ -26,7 +25,7 @@ const SidebarStep1: FC = () => {
   } = useSidebar();
 
   return (
-    <StyledCard>
+    <>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography variant="h4">Razem: </Typography>
         <Typography variant="h3" color="secondary">
@@ -97,7 +96,7 @@ const SidebarStep1: FC = () => {
       <StyledButton transparent onClick={raisePriceByDelivery}>
         OBLICZ DOSTAWĘ
       </StyledButton>
-    </StyledCard>
+    </>
   );
 };
 
