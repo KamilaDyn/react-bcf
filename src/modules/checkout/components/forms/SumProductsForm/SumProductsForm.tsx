@@ -4,11 +4,11 @@ import { Avatar, Box, Grid, Typography, Tooltip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { selectors } from 'store';
 import { NumberInput, useManageProducts } from 'shared';
-import { ProductsTypes } from '../../shared';
-import { SidebarStep1 } from '../../sidebars';
+import { ProductsTypes, PropsTypes } from '../../shared';
+import { Sidebar } from '../../Sidebar';
 import { StyledCard, StyledIconButton } from './SumProductsForm.style';
 
-const SumProductsForm: FC = () => {
+const SumProductsForm: FC<PropsTypes> = ({ activeStep }) => {
   const products = useSelector(selectors.shoppingList.getShoppingList);
   const { increment, decrement, handleDelete } = useManageProducts();
   return (
@@ -22,7 +22,7 @@ const SumProductsForm: FC = () => {
         marginY={10}
       >
         <Grid item xs={12} md={8}>
-          {products.length  &&
+          {products.length &&
             products.map((item: ProductsTypes) => (
               <StyledCard>
                 <Grid item spacing={2} container alignItems="center">
@@ -78,7 +78,7 @@ const SumProductsForm: FC = () => {
             ))}
         </Grid>
         <Grid item xs={10} md={4}>
-          <SidebarStep1 />
+          <Sidebar activeStep={activeStep} />
         </Grid>
       </Grid>
     </>

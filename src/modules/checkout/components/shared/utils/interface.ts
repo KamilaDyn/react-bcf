@@ -21,6 +21,13 @@ export interface PersonalDataFormValues {
   billingCountry: string;
   userProducts: object[];
   sumPrice: number;
+  cardNumber: string;
+  showCardNumber: boolean;
+  expiringDate: string;
+  nameHolder: string;
+  lastNameHolder: string;
+  showBlik: boolean;
+  blik: string;
 }
 
 export interface Values {
@@ -28,4 +35,8 @@ export interface Values {
   values: object;
   voucher: string;
   deliveryType: string;
+}
+
+export interface PropsTypes {
+  activeStep: number;
 }

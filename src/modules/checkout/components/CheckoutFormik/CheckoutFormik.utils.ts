@@ -66,9 +66,43 @@ const secondStep = Yup.object().shape({
       .required('Wpisz kod pocztowy'),
   }),
 });
+const today = new Date();
+
 const thirdStep = Yup.object().shape({
-  card: Yup.string().min(10, 'Numer karty za krótkie')
+  showCardNumber: Yup.boolean(),
+  showBlik: Yup.boolean(),
+  cardNumber: Yup.string().when('showCardNumber', {
+    is: true,
+    then: Yup.string()
+      .min(10, 'Numer karty za krótki')
+      .required('Wpisz numer karty'),
+  }),
+  expiringDate: Yup.date().when('showCardNumber', {
+    is: true,
+    then: Yup.date()
+      .min(today, 'Karta musi być ważna')
+      .required('wpisz datę ważności karty'),
+  }),
+  nameHolder: Yup.string().when('showCardNumber', {
+    is: true,
+    then: Yup.string()
+      .min(3, 'Imię jest za krótkie')
+      .required('Wpisz imię właściciela karty'),
+  }),
+  lastNameHolder: Yup.string().when('showCardNumber', {
+    is: true,
+    then: Yup.string()
+      .min(3, 'Nazwisko jest za krótkie')
+      .required('Wpisz nazwisko właściciela karty'),
+  }),
+  blik: Yup.string().when('showBlik', {
+    is: true,
+    then: Yup.string()
+      .min(6, 'Numer karty za krótki')
+      .required('Wpisz numer karty'),
+  }),
 });
+
 export const SignupSchema = [firstStep, secondStep, thirdStep];
 
 export const useCheckoutFormik = (activeStep, setActiveStep) => {
@@ -161,6 +195,13 @@ export const useCheckoutFormik = (activeStep, setActiveStep) => {
     billingCountry: '',
     checkbox: false,
     sumPrice: 0,
+    cardNumber: '',
+    showCardNumber: true,
+    expiringDate: '',
+    nameHolder: '',
+    lastNameHolder: '',
+    showBlik: false,
+    blik: '',
   };
 
   return {

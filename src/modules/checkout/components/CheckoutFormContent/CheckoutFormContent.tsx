@@ -2,16 +2,16 @@ import { FC } from 'react';
 import { Grid } from '@mui/material';
 import { Form } from 'formik';
 import { StyledButton, SetProps } from '../shared';
-import { AddressForm, SumProductsForm } from '../forms';
+import { AddressForm, PaymentForm, SumProductsForm } from '../forms';
 
 function renderStepContent(step: number) {
   switch (step) {
     case 0:
-      return <SumProductsForm />;
+      return <SumProductsForm activeStep={step} />;
     case 1:
-      return <AddressForm />;
+      return <AddressForm activeStep={step} />;
     case 2:
-      return <div>Payment form</div>;
+      return <PaymentForm activeStep={step} />;
     case 3:
       return <div>Podsumowanie (submit)</div>;
     default:
